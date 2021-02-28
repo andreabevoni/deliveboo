@@ -15,8 +15,10 @@ class CreateFoodOrderTable extends Migration
     {
         Schema::create('food_order', function (Blueprint $table) {
             $table->id();
+
             $table->bigInteger('food_id')->unsigned();
             $table->bigInteger('order_id')->unsigned();
+
             $table->timestamps();
         });
     }

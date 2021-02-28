@@ -15,21 +15,18 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('restaurant_name', 60);
-            $table->string('address');
-            $table->string(
-                'phone',
-                60
-            );
+            $table->string('email', 100)->unique();
+            $table->string('password');
+            $table->string('restaurant_name', 100);
+            $table->string('address', 100);
+            $table->string('p_iva', 11);
+            $table->string('phone', 30);
             $table->string('image')->nullable();
-
-            $table->string('p_iva', 30);
             $table->tinyInteger('closing_day')->nullable();
             $table->time('opening_time');
             $table->time('closing_time');
-            $table->string('email')->unique();
+
             $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
             $table->rememberToken();
             $table->timestamps();
         });

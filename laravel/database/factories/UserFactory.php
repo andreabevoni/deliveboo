@@ -25,7 +25,7 @@ $factory->define(User::class, function (Faker $faker) {
         'address' => $faker->address,
         'phone' => $faker->phoneNumber,
         'p_iva' => $faker->swiftBicNumber,
-        'closing_day' => rand(1, 7),
+        'closing_day' => rand(0, 7),
         'opening_time' => $faker->time,
         'closing_time' => $faker->time,
 
