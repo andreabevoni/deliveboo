@@ -15,6 +15,9 @@ class CreateTypologyUserTable extends Migration
     {
         Schema::create('typology_user', function (Blueprint $table) {
             $table->id();
+            $table->bigInteger('typology_id')->unsigned();
+            $table->bigInteger('user_id')->unsigned();
+
             $table->timestamps();
         });
     }

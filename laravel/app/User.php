@@ -16,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'restaurant_name', 'email', 'password', 'address', 'p_iva'
     ];
 
     /**
@@ -36,4 +36,15 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+
+    public function food()
+    {
+        return $this->hasMany(Food::class);
+    }
+
+    public function typologies()
+    {
+        return $this->belongsToMany(Typology::class);
+    }
 }
