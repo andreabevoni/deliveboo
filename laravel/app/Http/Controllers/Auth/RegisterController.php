@@ -9,6 +9,7 @@ use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
+
 class RegisterController extends Controller
 {
     /*
@@ -50,9 +51,14 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
+            'restaurant_name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'p_iva' => ['required', 'string', 'min:11'],
+            // 'typologies' => ['required', 'string', 'min:8'],
+            'address' => ['required', 'string', 'min:8'],
+            // 'phone' => ['string', 'min:8'],
+
         ]);
     }
 
@@ -64,10 +70,18 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        // dd($data);
         return User::create([
-            'name' => $data['name'],
+
+
+            'restaurant_name' => $data['restaurant_name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'p_iva' => $data['p_iva'],
+            // 'typologies' => $data['typologies'],
+            'address' => $data['address'],
+            // 'phone' => $data['phone'],
+
         ]);
     }
 }

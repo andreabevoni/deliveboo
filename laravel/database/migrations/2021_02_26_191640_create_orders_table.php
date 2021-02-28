@@ -19,7 +19,7 @@ class CreateOrdersTable extends Migration
             $table->string('lastname', 60);
             $table->string('email', 60);
             $table->string('phone_number', 30);
-            $table->string('address', 60);
+            $table->string('address');
             $table->date('date');
             $table->smallInteger('total')->nullable()->default(0);
             $table->timestamps();

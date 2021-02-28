@@ -20,13 +20,13 @@ class CreateUsersTable extends Migration
             $table->string(
                 'phone',
                 60
-            );
+            )->nullable();
             $table->string('image')->nullable();
 
             $table->string('p_iva', 30);
             $table->tinyInteger('closing_day')->nullable();
-            $table->time('opening_time');
-            $table->time('closing_time');
+            $table->time('opening_time')->nullable();
+            $table->time('closing_time')->nullable();
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
