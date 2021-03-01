@@ -4,11 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\Typology;
 
 class MainController extends Controller
 {
   public function index() {
-    $restaurants = User::all();
-    return view('welcome', compact('restaurants'));
+    $typologies = Typology::all();
+    return view('welcome', compact('typologies'));
   }
 }

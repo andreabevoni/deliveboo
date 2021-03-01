@@ -61,10 +61,25 @@
             .m-b-md {
                 margin-bottom: 30px;
             }
+
+
+            /* css da portarsi dietro nel sass */
+            .typologies {
+              margin: 20px 0;
+              width: 1000px;
+              display: flex;
+              justify-content: space-between;
+            }
+
+            .typologies span:hover {
+              cursor: pointer;
+            }
         </style>
+
+        <script src="{{asset('js/app.js')}}" charset="utf-8"></script>
     </head>
     <body>
-        <div class="flex-center position-ref full-height">
+        <div class="flex-center position-ref full-height" id="app">
             @if (Route::has('login'))
                 <div class="top-right links">
                     @auth
@@ -84,13 +99,17 @@
                     Deliveboo
                 </div>
 
-                <div class="links">
-                    @foreach ($restaurants as $restaurant)
-                      <div class="restaurant">
-                        <a href="#">{{$restaurant -> restaurant_name}}</a>
+                <search
+                  :typologies="{{json_encode($typologies)}}"
+                ></search>
+
+                {{-- <div class="links">
+                    @foreach ($typologies as $typology)
+                      <div class="search">
+                        <a href="#">{{$typology -> name}}</a>
                       </div>
                     @endforeach
-                </div>
+                </div> --}}
             </div>
         </div>
     </body>
