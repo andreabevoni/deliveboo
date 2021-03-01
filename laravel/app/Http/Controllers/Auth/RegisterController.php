@@ -9,7 +9,8 @@ use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
-
+use Illuminate\Http\Request;
+use Illuminate\Auth\Events\Registered;
 
 class RegisterController extends Controller
 {
@@ -73,26 +74,29 @@ class RegisterController extends Controller
     {
         // dd($data);
 
-        $user = User::create($data);
+
         $typologies = Typology::findOrFail($data['typologies']);
 
-        $user->typologies->attach($typologies);
-
-
-        return view('home');
-
-
-        /* return User::create([
-
-
+        $user = User::create([
             'restaurant_name' => $data['restaurant_name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
             'p_iva' => $data['p_iva'],
-            'typologies' => $data['typologies'],
             'address' => $data['address'],
-            // 'phone' => $data['phone'],
 
-        ]); */
+        ]);
+
+        $user->typologies()->attach($typologies);
+        // dd($user->typologies);
+    }
+
+    public function register(Request $request)
+    {
+        $this->validator($request->all())->validate();
+
+        event(new Registered($user = $this->create($request->all())));
+
+        return $this->registered($request, $user)
+            ?: redirect($this->redirectPath());
     }
 }

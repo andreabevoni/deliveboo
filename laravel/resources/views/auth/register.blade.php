@@ -10,7 +10,7 @@
                     <div class="card-body">
                         <form method="POST" action="{{ route('register') }}">
                             @csrf
-
+                            @method('POST')
                             <div class="form-group row">
                                 <label for="restaurant_name"
                                     class="col-md-4 col-form-label text-md-right">{{ __('Nome Ristorante') }}</label>
@@ -113,7 +113,7 @@
                                 <div class="form-check form-check-inline mb-4">
 
                                     <input name="typologies[]" class="form-check-input" type="checkbox" id="inlineCheckbox1"
-                                        value={{ $typology->name }}>
+                                        value={{ $typology->id }}>
                                     <label class="form-check-label" for="inlineCheckbox1">{{ $typology->name }}</label>
                                 </div>
 
