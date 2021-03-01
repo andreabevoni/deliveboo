@@ -10944,3 +10944,8 @@ a.text-dark:focus {
   }
 }
 
+.food-item {
+  border: 1px solid lightgrey;
+  padding: 10px 20px;
+}
+

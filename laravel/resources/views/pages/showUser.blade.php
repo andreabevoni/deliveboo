@@ -9,16 +9,18 @@
           <p>{{ $user -> address }}</p>
 
           <div class="grey">
-            <div class="food-item">
+            <div class="col-md-4">
   				      @foreach ($user -> food as $food)
-  					    <h3>
-                  {{ $food -> category }}
+  					    <h3>{{ $food -> category }} </h3>
+                  <div class="food-item">
                     <ul>
         					    <li>
                         <h4>{{ $food -> name }}</h4>
+                        <p>{{ $food -> description }}</p>
+                        <p>{{ $food -> price . " euro"}}</p>
         					   </li>
                    </ul>
-  					   </h3>
+                  </div>
   				     @endforeach
             </div>
 
