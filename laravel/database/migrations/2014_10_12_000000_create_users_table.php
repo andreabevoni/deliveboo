@@ -21,6 +21,7 @@ class CreateUsersTable extends Migration
             $table->string(
                 'phone',
                 60
+            )->nullable();
             $table->string('email', 100)->unique();
             $table->string('image')->nullable();
             $table->tinyInteger('closing_day')->nullable();
