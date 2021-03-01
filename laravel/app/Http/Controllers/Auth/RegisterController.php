@@ -56,10 +56,8 @@ class RegisterController extends Controller
             'restaurant_name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
-            'p_iva' => ['required', 'string', 'min:11'],
-            // 'typologies' => ['required', 'string', 'min:8'],
+            'p_iva' => ['required', 'string', 'min:11', 'max:11'],
             'address' => ['required', 'string', 'min:8'],
-            // 'phone' => ['string', 'min:8'],
 
         ]);
     }
@@ -72,9 +70,6 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        // dd($data);
-
-
         $typologies = Typology::findOrFail($data['typologies']);
 
         $user = User::create([
@@ -83,11 +78,11 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
             'p_iva' => $data['p_iva'],
             'address' => $data['address'],
-
         ]);
 
         $user->typologies()->attach($typologies);
         // dd($user->typologies);
+
     }
 
     public function register(Request $request)
