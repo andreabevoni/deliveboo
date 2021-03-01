@@ -14,7 +14,7 @@ class FoodSeeder extends Seeder
      */
     public function run()
     {
-        factory(Food::class, 10)->make()->each(function ($food) {
+        factory(Food::class, 100)->make()->each(function ($food) {
             $user = User::inRandomOrder()->first();
             $food->user()->associate($user);
             $food->save();
