@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
+use App\Typology;
 use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
@@ -71,17 +72,27 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         // dd($data);
-        return User::create([
+
+        $user = User::create($data);
+        $typologies = Typology::findOrFail($data['typologies']);
+
+        $user->typologies->attach($typologies);
+
+
+        return view('home');
+
+
+        /* return User::create([
 
 
             'restaurant_name' => $data['restaurant_name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
             'p_iva' => $data['p_iva'],
-            // 'typologies' => $data['typologies'],
+            'typologies' => $data['typologies'],
             'address' => $data['address'],
             // 'phone' => $data['phone'],
 
-        ]);
+        ]); */
     }
 }

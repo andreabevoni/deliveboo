@@ -106,37 +106,19 @@
                             </div>
 
 
-                            <div class="form-check form-check-inline mb-4">
 
-                                {{-- Qui cicliamo tutte le tipologie con il foreach --}}
+                            {{-- Qui cicliamo tutte le tipologie con il foreach --}}
 
+                            @foreach ($typologies as $typology)
+                                <div class="form-check form-check-inline mb-4">
 
-                                <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-                                <label class="form-check-label" for="inlineCheckbox1">Pizza</label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-                                <label class="form-check-label" for="inlineCheckbox2">Sushi</label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
-                                <label class="form-check-label" for="inlineCheckbox3">Americano</label>
-                            </div>
+                                    <input name="typologies[]" class="form-check-input" type="checkbox" id="inlineCheckbox1"
+                                        value={{ $typology->name }}>
+                                    <label class="form-check-label" for="inlineCheckbox1">{{ $typology->name }}</label>
+                                </div>
 
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
-                                <label class="form-check-label" for="inlineCheckbox3">Cinese</label>
-                            </div>
+                            @endforeach
 
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
-                                <label class="form-check-label" for="inlineCheckbox3">Indiano</label>
-                            </div>
-
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
-                                <label class="form-check-label" for="inlineCheckbox3">Americano</label>
-                            </div>
 
                             <div class="form-group row mb-0">
                                 <div class="col-md-6 offset-md-4">
