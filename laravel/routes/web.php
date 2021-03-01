@@ -32,3 +32,9 @@ Route::resource('orders', 'OrderController');
 
 // Route Typologies
 Route::resource('typologies', 'TypologyController');
+
+// Route Index User
+Route::get('/index', 'UserController@indexUser')->name('index');
+
+// Route Show User
+Route::get('/show/{id}', 'UserController@showUser')->name('user-show');
