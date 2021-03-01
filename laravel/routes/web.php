@@ -20,3 +20,15 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+// Route USERS
+Route::resource('users', 'UserController');
+
+// Route FOOD
+Route::resource('food', 'FoodController');
+
+// Route ORDERS
+Route::resource('orders', 'OrderController');
+
+// Route Typologies
+Route::resource('typologies', 'TypologyController');
