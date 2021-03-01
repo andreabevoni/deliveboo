@@ -12,4 +12,16 @@ class MainController extends Controller
     $typologies = Typology::all();
     return view('welcome', compact('typologies'));
   }
+
+  public function search($id) {
+    $typology = Typology::findOrFail($id);
+    $users = $typology -> users;
+    return response () -> json($users, 200);
+  }
+
+  public function restaurantShow($id) {
+    $user = User::findOrFail($id);
+    // debug
+    return redirect('home', compact('user'));
+  }
 }

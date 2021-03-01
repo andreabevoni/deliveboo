@@ -2018,13 +2018,28 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      'number': 1000
+      'restaurants': []
     };
   },
   methods: {
     // funzione per cercare i ristoranti in base alla tipologia selezionata dall'utente
     searchRestaurants: function searchRestaurants(id) {
-      this.number = id;
+      var _this = this;
+
+      axios.post('/search/' + id).then(function (r) {
+        console.log(r.data);
+        _this.restaurants = r.data;
+      })["catch"](function (e) {
+        return console.log('error', e);
+      });
+    },
+    // funzione per andare alla pagina show del ristorante cliccato
+    goRestaurants: function goRestaurants(id) {
+      axios.post('/restaurant/show/' + id).then(function (r) {
+        return console.log('ok', r);
+      })["catch"](function (e) {
+        return console.log('error', e);
+      });
     }
   }
 });
@@ -37735,7 +37750,7 @@ var render = function() {
       _c("div", { staticClass: "col-12 col-md-8" }, [
         _c("div", {}, [
           _vm._v(
-            "\n\n            Clicca su una categoria per trovare ristoranti nella tua zona.\n\n            "
+            "\n            Clicca su una categoria per trovare ristoranti nella tua zona.\n\n            "
           ),
           _c(
             "div",
@@ -37763,9 +37778,32 @@ var render = function() {
             0
           ),
           _vm._v(" "),
-          _c("div", { staticClass: "search" }, [
-            _vm._v("\n              " + _vm._s(_vm.number) + "\n            ")
-          ])
+          _c(
+            "div",
+            { staticClass: "search" },
+            _vm._l(_vm.restaurants, function(restaurant) {
+              return _c(
+                "div",
+                {
+                  key: restaurant.id,
+                  staticClass: "user",
+                  on: {
+                    click: function($event) {
+                      return _vm.goRestaurants(restaurant.id)
+                    }
+                  }
+                },
+                [
+                  _vm._v(
+                    "\n                " +
+                      _vm._s(restaurant.restaurant_name) +
+                      "\n              "
+                  )
+                ]
+              )
+            }),
+            0
+          )
         ])
       ])
     ])

@@ -3,7 +3,6 @@
         <div class="row justify-content-center">
             <div class="col-12 col-md-8">
               <div class="">
-
                 Clicca su una categoria per trovare ristoranti nella tua zona.
 
                 <div class="typologies">
@@ -13,9 +12,10 @@
                 </div>
 
                 <div class="search">
-                  {{number}}
+                  <div v-for="restaurant in restaurants" :key="restaurant.id" class="user" @click="goRestaurants(restaurant.id)">
+                    {{restaurant.restaurant_name}}
+                  </div>
                 </div>
-
               </div>
             </div>
         </div>
@@ -29,13 +29,24 @@
         },
         data() {
           return {
-            'number' : 1000,
+            'restaurants' : [],
           };
         },
         methods: {
           // funzione per cercare i ristoranti in base alla tipologia selezionata dall'utente
           searchRestaurants: function(id) {
-            this.number = id;
+            axios.post('/search/' + id)
+                  .then(r => {
+                    console.log(r.data);
+                    this.restaurants = r.data;
+                  })
+                  .catch(e => console.log('error', e));
+          },
+          // funzione per andare alla pagina show del ristorante cliccato
+          goRestaurants: function(id) {
+            axios.post('/restaurant/show/' + id)
+                  .then(r => console.log('ok', r))
+                  .catch(e => console.log('error', e));
           },
         }
     }

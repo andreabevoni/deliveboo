@@ -63,10 +63,11 @@
             }
 
 
-            /* css da portarsi dietro nel sass */
+            /* css custom */
             .typologies {
-              margin: 20px 0;
+              margin: 20px auto;
               width: 1000px;
+              color: red;
               display: flex;
               justify-content: space-between;
             }
@@ -74,10 +75,36 @@
             .typologies span:hover {
               cursor: pointer;
             }
+
+            .search {
+              margin: 20px auto;
+              width: 1000px;
+              display: flex;
+              flex-wrap: wrap;
+              justify-content: center;
+              align-items: center;
+            }
+
+            .user {
+              width: 100px;
+              height: 100px;
+              margin: 20px;
+              padding: 10px;
+              color: blue;
+              border: 2px solid blue;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+            }
+
+            .user:hover {
+              cursor: pointer;
+            }
         </style>
 
         <script src="{{asset('js/app.js')}}" charset="utf-8"></script>
     </head>
+    
     <body>
         <div class="flex-center position-ref full-height" id="app">
             @if (Route::has('login'))
@@ -102,14 +129,6 @@
                 <search
                   :typologies="{{json_encode($typologies)}}"
                 ></search>
-
-                {{-- <div class="links">
-                    @foreach ($typologies as $typology)
-                      <div class="search">
-                        <a href="#">{{$typology -> name}}</a>
-                      </div>
-                    @endforeach
-                </div> --}}
             </div>
         </div>
     </body>
