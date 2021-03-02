@@ -20,6 +20,7 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/dashboard', 'HomeController@dashboard')->name('dashboard');
 
 // Route USERS
 Route::resource('users', 'UserController');
@@ -32,3 +33,9 @@ Route::resource('orders', 'OrderController');
 
 // Route Typologies
 Route::resource('typologies', 'TypologyController');
+
+//upload User Img
+Route::post('/upload/avatar', 'UserController@uploadAvatar')->name('upload-avatar');
+
+//clear User img
+Route::get('/clear/avatar', 'UserController@clearImg')->name('clear-avatar');
