@@ -50,22 +50,56 @@
             font-size: 84px;
         }
 
-        .links>a {
-            color: #636b6f;
-            padding: 0 25px;
-            font-size: 13px;
-            font-weight: 600;
-            letter-spacing: .1rem;
-            text-decoration: none;
-            text-transform: uppercase;
-        }
+            .m-b-md {
+                margin-bottom: 30px;
+            }
+
+
+            /* css custom */
+            .typologies {
+              margin: 20px auto;
+              width: 1000px;
+              color: red;
+              display: flex;
+              justify-content: space-between;
+            }
+
+            .typologies span:hover {
+              cursor: pointer;
+            }
+
+            .search {
+              margin: 20px auto;
+              width: 1000px;
+              display: flex;
+              flex-wrap: wrap;
+              justify-content: center;
+              align-items: center;
+            }
+
+            .user {
+              width: 100px;
+              height: 100px;
+              margin: 20px;
+              padding: 10px;
+              border: 2px solid blue;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+            }
+        </style>
+
+        <script src="{{asset('js/app.js')}}" charset="utf-8"></script>
+    </head>
 
         .m-b-md {
             margin-bottom: 30px;
         }
 
-    </style>
-</head>
+            <div class="content">
+                <div class="title m-b-md">
+                    Deliveboo
+                </div>
 
 <body>
     <div class="flex-center position-ref full-height">
@@ -81,6 +115,13 @@
                         <a href="{{ route('register') }}">Register</a>
                     @endif
                 @endauth
+                <div class="">
+                  Clicca su una categoria per trovare ristoranti nella tua zona.
+                </div>
+
+                <search
+                  :typologies="{{json_encode($typologies)}}"
+                ></search>
             </div>
         @endif
 

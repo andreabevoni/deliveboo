@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Auth;
 
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
+use App\User;
 use Illuminate\Support\Facades\File;
 
 class UserController extends Controller
@@ -52,6 +54,19 @@ class UserController extends Controller
 
         return redirect()->back();
     }
+
+    public function indexUser() {
+    $users = User::all();
+    return view('pages.indexUser', compact('users'));
+    }
+
+
+    public function showUser($id) {
+    $user = User::findOrFail($id);
+    return view('pages.showUser', compact('user'));
+  }
+
+
 
     public function clearImg()
     {
