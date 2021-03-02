@@ -26,6 +26,8 @@ Route::resource('users', 'UserController');
 
 // Route FOOD
 Route::resource('food', 'FoodController');
+Route::get('food/create/', 'FoodController@create')->name('create-food');
+Route::post('food/store/', 'FoodController@store')->name('store-food');
 
 // Route ORDERS
 Route::resource('orders', 'OrderController');
