@@ -10944,8 +10944,35 @@ a.text-dark:focus {
   }
 }
 
+.info {
+  padding: 20px 0;
+}
+
+.info span {
+  color: #828585;
+}
+
+.navbar-menu a {
+  color: white;
+  font-weight: bolder;
+  background-color: #00ccbc;
+  border-radius: 20%;
+  padding: 5px;
+  margin: 20px 5px 20px 0;
+}
+
+.menu {
+  margin-top: 20px;
+}
+
 .food-item {
-  border: 1px solid lightgrey;
-  padding: 10px 20px;
+  background-color: white;
+  padding: 10px;
+  text-align: center;
+  margin: 10px;
+}
+
+li {
+  list-style: none;
 }
 
