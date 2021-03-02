@@ -2,19 +2,16 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-12 col-md-8">
-              <div class="">
-                Clicca su una categoria per trovare ristoranti nella tua zona.
-
-                <div class="typologies">
-                  <span v-for="typology in typologies" :key="typology.id" @click="searchRestaurants(typology.id)">
-                    {{typology.name}}
-                  </span>
-                </div>
-
-                <div class="search">
-                  <div v-for="restaurant in restaurants" :key="restaurant.id" class="user" @click="goRestaurants(restaurant.id)">
-                    {{restaurant.restaurant_name}}
-                  </div>
+              <!-- stampo a schermo le tipologie per permettere all'utente di fare le ricerche -->
+              <div class="typologies">
+                <span v-for="typology in typologies" :key="typology.id" @click="searchRestaurants(typology.id)">
+                  {{typology.name}}
+                </span>
+              </div>
+              <!-- stampo i ristoranti appartenenti alla categoria selezionata dall'utente -->
+              <div class="search">
+                <div v-for="restaurant in restaurants" :key="restaurant.id" class="user">
+                  <a :href="'/restaurant/show/' + restaurant.id">{{restaurant.restaurant_name}}</a>
                 </div>
               </div>
             </div>
@@ -40,12 +37,6 @@
                     console.log(r.data);
                     this.restaurants = r.data;
                   })
-                  .catch(e => console.log('error', e));
-          },
-          // funzione per andare alla pagina show del ristorante cliccato
-          goRestaurants: function(id) {
-            axios.post('/restaurant/show/' + id)
-                  .then(r => console.log('ok', r))
                   .catch(e => console.log('error', e));
           },
         }

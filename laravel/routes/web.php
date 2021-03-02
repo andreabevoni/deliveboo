@@ -13,7 +13,7 @@ Route::get('/', 'MainController@index')->name('index');
 Route::post('/search/{id}', 'MainController@search') -> name('search');
 
 // route show ristorante
-Route::post('/restaurant/show/{id}', 'MainController@restaurantShow') -> name('show-restaurant');
+Route::get('/restaurant/show/{id}', 'MainController@restaurantShow') -> name('show-restaurant');
 
 // Route USERS
 Route::resource('users', 'UserController');

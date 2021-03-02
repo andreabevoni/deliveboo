@@ -90,21 +90,16 @@
               height: 100px;
               margin: 20px;
               padding: 10px;
-              color: blue;
               border: 2px solid blue;
               display: flex;
               justify-content: center;
               align-items: center;
             }
-
-            .user:hover {
-              cursor: pointer;
-            }
         </style>
 
         <script src="{{asset('js/app.js')}}" charset="utf-8"></script>
     </head>
-    
+
     <body>
         <div class="flex-center position-ref full-height" id="app">
             @if (Route::has('login'))
@@ -124,6 +119,10 @@
             <div class="content">
                 <div class="title m-b-md">
                     Deliveboo
+                </div>
+
+                <div class="">
+                  Clicca su una categoria per trovare ristoranti nella tua zona.
                 </div>
 
                 <search
