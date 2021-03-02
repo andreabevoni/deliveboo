@@ -8,11 +8,11 @@ class Typology extends Model
 {
 
     protected $fillable = [
-        'name', 
+        'name',
     ];
 
     public function users()
     {
-        return $this->belongsToMany(User::class);
+        return $this->belongsToMany(User::class)->orderBy('restaurant_name');
     }
 }

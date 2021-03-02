@@ -61,10 +61,47 @@
             .m-b-md {
                 margin-bottom: 30px;
             }
+
+
+            /* css custom */
+            .typologies {
+              margin: 20px auto;
+              width: 1000px;
+              color: red;
+              display: flex;
+              justify-content: space-between;
+            }
+
+            .typologies span:hover {
+              cursor: pointer;
+            }
+
+            .search {
+              margin: 20px auto;
+              width: 1000px;
+              display: flex;
+              flex-wrap: wrap;
+              justify-content: center;
+              align-items: center;
+            }
+
+            .user {
+              width: 100px;
+              height: 100px;
+              margin: 20px;
+              padding: 10px;
+              border: 2px solid blue;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+            }
         </style>
+
+        <script src="{{asset('js/app.js')}}" charset="utf-8"></script>
     </head>
+
     <body>
-        <div class="flex-center position-ref full-height">
+        <div class="flex-center position-ref full-height" id="app">
             @if (Route::has('login'))
                 <div class="top-right links">
                     @auth
@@ -81,19 +118,16 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel
+                    Deliveboo
                 </div>
 
-                <div class="links">
-                    <a href="https://laravel.com/docs">Docs</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://blog.laravel.com">Blog</a>
-                    <a href="https://nova.laravel.com">Nova</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://vapor.laravel.com">Vapor</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
+                <div class="">
+                  Clicca su una categoria per trovare ristoranti nella tua zona.
                 </div>
+
+                <search
+                  :typologies="{{json_encode($typologies)}}"
+                ></search>
             </div>
         </div>
     </body>
