@@ -38,4 +38,4 @@ Route::resource('typologies', 'TypologyController');
 Route::post('/upload/avatar', 'UserController@uploadAvatar')->name('upload-avatar');
 
 //clear User img
-Route::get('/clear/avatar', 'UserController@deleteImg')->name('delete-avatar');
+Route::get('/clear/avatar', 'UserController@clearImg')->name('clear-avatar');

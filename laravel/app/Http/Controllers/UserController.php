@@ -15,14 +15,17 @@ class UserController extends Controller
     public function uploadAvatar(Request $request)
     {
 
-        //devo chiamare la funzione che elimina l img
+        //validation che sia file e ci sia
+        $request->validate([
+            'icon' => 'required|file'
+        ]);
 
-        //============== QUI =================//
+
+        //devo chiamare la funzione che elimina l img
         $this->deleteImg();
 
-
-
         //validation che sia un file e che ci sia
+
 
         $image = $request->file('icon');
 
@@ -50,6 +53,16 @@ class UserController extends Controller
         return redirect()->back();
     }
 
+    public function clearImg()
+    {
+        $this->deleteImg();
+        $user = Auth::user();
+        $user->image = null;
+        $user->save();
+
+        return redirect()->back();
+    }
+
     public function deleteImg()
     {
         $user =  Auth::user();
@@ -59,6 +72,7 @@ class UserController extends Controller
 
             $file = storage_path('app/public/icon/' . $fileName);
             File::delete($file);
+            // dd($fileName);
             return redirect()->back();
         } catch (\Exception $e) {
         }
