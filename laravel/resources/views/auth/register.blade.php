@@ -114,8 +114,8 @@
                             @foreach ($typologies as $typology)
                                 <div class="form-check form-check-inline mb-4">
 
-                                    <input required name="typologies[]" class="form-check-input" type="checkbox"
-                                        id="inlineCheckbox1" value={{ $typology->id }}>
+                                    <input name="typologies[]" class="form-check-input" type="checkbox" id="inlineCheckbox1"
+                                        value={{ $typology->id }}>
                                     <label class="form-check-label" for="inlineCheckbox1">{{ $typology->name }}</label>
                                 </div>
 
