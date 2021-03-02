@@ -93,7 +93,7 @@
                                 <h5 class="card-title">Special title treatment</h5>
                                 <p class="card-text">With supporting text below as a natural lead-in to additional content.
                                 </p>
-                                <a href="#" class="btn btn-primary">Lista piatti</a>
+                                <a href="{{ route('food.index') }}" class="btn btn-primary">Lista piatti</a>
                             </div>
                         </div>
                     </div>
@@ -103,7 +103,7 @@
                                 <h5 class="card-title">Special title treatment</h5>
                                 <p class="card-text">With supporting text below as a natural lead-in to additional content.
                                 </p>
-                                <a href="#" class="btn btn-primary">Ordini</a>
+                                <a href="{{ route('orders.index') }}" class="btn btn-primary">Ordini</a>
                             </div>
                         </div>
                     </div>
