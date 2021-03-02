@@ -10,13 +10,13 @@
                     <div class="card-body">
                         <form method="POST" action="{{ route('register') }}">
                             @csrf
-
+                            @method('POST')
                             <div class="form-group row">
                                 <label for="restaurant_name"
                                     class="col-md-4 col-form-label text-md-right">{{ __('Nome Ristorante') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="restaurant_name" type="text"
+                                    <input required maxlength="100" id="restaurant_name" type="text"
                                         class="form-control @error('restaurant_name') is-invalid @enderror"
                                         name="restaurant_name" value="{{ old('restaurant_name') }}" required
                                         autocomplete="restaurant_name" autofocus>
@@ -34,8 +34,9 @@
                                     class="col-md-4 col-form-label text-md-right">{{ __('E-Mail') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="email" type="email" class="form-control @error('email') is-invalid @enderror"
-                                        name="email" value="{{ old('email') }}" required autocomplete="email">
+                                    <input required minlength="5" maxlength="100" maxlength="100" id="email" type="email"
+                                        class="form-control @error('email') is-invalid @enderror" name="email"
+                                        value="{{ old('email') }}" required autocomplete="email">
 
                                     @error('email')
                                         <span class="invalid-feedback" role="alert">
@@ -50,7 +51,7 @@
                                     class="col-md-4 col-form-label text-md-right">{{ __('Indirizzo') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="address" type="text"
+                                    <input required minlength="8" maxlength="100" id="address" type="text"
                                         class="form-control @error('address') is-invalid @enderror" name="address"
                                         value="{{ old('address') }}" required autocomplete="address" autofocus>
 
@@ -67,8 +68,9 @@
                                     class="col-md-4 col-form-label text-md-right">{{ __('Numero Partita IVA') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="p_iva" type="text" class="form-control @error('p_iva') is-invalid @enderror"
-                                        name="p_iva" value="{{ old('p_iva') }}" required autocomplete="p_iva" autofocus>
+                                    <input required id="p_iva" minlength="11" maxlength="11" type="text"
+                                        class="form-control @error('p_iva') is-invalid @enderror" name="p_iva"
+                                        value="{{ old('p_iva') }}" required autocomplete="p_iva" autofocus>
 
                                     @error('p_iva')
                                         <span class="invalid-feedback" role="alert">
@@ -83,7 +85,7 @@
                                     class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="password" type="password"
+                                    <input required minlength="8" id="password" type="password"
                                         class="form-control @error('password') is-invalid @enderror" name="password"
                                         required autocomplete="new-password">
 
@@ -100,7 +102,7 @@
                                     class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="password-confirm" type="password" class="form-control"
+                                    <input required minlength="8" id="password-confirm" type="password" class="form-control"
                                         name="password_confirmation" required autocomplete="new-password">
                                 </div>
                             </div>
@@ -113,7 +115,7 @@
                                 <div class="form-check form-check-inline mb-4">
 
                                     <input name="typologies[]" class="form-check-input" type="checkbox" id="inlineCheckbox1"
-                                        value={{ $typology->name }}>
+                                        value={{ $typology->id }}>
                                     <label class="form-check-label" for="inlineCheckbox1">{{ $typology->name }}</label>
                                 </div>
 
