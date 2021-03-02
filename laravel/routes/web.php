@@ -33,3 +33,9 @@ Route::resource('orders', 'OrderController');
 
 // Route Typologies
 Route::resource('typologies', 'TypologyController');
+
+//upload User Img
+Route::post('/upload/avatar', 'UserController@uploadAvatar')->name('upload-avatar');
+
+//clear User img
+Route::get('/clear/avatar', 'UserController@deleteImg')->name('delete-avatar');

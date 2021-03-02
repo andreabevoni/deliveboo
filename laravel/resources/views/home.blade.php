@@ -9,8 +9,6 @@
                     <h1>
                         This is DeliveBoo Home page
                     </h1>
-
-
                 </div>
             </div>
         </div>
