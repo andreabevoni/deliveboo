@@ -41,3 +41,25 @@
  li {
    list-style: none;
  }
+
+ // FOOTER
+footer {
+  background-color: #2E3333;
+  color: white;
+  justify-content: center;
+
+  .footer-block {
+    background-color: #434848;
+    text-align: center;
+    margin: 20px;
+
+    a {
+      color: white;
+    }
+  }
+
+  .social i {
+    color: white;
+    padding-left: 10px;
+  }
+}

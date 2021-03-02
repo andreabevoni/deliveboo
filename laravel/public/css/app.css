@@ -10976,3 +10976,24 @@ li {
   list-style: none;
 }
 
+footer {
+  background-color: #2E3333;
+  color: white;
+  justify-content: center;
+}
+
+footer .footer-block {
+  background-color: #434848;
+  text-align: center;
+  margin: 20px;
+}
+
+footer .footer-block a {
+  color: white;
+}
+
+footer .social i {
+  color: white;
+  padding-left: 10px;
+}
+
