@@ -26,3 +26,9 @@ Route::resource('orders', 'OrderController');
 
 // Route Typologies
 Route::resource('typologies', 'TypologyController');
+
+
+
+// test per carrello
+Route::get('/cart', 'MainController@testCart')->name('test-cart');
+Route::get('/shop', 'MainController@testShop')->name('test-shop');
