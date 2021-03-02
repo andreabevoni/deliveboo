@@ -9,7 +9,8 @@ use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
-
+use Illuminate\Http\Request;
+use Illuminate\Auth\Events\Registered;
 
 class RegisterController extends Controller
 {
@@ -31,7 +32,8 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::HOME;
+    // protected $redirectTo = RouteServiceProvider::HOME;
+    protected $redirectTo = '/login';
 
     /**
      * Create a new controller instance.
@@ -52,14 +54,12 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'restaurant_name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'restaurant_name' => ['required', 'string', 'max:100'],
+            'email' => ['required', 'string', 'email', 'min:5', 'max:100', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
-            'p_iva' => ['required', 'string', 'min:11'],
-            // 'typologies' => ['required', 'string', 'min:8'],
-            'address' => ['required', 'string', 'min:8'],
-            // 'phone' => ['string', 'min:8'],
-
+            'p_iva' => ['required', 'string', 'min:11', 'max:11'],
+            'address' => ['required', 'string', 'min:8', 'max:100'],
+            'typologies' => ['required']
         ]);
     }
 
@@ -71,28 +71,28 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        // dd($data);
-
-        $user = User::create($data);
         $typologies = Typology::findOrFail($data['typologies']);
 
-        $user->typologies->attach($typologies);
-
-
-        return view('home');
-
-
-        /* return User::create([
-
-
+        $user = User::create([
             'restaurant_name' => $data['restaurant_name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
             'p_iva' => $data['p_iva'],
-            'typologies' => $data['typologies'],
             'address' => $data['address'],
-            // 'phone' => $data['phone'],
+        ]);
 
-        ]); */
+        $user->typologies()->attach($typologies);
+        // dd($user->typologies);
+
+    }
+
+    public function register(Request $request)
+    {
+        $this->validator($request->all())->validate();
+
+        event(new Registered($user = $this->create($request->all())));
+
+        return $this->registered($request, $user)
+            ?: redirect($this->redirectPath());
     }
 }
