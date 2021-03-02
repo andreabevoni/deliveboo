@@ -6,3 +6,60 @@
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
+
+
+// Stile pagina show
+
+.info {
+  padding: 20px 0;
+  span {
+    color: #828585;
+  }
+}
+
+.navbar-menu {
+  a {
+    color: white;
+    font-weight: bolder;
+    background-color: #00ccbc;
+    border-radius: 20%;
+    padding: 5px;
+    margin: 20px 5px 20px 0;
+  }
+}
+
+.menu {
+  margin-top: 20px;
+}
+.food-item {
+  background-color: white;
+  padding: 10px;
+  text-align: center;
+  margin: 10px;
+ }
+
+ li {
+   list-style: none;
+ }
+
+ // FOOTER
+footer {
+  background-color: #2E3333;
+  color: white;
+  justify-content: center;
+
+  .footer-block {
+    background-color: #434848;
+    text-align: center;
+    margin: 20px;
+
+    a {
+      color: white;
+    }
+  }
+
+  .social i {
+    color: white;
+    padding-left: 10px;
+  }
+}
