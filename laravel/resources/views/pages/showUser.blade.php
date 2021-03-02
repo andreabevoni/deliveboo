@@ -30,7 +30,7 @@
   					    <h3>{{ $food -> category }} </h3>
 
                 <!-- Card food -->
-                  <!-- <div class="food-item">
+                  <div class="food-item">
                     <ul>
         					    <li>
                         <h4>{{ $food -> name }}</h4>
@@ -39,12 +39,7 @@
                         <img src="" alt="">
         					   </li>
                    </ul>
-                  </div> -->
-                  <food
-                    :name="'ciao'"
-
-                  >
-                  </food>
+                  </div>
   				     @endforeach
              </div>
             <!-- Button per tornare ai risultati di ricerca -->
