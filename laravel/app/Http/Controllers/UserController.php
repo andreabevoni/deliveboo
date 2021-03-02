@@ -18,6 +18,7 @@ class UserController extends Controller
     return view('pages.indexUser', compact('users'));
     }
 
+
     public function showUser($id) {
     $user = User::findOrFail($id);
     return view('pages.showUser', compact('user'));

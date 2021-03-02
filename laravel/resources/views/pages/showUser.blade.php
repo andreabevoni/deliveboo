@@ -10,7 +10,7 @@
             <h1>{{ $user -> restaurant_name }} </h1>
             <span>{{ $user -> address }} ° </span>
             <span>Telefono: {{ $user -> phone }}  ° </span>
-            <span>Email: {{ $user -> email }}  ° </span>
+            <span>Email: {{ $user -> email }}   </span>
           </div>
 
 
@@ -30,17 +30,23 @@
   					    <h3>{{ $food -> category }} </h3>
 
                 <!-- Card food -->
-                  <div class="food-item">
+                  <!-- <div class="food-item">
                     <ul>
         					    <li>
                         <h4>{{ $food -> name }}</h4>
-                        <p>{{ $food -> description }}</p>
-                        <p>{{ $food -> price . " euro"}}</p>
+                        <span>{{ $food -> description }}</span>
+                        <h6>{{ $food -> price . " euro"}}</h6>
+                        <img src="" alt="">
         					   </li>
                    </ul>
-                  </div>
+                  </div> -->
+                  <food
+                    :name="'ciao'"
+
+                  >
+                  </food>
   				     @endforeach
-            </div>
+             </div>
             <!-- Button per tornare ai risultati di ricerca -->
             <button>
               <a href="{{ route('index') }}">Torna in Home
