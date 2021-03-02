@@ -26,4 +26,15 @@ class MainController extends Controller
     $user = User::findOrFail($id);
     return view('test', compact('user'));
   }
+
+
+
+  // test per carrello
+  public function testShop() {
+    return view('test-shop');
+  }
+
+  public function testCart() {
+    return view('test-cart');
+  }
 }
