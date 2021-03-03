@@ -8,7 +8,8 @@ use App\Food;
 
 class OrderController extends Controller
 {
-    public function index() {
+    public function index()
+    {
         // $userAuth = Auth::user();
 
         $foods = Food::all();
