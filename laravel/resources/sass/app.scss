@@ -8,7 +8,7 @@
 @import '~bootstrap/scss/bootstrap';
 
 
-// Stile pagina show
+// PAGINA SHOW
 
 .info {
   padding: 20px 0;
@@ -41,6 +41,26 @@
  li {
    list-style: none;
  }
+
+ // HEADER
+.logo {
+  img {
+    width: 100px;
+  }
+}
+
+.menu-nav {
+  button {
+    background-color: white;
+    color: black;
+    margin-left: 10px;
+    border: 1px lightgrey solid;
+    i {
+      color: #00ccbc;
+    }
+
+  }
+}
 
  // FOOTER
 footer {

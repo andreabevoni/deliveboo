@@ -10976,6 +10976,21 @@ li {
   list-style: none;
 }
 
+.logo img {
+  width: 100px;
+}
+
+.menu-nav button {
+  background-color: white;
+  color: black;
+  margin-left: 10px;
+  border: 1px lightgrey solid;
+}
+
+.menu-nav button i {
+  color: #00ccbc;
+}
+
 footer {
   background-color: #2E3333;
   color: white;
