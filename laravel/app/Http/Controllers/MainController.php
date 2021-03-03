@@ -11,7 +11,7 @@ class MainController extends Controller
   // homepage
   public function index() {
     $typologies = Typology::all();
-    return view('welcome', compact('typologies'));
+    return view('pages.homepage', compact('typologies'));
   }
 
   // funzione per ricerca dinamica dei ristoranti in homepage

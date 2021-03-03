@@ -1,17 +1,17 @@
 <template>
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-12 col-md-8">
+            <div class="col-12">
                 <!-- stampo a schermo le tipologie per permettere all'utente di fare le ricerche -->
-                <div class="typologies">
-                    <span
+                <!-- <div class="typologies"> -->
+                    <span class="typology"
                         v-for="typology in typologies"
                         :key="typology.id"
                         @click="searchRestaurants(typology.id)"
                     >
                         {{ typology.name }}
                     </span>
-                </div>
+                <!-- </div> -->
                 <!-- stampo i ristoranti appartenenti alla categoria selezionata dall'utente -->
                 <div class="search">
                     <div

@@ -63,3 +63,33 @@ footer {
     padding-left: 10px;
   }
 }
+
+// stile provvisorio per homepage
+.typology {
+    margin: 20px;
+    color: red;
+}
+
+.typology:hover {
+    cursor: pointer;
+}
+
+.search {
+    margin: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.user {
+    width: 100px;
+    height: 100px;
+    margin: 20px;
+    padding: 10px;
+    border: 2px solid blue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+// fine stile homepage
