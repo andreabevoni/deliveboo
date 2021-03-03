@@ -63,6 +63,13 @@ class RegisterController extends Controller
         ]);
     }
 
+    public function showRegistrationForm()
+    {
+        $typologies = Typology::all();
+        // dd($typologies);
+        return view('auth.register', compact('typologies'));
+    }
+
     /**
      * Create a new user instance after a valid registration.
      *
