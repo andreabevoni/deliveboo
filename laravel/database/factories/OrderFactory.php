@@ -8,7 +8,7 @@ use Faker\Generator as Faker;
 $factory->define(Order::class, function (Faker $faker) {
     return [
         'name' => $faker->name,
-        'lastname' => $faker->lastname,
+        'lastname' => $faker->name,
         'date' => $faker->date,
         'total' => rand(100, 9000),
         'email' => $faker->email,
