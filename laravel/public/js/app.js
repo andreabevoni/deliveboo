@@ -2078,19 +2078,18 @@ __webpack_require__.r(__webpack_exports__);
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
-    return {
-      // prop foods
-      namefood: this.props.namefood,
-      price: this.props.price,
-      description: this.props.description,
+    return {// prop foods
+      // namefood: this.props.namefood,
+      // price: this.props.price,
+      // description: this.props.description,
       // prop di orders
-      email: this.props.email,
-      nameguest: this.props.nameguest,
-      total: this.props.nameguest
+      // email: this.props.email,
+      // nameguest: this.props.nameguest,
+      // total: this.props.nameguest
     };
   },
   mounted: function mounted() {
-    console.log('Component mounted.');
+    console.log("Component mounted.");
   },
   props: {
     // prop foods
@@ -38043,30 +38042,26 @@ var render = function() {
     _c("div", { staticClass: "col-md-10 mb-3" }, [
       _c("div", { staticClass: "card" }, [
         _c("div", { staticClass: "card-header" }, [
-          _vm._v("\n                    Email: " + _vm._s(_vm.email) + " "),
+          _vm._v("\n                Email: " + _vm._s(_vm.email) + " "),
           _c("br"),
-          _vm._v("\n                    Nome: " + _vm._s(_vm.nameguest) + " "),
+          _vm._v("\n                Nome: " + _vm._s(_vm.nameguest) + " "),
           _c("br"),
           _vm._v(
-            "\n                    Totale: " +
-              _vm._s(_vm.total) +
-              "\n                "
+            "\n                Totale: " + _vm._s(_vm.total) + "\n            "
           )
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "card-body" }, [
-          _vm._v("\n                    Cibo: " + _vm._s(_vm.namefood) + " "),
+          _vm._v("\n                Cibo: " + _vm._s(_vm.namefood) + " "),
           _c("br"),
           _vm._v(
-            "\n                    Descrizione: " +
-              _vm._s(_vm.description) +
-              " "
+            "\n                Descrizione: " + _vm._s(_vm.description) + " "
           ),
           _c("br"),
           _vm._v(
-            "\n                    Prezzo: " +
+            "\n                Prezzo: " +
               _vm._s(_vm.price / 100) +
-              " €\n                "
+              " €\n            "
           )
         ])
       ])
