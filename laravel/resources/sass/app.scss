@@ -65,14 +65,34 @@ footer {
 }
 
 // stile provvisorio per homepage
-.typology {
-    margin: 20px;
-    color: red;
+.check {
+    margin: 10px;
+    cursor: pointer;
 }
-//
-// .typology:hover {
-//     cursor: pointer;
-// }
+
+.check input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.check span {
+    padding: 5px 10px;
+    display: inline-block;
+    color: red;
+    border: 2px solid red;
+    border-radius: 3px;
+    font-size: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.check input:checked+span {
+    color: white;
+    background-color: red;
+}
 
 .search {
     margin: 20px;

@@ -2267,16 +2267,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     typologies: Array
@@ -2289,29 +2279,20 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     // funzione per cercare i ristoranti in base alla tipologia selezionata dall'utente
-    searchRestaurants: function searchRestaurants(id) {
+    searchRestaurants: function searchRestaurants() {
       var _this = this;
 
-      axios.post("/search/" + id).then(function (r) {
-        console.log(r.data);
+      axios.post('/search', {
+        filters: this.filters
+      }).then(function (r) {
         _this.restaurants = r.data;
       })["catch"](function (e) {
         return console.log("error", e);
       });
-    },
-    test: function test(array) {
-      // axios
-      //     .post("/test-search")
-      //     .then(r => {
-      //         console.log(r.data);
-      //         this.restaurants = r.data;
-      //     })
-      //     .catch(e => console.log("error", e));
-      console.log(array);
     }
   },
   mounted: function mounted() {
-    this.test(this.filters);
+    this.searchRestaurants();
   }
 });
 
@@ -38255,7 +38236,7 @@ var render = function() {
         { staticClass: "col-12" },
         [
           _vm._l(_vm.typologies, function(typology) {
-            return _c("span", { staticClass: "typology" }, [
+            return _c("label", { staticClass: "check" }, [
               _c("input", {
                 directives: [
                   {
@@ -38294,14 +38275,13 @@ var render = function() {
                       }
                     },
                     function($event) {
-                      return _vm.test(_vm.filters)
+                      return _vm.searchRestaurants()
                     }
                   ]
                 }
               }),
-              _vm._v(
-                "\n                " + _vm._s(typology.name) + "\n            "
-              )
+              _vm._v(" "),
+              _c("span", [_vm._v(_vm._s(typology.name))])
             ])
           }),
           _vm._v(" "),
