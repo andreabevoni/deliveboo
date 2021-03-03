@@ -12,17 +12,20 @@ class FoodController extends Controller
     // index
     public function index()
     {
-        $userAuth = Auth::user();
-        $id = $userAuth->id;
 
-        $foods = Food::orderBy('id', 'DESC')->where(function ($query) use ($id) {
-            $query->where('user_id', '=', $id);
-        })->get();
-        // dd($foods);
+        if (Auth::user()) {
+            $userAuth = Auth::user();
+            $id = $userAuth->id;
 
+            $foods = Food::orderBy('id', 'DESC')->where(function ($query) use ($id) {
+                $query->where('user_id', '=', $id);
+            })->get();
 
-        // dd($food);
-        return view('foods-page', compact('foods'));
+            return view('foods-page', compact('foods'));
+        } else {
+            // dd('No logged user');
+            return redirect()->route('home');
+        }
     }
 
     // create

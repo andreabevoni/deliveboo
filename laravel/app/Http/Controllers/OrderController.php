@@ -13,13 +13,19 @@ class OrderController extends Controller
 {
     public function index()
     {
+        if (Auth::user()) {
+            # code...
+            $userAuth = Auth::user();
 
-        $userAuth = Auth::user();
 
+            $foods = $userAuth->food;
+            return view('orders-page', compact('foods'));
+        } else {
+            // dd('No logged user');
+            return redirect()->route('home');
+        }
 
-        $foods = $userAuth->food;
         // dd($food);
 
-        return view('orders-page', compact('foods'));
     }
 }
