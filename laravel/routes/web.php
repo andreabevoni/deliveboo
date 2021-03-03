@@ -47,3 +47,6 @@ Route::get('/clear/avatar', 'UserController@clearImg')->name('clear-avatar');
 // test per carrello
 Route::get('/cart', 'MainController@testCart')->name('test-cart');
 Route::get('/shop', 'MainController@testShop')->name('test-shop');
+
+// test per ricerca
+Route::post('/test-search', 'MainController@testSearch')->name('test-search');

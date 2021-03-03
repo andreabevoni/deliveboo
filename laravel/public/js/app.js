@@ -2267,13 +2267,24 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     typologies: Array
   },
   data: function data() {
     return {
-      restaurants: []
+      restaurants: [],
+      filters: []
     };
   },
   methods: {
@@ -2287,7 +2298,20 @@ __webpack_require__.r(__webpack_exports__);
       })["catch"](function (e) {
         return console.log("error", e);
       });
+    },
+    test: function test(array) {
+      // axios
+      //     .post("/test-search")
+      //     .then(r => {
+      //         console.log(r.data);
+      //         this.restaurants = r.data;
+      //     })
+      //     .catch(e => console.log("error", e));
+      console.log(array);
     }
+  },
+  mounted: function mounted() {
+    this.test(this.filters);
   }
 });
 
@@ -38231,25 +38255,54 @@ var render = function() {
         { staticClass: "col-12" },
         [
           _vm._l(_vm.typologies, function(typology) {
-            return _c(
-              "span",
-              {
-                key: typology.id,
-                staticClass: "typology",
-                on: {
-                  click: function($event) {
-                    return _vm.searchRestaurants(typology.id)
+            return _c("span", { staticClass: "typology" }, [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.filters,
+                    expression: "filters"
                   }
+                ],
+                attrs: { type: "checkbox" },
+                domProps: {
+                  value: typology.name,
+                  checked: Array.isArray(_vm.filters)
+                    ? _vm._i(_vm.filters, typology.name) > -1
+                    : _vm.filters
+                },
+                on: {
+                  change: [
+                    function($event) {
+                      var $$a = _vm.filters,
+                        $$el = $event.target,
+                        $$c = $$el.checked ? true : false
+                      if (Array.isArray($$a)) {
+                        var $$v = typology.name,
+                          $$i = _vm._i($$a, $$v)
+                        if ($$el.checked) {
+                          $$i < 0 && (_vm.filters = $$a.concat([$$v]))
+                        } else {
+                          $$i > -1 &&
+                            (_vm.filters = $$a
+                              .slice(0, $$i)
+                              .concat($$a.slice($$i + 1)))
+                        }
+                      } else {
+                        _vm.filters = $$c
+                      }
+                    },
+                    function($event) {
+                      return _vm.test(_vm.filters)
+                    }
+                  ]
                 }
-              },
-              [
-                _vm._v(
-                  "\n                    " +
-                    _vm._s(typology.name) +
-                    "\n                "
-                )
-              ]
-            )
+              }),
+              _vm._v(
+                "\n                " + _vm._s(typology.name) + "\n            "
+              )
+            ])
           }),
           _vm._v(" "),
           _c(

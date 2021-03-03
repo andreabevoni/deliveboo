@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use App\Typology;
+use Illuminate\Database\Eloquent\Builder;
 
 class MainController extends Controller
 {
@@ -20,6 +21,30 @@ class MainController extends Controller
     $users = $typology -> users;
     return response () -> json($users, 200);
   }
+
+  // funzione test
+  // public function testSearch() {
+  //   $users = User::with(['typologies' => function ($query) {
+  //     $query->where('name', 'like', 'consequatur');
+  //   }])->get();
+  //   return response () -> json($users, 200);
+  // }
+
+  public function testSearch() {
+    $filters = ['consequatur', 'provident'];
+
+    $users = User::with('typologies');
+
+    foreach ($filters as $filter) {
+      $users->whereHas('typologies', function ($query) use ($filter) {
+                $query->where('name', $filter);
+             });
+    }
+
+    return response () -> json($users->get(), 200);
+  }
+
+
 
   // funzione show per i ristoranti
   public function restaurantShow($id) {

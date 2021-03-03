@@ -11002,10 +11002,6 @@ footer .social i {
   color: red;
 }
 
-.typology:hover {
-  cursor: pointer;
-}
-
 .search {
   margin: 20px;
   display: flex;
