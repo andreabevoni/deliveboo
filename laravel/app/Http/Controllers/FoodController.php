@@ -17,7 +17,7 @@ class FoodController extends Controller
             $userAuth = Auth::user();
             $id = $userAuth->id;
 
-            $foods = Food::orderBy('id', 'DESC')->where(function ($query) use ($id) {
+            $foods = Food::orderBy('name', 'ASC')->where(function ($query) use ($id) {
                 $query->where('user_id', '=', $id);
             })->get();
 
