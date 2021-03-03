@@ -6,9 +6,9 @@
                 <!-- stampo a schermo le tipologie per permettere all'utente di fare le ricerche -->
                 <label class="check" v-for="typology in typologies">
                   <input  type="checkbox"
-                  :value="typology.name"
-                  v-model="filters"
-                  @change="searchRestaurants()">
+                          :value="typology.name"
+                          v-model="filters"
+                          @change="searchRestaurants()">
                   <span>{{ typology.name }}</span>
                 </label>
 
