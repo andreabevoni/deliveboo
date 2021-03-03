@@ -2257,13 +2257,23 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     typologies: Array
   },
   data: function data() {
     return {
-      'restaurants': []
+      restaurants: []
     };
   },
   methods: {
@@ -2271,11 +2281,11 @@ __webpack_require__.r(__webpack_exports__);
     searchRestaurants: function searchRestaurants(id) {
       var _this = this;
 
-      axios.post('/search/' + id).then(function (r) {
+      axios.post("/search/" + id).then(function (r) {
         console.log(r.data);
         _this.restaurants = r.data;
       })["catch"](function (e) {
-        return console.log('error', e);
+        return console.log("error", e);
       });
     }
   }
@@ -38233,7 +38243,9 @@ var render = function() {
               },
               [
                 _vm._v(
-                  "\n              " + _vm._s(typology.name) + "\n            "
+                  "\n                    " +
+                    _vm._s(typology.name) +
+                    "\n                "
                 )
               ]
             )
@@ -38246,11 +38258,9 @@ var render = function() {
           { staticClass: "search" },
           _vm._l(_vm.restaurants, function(restaurant) {
             return _c("div", { key: restaurant.id, staticClass: "user" }, [
-              _c(
-                "a",
-                { attrs: { href: "/restaurant/show/" + restaurant.id } },
-                [_vm._v(_vm._s(restaurant.restaurant_name))]
-              )
+              _c("a", { attrs: { href: "/show/" + restaurant.id } }, [
+                _vm._v(_vm._s(restaurant.restaurant_name))
+              ])
             ])
           }),
           0
