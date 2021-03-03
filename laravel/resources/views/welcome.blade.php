@@ -50,98 +50,99 @@
             font-size: 84px;
         }
 
-            .m-b-md {
-                margin-bottom: 30px;
-            }
-
-
-            /* css custom */
-            .typologies {
-              margin: 20px auto;
-              width: 1000px;
-              color: red;
-              display: flex;
-              justify-content: space-between;
-            }
-
-            .typologies span:hover {
-              cursor: pointer;
-            }
-
-            .search {
-              margin: 20px auto;
-              width: 1000px;
-              display: flex;
-              flex-wrap: wrap;
-              justify-content: center;
-              align-items: center;
-            }
-
-            .user {
-              width: 100px;
-              height: 100px;
-              margin: 20px;
-              padding: 10px;
-              border: 2px solid blue;
-              display: flex;
-              justify-content: center;
-              align-items: center;
-            }
-        </style>
-
-        <script src="{{asset('js/app.js')}}" charset="utf-8"></script>
-    </head>
+        .links>a {
+            color: #636b6f;
+            padding: 0 25px;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: .1rem;
+            text-decoration: none;
+            text-transform: uppercase;
+        }
 
         .m-b-md {
             margin-bottom: 30px;
         }
 
-            <div class="content">
-                <div class="title m-b-md">
-                    Deliveboo
-                </div>
+
+        /* css custom */
+        .typologies {
+            margin: 20px auto;
+            width: 1000px;
+            color: red;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .typologies span:hover {
+            cursor: pointer;
+        }
+
+        .search {
+            margin: 20px auto;
+            width: 1000px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .user {
+            width: 100px;
+            height: 100px;
+            margin: 20px;
+            padding: 10px;
+            border: 2px solid blue;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .m-b-md {
+            margin-bottom: 30px;
+        }
+
+    </style>
+
+    <script src="{{ asset('js/app.js') }}" charset="utf-8"></script>
+</head>
+
+
 
 <body>
-    <div class="flex-center position-ref full-height">
-        @if (Route::has('login'))
-            <div class="top-right links">
-                @auth
-                    <a href="{{ url('/dashboard') }}">DASHBOARD</a>
-                    <a href="{{ url('/home') }}">HOME</a>
-                @else
-                    <a href="{{ route('login') }}">Login</a>
+    <div id="app">
 
-                    @if (Route::has('register'))
-                        <a href="{{ route('register') }}">Register</a>
-                    @endif
-                @endauth
-                <div class="">
-                  Clicca su una categoria per trovare ristoranti nella tua zona.
+        <div class="flex-center position-ref full-height ">
+            @if (Route::has('login'))
+                <div class="top-right links">
+                    @auth
+                        <a href="{{ url('/dashboard') }}">DASHBOARD</a>
+                        <a href="{{ url('/home') }}">HOME</a>
+                    @else
+                        <a href="{{ route('login') }}">Login</a>
+
+                        @if (Route::has('register'))
+                            <a href="{{ route('register') }}">Register</a>
+                        @endif
+                    @endauth
+
                 </div>
+            @endif
 
-                <search
-                  :typologies="{{json_encode($typologies)}}"
-                ></search>
-            </div>
-        @endif
 
-        <div class="content">
-            <div class="title m-b-md">
-                DeliveBoo
+
+            <div class="search">
+                <div class="title m-b-md search">
+
+                    Deliveboo
+                </div>
+                Clicca su una categoria per trovare ristoranti nella tua zona.
+                <search :typologies="{{ json_encode($typologies) }}"></search>
             </div>
 
-            <div class="links">
-                <a href="https://laravel.com/docs">Docs</a>
-                <a href="https://laracasts.com">Laracasts</a>
-                <a href="https://laravel-news.com">News</a>
-                <a href="https://blog.laravel.com">Blog</a>
-                <a href="https://nova.laravel.com">Nova</a>
-                <a href="https://forge.laravel.com">Forge</a>
-                <a href="https://vapor.laravel.com">Vapor</a>
-                <a href="https://github.com/laravel/laravel">GitHub</a>
-            </div>
         </div>
     </div>
+
 </body>
 
 </html>
