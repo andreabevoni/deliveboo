@@ -2,8 +2,11 @@
 @section('content')
 
     {{-- <div class="row"> --}}
+    <div class="row d-flex justify-content-around py-4">
 
-    <h1>Ordini Ricevuti</h1>
+        <h1>Ordini Ricevuti</h1>
+    </div>
+
     <div>
 
         @foreach ($foods as $food)
@@ -19,7 +22,5 @@
         @endforeach
 
     </div>
-
-    {{-- </div> --}}
 
 @endsection

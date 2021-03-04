@@ -1,14 +1,15 @@
 @extends('layouts.app')
 @section('content')
 
+    <div class="row d-flex justify-content-around py-4">
+
+        <h2>
+            Aggiunta Food
+        </h2>
+
+    </div>
+
     <div class="row justify-content-center">
-
-        <div class="card">
-
-            <h2>
-                Aggiunta Food
-            </h2>
-        </div>
         <div class="col-md-10 card p-5">
 
 
