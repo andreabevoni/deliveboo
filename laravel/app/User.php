@@ -41,7 +41,7 @@ class User extends Authenticatable
 
     public function food()
     {
-        return $this->hasMany(Food::class);
+        return $this->hasMany(Food::class)->orderBy('name', 'asc');
     }
 
     public function typologies()

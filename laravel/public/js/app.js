@@ -2023,23 +2023,41 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
-    return {
-      // prop foods
-      namefood: this.props.namefood,
+    return {// prop foods
+
+      /* namefood: this.props.namefood,
       price: this.props.price,
-      description: this.props.description
+      description: this.props.description */
     };
   },
   mounted: function mounted() {
-    console.log('Component mounted.');
+    console.log("Component mounted.");
+  },
+  methods: {
+    deleteFood: function deleteFood() {
+      console.log(this.id); //chiamata axios in delete
+
+      axios["delete"]("http://localhost:8000/food/".concat(this.id)).then(function (res) {
+        console.log(res);
+      });
+    }
   },
   props: {
     // prop foods
     namefood: String,
     price: Number,
-    description: String
+    description: String,
+    id: Number
   }
 });
 
@@ -37978,36 +37996,52 @@ var render = function() {
           "div",
           { staticClass: "card-header d-flex justify-content-between" },
           [
-            _c("h4", [
-              _vm._v(
-                "\n\n                        Cibo: " +
-                  _vm._s(_vm.namefood) +
-                  "\n                    "
-              )
-            ]),
+            _c("h4", [_vm._v("Cibo: " + _vm._s(_vm.namefood))]),
             _vm._v(" "),
-            _vm._m(0)
+            _c("div", [
+              _c(
+                "a",
+                {
+                  staticClass: "btn btn-success",
+                  attrs: { href: "/food/" + _vm.id + "/edit" }
+                },
+                [_vm._v("Modifica")]
+              ),
+              _vm._v(" "),
+              _c(
+                "a",
+                {
+                  staticClass: "btn btn-danger",
+                  attrs: { href: "/food/softdelete/" + _vm.id }
+                },
+                [
+                  _vm._v(
+                    "\n                        Elimina\n                    "
+                  )
+                ]
+              )
+            ])
           ]
         ),
         _vm._v(" "),
         _c("div", { staticClass: "card-body col-md-12 d-flex" }, [
           _c("div", { staticClass: "col-md-8" }, [
             _vm._v(
-              "\n                        Descrizione: " +
+              "\n                    Descrizione: " +
                 _vm._s(_vm.description) +
                 " "
             ),
             _c("br"),
             _vm._v(
-              "\n                        Prezzo: " +
+              "\n                    Prezzo: " +
                 _vm._s(_vm.price / 100) +
-                " €\n                    "
+                " €\n                "
             )
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "col-md-4" }, [
             _vm._v(
-              "\n                        Qui Immagine del food, dolor sit amet consectetur adipisicing elit. Ex temporibus quasi veniam, commodi inventore sequi rem molestias possimus, nisi nobis, voluptates dolorum in omnis. Sunt voluptates libero ex cum! Placeat.\n                    "
+              "\n                    Qui Immagine del food, dolor sit amet consectetur\n                    adipisicing elit. Ex temporibus quasi veniam, commodi\n                    inventore sequi rem molestias possimus, nisi nobis,\n                    voluptates dolorum in omnis. Sunt voluptates libero ex\n                    cum! Placeat.\n                "
             )
           ])
         ])
@@ -38015,18 +38049,7 @@ var render = function() {
     ])
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", [
-      _c("button", { staticClass: "btn btn-success" }, [_vm._v("Modifica")]),
-      _vm._v(" "),
-      _c("button", { staticClass: "btn btn-danger" }, [_vm._v("Elimina")])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 

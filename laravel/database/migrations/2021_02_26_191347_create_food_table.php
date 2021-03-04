@@ -22,6 +22,7 @@ class CreateFoodTable extends Migration
             $table->string('image')->nullable();
             $table->boolean('visible');
             $table->bigInteger('user_id')->unsigned();
+            $table->softDeletes();
             $table->timestamps();
         });
     }
