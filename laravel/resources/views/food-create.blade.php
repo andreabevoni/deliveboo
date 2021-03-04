@@ -12,7 +12,7 @@
         <div class="col-md-10 card p-5">
 
 
-            <form action="{{ route('store-food') }}" method="post">
+            <form action="{{ route('food.store') }}" method="post">
 
                 @csrf
                 @method('post')
