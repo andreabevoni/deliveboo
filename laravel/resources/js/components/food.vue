@@ -4,8 +4,10 @@
 
           <h4>{{ name }}</h4>
           <span>{{ description }}</span>
-          <h6>{{ price/100 }} euro</h6>
-          <img src="" alt="">
+          <div class="price">
+            <h6>{{ price/100 }} euro</h6>
+          </div>
+
     </div>
 
 
