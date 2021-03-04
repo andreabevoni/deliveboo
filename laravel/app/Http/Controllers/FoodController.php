@@ -39,36 +39,54 @@ class FoodController extends Controller
 
         // dd($request -> all());
 
-        $data = $request->all();
+        $validatedData = $request->validate([
+            'name' => 'required|min:3|max:50',
+            'price' => 'required|min:1',
+            'description' => 'min:5',
+            'visible' => 'required', 'integer',
+            'category' => 'required'
+        ]);
+
+        // $data = $request->all();
         $user = Auth::user();
 
-        $food = Food::make($data);
+        $food = Food::make($validatedData);
 
         $food->user()->associate($user);
-        // dd($food);
 
         $food->save();
+        // dd($food->visible);
 
         return redirect()->route('food.index');
     }
 
     public function edit($id)
     {
+        $foods = Food::all();
         $food = Food::findOrFail($id);
         // dd($food);
 
 
-        return view('food-edit', compact('food'));
+        return view('food-edit', compact('food', 'foods'));
     }
 
     public function update(Request $request, $id)
     {
+        $validatedData = $request->validate([
+            'name' => 'required|min:3|max:50',
+            'price' => 'required|min:1',
+            'description' => 'min:5',
+            'visible' => 'required',
+            'category' => 'required'
+        ]);
 
-        $data = $request->all();
 
         $food = Food::findOrFail($id);
 
-        $food->update($data);
+
+        $food->update($validatedData);
+        // dd($food);
+
 
         return redirect()->route('food.index');
     }
