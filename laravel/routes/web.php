@@ -11,10 +11,7 @@ Route::get('/dashboard', 'HomeController@dashboard')->name('dashboard');
 Route::get('/', 'MainController@index')->name('index');
 
 // route per la ricerca in homepage
-Route::post('/search/{id}', 'MainController@search')->name('search');
-
-// route show ristorante
-Route::get('/restaurant/show/{id}', 'MainController@restaurantShow')->name('show-restaurant');
+Route::post('/search', 'MainController@Search')->name('search');
 
 // Route USERS
 Route::resource('users', 'UserController');
@@ -23,6 +20,9 @@ Route::resource('users', 'UserController');
 Route::resource('food', 'FoodController');
 Route::get('food/create/', 'FoodController@create')->name('create-food');
 Route::post('food/store/', 'FoodController@store')->name('store-food');
+Route::get('form/restore/food', 'FoodController@goToRestore')->name('food-restore');
+Route::post('/restore/food', 'FoodController@restore')->name('restore-task');
+Route::get('/food/softdelete/{id}', 'FoodController@destroy')->name('softdelete-food');
 
 // Route ORDERS
 Route::resource('orders', 'OrderController');

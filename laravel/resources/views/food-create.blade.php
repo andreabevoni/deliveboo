@@ -1,4 +1,4 @@
-@extends('layouts.main-layout')
+@extends('layouts.app')
 @section('content')
 
     <div class="row justify-content-center">
@@ -12,11 +12,11 @@
         <div class="col-md-10 card p-5">
 
 
-            <form action="{{route('store-food')}}" method="post">
+            <form action="{{ route('store-food') }}" method="post">
 
                 @csrf
                 @method('post')
-        
+
                 <label for="name">Nome</label>
                 <input name="name" type="text">
                 <br>
@@ -26,14 +26,14 @@
                 <label for="description">Descrizione</label>
                 <input name="description" type="text">
                 <br>
-                
+
                 {{-- select --}}
                 <label for="category">Categoria</label>
                 <select name="category">
                     @foreach ($foods as $food)
-                        
-                        <option value="{{$food -> id}}">
-                            {{$food -> category}}
+
+                        <option value="{{ $food->id }}">
+                            {{ $food->category }}
                         </option>
                     @endforeach
                 </select>
@@ -47,11 +47,11 @@
                 <input name="visible" type="text">
                 <br>
                 <input class="btn btn-warning" type="submit" value="Salva">
-                
+
             </form>
 
         </div>
-        
+
     </div>
 
 @endsection
