@@ -2226,17 +2226,20 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
-    return {// name: this.name,
-      // description: this.description,
-      // price: this.price
+    return {
+      name: this.props.name,
+      description: this.props.description,
+      price: this.props.price
     };
   },
   props: {
-    name: String // price: Number,
-    // description: String
-
+    name: String,
+    price: Number,
+    description: String
   },
   mounted: function mounted() {
     console.log('Component mounted.');
@@ -38226,6 +38229,10 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "food-item" }, [
     _c("h4", [_vm._v(_vm._s(_vm.name))]),
+    _vm._v(" "),
+    _c("span", [_vm._v(_vm._s(_vm.description))]),
+    _vm._v(" "),
+    _c("h6", [_vm._v(_vm._s(_vm.price / 100) + " euro")]),
     _vm._v(" "),
     _c("img", { attrs: { src: "", alt: "" } })
   ])
