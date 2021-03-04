@@ -5,12 +5,13 @@
 use App\Food;
 use Faker\Generator as Faker;
 
-// $faker = \Faker\Factory::create();
-// $faker->addProvider(new \FakerRestaurant\Provider\it_IT\Restaurant($faker));
-
 $factory->define(Food::class, function (Faker $faker) {
+
+    $faker = \Faker\Factory::create();
+    $faker->addProvider(new \FakerRestaurant\Provider\it_IT\Restaurant($faker));
+
     return [
-        'name' => $faker->word,
+        'name' => $faker->foodName(),
         'price' => rand(100, 5000),
         'description' => $faker->paragraph(3),
         'category' => $faker->word,

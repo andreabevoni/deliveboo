@@ -11,7 +11,7 @@ class MainController extends Controller
 {
   // homepage
   public function index() {
-    $typologies = Typology::all();
+    $typologies = Typology::orderBy('name')->get();
     return view('pages.homepage', compact('typologies'));
   }
 
@@ -34,5 +34,15 @@ class MainController extends Controller
 
   public function testCart() {
     return view('test-cart');
+  }
+
+  public function test1() {
+    $user = User::findOrFail(1);
+    return view('pages.testCart', compact('user'));
+  }
+
+  public function test2() {
+    $user = User::findOrFail(2);
+    return view('pages.testCart', compact('user'));
   }
 }
