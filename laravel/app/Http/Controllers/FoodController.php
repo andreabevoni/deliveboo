@@ -91,26 +91,21 @@ class FoodController extends Controller
     public function goToRestore()
     {
         if (Auth::user()) {
+
             $userAuth = Auth::user();
+
             $id = $userAuth->id;
 
-
             $deletedFood = DB::table('food')
+
                 ->whereNotNull('deleted_at')
+
                 ->where(function ($query) use ($id) {
                     $query->where('user_id', '=', $id);
                 })
                 ->get();
+
             // dd($deletedFood);
-
-
-
-            /*  $foods = Food::orderBy('name', 'ASC')->where(function ($query) use ($id) {
-                $query->where('user_id', '=', $id);
-                //->where('deleted_at', '>', '');
-            })
-
-                ->get(); */
             return view('pages.food-restore', compact('deletedFood'));
         } else {
             // dd('No logged user');
