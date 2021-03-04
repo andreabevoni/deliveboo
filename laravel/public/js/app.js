@@ -2291,21 +2291,26 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      restaurants: []
+      restaurants: [],
+      filters: []
     };
   },
   methods: {
     // funzione per cercare i ristoranti in base alla tipologia selezionata dall'utente
-    searchRestaurants: function searchRestaurants(id) {
+    searchRestaurants: function searchRestaurants() {
       var _this = this;
 
-      axios.post("/search/" + id).then(function (r) {
-        console.log(r.data);
+      axios.post('/search', {
+        filters: this.filters
+      }).then(function (r) {
         _this.restaurants = r.data;
       })["catch"](function (e) {
         return console.log("error", e);
       });
     }
+  },
+  mounted: function mounted() {
+    this.searchRestaurants();
   }
 });
 
@@ -38249,46 +38254,75 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "container" }, [
     _c("div", { staticClass: "row justify-content-center" }, [
-      _c("div", { staticClass: "col-12 col-md-8" }, [
-        _c(
-          "div",
-          { staticClass: "typologies" },
+      _c(
+        "div",
+        { staticClass: "col-12" },
+        [
           _vm._l(_vm.typologies, function(typology) {
-            return _c(
-              "span",
-              {
-                key: typology.id,
-                on: {
-                  click: function($event) {
-                    return _vm.searchRestaurants(typology.id)
+            return _c("label", { staticClass: "check" }, [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.filters,
+                    expression: "filters"
                   }
+                ],
+                attrs: { type: "checkbox" },
+                domProps: {
+                  value: typology.name,
+                  checked: Array.isArray(_vm.filters)
+                    ? _vm._i(_vm.filters, typology.name) > -1
+                    : _vm.filters
+                },
+                on: {
+                  change: [
+                    function($event) {
+                      var $$a = _vm.filters,
+                        $$el = $event.target,
+                        $$c = $$el.checked ? true : false
+                      if (Array.isArray($$a)) {
+                        var $$v = typology.name,
+                          $$i = _vm._i($$a, $$v)
+                        if ($$el.checked) {
+                          $$i < 0 && (_vm.filters = $$a.concat([$$v]))
+                        } else {
+                          $$i > -1 &&
+                            (_vm.filters = $$a
+                              .slice(0, $$i)
+                              .concat($$a.slice($$i + 1)))
+                        }
+                      } else {
+                        _vm.filters = $$c
+                      }
+                    },
+                    function($event) {
+                      return _vm.searchRestaurants()
+                    }
+                  ]
                 }
-              },
-              [
-                _vm._v(
-                  "\n                    " +
-                    _vm._s(typology.name) +
-                    "\n                "
-                )
-              ]
-            )
-          }),
-          0
-        ),
-        _vm._v(" "),
-        _c(
-          "div",
-          { staticClass: "search" },
-          _vm._l(_vm.restaurants, function(restaurant) {
-            return _c("div", { key: restaurant.id, staticClass: "user" }, [
-              _c("a", { attrs: { href: "/show/" + restaurant.id } }, [
-                _vm._v(_vm._s(restaurant.restaurant_name))
-              ])
+              }),
+              _vm._v(" "),
+              _c("span", [_vm._v(_vm._s(typology.name))])
             ])
           }),
-          0
-        )
-      ])
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "search" },
+            _vm._l(_vm.restaurants, function(restaurant) {
+              return _c("div", { key: restaurant.id, staticClass: "user" }, [
+                _c("a", { attrs: { href: "/show/" + restaurant.id } }, [
+                  _vm._v(_vm._s(restaurant.restaurant_name))
+                ])
+              ])
+            }),
+            0
+          )
+        ],
+        2
+      )
     ])
   ])
 }
