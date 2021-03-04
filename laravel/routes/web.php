@@ -18,8 +18,8 @@ Route::resource('users', 'UserController');
 
 // Route FOOD
 Route::resource('food', 'FoodController');
-Route::get('food/create/', 'FoodController@create')->name('create-food');
-Route::post('food/store/', 'FoodController@store')->name('store-food');
+// Route::get('food/create/', 'FoodController@create')->name('create-food');
+// Route::post('food/store/', 'FoodController@store')->name('store-food');
 Route::get('form/restore/food', 'FoodController@goToRestore')->name('food-restore');
 Route::post('/restore/food', 'FoodController@restore')->name('restore-task');
 Route::get('/food/softdelete/{id}', 'FoodController@destroy')->name('softdelete-food');
