@@ -42,6 +42,22 @@
    list-style: none;
  }
 
+ .price {
+
+   padding: 20px 0;
+   h6 {
+     font-weight: bolder;
+   }
+ }
+
+ .pop-over-food {
+  display: none;
+  margin: 8px;
+  font-size: 10px;
+  color: lightgrey;
+  padding-bottom: 5px;
+  }
+
  // HEADER
 .logo {
   img {

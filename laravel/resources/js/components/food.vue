@@ -13,12 +13,9 @@
 </template>
 
 <script>
-
     export default {
-
     data: function() {
         return {
-
             name: this.props.name,
             description: this.props.description,
             price: this.props.price
@@ -29,8 +26,6 @@
           price: Number,
           description: String
         },
-
-
         mounted() {
             console.log('Component mounted.')
         }

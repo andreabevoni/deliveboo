@@ -10976,6 +10976,22 @@ li {
   list-style: none;
 }
 
+.price {
+  padding: 20px 0;
+}
+
+.price h6 {
+  font-weight: bolder;
+}
+
+.pop-over-food {
+  display: none;
+  margin: 8px;
+  font-size: 10px;
+  color: lightgrey;
+  padding-bottom: 5px;
+}
+
 .logo img {
   width: 100px;
 }

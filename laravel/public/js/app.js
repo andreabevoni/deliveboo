@@ -2228,12 +2228,42 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       name: this.props.name,
       description: this.props.description,
-      price: this.props.price
+      price: this.props.price,
+      showModal: false
     };
   },
   props: {
@@ -38223,22 +38253,8 @@ render._withStripped = true
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "food-item" }, [
-    _c("h4", [_vm._v(_vm._s(_vm.name))]),
-    _vm._v(" "),
-    _c("span", [_vm._v(_vm._s(_vm.description))]),
-    _vm._v(" "),
-    _c("h6", [_vm._v(_vm._s(_vm.price / 100) + " euro")]),
-    _vm._v(" "),
-    _c("img", { attrs: { src: "", alt: "" } })
-  ])
-}
+var render = function () {}
 var staticRenderFns = []
-render._withStripped = true
 
 
 
