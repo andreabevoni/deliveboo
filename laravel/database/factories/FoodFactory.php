@@ -12,7 +12,7 @@ $factory->define(Food::class, function (Faker $faker) {
 
     return [
         'name' => $faker->foodName(),
-        'price' => rand(100, 5000),
+        'price' => rand(100, 1500),
         'description' => $faker->paragraph(3),
         'category' => $faker->word,
         'visible' => rand(0, 1)

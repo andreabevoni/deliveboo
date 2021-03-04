@@ -36,13 +36,13 @@ class MainController extends Controller
     return view('test-cart');
   }
 
-  public function test1() {
-    $user = User::findOrFail(1);
+  public function testShow($id) {
+    $user = User::with('food')->findOrFail($id);
     return view('pages.testCart', compact('user'));
   }
 
-  public function test2() {
-    $user = User::findOrFail(2);
-    return view('pages.testCart', compact('user'));
+  public function checkout($id) {
+    $user = User::with('food')->findOrFail($id);
+    return view('pages.checkout', compact('user'));
   }
 }

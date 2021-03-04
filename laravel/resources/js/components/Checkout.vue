@@ -1,25 +1,6 @@
 <template>
-    <div class="row">
-      <div class="col-md-8">
-        <div class="menu-test">
-          <div v-for="food in foods" :key="food.id">
-            <!-- cibi disponibili -->
-            <div v-if="food.visible" class="food-test show" @click="addCart(food.id)">
-              <h4>{{food.name}}</h4>
-              <div>{{food.description}}</div>
-              <h6>{{food.price/100}} euro</h6>
-            </div>
-            <!-- cibi non disponibili -->
-            <div v-else class="food-test hide">
-              <h4>{{food.name}}</h4>
-              <div>{{food.description}}</div>
-              <h6>{{food.price/100}} euro</h6>
-            </div>
-          </div>
-        </div>
-      </div>
+    <div class="col-md-4">
 
-      <div class="col-md-4">
         <!-- mostro il carrello se pieno -->
         <div class="cart-test d-flex flex-column" v-if="cart.length">
 
@@ -45,17 +26,12 @@
             <span>{{total() / 100}} &#8364;</span>
           </div>
 
-          <a :href="'/checkout/' + user_id" class="text-center">
-            <button class="btn btn-primary">CHECKOUT</button>
-          </a>
-
         </div>
 
         <!-- scrivo che il carrello é vuoto se lo é -->
         <div class="cart-test" v-else>
           <h4>CARRELLO VUOTO</h4>
         </div>
-      </div>
     </div>
 </template>
 
@@ -79,18 +55,6 @@
           updateLocalStorage: function() {
             localStorage.setItem("cart", JSON.stringify(this.cart));
             localStorage.setItem("user_id", this.user_id);
-          },
-          addCart: function(id) {
-            if (this.cart.find(x => x.id === id)) {
-              this.cart.find(x => x.id === id).quantity += 1;
-            } else {
-              let item = {
-                'id': id,
-                'quantity': 1
-              };
-              this.cart.push(item);
-            }
-            this.updateLocalStorage();
           },
           removeCart: function(i) {
             this.cart.splice(i, 1);
