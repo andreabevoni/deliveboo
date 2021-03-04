@@ -1,17 +1,17 @@
 <template>
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-12 col-md-8">
+            <div class="col-12">
+
                 <!-- stampo a schermo le tipologie per permettere all'utente di fare le ricerche -->
-                <div class="typologies">
-                    <span
-                        v-for="typology in typologies"
-                        :key="typology.id"
-                        @click="searchRestaurants(typology.id)"
-                    >
-                        {{ typology.name }}
-                    </span>
-                </div>
+                <label class="check" v-for="typology in typologies">
+                  <input  type="checkbox"
+                          :value="typology.name"
+                          v-model="filters"
+                          @change="searchRestaurants()">
+                  <span>{{ typology.name }}</span>
+                </label>
+
                 <!-- stampo i ristoranti appartenenti alla categoria selezionata dall'utente -->
                 <div class="search">
                     <div
@@ -36,20 +36,24 @@ export default {
     },
     data() {
         return {
-            restaurants: []
+            restaurants: [],
+            filters: []
         };
     },
     methods: {
         // funzione per cercare i ristoranti in base alla tipologia selezionata dall'utente
-        searchRestaurants: function(id) {
-            axios
-                .post("/search/" + id)
-                .then(r => {
-                    console.log(r.data);
-                    this.restaurants = r.data;
-                })
-                .catch(e => console.log("error", e));
-        }
+        searchRestaurants: function() {
+          axios.post('/search', {
+            filters: this.filters,
+          })
+          .then(r => {
+            this.restaurants = r.data;
+          })
+          .catch(e => console.log("error", e));
+        },
+    },
+    mounted() {
+      this.searchRestaurants();
     }
 };
 </script>
