@@ -33,11 +33,13 @@
                 <div class="card" style="width: 18rem;" data-toggle="modal" data-target="#myModal">
                   <img src="https://flawless.life/wp-content/uploads/2016/03/lievita-pizza-gourmet.jpg" class="card-img-top" alt="immagine piatto">
                   <div class="card-body">
-                    <food
-                        :name= "'{{$food -> name}}'"
-                        :price= "'{{$food -> price}}'"
-                        :description= "'{{$food -> description}}'"
-                    ></food>
+                    <div class="food-item">
+                      <h4>{{ $food->name }}</h4>
+                      <span>{{ $food->description }}</span>
+                      <div class="price">
+                        <h6>{{ $food->price/100 }} euro</h6>
+                      </div>
+                    </div>
                   </div>
                 </div>
 
@@ -55,10 +57,18 @@
                     </div>
                     <div class="modal-body">
                       <img src="https://flawless.life/wp-content/uploads/2016/03/lievita-pizza-gourmet.jpg" class="card-img-top" alt="immagine piatto">
-                      <food
+                      <div class="food-item">
+                        <h4>{{ $food->name }}</h4>
+                        <span>{{ $food->description }}</span>
+                        <div class="price">
+                          <h6>{{ $food->price/100 }} euro</h6>
+                        </div>
+                        <button type="button" name="button">Aggiungi al carrello</button>
+                      </div>
+                      {{-- <food
                           :price= "'{{$food -> price}}'"
                           :description= "'{{$food -> description}}'"
-                      ></food>
+                      ></food> --}}
                     </div>
                     <div class="modal-footer">
                       <button type="button" class="btn btn-default" data-dismiss="modal">Chiudi</button>

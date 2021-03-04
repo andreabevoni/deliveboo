@@ -10972,6 +10972,13 @@ a.text-dark:focus {
   margin: 10px;
 }
 
+.food-item button {
+  background-color: #00ccbc;
+  color: white;
+  border: 1px solid #00ccbc;
+  padding: 10px;
+}
+
 li {
   list-style: none;
 }
@@ -10982,14 +10989,6 @@ li {
 
 .price h6 {
   font-weight: bolder;
-}
-
-.pop-over-food {
-  display: none;
-  margin: 8px;
-  font-size: 10px;
-  color: lightgrey;
-  padding-bottom: 5px;
 }
 
 .logo img {
