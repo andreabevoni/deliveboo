@@ -3,32 +3,36 @@
     <div class="food-item">
 
           <h4>{{ name }}</h4>
-          <!-- <span>{{ description }}</span>
-          <h6>{{ price}}</h6> -->
+          <span>{{ description }}</span>
+          <h6>{{ price/100 }} euro</h6>
           <img src="" alt="">
-
     </div>
+
+
+
 </template>
 
 <script>
+
     export default {
 
     data: function() {
         return {
 
-            // name: this.name,
-            // description: this.description,
-            // price: this.price
+            name: this.props.name,
+            description: this.props.description,
+            price: this.props.price
         };
       },
         props: {
           name: String,
-          // price: Number,
-          // description: String
+          price: Number,
+          description: String
         },
+
 
         mounted() {
             console.log('Component mounted.')
         }
-    }
+      }
 </script>

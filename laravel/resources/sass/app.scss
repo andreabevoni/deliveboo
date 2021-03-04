@@ -8,7 +8,7 @@
 @import '~bootstrap/scss/bootstrap';
 
 
-// Stile pagina show
+// PAGINA SHOW
 
 .info {
   padding: 20px 0;
@@ -42,6 +42,26 @@
    list-style: none;
  }
 
+ // HEADER
+.logo {
+  img {
+    width: 100px;
+  }
+}
+
+.menu-nav {
+  button {
+    background-color: white;
+    color: black;
+    margin-left: 10px;
+    border: 1px lightgrey solid;
+    i {
+      color: #00ccbc;
+    }
+
+  }
+}
+
  // FOOTER
 footer {
   background-color: #2E3333;
@@ -63,3 +83,53 @@ footer {
     padding-left: 10px;
   }
 }
+
+// stile provvisorio per homepage
+.check {
+    margin: 10px;
+    cursor: pointer;
+}
+
+.check input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.check span {
+    padding: 5px 10px;
+    display: inline-block;
+    color: red;
+    border: 2px solid red;
+    border-radius: 3px;
+    font-size: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.check input:checked+span {
+    color: white;
+    background-color: red;
+}
+
+.search {
+    margin: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.user {
+    width: 100px;
+    height: 100px;
+    margin: 20px;
+    padding: 10px;
+    border: 2px solid blue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+// fine stile homepage

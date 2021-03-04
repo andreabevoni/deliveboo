@@ -2,37 +2,40 @@
 @section('content')
 
     {{-- <div class="row"> --}}
-        <div class="row d-flex justify-content-around py-4">
+    <div class="row d-flex justify-content-around py-4">
 
-            <h2>Foods</h2>
-            <button class="btn btn-warning">
-                <a href="{{route('create-food')}}">
+        <h2>Foods</h2>
+        <button class="btn btn-warning">
+            <a href="{{ route('create-food') }}">
 
-                    Aggiungi
-                </a>
-            </button>
-        </div>
-        <div>
+                Aggiungi
+            </a>
+        </button>
 
-            @foreach ($foods as $food)
+        <a href="{{ route('food-restore') }}" class="btn btn-primary">
+            Restore
+        </a>
+    </div>
+    <div>
 
-                <comp-food
-                    :namefood= "'{{$food -> name}}'"
-                    :price= "{{$food -> price}}"
-                    :description= "'{{$food -> description}}'"
-                ></comp-food>
-            
-                {{-- @foreach ($food -> orders as $order)
-                    <comp-food
-                        :nameguest= "'{{$order -> name}}'"
-                        :email= "'{{$order -> email}}'"
-                    ></comp-food>
+        {{-- @if (!!$foods) --}}
 
-                @endforeach --}}
+        @foreach ($foods as $food)
 
-            @endforeach
+            {{-- @php
+                dd($food->id);
+            @endphp --}}
 
-        </div>
+            <comp-food :namefood="'{{ $food->name }}'" :price="{{ $food->price }}"
+                :description="'{{ $food->description }}'" :id="{{ $food->id }}"></comp-food>
+        @endforeach
+
+
+
+        {{-- @else
+            <div>No Food added Yet, please create one</div>
+        @endif --}}
+    </div>
 
     {{-- </div> --}}
 

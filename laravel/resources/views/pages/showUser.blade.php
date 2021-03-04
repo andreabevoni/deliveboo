@@ -30,22 +30,16 @@
   					    <h3>{{ $food -> category }} </h3>
 
                 <!-- Card food -->
-                  <div class="food-item">
-                    <ul>
-        					    <li>
-                        <h4>{{ $food -> name }}</h4>
-                        <span>{{ $food -> description }}</span>
-                        <h6>{{ $food -> price . " euro"}}</h6>
-                        <img src="" alt="">
-        					   </li>
-                   </ul>
-                  </div>
+                  <food
+                      :name= "'{{$food -> name}}'"
+                      :price= "{{$food -> price}}"
+                      :description= "'{{$food -> description}}'"
+                  ></food>
   				     @endforeach
              </div>
             <!-- Button per tornare ai risultati di ricerca -->
             <button>
-              <a href="{{ route('index') }}">Torna in Home
-              </a>
+              <a href="{{ route('index') }}">Torna in Home</a>
             </button>
           </div> <!-- fine sezione menu -->
 

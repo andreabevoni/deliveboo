@@ -2023,23 +2023,41 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
-    return {
-      // prop foods
-      namefood: this.props.namefood,
+    return {// prop foods
+
+      /* namefood: this.props.namefood,
       price: this.props.price,
-      description: this.props.description
+      description: this.props.description */
     };
   },
   mounted: function mounted() {
-    console.log('Component mounted.');
+    console.log("Component mounted.");
+  },
+  methods: {
+    deleteFood: function deleteFood() {
+      console.log(this.id); //chiamata axios in delete
+
+      axios["delete"]("http://localhost:8000/food/".concat(this.id)).then(function (res) {
+        console.log(res);
+      });
+    }
   },
   props: {
     // prop foods
     namefood: String,
     price: Number,
-    description: String
+    description: String,
+    id: Number
   }
 });
 
@@ -2208,17 +2226,20 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
-    return {// name: this.name,
-      // description: this.description,
-      // price: this.price
+    return {
+      name: this.props.name,
+      description: this.props.description,
+      price: this.props.price
     };
   },
   props: {
-    name: String // price: Number,
-    // description: String
-
+    name: String,
+    price: Number,
+    description: String
   },
   mounted: function mounted() {
     console.log('Component mounted.');
@@ -2273,21 +2294,26 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      restaurants: []
+      restaurants: [],
+      filters: []
     };
   },
   methods: {
     // funzione per cercare i ristoranti in base alla tipologia selezionata dall'utente
-    searchRestaurants: function searchRestaurants(id) {
+    searchRestaurants: function searchRestaurants() {
       var _this = this;
 
-      axios.post("/search/" + id).then(function (r) {
-        console.log(r.data);
+      axios.post('/search', {
+        filters: this.filters
+      }).then(function (r) {
         _this.restaurants = r.data;
       })["catch"](function (e) {
         return console.log("error", e);
       });
     }
+  },
+  mounted: function mounted() {
+    this.searchRestaurants();
   }
 });
 
@@ -37978,36 +38004,52 @@ var render = function() {
           "div",
           { staticClass: "card-header d-flex justify-content-between" },
           [
-            _c("h4", [
-              _vm._v(
-                "\n\n                        Cibo: " +
-                  _vm._s(_vm.namefood) +
-                  "\n                    "
-              )
-            ]),
+            _c("h4", [_vm._v("Cibo: " + _vm._s(_vm.namefood))]),
             _vm._v(" "),
-            _vm._m(0)
+            _c("div", [
+              _c(
+                "a",
+                {
+                  staticClass: "btn btn-success",
+                  attrs: { href: "/food/" + _vm.id + "/edit" }
+                },
+                [_vm._v("Modifica")]
+              ),
+              _vm._v(" "),
+              _c(
+                "a",
+                {
+                  staticClass: "btn btn-danger",
+                  attrs: { href: "/food/softdelete/" + _vm.id }
+                },
+                [
+                  _vm._v(
+                    "\n                        Elimina\n                    "
+                  )
+                ]
+              )
+            ])
           ]
         ),
         _vm._v(" "),
         _c("div", { staticClass: "card-body col-md-12 d-flex" }, [
           _c("div", { staticClass: "col-md-8" }, [
             _vm._v(
-              "\n                        Descrizione: " +
+              "\n                    Descrizione: " +
                 _vm._s(_vm.description) +
                 " "
             ),
             _c("br"),
             _vm._v(
-              "\n                        Prezzo: " +
+              "\n                    Prezzo: " +
                 _vm._s(_vm.price / 100) +
-                " €\n                    "
+                " €\n                "
             )
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "col-md-4" }, [
             _vm._v(
-              "\n                        Qui Immagine del food, dolor sit amet consectetur adipisicing elit. Ex temporibus quasi veniam, commodi inventore sequi rem molestias possimus, nisi nobis, voluptates dolorum in omnis. Sunt voluptates libero ex cum! Placeat.\n                    "
+              "\n                    Qui Immagine del food, dolor sit amet consectetur\n                    adipisicing elit. Ex temporibus quasi veniam, commodi\n                    inventore sequi rem molestias possimus, nisi nobis,\n                    voluptates dolorum in omnis. Sunt voluptates libero ex\n                    cum! Placeat.\n                "
             )
           ])
         ])
@@ -38015,18 +38057,7 @@ var render = function() {
     ])
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", [
-      _c("button", { staticClass: "btn btn-success" }, [_vm._v("Modifica")]),
-      _vm._v(" "),
-      _c("button", { staticClass: "btn btn-danger" }, [_vm._v("Elimina")])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -38199,6 +38230,10 @@ var render = function() {
   return _c("div", { staticClass: "food-item" }, [
     _c("h4", [_vm._v(_vm._s(_vm.name))]),
     _vm._v(" "),
+    _c("span", [_vm._v(_vm._s(_vm.description))]),
+    _vm._v(" "),
+    _c("h6", [_vm._v(_vm._s(_vm.price / 100) + " euro")]),
+    _vm._v(" "),
     _c("img", { attrs: { src: "", alt: "" } })
   ])
 }
@@ -38226,46 +38261,75 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "container" }, [
     _c("div", { staticClass: "row justify-content-center" }, [
-      _c("div", { staticClass: "col-12 col-md-8" }, [
-        _c(
-          "div",
-          { staticClass: "typologies" },
+      _c(
+        "div",
+        { staticClass: "col-12" },
+        [
           _vm._l(_vm.typologies, function(typology) {
-            return _c(
-              "span",
-              {
-                key: typology.id,
-                on: {
-                  click: function($event) {
-                    return _vm.searchRestaurants(typology.id)
+            return _c("label", { staticClass: "check" }, [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.filters,
+                    expression: "filters"
                   }
+                ],
+                attrs: { type: "checkbox" },
+                domProps: {
+                  value: typology.name,
+                  checked: Array.isArray(_vm.filters)
+                    ? _vm._i(_vm.filters, typology.name) > -1
+                    : _vm.filters
+                },
+                on: {
+                  change: [
+                    function($event) {
+                      var $$a = _vm.filters,
+                        $$el = $event.target,
+                        $$c = $$el.checked ? true : false
+                      if (Array.isArray($$a)) {
+                        var $$v = typology.name,
+                          $$i = _vm._i($$a, $$v)
+                        if ($$el.checked) {
+                          $$i < 0 && (_vm.filters = $$a.concat([$$v]))
+                        } else {
+                          $$i > -1 &&
+                            (_vm.filters = $$a
+                              .slice(0, $$i)
+                              .concat($$a.slice($$i + 1)))
+                        }
+                      } else {
+                        _vm.filters = $$c
+                      }
+                    },
+                    function($event) {
+                      return _vm.searchRestaurants()
+                    }
+                  ]
                 }
-              },
-              [
-                _vm._v(
-                  "\n                    " +
-                    _vm._s(typology.name) +
-                    "\n                "
-                )
-              ]
-            )
-          }),
-          0
-        ),
-        _vm._v(" "),
-        _c(
-          "div",
-          { staticClass: "search" },
-          _vm._l(_vm.restaurants, function(restaurant) {
-            return _c("div", { key: restaurant.id, staticClass: "user" }, [
-              _c("a", { attrs: { href: "/show/" + restaurant.id } }, [
-                _vm._v(_vm._s(restaurant.restaurant_name))
-              ])
+              }),
+              _vm._v(" "),
+              _c("span", [_vm._v(_vm._s(typology.name))])
             ])
           }),
-          0
-        )
-      ])
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "search" },
+            _vm._l(_vm.restaurants, function(restaurant) {
+              return _c("div", { key: restaurant.id, staticClass: "user" }, [
+                _c("a", { attrs: { href: "/show/" + restaurant.id } }, [
+                  _vm._v(_vm._s(restaurant.restaurant_name))
+                ])
+              ])
+            }),
+            0
+          )
+        ],
+        2
+      )
     ])
   ])
 }
@@ -51050,8 +51114,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /home/salwo92/Documenti/progettoFinale/deliveboo/laravel/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /home/salwo92/Documenti/progettoFinale/deliveboo/laravel/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Laravel\deliveboo\laravel\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Laravel\deliveboo\laravel\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
