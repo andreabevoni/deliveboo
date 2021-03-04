@@ -1,9 +1,5 @@
 @extends('layouts.app')
 @section('content')
-    {{-- @php
-    dd($foods);
-    @endphp --}}
-
 
     <div class="container">
         <div class="row justify-content-center">
@@ -12,9 +8,11 @@
                     <div class="card-header">{{ __('Ripristina Piatto') }}</div>
 
                     <div class="card-body">
+
                         <form method="POST" action="{{ route('restore-task') }}">
                             @csrf
                             @method('POST')
+
                             <div class="form-group row">
                                 <label for="name"
                                     class="col-md-4 col-form-label text-md-right">{{ __('Nome Piatto') }}</label>

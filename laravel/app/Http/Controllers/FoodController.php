@@ -15,16 +15,9 @@ class FoodController extends Controller
     {
 
         if (Auth::user()) {
-            // $userAuth = Auth::user();
-            // $id = $userAuth->id;
 
             $foods = Auth::user()->food;
-            // dd($foods);
-
-            /*  
-            $foods = Food::orderBy('name', 'ASC')->where(function ($query) use ($id) {
-                $query->where('user_id', '=', $id);
-            })->get(); */
+            // dd($foods)
 
             return view('foods-page', compact('foods'));
         } else {
