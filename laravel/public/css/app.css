@@ -10997,3 +10997,51 @@ footer .social i {
   padding-left: 10px;
 }
 
+.check {
+  margin: 10px;
+  cursor: pointer;
+}
+
+.check input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.check span {
+  padding: 5px 10px;
+  display: inline-block;
+  color: red;
+  border: 2px solid red;
+  border-radius: 3px;
+  font-size: 12px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.check input:checked + span {
+  color: white;
+  background-color: red;
+}
+
+.search {
+  margin: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.user {
+  width: 100px;
+  height: 100px;
+  margin: 20px;
+  padding: 10px;
+  border: 2px solid blue;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
