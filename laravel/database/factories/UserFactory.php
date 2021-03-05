@@ -19,7 +19,26 @@ use Illuminate\Support\Str;
 
 $factory->define(User::class, function (Faker $faker) {
     return [
-        'restaurant_name' => $faker->company,
+        'restaurant_name' => $faker->unique()->randomElement([
+                  'Pizzeria Belvedere',
+                  'Ristorante Da Carletto',
+                  'Il Ritrovo del Boss',
+                  'Sakura',
+                  'Osteria del Passatore',
+                  'America Graffiti',
+                  'La Pignata De Geval',
+                  'Ristorante Al Deserto',
+                  'La Griglia',
+                  'Radicchio Rosso',
+                  'Osteria La Cadrega',
+                  'Il Mandarino',
+                  'Laboratorio del Palato',
+                  'Ca de Ven',
+                  'Casa delle Aie',
+                  'Ristorante Al Moro',
+                  'Trattoria Al Cerchio',
+                  'Ali Kebab',
+                ]),
         'email' => $faker->unique()->safeEmail,
         'email_verified_at' => now(),
         'address' => $faker->address,
