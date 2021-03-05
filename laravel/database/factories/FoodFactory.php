@@ -14,7 +14,13 @@ $factory->define(Food::class, function (Faker $faker) {
         'name' => $faker->foodName(),
         'price' => rand(100, 1500),
         'description' => $faker->paragraph(3),
-        'category' => $faker->word,
+        'category' => $faker->unique()->randomElement([
+                  'Antipasti',
+                  'Primi piatti',
+                  'Secondi piatti',
+                  'Contorni',
+                  'Pizze',
+                  'Dessert']),
         'visible' => rand(0, 1)
     ];
 });

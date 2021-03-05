@@ -2473,6 +2473,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2502,6 +2504,15 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -38724,9 +38735,9 @@ var render = function() {
     _vm._v(" "),
     _c("span", [_vm._v(_vm._s(_vm.description))]),
     _vm._v(" "),
-    _c("h6", [_vm._v(_vm._s(_vm.price / 100) + " euro")]),
-    _vm._v(" "),
-    _c("img", { attrs: { src: "", alt: "" } })
+    _c("div", { staticClass: "price" }, [
+      _c("h6", [_vm._v(_vm._s(_vm.price / 100) + " euro")])
+    ])
   ])
 }
 var staticRenderFns = []
@@ -38751,12 +38762,12 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "container" }, [
-    _c("div", { staticClass: "row justify-content-center" }, [
-      _c(
-        "div",
-        { staticClass: "col-12" },
-        [
+  return _c("div", { staticClass: "container-fluid" }, [
+    _c("div", { staticClass: "row justify-content-center mx-5" }, [
+      _c("div", { staticClass: "col-12 d-flex" }, [
+        _c(
+          "div",
+          { staticClass: "d-flex flex-column align-items-start mt-5 bg-white" },
           _vm._l(_vm.typologies, function(typology) {
             return _c("label", { staticClass: "check" }, [
               _c("input", {
@@ -38806,22 +38817,33 @@ var render = function() {
               _c("span", [_vm._v(_vm._s(typology.name))])
             ])
           }),
-          _vm._v(" "),
-          _c(
-            "div",
-            { staticClass: "search" },
-            _vm._l(_vm.restaurants, function(restaurant) {
-              return _c("div", { key: restaurant.id, staticClass: "user" }, [
+          0
+        ),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "search d-flex" },
+          _vm._l(_vm.restaurants, function(restaurant) {
+            return _c("div", { key: restaurant.id, staticClass: "user" }, [
+              _c("div", { staticClass: "my-3" }, [
+                _c("img", {
+                  attrs: { src: "/storage/icon/210326_1614854447.jpg", alt: "" }
+                })
+              ]),
+              _vm._v(" "),
+              _c("div", [
                 _c("a", { attrs: { href: "/show/" + restaurant.id } }, [
                   _vm._v(_vm._s(restaurant.restaurant_name))
-                ])
+                ]),
+                _vm._v(" "),
+                _c("br"),
+                _vm._v(_vm._s(restaurant.address) + "\n                    ")
               ])
-            }),
-            0
-          )
-        ],
-        2
-      )
+            ])
+          }),
+          0
+        )
+      ])
     ])
   ])
 }
@@ -51746,8 +51768,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Boolean\Esercizi\deliveboo\laravel\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Boolean\Esercizi\deliveboo\laravel\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Laravel\deliveboo\laravel\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Laravel\deliveboo\laravel\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
