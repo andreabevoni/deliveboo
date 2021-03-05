@@ -40,7 +40,7 @@ Route::resource('typologies', 'TypologyController');
 Route::get('/index', 'UserController@indexUser')->name('index');
 
 // Route Show User
-// Route::get('/show/{id}', 'UserController@showUser')->name('user-show');
+Route::get('/show/{id}', 'UserController@showUser')->name('user-show');
 
 //upload User Img
 Route::post('/upload/avatar', 'UserController@uploadAvatar')->name('upload-avatar');
@@ -53,5 +53,5 @@ Route::get('/clear/avatar', 'UserController@clearImg')->name('clear-avatar');
 // test per carrello
 Route::get('/cart', 'MainController@testCart')->name('test-cart');
 Route::get('/shop', 'MainController@testShop')->name('test-shop');
-Route::get('/show/{id}', 'MainController@testShow')->name('user-show');
+// Route::get('/show/{id}', 'MainController@testShow')->name('user-show');
 Route::get('/checkout/{id}', 'MainController@checkout')->name('checkout');
