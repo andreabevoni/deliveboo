@@ -100,6 +100,9 @@ class RegisterController extends Controller
         event(new Registered($user = $this->create($request->all())));
 
         return $this->registered($request, $user)
-            ?: redirect($this->redirectPath());
+            ?: redirect('/dashboard');
     }
 }
+
+/* return $this->registered($request, $user)
+    ?: redirect($this->redirectPath()); */

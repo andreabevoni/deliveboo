@@ -10971,8 +10971,23 @@ a.text-dark:focus {
   margin: 10px;
 }
 
+.food-item button {
+  background-color: #00ccbc;
+  color: white;
+  border: 1px solid #00ccbc;
+  padding: 10px;
+}
+
 li {
   list-style: none;
+}
+
+.price {
+  padding: 20px 0;
+}
+
+.price h6 {
+  font-weight: bolder;
 }
 
 .logo img {
@@ -11055,5 +11070,51 @@ footer .social i {
 
 .user img {
   width: 100%;
+}
+
+.menu-test {
+  display: flex;
+  flex-wrap: wrap;
+  border: 1px solid red;
+}
+
+.menu-test .food-test {
+  margin: 20px;
+  padding: 10px;
+  width: 300px;
+  height: 200px;
+  border: 1px solid blue;
+}
+
+.menu-test .food-test div {
+  margin-bottom: 10px;
+  font-size: 10px;
+}
+
+.menu-test .food-test.hide {
+  background-color: grey;
+}
+
+.menu-test .food-test.show:hover {
+  cursor: pointer;
+}
+
+.menu-test .food-test.hide:hover {
+  cursor: not-allowed;
+}
+
+.cart-test {
+  border: 1px solid green;
+  padding: 10px 0;
+}
+
+.cart-test .item-test {
+  margin-bottom: 10px;
+  padding: 0 10px;
+  height: 50px;
+  border: 1px solid purple;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
