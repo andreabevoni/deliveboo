@@ -3,8 +3,10 @@
 @section('content')
 
   <div class="text-center">
-      <div class="display-1">
-        Deliveboo
+      <div class="sfondo">
+        <h1 class="display-1">
+          DELIVEBOO
+        </h1>
       </div>
       <search :typologies="{{ json_encode($typologies) }}"></search>
   </div>

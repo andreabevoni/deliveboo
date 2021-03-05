@@ -1,73 +1,125 @@
 @extends('layouts.app')
 
 @section('dashboard')
+    <div class="container-fluid">
+
+        <div class="row titolo-dashboard">
+            
+            <div class="pt-5 pl-5">
+
+                <h1 class="display-5">
+                    Benvenuto {{ Auth::user()->restaurant_name }}
+                </h1>
+                <h4>
+                    {{ Auth::user()->email }}
+                </h4>
+            </div>
+
+        </div>
+    </div>
     <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-sm-12">
-                <div class="card p-4">
+        <div class="row justify-content-center dashboard">
+            <div class="col-sm-12 my-5">
+                {{-- <div class="card p-4"> --}}
                     {{-- <div class="card-header">{{ __('User Dashboard') }}</div> --}}
-
-                    <h1>
-                        Benvenuto {{ Auth::user()->restaurant_name }}
-                    </h1>
-
 
                     <div class="row">
                         <div class="col-sm-6">
-                            <div class="card">
 
+                            <h2 class="px-3 card-title">La tua Immagine</h2>
+                            <div class="card p-4">
 
                                 @if (Auth::user()->image)
                                     <img class="img-fluid" src="{{ asset('storage/icon/' . Auth::user()->image) }}" alt=""
-                                        height="200px" width="200px">
+                                        height="400px" width="400px">
                                 @else
                                     <img class="img-fluid" src="{{ asset('storage/img/noimg.png') }}" alt=""
-                                        height="200px" width="200px">
+                                        height="400px" width="400px">
                                 @endif
 
-
-
-                                <div class="card-body">
+                                {{-- <div class="card-body">
                                     <h5 class="card-title">Tipologie</h5>
                                     <p class="card-text">With supporting text below as a natural lead-in to additional
                                         content.</p>
-                                </div>
-                                <ul class="list-group list-group-flush">
+                                </div> --}}
+
+                                <form action="{{ route('upload-avatar') }}" method="POST" enctype="multipart/form-data">
+                                    @csrf
+                                    @method('POST')
+        
+                                    <div class="form-group">
+                                        <br>
+
+                                        <label for="icon">Seleziona Immagine</label>
+                                        <input type="file" name="icon" id="icon" class="inputfile" placeholder=""
+                                            aria-describedby="helpId">
+
+                                        <br>
+                                        <input type="submit" class="button" value="Carica">
+
+                                        <a href="{{ route('clear-avatar') }}" class="button">Elimina</a>
+                                        <small id="helpId" class="text-muted"></small>
+                                    </div>
+                                </form>
+                                {{-- <ul class="list-group list-group-flush">
 
                                     @foreach (Auth::user()->typologies as $typ)
                                         <li class="list-group-item">{{ $typ->name }}</li>
 
                                     @endforeach
-                                </ul>
+                                </ul> --}}
                             </div>
                         </div>
+                        
                         <div class="col-sm-6">
-                            <div class="card">
-                                <div class="card-body">
-                                    <h5 class="card-title">Le tue informazioni</h5>
-                                    <p class="card-text">With supporting text below as a natural lead-in to additional
-                                        content.</p>
-                                </div>
+                            <div class="">
+                                {{-- <div class="card list-group-item"> --}}
+                                    <h2 class="px-3 card-title">Le tue Informazioni</h2>
+                                    {{-- <p class="card-text">With supporting text below as a natural lead-in to additional
+                                        content.</p> --}}
+                                {{-- </div> --}}
 
                                 <ul class="list-group list-group-flush">
-                                    <li class="list-group-item">Nome: {{ Auth::user()->restaurant_name }}</li>
-                                    <li class="list-group-item">Email: {{ Auth::user()->email }}</li>
-                                    <li class="list-group-item">Indirizzo:{{ Auth::user()->address }}</li>
-                                    <li class="list-group-item">Telefono: {{ Auth::user()->phone }}</li>
-                                    <li class="list-group-item">Giorno di chiusura:{{ Auth::user()->closing_day }}</li>
-                                    <li class="list-group-item">Apertura da:{{ Auth::user()->opening_time }}</li>
-                                    <li class="list-group-item">Chiusura alle:{{ Auth::user()->closing_time }}</li>
+                                    <li class="my-2 card list-group-item"> 
+                                        <strong>Nome: </strong> {{ Auth::user()->restaurant_name }}
+                                    </li>
+                                    <li class="my-2 card list-group-item"> 
+                                        <strong>Indirizzo: </strong> {{ Auth::user()->address }}
+                                    </li>
+                                    <li class="my-2 card list-group-item"> 
+                                        <strong>P. Iva: </strong> {{ Auth::user()->p_iva }}
+                                        {{-- <strong>Email: </strong> {{ Auth::user()->email }} --}}
+                                    </li>
+                                    <li class="my-2 card list-group-item"> 
+                                        <strong>Telefono: </strong> {{ Auth::user()->phone }}
+                                    </li>
+                                    <li class="my-2 card list-group-item"> 
+                                        <strong>Giorno di chiusura: </strong> {{ Auth::user()->closing_day }}
+                                    </li>
+                                    <li class="my-2 card list-group-item"> 
+                                        <strong>Apertura da: </strong> {{ Auth::user()->opening_time }}
+                                    </li>
+                                    <li class="my-2 card list-group-item"> 
+                                        <strong>Chiusura alle: </strong> {{ Auth::user()->closing_time }}
+                                    </li>
+                                    {{-- <ul class="my-2 card list-group list-group-flush"> --}}
+                                    <li class="my-2 card list-group-item">
+                                        <strong>Tipologie: </strong>
+                                        @foreach (Auth::user()->typologies as $typ)
+                                            {{ $typ->name }}
+    
+                                        @endforeach
+                                    </li>
+
+                                    {{-- </ul> --}}
                                 </ul>
-
-
-
 
                             </div>
                         </div>
                     </div>
-                    <div class="card-body">
+                    {{-- <div class="card-body"> --}}
 
-                        <form action="{{ route('upload-avatar') }}" method="POST" enctype="multipart/form-data">
+                        {{-- <form action="{{ route('upload-avatar') }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             @method('POST')
 
@@ -79,48 +131,36 @@
                                 <a href="{{ route('clear-avatar') }}" class="btn btn-danger">Delete</a>
                                 <small id="helpId" class="text-muted">Upload your image here</small>
                             </div>
-                        </form>
+                        </form> --}}
 
-
-
-                    </div>
-                </div>
+                    {{-- </div> --}}
+                {{-- </div> --}}
 
                 <div class="row mt-4">
                     <div class="col-sm-6">
-                        <div class="card">
-                            <div class="card-body">
-                                <h5 class="card-title">Special title treatment</h5>
-                                <p class="card-text">With supporting text below as a natural lead-in to additional content.
-                                </p>
-                                <a href="{{ route('food.index') }}" class="btn btn-primary">Lista piatti</a>
+                        <a href="{{ route('food.index') }}">
+                        
+                            <div class="card lista piatti">
+                                <h2>I tuoi cibi</h2>
+                                {{-- <p class="card-text">With supporting text below as a natural lead-in to additional content.</p> --}}
+                                {{-- <a href="{{ route('food.index') }}" class="btn btn-primary">Lista piatti</a> --}}
                             </div>
-                        </div>
+                        </a>
                     </div>
                     <div class="col-sm-6">
-                        <div class="card">
-                            <div class="card-body">
-                                <h5 class="card-title">Special title treatment</h5>
-                                <p class="card-text">With supporting text below as a natural lead-in to additional content.
-                                </p>
-                                <a href="{{ route('orders.index') }}" class="btn btn-primary">Ordini</a>
+
+                        <a href="{{ route('orders.index') }}">
+
+                            <div class="card lista ordini">
+                                <h2>Ordini ricevuti</h2>
                             </div>
-                        </div>
+
+                        </a>
                     </div>
                 </div>
             </div>
 
-
-
-
-
         </div>
-
-
-
-
-
-
 
     </div>
 @endsection
