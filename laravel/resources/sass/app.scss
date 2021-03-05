@@ -4,6 +4,9 @@
 // Variables
 @import 'variables';
 
+// Common
+@import 'common';
+
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
@@ -14,18 +17,31 @@
 
 .form-registration {
   button {
-    background-color: $logo-color;
-    color: white;
-    border: none;
-
+    @include cta-primary;
   }
 }
+
+// PAGINA LOGIN
+.login-form {
+  h1 {
+    text-align: center;
+  }
+
+  button {
+    @include cta-primary;
+    margin-bottom: 10px;
+  }
+  button.white {
+    @include cta-white;
+  }
+}
+
 // PAGINA SHOW
 
 .info {
   padding: 20px 0;
   span {
-    color: #828585;
+    color: $grey-color;
   }
 }
 
@@ -33,8 +49,8 @@
   a {
     color: white;
     font-weight: bolder;
-    background-color: #00ccbc;
-    border-radius: 20%;
+    background-color: $logo-color;
+    border-radius: 30%;
     padding: 5px;
     margin: 20px 5px 20px 0;
   }
@@ -50,10 +66,7 @@
   margin: 10px;
 
   button {
-    background-color: #00ccbc;
-    color: white;
-    border: 1px solid #00ccbc;
-    padding: 10px;
+    @include cta-primary;
    }
  }
 
