@@ -4,7 +4,7 @@
         <div class="col-md-10 mb-3">
             <div class="card">
                 <div class="card-header d-flex justify-content-between">
-                    <h4>Cibo: {{ namefood }}</h4>
+                    <h4>{{ namefood }}</h4>
                     <div>
                         <a
                             :href="'/food/' + id + '/edit'"
@@ -26,7 +26,8 @@
                     <div class="col-md-8">
                         <!-- Cibo: {{ namefood }} <br> -->
                         Descrizione: {{ description }} <br />
-                        Prezzo: {{ price / 100 }} €
+                        Prezzo: {{ price }} € <br />
+                        Disponibile: {{ available }}
                     </div>
                     <div class="col-md-4">
                         Qui Immagine del food, dolor sit amet consectetur
@@ -71,7 +72,8 @@ export default {
         namefood: String,
         price: Number,
         description: String,
-        id: Number
+        id: Number,
+        available: Number
     }
 };
 </script>
