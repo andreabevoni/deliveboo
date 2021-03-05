@@ -10972,8 +10972,23 @@ a.text-dark:focus {
   margin: 10px;
 }
 
+.food-item button {
+  background-color: #00ccbc;
+  color: white;
+  border: 1px solid #00ccbc;
+  padding: 10px;
+}
+
 li {
   list-style: none;
+}
+
+.price {
+  padding: 20px 0;
+}
+
+.price h6 {
+  font-weight: bolder;
 }
 
 .logo img {
