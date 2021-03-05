@@ -4,8 +4,8 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-sm-12">
-                <div class="card">
-                    <div class="card-header">{{ __('User Dashboard') }}</div>
+                <div class="card p-4">
+                    {{-- <div class="card-header">{{ __('User Dashboard') }}</div> --}}
 
                     <h1>
                         Benvenuto {{ Auth::user()->restaurant_name }}
@@ -86,7 +86,7 @@
                     </div>
                 </div>
 
-                <div class="row">
+                <div class="row mt-4">
                     <div class="col-sm-6">
                         <div class="card">
                             <div class="card-body">

@@ -130,9 +130,12 @@ return [
     */
 
     'custom' => [
-        'attribute-name' => [
-            'rule-name' => 'custom-message',
+        'typologies' => [
+            'required' => 'Seleziona almeno una tipologia',
         ],
+        'visible' => [
+            'required' => 'Seleziona la disponibilità'
+        ]
     ],
 
     /*
