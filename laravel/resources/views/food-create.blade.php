@@ -127,6 +127,7 @@
                 <div class="card">
                     <div class="card-header">{{ __('Crea un piatto') }}</div>
 
+            <form action="{{ route('food.store') }}" method="post">
                     <div class="card-body">
                         <form method="POST" action="{{ route('upload-food-img') }}">
                             @csrf
