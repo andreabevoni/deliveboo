@@ -93,40 +93,18 @@
                                     class="col-md-4 col-form-label text-md-right">{{ __('Disponibile') }}
                                 </label>
 
-                                @if ($food->visible === 1)
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="visible" id="inlineRadio1"
-                                            value='1'>
-                                        <label class="form-check-label" for="visible">Sì</label>
-                                    </div>
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="visible" id="inlineRadio2"
-                                            value="0">
-                                        <label class="form-check-label" for="visible">No</label>
-                                    </div>
-                                    @if ($errors->any())
 
-                                        <ul class="row justify-content-center">{!! implode('', $errors->all('<li style="color:red">:message</li>')) !!}</ul>
-                                    @endif
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="visible" id="inlineRadio1" value='1'>
+                                    <label class="form-check-label" for="visible">Sì</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="visible" id="inlineRadio2" value="0">
+                                    <label class="form-check-label" for="visible">No</label>
+                                </div>
+                                @if ($errors->any())
 
-                                @elseif ($food->visible === 0)
-
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="visible" id="inlineRadio1"
-                                            value="1">
-                                        <label class="form-check-label" for="visible">Sì</label>
-                                    </div>
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="visible" id="inlineRadio2"
-                                            value="0" checked>
-                                        <label class="form-check-label" for="visible">No</label>
-                                    </div>
-                                    @if ($errors->any())
-
-                                        <ul class="row justify-content-center">{!! implode('', $errors->all('<li style="color:red">:message</li>')) !!}</ul>
-                                    @endif
-
-
+                                    <ul class="row justify-content-center">{!! implode('', $errors->all('<li style="color:red">:message</li>')) !!}</ul>
                                 @endif
 
                             </div>
@@ -140,8 +118,35 @@
 
                         </form>
                     </div>
+                    <div class="col-md-8">
+                        <div class="card">
+                            <div class="card-header">{{ __('Crea un piatto') }}</div>
+
+                            <div class="card-body">
+                                <form method="POST" action="{{ route('food.update', $food->id) }}">
+                                    @csrf
+                                    @method('PUT')
+                                    <div class="form-group row">
+                                        <label for="name"
+                                            class="col-md-4 col-form-label text-md-right">{{ __('Nome Piatto') }}</label>
+
+                                        <div class="col-md-6">
+                                            <input required minlength="3" maxlength="50" id="name" type="text"
+                                                value="{{ $food->name }}"
+                                                class="form-control @error('name') is-invalid @enderror" name="name"
+                                                value="{{ old('name') }}" required autocomplete="name" autofocus>
+
+                                            @error('name')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
+                                        </div>
+                                    </div>
+                            </div>
+
+                        </div>
+
+                    </div>
                 </div>
-            </div>
-        </div>
-    </div>
-@endsection
+            @endsection
