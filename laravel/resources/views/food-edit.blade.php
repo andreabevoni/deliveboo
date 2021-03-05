@@ -30,6 +30,18 @@
                             </div>
 
 
+                <label for="name">Nome</label>
+                <input name="name" type="text" value="{{ $food->name }}">
+                <br>
+                <label for="price">Prezzo</label>
+                <input name="price" type="text" value="{{ $food->price }}">
+                <br>
+                <label for="description">Descrizione</label>
+                <input name="description" type="text" value="{{ $food->description }}">
+                <br>
+                <label for="visible">Visibilitá</label>
+                <input name="visible" type="number" value="{{ $food->visible }}">
+                <br>
 
                             <div class="form-group row">
                                 <label for="price"
