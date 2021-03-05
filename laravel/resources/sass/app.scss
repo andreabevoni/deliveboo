@@ -7,7 +7,19 @@
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
+// PAGINA REGISTER
+.img-background {
+  clip-path: polygon(25% 0%, 100% 0%, 100% 100%, 25% 100%, 0% 50%);
+}
 
+.form-registration {
+  button {
+    background-color: $logo-color;
+    color: white;
+    border: none;
+
+  }
+}
 // PAGINA SHOW
 
 .info {
