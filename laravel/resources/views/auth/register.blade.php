@@ -117,9 +117,15 @@
                                     <input name="typologies[]" class="form-check-input" type="checkbox" id="inlineCheckbox1"
                                         value={{ $typology->id }}>
                                     <label class="form-check-label" for="inlineCheckbox1">{{ $typology->name }}</label>
+
                                 </div>
 
                             @endforeach
+
+                            @if ($errors->any())
+
+                                <ul class="row justify-content-center">{!! implode('', $errors->all('<li style="color:red">:message</li>')) !!}</ul>
+                            @endif
 
 
                             <div class="form-group row mb-0">

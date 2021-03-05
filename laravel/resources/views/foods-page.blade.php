@@ -1,4 +1,4 @@
-@extends('layouts.main-layout')
+@extends('layouts.app')
 @section('content')
 
     {{-- <div class="row"> --}}
@@ -27,7 +27,8 @@
             @endphp --}}
 
             <comp-food :namefood="'{{ $food->name }}'" :price="{{ $food->price }}"
-                :description="'{{ $food->description }}'" :id="{{ $food->id }}"></comp-food>
+                :description="'{{ $food->description }}'" :id="{{ $food->id }}" :available="{{ $food->visible }}">
+            </comp-food>
         @endforeach
 
 

@@ -2132,6 +2132,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {// prop foods
@@ -2158,7 +2159,8 @@ __webpack_require__.r(__webpack_exports__);
     namefood: String,
     price: Number,
     description: String,
-    id: Number
+    id: Number,
+    available: Number
   }
 });
 
@@ -38340,7 +38342,7 @@ var render = function() {
           "div",
           { staticClass: "card-header d-flex justify-content-between" },
           [
-            _c("h4", [_vm._v("Cibo: " + _vm._s(_vm.namefood))]),
+            _c("h4", [_vm._v(_vm._s(_vm.namefood))]),
             _vm._v(" "),
             _c("div", [
               _c(
@@ -38377,9 +38379,13 @@ var render = function() {
             ),
             _c("br"),
             _vm._v(
-              "\n                    Prezzo: " +
-                _vm._s(_vm.price / 100) +
-                " €\n                "
+              "\n                    Prezzo: " + _vm._s(_vm.price) + " € "
+            ),
+            _c("br"),
+            _vm._v(
+              "\n                    Disponibile: " +
+                _vm._s(_vm.available) +
+                "\n                "
             )
           ]),
           _vm._v(" "),
