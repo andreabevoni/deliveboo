@@ -6,7 +6,7 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">{{ __('Crea un piatto') }}</div>
+                    <div class="card-header">{{ __('Modifica piatto') }}</div>
 
                     <div class="card-body">
                         <form method="POST" action="{{ route('food.update', $food->id) }}">
@@ -29,19 +29,6 @@
                                 </div>
                             </div>
 
-
-                <label for="name">Nome</label>
-                <input name="name" type="text" value="{{ $food->name }}">
-                <br>
-                <label for="price">Prezzo</label>
-                <input name="price" type="text" value="{{ $food->price }}">
-                <br>
-                <label for="description">Descrizione</label>
-                <input name="description" type="text" value="{{ $food->description }}">
-                <br>
-                <label for="visible">Visibilitá</label>
-                <input name="visible" type="number" value="{{ $food->visible }}">
-                <br>
 
                             <div class="form-group row">
                                 <label for="price"
@@ -107,11 +94,13 @@
 
 
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="visible" id="inlineRadio1" value='1'>
+                                    <input class="form-check-input" type="radio" name="visible" id="inlineRadio1" value='1'
+                                        @if ($food->visible == 1) checked @endif>
                                     <label class="form-check-label" for="visible">Sì</label>
                                 </div>
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="visible" id="inlineRadio2" value="0">
+                                    <input class="form-check-input" type="radio" name="visible" id="inlineRadio2" value="0"
+                                        @if ($food->visible == 0) checked @endif>
                                     <label class="form-check-label" for="visible">No</label>
                                 </div>
                                 @if ($errors->any())
@@ -132,29 +121,25 @@
                     </div>
                     <div class="col-md-8">
                         <div class="card">
-                            <div class="card-header">{{ __('Crea un piatto') }}</div>
+                            <div class="card-header">{{ __('Aggiungi immagine') }}</div>
 
                             <div class="card-body">
-                                <form method="POST" action="{{ route('food.update', $food->id) }}">
+                                <form method="POST" action="{{ route('upload-food-img') }}"
+                                    enctype="multipart/form-data">
                                     @csrf
-                                    @method('PUT')
+                                    @method('POST')
                                     <div class="form-group row">
-                                        <label for="name"
-                                            class="col-md-4 col-form-label text-md-right">{{ __('Nome Piatto') }}</label>
+                                        <label for="icon"
+                                            class="col-md-4 col-form-label text-md-right">{{ __('Immagine Piatto') }}</label>
 
-                                        <div class="col-md-6">
-                                            <input required minlength="3" maxlength="50" id="name" type="text"
-                                                value="{{ $food->name }}"
-                                                class="form-control @error('name') is-invalid @enderror" name="name"
-                                                value="{{ old('name') }}" required autocomplete="name" autofocus>
-
-                                            @error('name')
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
+                                        <div class="col-md-8">
+                                            <input id="icon" type="file" value="{{ $food->name }}" class="form-control "
+                                                name="icon">
+                                            <input type="submit" class="btn btn-success mt-2" value="Upload">
+                                            <a href="{{ route('clear-food-img') }}" class="mt-2 btn btn-danger">Clear</a>
                                         </div>
                                     </div>
+                                </form>
                             </div>
 
                         </div>

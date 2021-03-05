@@ -125,19 +125,18 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">{{ __('Crea un piatto') }}</div>
+                    <div class="card-header">{{ __('Aggiungi immagine piatto') }}</div>
 
-            <form action="{{ route('food.store') }}" method="post">
-                    <div class="card-body">
-                        <form method="POST" action="{{ route('upload-food-img') }}">
-                            @csrf
-                            @method('POST')
+                    <form action="{{ route('upload-food-img') }}" method="post" enctype="multipart/form-data">
+                        @csrf
+                        @method('POST')
+                        <div class="card-body">
                             <div class="form-group row">
-                                <label for="name"
+                                <label for="icon"
                                     class="col-md-4 col-form-label text-md-right">{{ __('Aggiungi immagine') }}</label>
 
                                 <div class="col-md-6">
-                                    <input required id="image" type="file" class="form-control" name="image">
+                                    <input required id="icon" type="file" class="form-control" name="icon">
 
                                 </div>
                             </div>
@@ -147,16 +146,16 @@
                             <div class="col-md-6">
 
                                 <input class="btn btn-success" type="submit" value="Upload">
-                                <input class="btn btn-danger" type="submit" value="Clear">
+                                <a class="btn btn-danger" href="{{ route('clear-food-img') }}">Clear</a>
 
                             </div>
 
-                        </form>
+                    </form>
 
-                    </div>
                 </div>
             </div>
         </div>
+    </div>
     </div>
 
 @endsection
