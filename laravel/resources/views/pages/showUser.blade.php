@@ -22,7 +22,7 @@
           </nav>
 
           <!-- Sezione menu -->
-            <div class="col-md-4">
+            <div class="col-md-6">
               <div class="menu">
   				      @foreach ($user -> food as $food)
 

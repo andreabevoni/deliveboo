@@ -10968,7 +10968,6 @@ a.text-dark:focus {
 .food-item {
   background-color: white;
   padding: 10px;
-  text-align: center;
   margin: 10px;
 }
 
@@ -11043,17 +11042,15 @@ footer .social i {
 .check span {
   padding: 5px 10px;
   display: inline-block;
-  color: red;
-  border: 2px solid red;
-  border-radius: 3px;
+  color: gray;
+  border-left: 2px solid #f8fafc;
   font-size: 12px;
   font-weight: bold;
   text-transform: uppercase;
 }
 
 .check input:checked + span {
-  color: white;
-  background-color: red;
+  border-left: 2px solid red;
 }
 
 .search {
@@ -11065,13 +11062,59 @@ footer .social i {
 }
 
 .user {
-  width: 100px;
-  height: 100px;
+  background-color: white;
+  width: 300px;
+  margin: 10px;
+  padding: 10px;
+}
+
+.user img {
+  width: 100%;
+}
+
+.menu-test {
+  display: flex;
+  flex-wrap: wrap;
+  border: 1px solid red;
+}
+
+.menu-test .food-test {
   margin: 20px;
   padding: 10px;
-  border: 2px solid blue;
+  width: 300px;
+  height: 200px;
+  border: 1px solid blue;
+}
+
+.menu-test .food-test div {
+  margin-bottom: 10px;
+  font-size: 10px;
+}
+
+.menu-test .food-test.hide {
+  background-color: grey;
+}
+
+.menu-test .food-test.show:hover {
+  cursor: pointer;
+}
+
+.menu-test .food-test.hide:hover {
+  cursor: not-allowed;
+}
+
+.cart-test {
+  border: 1px solid green;
+  padding: 10px 0;
+}
+
+.cart-test .item-test {
+  margin-bottom: 10px;
+  padding: 0 10px;
+  height: 50px;
+  border: 1px solid purple;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
 }
 
