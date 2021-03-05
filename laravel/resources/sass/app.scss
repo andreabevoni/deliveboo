@@ -34,7 +34,7 @@
 .food-item {
   background-color: white;
   padding: 10px;
-  text-align: center;
+  // text-align: center;
   margin: 10px;
  }
 
@@ -101,17 +101,18 @@ footer {
 .check span {
     padding: 5px 10px;
     display: inline-block;
-    color: red;
-    border: 2px solid red;
-    border-radius: 3px;
+    color: gray;
+    border-left: 2px solid $body-bg;
+    // border-radius: 3px;
     font-size: 12px;
     font-weight: bold;
     text-transform: uppercase;
 }
 
 .check input:checked+span {
-    color: white;
-    background-color: red;
+    // color: white;
+    // background-color: red;
+    border-left: 2px solid red;
 }
 
 .search {
@@ -123,13 +124,17 @@ footer {
 }
 
 .user {
-    width: 100px;
-    height: 100px;
-    margin: 20px;
+  background-color: white;
+    width: 300px;
+    // height: 200px;
+    margin: 10px;
     padding: 10px;
-    border: 2px solid blue;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    // border: 2px solid blue;
+    // display: flex;
+    // justify-content: center;
+    // align-items: center;
+    img{
+      width: 100%;
+    }
 }
 // fine stile homepage

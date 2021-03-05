@@ -22,12 +22,12 @@
           </nav>
 
           <!-- Sezione menu -->
-            <div class="col-md-4">
+            <div class="col-md-6">
               <div class="menu">
   				      @foreach ($user -> food as $food)
 
                 <!-- Categoria principale -->
-  					    <h3>{{ $food -> category }} </h3>
+  					    <h2 class="mt-5 px-4">{{ $food -> category }} </h2>
 
                 <!-- Card food -->
                   <food
