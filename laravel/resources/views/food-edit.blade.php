@@ -145,14 +145,8 @@
                         <div class="card">
                             <div class="card-header">Immagine</div>
                             <div class="card-content">
-                                {{-- @if (Auth::user()->id == $food->user_id) --}}
-                                {{-- @php
-                                        dd($food);
-                                    @endphp --}}
-                                {{-- <img class="image-fluid" src="{{ asset('storage/food_images/' . $food->image) }}"
-                                        width="200px" height="200px" alt=""> --}}
 
-                                {{-- @endif --}}
+                                <img src="#" id="preview" width="200px" height="200px">
                             </div>
                         </div>
                     </div>
@@ -160,4 +154,24 @@
             </div>
         </div>
     </div>
+    <script type="application/javascript">
+        $(document).ready(function() {
+            function readURL(input) {
+                if (input.files && input.files[0]) {
+                    var reader = new FileReader();
+
+                    reader.onload = function(e) {
+                        $("#preview").attr("src", e.target.result);
+                    };
+
+                    reader.readAsDataURL(input.files[0]);
+                }
+            }
+
+            $("#image").change(function() {
+                readURL(this);
+            });
+        });
+
+    </script>
 @endsection
