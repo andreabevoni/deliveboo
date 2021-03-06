@@ -27,7 +27,8 @@
             @endphp --}}
 
             <comp-food :namefood="'{{ $food->name }}'" :price="{{ $food->price }}"
-                :description="'{{ $food->description }}'" :id="{{ $food->id }}" :available="{{ $food->visible }}">
+                :description="'{{ $food->description }}'" :id="{{ $food->id }}" :available="{{ $food->visible }}"
+                :image="'{{ $food->image }}'">
             </comp-food>
         @endforeach
 

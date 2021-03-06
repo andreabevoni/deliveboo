@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 
+
 class FoodController extends Controller
 {
     // index
@@ -41,24 +42,68 @@ class FoodController extends Controller
 
         // dd($request -> all());
 
-        $validatedData = $request->validate([
+        $request->validate([
             'name' => 'required|min:3|max:50',
             'price' => 'required|min:1',
             'description' => 'min:5',
             'visible' => 'required', 'integer',
-            'category' => 'required'
+            'category' => 'required',
+            'image' => 'file'
         ]);
+
+
 
         // $data = $request->all();
         $user = Auth::user();
 
-        $food = Food::make($validatedData);
+        if ($request->has('image')) {
 
-        $food->user()->associate($user);
+            $image = $request->file('image');
 
-        $food->save();
-        // dd($food->visible);
+            //salvo ext file
+            $ext = $image->getClientOriginalExtension();
 
+            //creo nome img sempre diverso
+            $name = rand(100000, 999999) . '_' . time();
+            //creo destination file
+            $destFile = $name . '.' . $ext;
+
+            //copio file all upload
+            $file = $image->storeAs('food_images', $destFile, 'public');
+
+            $food = Food::make([
+                'name' => $request->name,
+                'price' => $request->price,
+                'description' => $request->description,
+                'visible' => $request->visible,
+                'category' => $request->category,
+                'image' => $destFile,
+            ]);
+
+            $food->user()->associate($user);
+
+            $food->save();
+        } else {
+
+
+            $food = Food::make([
+                'name' => $request->name,
+                'price' => $request->price,
+                'description' => $request->description,
+                'visible' => $request->visible,
+                'category' => $request->category,
+            ]);
+
+
+            $food->user()->associate($user);
+
+            $food->save();
+            // dd($food);
+            // dd($food->visible);
+
+            // redirect()->back();
+
+        }
         return redirect()->route('food.index');
     }
 
@@ -66,6 +111,7 @@ class FoodController extends Controller
     {
         $foods = Food::all();
         $food = Food::findOrFail($id);
+        // dd($food->image);
         // dd($food);
 
 
@@ -74,22 +120,73 @@ class FoodController extends Controller
 
     public function update(Request $request, $id)
     {
-        $validatedData = $request->validate([
+        $food = Food::findOrFail($id);
+        // dd($food->name);
+
+
+
+        $request->validate([
             'name' => 'required|min:3|max:50',
             'price' => 'required|min:1',
             'description' => 'min:5',
             'visible' => 'required',
-            'category' => 'required'
+            'category' => 'required',
+
         ]);
 
 
-        $food = Food::findOrFail($id);
+        if ($request->has('image')) {
+
+            $fileName = $food->image;
+
+            $file = storage_path('app/public/food_images/' . $fileName);
+            File::delete($file);
+            // dd($fileName);
 
 
-        $food->update($validatedData);
-        // dd($food);
+            $image = $request->file('image');
+            //salvo ext file
+            $ext = $image->getClientOriginalExtension();
 
+            //creo nome img sempre diverso
+            $name = rand(100000, 999999) . '_' . time();
 
+            //creo destination file
+            $destFile = $name . '.' . $ext;
+
+            // dd($destFile);
+
+            //copio file all upload
+            $file = $image->storeAs('food_images', $destFile, 'public');
+            $food->update(
+                [
+                    'name' => $request->name,
+                    'price' => $request->price,
+                    'description' => $request->description,
+                    'visible' => $request->visible,
+                    'category' => $request->category,
+                    'image' => $destFile,
+                ]
+            );
+
+            // dd($food);
+        } else {
+
+            $food->update(
+                [
+                    'name' => $request->name,
+                    'price' => $request->price,
+                    'description' => $request->description,
+                    'visible' => $request->visible,
+                    'category' => $request->category,
+
+                ]
+            );
+            // $food->save();
+            // dd($food);
+            // return redirect()->route('food.index');
+        }
+        $food->save();
         return redirect()->route('food.index');
     }
 
@@ -136,75 +233,13 @@ class FoodController extends Controller
         return redirect()->route('food.index');
     }
 
-
-    /* public function uploadFood(Request $request)
-    { */
-    //prima mi creo la cartella del singolo food
-
-    /* if (!File::exists(public_path() . "storage/app/public/")) {
-            File::makeDirectory(public_path() . "storage/app/public/");
-        } */
-    // dd($folder);
-
-    //validation che sia file e ci sia
-    /*  $request->validate([
-            'icon' => 'required|file'
-        ]); */
-
-
-    //devo chiamare la funzione che elimina l img
-    /* $this->deleteImg(); */
-
-    //validation che sia un file e che ci sia
-
-
-    /* $image = $request->file('icon');
-
-        //salvo ext file
-        $ext = $image->getClientOriginalExtension();
-
-        //creo nome img sempre diverso
-        $name = rand(100000, 999999) . '_' . time();
-
-        //creo destination file
-        $destFile = $name . '.' . $ext;
-
-        //copio file all upload
-        $file = $image->storeAs('icon', $destFile, 'public');
-
-        //prendo l user loggato
-        $user = Auth::user();
-
-        $user->image = $destFile;
-
-        $user->save();
-
-        // dd($user); */
-
-    /* return redirect()->back(); */
-    //}
-    /*     public function clearImg()
+    public function clearImg($id)
     {
-        $this->deleteImg();
-        $user = Auth::user();
-        $user->image = null;
-        $user->save();
-
-        return redirect()->back();
-    } */
-
-    /* public function deleteImg()
-    {
-        $user =  Auth::user();
-
-        try {
-            $fileName = $user->image;
-
-            $file = storage_path('app/public/icon/' . $fileName);
-            File::delete($file);
-            // dd($fileName);
-            return redirect()->back();
-        } catch (\Exception $e) {
-        }
-    } */
+        $food = Food::findOrFail($id);
+        // dd($food->image);
+        $food->image = null;
+        $food->save();
+        return back();
+        // dd($food);
+    }
 }

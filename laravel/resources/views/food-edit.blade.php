@@ -1,15 +1,17 @@
 @extends('layouts.app')
 @section('content')
 
-
     <div class="container">
+        {{-- @php
+            dd($food->image, $food->name, $food->id);
+        @endphp --}}
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-header">{{ __('Modifica piatto') }}</div>
 
                     <div class="card-body">
-                        <form method="POST" action="{{ route('food.update', $food->id) }}">
+                        <form method="POST" action="{{ route('food.update', $food->id) }}" enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
                             <div class="form-group row">
@@ -58,6 +60,24 @@
                                         value="{{ old('description') }}" required autocomplete="description" autofocus>
 
                                     @error('description')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="image"
+                                    class="col-md-4 col-form-label text-md-right">{{ __('Immagine') }}</label>
+
+                                <div class="col-md-6">
+                                    <input id="image" type="file" value="{{ $food->image }}" class="form-control"
+                                        name="image">
+
+                                    <a href="{{ route('clear-food-img', $food->id) }}" class="btn btn-danger">Clear</a>
+
+                                    @error('image')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
@@ -119,31 +139,25 @@
 
                         </form>
                     </div>
-                    <div class="col-md-8">
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
                         <div class="card">
-                            <div class="card-header">{{ __('Aggiungi immagine') }}</div>
+                            <div class="card-header">Immagine</div>
+                            <div class="card-content">
+                                {{-- @if (Auth::user()->id == $food->user_id) --}}
+                                {{-- @php
+                                        dd($food);
+                                    @endphp --}}
+                                {{-- <img class="image-fluid" src="{{ asset('storage/food_images/' . $food->image) }}"
+                                        width="200px" height="200px" alt=""> --}}
 
-                            <div class="card-body">
-                                <form method="POST" action="{{ route('upload-food-img') }}"
-                                    enctype="multipart/form-data">
-                                    @csrf
-                                    @method('POST')
-                                    <div class="form-group row">
-                                        <label for="icon"
-                                            class="col-md-4 col-form-label text-md-right">{{ __('Immagine Piatto') }}</label>
-
-                                        <div class="col-md-8">
-                                            <input id="icon" type="file" value="{{ $food->name }}" class="form-control "
-                                                name="icon">
-                                            <input type="submit" class="btn btn-success mt-2" value="Upload">
-                                            <a href="{{ route('clear-food-img') }}" class="mt-2 btn btn-danger">Clear</a>
-                                        </div>
-                                    </div>
-                                </form>
+                                {{-- @endif --}}
                             </div>
-
                         </div>
-
                     </div>
                 </div>
-            @endsection
+            </div>
+        </div>
+    </div>
+@endsection

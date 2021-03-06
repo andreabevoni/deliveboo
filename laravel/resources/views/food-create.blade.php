@@ -9,7 +9,7 @@
                     <div class="card-header">{{ __('Crea un piatto') }}</div>
 
                     <div class="card-body">
-                        <form method="POST" action="{{ route('food.store') }}">
+                        <form method="POST" action="{{ route('food.store') }}" enctype="multipart/form-data">
                             @csrf
                             @method('POST')
                             <div class="form-group row">
@@ -87,6 +87,17 @@
 
                             </div>
 
+                            <div class="form-group row">
+                                <label for="image"
+                                    class="col-md-4 col-form-label text-md-right">{{ __('Aggiungi immagine') }}</label>
+
+                                <div class="col-md-6">
+                                    <input id="image" type="file" class="form-control" name="image">
+                                    <a href="{{ route('clear-food-img', $food->id) }}" class="btn btn-danger">Clear</a>
+
+                                </div>
+                            </div>
+
 
 
                             <div class="form-group row">
@@ -122,40 +133,7 @@
             </div>
         </div>
 
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card">
-                    <div class="card-header">{{ __('Aggiungi immagine piatto') }}</div>
 
-                    <form action="{{ route('upload-food-img') }}" method="post" enctype="multipart/form-data">
-                        @csrf
-                        @method('POST')
-                        <div class="card-body">
-                            <div class="form-group row">
-                                <label for="icon"
-                                    class="col-md-4 col-form-label text-md-right">{{ __('Aggiungi immagine') }}</label>
-
-                                <div class="col-md-6">
-                                    <input required id="icon" type="file" class="form-control" name="icon">
-
-                                </div>
-                            </div>
-
-
-
-                            <div class="col-md-6">
-
-                                <input class="btn btn-success" type="submit" value="Upload">
-                                <a class="btn btn-danger" href="{{ route('clear-food-img') }}">Clear</a>
-
-                            </div>
-
-                    </form>
-
-                </div>
-            </div>
-        </div>
-    </div>
     </div>
 
 @endsection
