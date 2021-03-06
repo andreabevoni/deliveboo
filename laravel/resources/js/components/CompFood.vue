@@ -30,11 +30,21 @@
                         Disponibile: {{ available }}
                     </div>
                     <div class="col-md-4">
-                        Qui Immagine del food, dolor sit amet consectetur
-                        adipisicing elit. Ex temporibus quasi veniam, commodi
-                        inventore sequi rem molestias possimus, nisi nobis,
-                        voluptates dolorum in omnis. Sunt voluptates libero ex
-                        cum! Placeat.
+                        <img
+                            v-if="image"
+                            :src="baseURL + image"
+                            width="200px"
+                            height="200px"
+                            alt="food image"
+                        />
+
+                        <img
+                            v-else
+                            :src="defaultImg"
+                            width="200px"
+                            height="200px"
+                            alt="food image"
+                        />
                     </div>
                 </div>
             </div>
@@ -47,25 +57,15 @@
 export default {
     data: function() {
         return {
-            // prop foods
-            /* namefood: this.props.namefood,
-            price: this.props.price,
-            description: this.props.description */
+            baseURL: "storage/food_images/",
+            defaultImg: "storage/img/noimg.png"
         };
     },
     mounted() {
-        console.log("Component mounted.");
+        console.log("Component food mounted.");
     },
 
-    methods: {
-        deleteFood: function() {
-            console.log(this.id);
-            //chiamata axios in delete
-            axios.delete(`http://localhost:8000/food/${this.id}`).then(res => {
-                console.log(res);
-            });
-        }
-    },
+    methods: {},
 
     props: {
         // prop foods
@@ -73,7 +73,8 @@ export default {
         price: Number,
         description: String,
         id: Number,
-        available: Number
+        available: Number,
+        image: String
     }
 };
 </script>
