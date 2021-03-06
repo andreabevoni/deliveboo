@@ -28,22 +28,38 @@
 }
 
 .inputfile , label {
-  font-size: 1.25em;
-  font-weight: 700;
   color: white;
   background-color: black;
   display: inline-block;
 }
 
+label:hover {
+  color: red;
+}
 .inputfile:focus , label,
 .inputfile , label:hover {
-  background-color: rgb(114, 58, 58);
+  background-color: transparent;
+  color:rgba(28, 190, 131, 1);
+  border:1px solid rgba(28, 190, 131, 1);
+  font:normal normal 300 1.3em 'Open Sans';
+  padding: 2px 10px;
 }
 
 .inputfile , label {
 	cursor: pointer; /* "hand" cursor */
 }
 
+// -----------------------------
+
+
+
+
+
+
+
+
+
+// ---------------------------------------
 
   // bottoni carica ed elimina
   a.button, input.button{

@@ -10961,18 +10961,24 @@ a.text-dark:focus {
 
 .dashboard .inputfile,
 .dashboard label {
-  font-size: 1.25em;
-  font-weight: 700;
   color: white;
   background-color: black;
   display: inline-block;
+}
+
+.dashboard label:hover {
+  color: red;
 }
 
 .dashboard .inputfile:focus,
 .dashboard label,
 .dashboard .inputfile,
 .dashboard label:hover {
-  background-color: #723a3a;
+  background-color: transparent;
+  color: #1cbe83;
+  border: 1px solid #1cbe83;
+  font: normal normal 300 1.3em "Open Sans";
+  padding: 2px 10px;
 }
 
 .dashboard .inputfile,
