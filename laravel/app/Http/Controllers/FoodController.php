@@ -8,7 +8,6 @@ use App\Food;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
-use Illuminate\Support\Facades\Storage;
 
 
 class FoodController extends Controller
@@ -20,11 +19,10 @@ class FoodController extends Controller
         if (Auth::user()) {
 
             $foods = Auth::user()->food;
-            // dd($foods)
 
             return view('foods-page', compact('foods'));
         } else {
-            // dd('No logged user');
+
             return redirect()->route('home');
         }
     }
@@ -40,8 +38,6 @@ class FoodController extends Controller
     public function store(Request $request)
     {
 
-        // dd($request -> all());
-
         $request->validate([
             'name' => 'required|min:3|max:50',
             'price' => 'required|min:1',
@@ -52,8 +48,6 @@ class FoodController extends Controller
         ]);
 
 
-
-        // $data = $request->all();
         $user = Auth::user();
 
         if ($request->has('image')) {
@@ -85,7 +79,6 @@ class FoodController extends Controller
             $food->save();
         } else {
 
-
             $food = Food::make([
                 'name' => $request->name,
                 'price' => $request->price,
@@ -98,12 +91,8 @@ class FoodController extends Controller
             $food->user()->associate($user);
 
             $food->save();
-            // dd($food);
-            // dd($food->visible);
-
-            // redirect()->back();
-
         }
+
         return redirect()->route('food.index');
     }
 
@@ -111,9 +100,6 @@ class FoodController extends Controller
     {
         $foods = Food::all();
         $food = Food::findOrFail($id);
-        // dd($food->image);
-        // dd($food);
-
 
         return view('food-edit', compact('food', 'foods'));
     }
@@ -121,9 +107,6 @@ class FoodController extends Controller
     public function update(Request $request, $id)
     {
         $food = Food::findOrFail($id);
-        // dd($food->name);
-
-
 
         $request->validate([
             'name' => 'required|min:3|max:50',
@@ -131,18 +114,17 @@ class FoodController extends Controller
             'description' => 'min:5',
             'visible' => 'required',
             'category' => 'required',
-
+            'image' => 'file'
         ]);
 
 
         if ($request->has('image')) {
 
+            //delete del file precedente creato
             $fileName = $food->image;
 
             $file = storage_path('app/public/food_images/' . $fileName);
             File::delete($file);
-            // dd($fileName);
-
 
             $image = $request->file('image');
             //salvo ext file
@@ -168,8 +150,6 @@ class FoodController extends Controller
                     'image' => $destFile,
                 ]
             );
-
-            // dd($food);
         } else {
 
             $food->update(
@@ -182,10 +162,8 @@ class FoodController extends Controller
 
                 ]
             );
-            // $food->save();
-            // dd($food);
-            // return redirect()->route('food.index');
         }
+
         $food->save();
         return redirect()->route('food.index');
     }
@@ -215,7 +193,6 @@ class FoodController extends Controller
                 })
                 ->get();
 
-            // dd($deletedFood);
             return view('pages.food-restore', compact('deletedFood'));
         } else {
             // dd('No logged user');
@@ -227,8 +204,6 @@ class FoodController extends Controller
     {
         $data = $request->all();
         $id = $data['name'];
-        // dd($id);
-
         Food::where('id', $id)->restore();
         return redirect()->route('food.index');
     }
@@ -236,10 +211,8 @@ class FoodController extends Controller
     public function clearImg($id)
     {
         $food = Food::findOrFail($id);
-        // dd($food->image);
         $food->image = null;
         $food->save();
         return back();
-        // dd($food);
     }
 }
