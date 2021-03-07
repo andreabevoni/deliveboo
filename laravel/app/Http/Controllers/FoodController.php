@@ -20,7 +20,7 @@ class FoodController extends Controller
 
             $foods = Auth::user()->food;
 
-            return view('foods-page', compact('foods'));
+            return view('pages.foods-page', compact('foods'));
         } else {
 
             return redirect()->route('home');
@@ -31,7 +31,7 @@ class FoodController extends Controller
     public function create()
     {
         $foods = Food::all();
-        return view('food-create', compact('foods'));
+        return view('pages.food-create', compact('foods'));
     }
 
     // store
@@ -101,7 +101,7 @@ class FoodController extends Controller
         $foods = Food::all();
         $food = Food::findOrFail($id);
 
-        return view('food-edit', compact('food', 'foods'));
+        return view('pages.food-edit', compact('food', 'foods'));
     }
 
     public function update(Request $request, $id)

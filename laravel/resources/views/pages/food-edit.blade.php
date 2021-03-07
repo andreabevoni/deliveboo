@@ -140,28 +140,44 @@
                         </form>
                     </div>
                 </div>
+
                 <div class="row">
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header">Immagine</div>
                             <div class="card-content">
 
-                                <img src="#" id="preview" width="200px" height="200px">
+                                <img class="img-thumbnail rounded mx-auto" src="#" id="preview" width="300px"
+                                    height="200px">
                             </div>
                         </div>
                     </div>
                 </div>
+
             </div>
         </div>
     </div>
     <script type="application/javascript">
         $(document).ready(function() {
+
+
+            hideImg();
+
+            function hideImg() {
+                var img = $('#preview');
+                img.attr('src') === '#' ? img.hide() : img.show();
+            }
+
+
             function readURL(input) {
+                $('#preview').hide();
                 if (input.files && input.files[0]) {
                     var reader = new FileReader();
 
                     reader.onload = function(e) {
                         $("#preview").attr("src", e.target.result);
+                        // console.log($('#preview').attr('style'));
+                        $("#preview").show();
                     };
 
                     reader.readAsDataURL(input.files[0]);
