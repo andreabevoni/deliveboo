@@ -127,10 +127,22 @@
 
                             </div>
 
-                            <div class="row">
-                                <img id="preview" src="#" width="200px" alt="preview" />
-                            </div>
+
                         </form>
+
+
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card text-center">
+                            <div class="card-header">Preview Immagine</div>
+                            <div class="card-content">
+
+                                <img class="img-thumbnail rounded mx-auto" src="#" id="preview" width="300px"
+                                    height="200px">
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -140,12 +152,25 @@
     </div>
     <script type="application/javascript">
         $(document).ready(function() {
+
+
+            hideImg();
+
+            function hideImg() {
+                var img = $('#preview');
+                img.attr('src') === '#' ? img.hide() : img.show();
+            }
+
+
             function readURL(input) {
+                $('#preview').hide();
                 if (input.files && input.files[0]) {
                     var reader = new FileReader();
 
                     reader.onload = function(e) {
                         $("#preview").attr("src", e.target.result);
+                        // console.log($('#preview').attr('style'));
+                        $("#preview").show();
                     };
 
                     reader.readAsDataURL(input.files[0]);
@@ -158,4 +183,5 @@
         });
 
     </script>
+
 @endsection

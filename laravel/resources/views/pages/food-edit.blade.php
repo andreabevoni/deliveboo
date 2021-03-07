@@ -144,8 +144,8 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="card">
-                            <div class="card-header">Immagine</div>
-                            <div class="card-content">
+                            <div class="card-header">Preview Immagine</div>
+                            <div class="card-content text-center">
 
                                 <img class="img-thumbnail rounded mx-auto" src="#" id="preview" width="300px"
                                     height="200px">
