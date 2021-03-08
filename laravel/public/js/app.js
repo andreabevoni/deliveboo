@@ -2031,6 +2031,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     foods: Array,
@@ -38367,9 +38374,7 @@ var render = function() {
       : _vm._e(),
     _vm._v(" "),
     _vm.cart.length
-      ? _c("div", { staticClass: "col-md-8" }, [
-          _vm._v("\n    INSERIRE FORM PER PAGAMENTO\n  ")
-        ])
+      ? _c("div", { staticClass: "col-md-8" }, [_vm._m(0)])
       : _vm._e(),
     _vm._v(" "),
     _vm.cart.length
@@ -38446,7 +38451,31 @@ var render = function() {
       : _vm._e()
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("form", [
+      _c("div", { staticClass: "form-group" }, [
+        _c("label", { attrs: { for: "exampleInputEmail1" } }, [
+          _vm._v("Indirizzo email")
+        ]),
+        _vm._v(" "),
+        _c("input", {
+          staticClass: "form-control",
+          attrs: { type: "email", placeholder: "Inserisci Email" }
+        })
+      ]),
+      _vm._v(" "),
+      _c(
+        "button",
+        { staticClass: "btn btn-primary", attrs: { type: "submit" } },
+        [_vm._v("Conferma Ordine")]
+      )
+    ])
+  }
+]
 render._withStripped = true
 
 

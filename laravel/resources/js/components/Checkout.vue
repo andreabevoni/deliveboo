@@ -9,7 +9,14 @@
 
       <!-- colonna con form -->
       <div class="col-md-8" v-if="cart.length">
-        INSERIRE FORM PER PAGAMENTO
+        <form>
+          <div class="form-group">
+            <label for="exampleInputEmail1">Indirizzo email</label>
+            <input type="email" class="form-control" placeholder="Inserisci Email">
+          </div>
+
+          <button type="submit" class="btn btn-primary">Conferma Ordine</button>
+        </form>
       </div>
 
       <!-- colonna con carrello -->
