@@ -65,7 +65,7 @@ class RegisterController extends Controller
 
     public function showRegistrationForm()
     {
-        $typologies = Typology::all();
+        $typologies = Typology::orderBy('name', 'asc')->get();
         // dd($typologies);
         return view('auth.register', compact('typologies'));
     }
