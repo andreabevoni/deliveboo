@@ -32,13 +32,16 @@
 
     <div class="footer-block col-md-2">
       <h4>Porta Deliveroo con te</h4>
-      <ul>
-        <li>
-          <a href="#">
-            <img src="https://i.pinimg.com/originals/e5/63/d9/e563d97183e6468f0f32f4a01c424e68.png" alt="" width="120px">
-          </a>
-        </li>
-      </ul>
+      <div class="img-app">
+        <a href="#">
+          <img src="{{ asset('img/google-play.png') }}" alt="" width="120px">
+        </a>
+      </div>
+      <div class="img-app">
+        <a href="#">
+          <img src="{{ asset('img/app-apple.png') }}" alt="" width="120px">
+        </a>
+      </div>
     </div>
   </div>
   <div class="row justify-content-around">
@@ -65,8 +68,8 @@
       </span>
 
     </div>
-    <div class="col-2">
-      <span>© 2021 Deliveroo</span>
+    <div class="col-md-2">
+      <span><h6>© 2021 Deliveroo</h6></span>
     </div>
   </div>
 
