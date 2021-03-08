@@ -147,13 +147,13 @@
               <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
                 <div class="carousel-inner">
                   <div class="carousel-item active">
-                    <img src="https://restaurants.deliveroo.com/en-gb//_next/static/images/chef1-a46c601a1502b8f2a085f042f7cbb1e5.jpg" class="d-block w-100" alt="...">
+                    <img src="{{ asset('img/carousel-reg1.jpg')}}" class="d-block w-100" alt="...">
                   </div>
               <div class="carousel-item">
-                <img src="https://restaurants.deliveroo.com/en-gb//_next/static/images/chef4-2f49ce4ab903001850fb12bf16a61693.jpg" class="d-block w-100" alt="...">
+                <img src="{{ asset('img/carousel-reg2.jpg')}}" class="d-block w-100" alt="...">
               </div>
               <div class="carousel-item">
-                <img src="https://restaurants.deliveroo.com/en-gb//_next/static/images/chef2-427c8b04bc870ea2cd806bb3d6b82a18.jpg" class="d-block w-100" alt="...">
+                <img src="{{ asset('img/carousel-reg3.jpg')}}" class="d-block w-100" alt="...">
               </div>
             </div>
           </div>
