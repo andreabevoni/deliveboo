@@ -10944,8 +10944,26 @@ a.text-dark:focus {
   }
 }
 
+.img-background {
+  -webkit-clip-path: polygon(25% 0%, 100% 0%, 100% 100%, 25% 100%, 0% 50%);
+          clip-path: polygon(25% 0%, 100% 0%, 100% 100%, 25% 100%, 0% 50%);
+}
+
+.hero {
+  width: 100vw;
+  background-image: url("https://res.cloudinary.com/wnotw/images/c_limit,w_1536,q_auto:eco,f_auto/v1582505115/ye9g26mw2moftw9cedaw/deliveroo-illustrations");
+  background-size: cover;
+  background-position: center;
+}
+
+.form-registration button {
+  background-color: #00ccbc;
+  color: white;
+  border: none;
+}
+
 .titolo-dashboard {
-  background-color: #38c172;
+  background-color: #28a745;
   color: white;
   height: 200px;
 }
@@ -11053,24 +11071,6 @@ a.text-dark:focus {
 
 .dashboard .ordini {
   background-image: url("/storage/img/lista-ordini.jpg");
-}
-
-.img-background {
-  -webkit-clip-path: polygon(25% 0%, 100% 0%, 100% 100%, 25% 100%, 0% 50%);
-          clip-path: polygon(25% 0%, 100% 0%, 100% 100%, 25% 100%, 0% 50%);
-}
-
-.form-registration button {
-  background-color: #00ccbc;
-  color: white;
-  border: none;
-}
-
-.hero {
-  width: 100vw;
-  background-image: url("https://res.cloudinary.com/wnotw/images/c_limit,w_1536,q_auto:eco,f_auto/v1582505115/ye9g26mw2moftw9cedaw/deliveroo-illustrations");
-  background-size: cover;
-  background-position: center;
 }
 
 .hero-login img {
@@ -11295,37 +11295,6 @@ footer .social i {
 
 .altezza {
   min-height: 80vh;
-}
-
-.menu-test {
-  display: flex;
-  flex-wrap: wrap;
-  border: 1px solid red;
-}
-
-.menu-test .food-test {
-  margin: 20px;
-  padding: 10px;
-  width: 300px;
-  height: 200px;
-  border: 1px solid blue;
-}
-
-.menu-test .food-test div {
-  margin-bottom: 10px;
-  font-size: 10px;
-}
-
-.menu-test .food-test.hide {
-  background-color: grey;
-}
-
-.menu-test .food-test.show:hover {
-  cursor: pointer;
-}
-
-.menu-test .food-test.hide:hover {
-  cursor: not-allowed;
 }
 
 .cart-test {
