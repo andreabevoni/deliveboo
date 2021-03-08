@@ -11,7 +11,7 @@ class Food extends Model
     use SoftDeletes;
 
     protected $fillable = [
-        'name', 'price', 'description', 'category', 'visible',
+        'name', 'price', 'description', 'category', 'visible', 'image'
     ];
 
     public function user()
