@@ -1,14 +1,14 @@
 <header>
     <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-        <div class="container">
+      <div class="container">
 
         {{-- Left menu --}}
         <div class="menu-nav">
           {{-- Logo --}}
          <div class="logo">
            <a class="navbar-brand" href="{{ url('/') }}">
-                 <img src="https://www.deliziebolognesi.it/wp-content/uploads/2015/04/deliveroo-lunga.png" alt="logo deliveboo">
-             </a>
+               <img src="{{ asset('img/deliveboo-logo.svg') }}" alt="logo deliveboo">
+           </a>
          </div>
         </div>
 
@@ -22,10 +22,7 @@
             </button>
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <!-- Left Side Of Navbar -->
-                <ul class="navbar-nav mr-auto">
 
-                </ul>
 
                 <!-- Right Side Of Navbar -->
                 <ul class="navbar-nav ml-auto">
@@ -45,7 +42,7 @@
                               <button type="button" name="button" class="nav-button">
                                 <a class="nav-link" href="{{ route('register') }}">
                                   <i class="far fa-clipboard"></i>
-                                  {{ __('Register') }}
+                                  {{ __('Registrati') }}
                                 </a>
                               </button>
                             </li>
