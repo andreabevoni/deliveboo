@@ -19,12 +19,30 @@
                         placeholder="Inserisci Email"
                     />
                 </div>
+      <!-- colonna con form -->
+      <div class="col-md-8" v-if="cart.length">
+        <form>
+          <div class="form-group">
+            <label>Indirizzo email</label>
+            <input type="email" class="form-control" placeholder="Inserisci email">
+          </div>
 
                 <button type="submit" class="btn btn-primary">
                     Conferma Ordine
                 </button>
             </form>
         </div>
+          <div class="form-group">
+            <label>Codice carta di credito</label>
+            <input type="text" class="form-control" placeholder="Inserisci codice" v-model="card"></input>
+          </div>
+
+          <button class="btn btn-primary" @click="testApi">Conferma Ordine</button>
+        </form>
+
+        <button class="btn btn-primary" @click="testApi">testa</button>
+
+      </div>
 
         <!-- colonna con carrello -->
         <div class="col-md-4" v-if="cart.length">
@@ -75,6 +93,19 @@ export default {
     },
     mounted() {
         if (localStorage.cart && localStorage.user_id == this.user_id) {
+    export default {
+        props: {
+          foods: Array,
+          user_id: String,
+        },
+        data() {
+          return {
+            'cart' : [],
+            'card' : ''
+          };
+        },
+        mounted() {
+          if ((localStorage.cart) && (localStorage.user_id == this.user_id)) {
             this.cart = JSON.parse(localStorage.getItem("cart"));
         }
     },
@@ -107,6 +138,34 @@ export default {
                 total += foodPrice * this.cart[i].quantity;
             }
             return total;
+          },
+          testApi: function() {
+            var method = "nope";
+            if (this.card === '1234123412341234') {
+              method = "fake-valid-visa-nonce";
+            }
+            const headers = {
+              "Authorization": "Basic cG54M3BmcndwcnZjbmh4ZDpjZDJkOGZmYzU3ZjQyNmQ2N2ZjM2FmMjgyYTE4M2RkNQ==",
+              "Braintree-Version": "2021-03-08"
+            };
+            const data = {"query": "mutation chargePaymentMethod($input: ChargePaymentMethodInput!) {chargePaymentMethod(input: $input) {transaction {id status}}}" , "variables": {"input": {"paymentMethodId": method, "transaction": {"amount": this.total()/100}}}}
+            // chiamata axios a braintree
+            axios.post('https://payments.sandbox.braintree-api.com/graphql', data, { headers })
+                 .then(r => {
+                      console.log('data', r.data);
+
+                      if (r.data.hasOwnProperty('errors')) {
+                        console.log('carta non valida!')
+                      } else {
+                        console.log('pagamento effettuato');
+                        // 1) salviamo l'ordine nel db
+                        // 2) mandiamo la mail di ricevuto ordine
+                        // 3) svuotiamo il carrello
+                        // 4) cambiamo pagina in una che dice "pagamento effettuato"
+                      }
+                  })
+                 .catch(e => console.log('error', e));
+          }
         }
     }
 };
