@@ -11,12 +11,19 @@
       <div class="col-md-8" v-if="cart.length">
         <form>
           <div class="form-group">
-            <label for="exampleInputEmail1">Indirizzo email</label>
-            <input type="email" class="form-control" placeholder="Inserisci Email">
+            <label>Indirizzo email</label>
+            <input type="email" class="form-control" placeholder="Inserisci email">
+          </div>
+
+          <div class="form-group">
+            <label>Codice carta di credito</label>
+            <input type="input" class="form-control" placeholder="Inserisci codice">
           </div>
 
           <button type="submit" class="btn btn-primary">Conferma Ordine</button>
         </form>
+
+        <button type="button" name="button" @click="testApi">PROVAMI</button>
       </div>
 
       <!-- colonna con carrello -->
@@ -94,6 +101,26 @@
             }
             return total;
           },
+          testApi: function() {
+
+            const headers = {
+              "Authorization": "Basic cG54M3BmcndwcnZjbmh4ZDpjZDJkOGZmYzU3ZjQyNmQ2N2ZjM2FmMjgyYTE4M2RkNQ==",
+              "Braintree-Version": "2021-03-08"
+            };
+            const data = {"query": "mutation chargePaymentMethod($input: ChargePaymentMethodInput!) {chargePaymentMethod(input: $input) {transaction {id status}}}" , "variables": {"input": {"paymentMethodId": "fake-valid-visa-nonce", "transaction": {"amount": "50"}}}}
+
+            axios.post('https://payments.sandbox.braintree-api.com/graphql', data, { headers })
+                 .then(r => {
+                      console.log('data', r.data);
+
+                      if (r.data.hasOwnProperty('errors')) {
+                        console.log('carta non valida!')
+                      } else {
+                        console.log('pagamento effettuato');
+                      }
+                  })
+                 .catch(e => console.log('error', e));
+          }
         }
       }
 </script>
