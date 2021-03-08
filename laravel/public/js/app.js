@@ -2024,6 +2024,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     foods: Array,
@@ -38352,75 +38359,91 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "col-md-4" }, [
-    _vm.cart.length
-      ? _c(
-          "div",
-          { staticClass: "cart-test d-flex flex-column" },
-          [
-            _vm._l(_vm.cart, function(item, i) {
-              return _c("div", { key: i, staticClass: "item-test" }, [
-                _c("div", { staticClass: "quantity" }, [
-                  _c("i", {
-                    staticClass: "fas fa-minus-circle",
-                    on: {
-                      click: function($event) {
-                        return _vm.minusOne(i)
-                      }
-                    }
-                  }),
-                  _vm._v(
-                    "\n          " + _vm._s(item.quantity) + "\n          "
-                  ),
-                  _c("i", {
-                    staticClass: "fas fa-plus-circle",
-                    on: {
-                      click: function($event) {
-                        return _vm.plusOne(i)
-                      }
-                    }
-                  })
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "name" }, [
-                  _vm._v(
-                    "\n          " +
-                      _vm._s(
-                        _vm.foods.find(function(x) {
-                          return x.id === item.id
-                        }).name
-                      ) +
-                      "\n        "
-                  )
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "total" }, [
-                  _vm._v(
-                    "\n          " +
-                      _vm._s(
-                        (_vm.foods.find(function(x) {
-                          return x.id === item.id
-                        }).price /
-                          100) *
-                          item.quantity
-                      ) +
-                      " €\n        "
-                  )
-                ])
-              ])
-            }),
-            _vm._v(" "),
-            _c("div", { staticClass: "d-flex justify-content-between px-2" }, [
-              _c("span", [_vm._v("TOTALE:")]),
-              _vm._v(" "),
-              _c("span", [_vm._v(_vm._s(_vm.total() / 100) + " €")])
-            ])
-          ],
-          2
-        )
-      : _c("div", { staticClass: "cart-test" }, [
-          _c("h4", [_vm._v("CARRELLO VUOTO")])
+  return _c("div", { staticClass: "row" }, [
+    !_vm.cart.length
+      ? _c("div", { staticClass: "col-md-12 text-center" }, [
+          _c("h3", [_vm._v("CARRELLO VUOTO")])
         ])
+      : _vm._e(),
+    _vm._v(" "),
+    _vm.cart.length
+      ? _c("div", { staticClass: "col-md-8" }, [
+          _vm._v("\n    INSERIRE FORM PER PAGAMENTO\n  ")
+        ])
+      : _vm._e(),
+    _vm._v(" "),
+    _vm.cart.length
+      ? _c("div", { staticClass: "col-md-4" }, [
+          _c(
+            "div",
+            { staticClass: "cart-test d-flex flex-column" },
+            [
+              _vm._l(_vm.cart, function(item, i) {
+                return _c("div", { key: i, staticClass: "item-test" }, [
+                  _c("div", { staticClass: "quantity" }, [
+                    _c("i", {
+                      staticClass: "fas fa-minus-circle",
+                      on: {
+                        click: function($event) {
+                          return _vm.minusOne(i)
+                        }
+                      }
+                    }),
+                    _vm._v(
+                      "\n          " + _vm._s(item.quantity) + "\n          "
+                    ),
+                    _c("i", {
+                      staticClass: "fas fa-plus-circle",
+                      on: {
+                        click: function($event) {
+                          return _vm.plusOne(i)
+                        }
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "name" }, [
+                    _vm._v(
+                      "\n          " +
+                        _vm._s(
+                          _vm.foods.find(function(x) {
+                            return x.id === item.id
+                          }).name
+                        ) +
+                        "\n        "
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "total" }, [
+                    _vm._v(
+                      "\n          " +
+                        _vm._s(
+                          (_vm.foods.find(function(x) {
+                            return x.id === item.id
+                          }).price /
+                            100) *
+                            item.quantity
+                        ) +
+                        " €\n        "
+                    )
+                  ])
+                ])
+              }),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "d-flex justify-content-between px-2" },
+                [
+                  _c("span", [_vm._v("TOTALE:")]),
+                  _vm._v(" "),
+                  _c("span", [_vm._v(_vm._s(_vm.total() / 100) + " €")])
+                ]
+              )
+            ],
+            2
+          )
+        ])
+      : _vm._e()
   ])
 }
 var staticRenderFns = []

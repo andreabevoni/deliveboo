@@ -2,27 +2,24 @@
 
 @section('content')
 <div class="container">
-    <div class="row">
 
-        <!-- info ristorante + form per pagare a sinistra -->
-        <div class="col-md-8">
-          <div class="info">
-            <h1>{{ $user -> restaurant_name }}</h1>
+    <!-- riga con le info del ristorante -->
+    <div class="row d-flex align-items-center">
 
-            <div class="">
-              FORM DA INSERIRE QUI
-            </div>
-          </div>
-        </div>
+      <a href="{{route('user-show', $user -> id)}}" class="text-center">
+        <button class="btn btn-success">&#171; Torna al ristorante</button>
+      </a>
 
-        <!-- carrello a destra -->
-        <checkout
-          :foods="{{$user -> food}}"
-          :user_id="'{{$user -> id}}'"
-        ></checkout>
+      <div class="info">
+        <h1>{{ $user -> restaurant_name }}</h1>
+      </div>
+    </div>
 
-    </div> <!-- fine row -->
-
+    <!-- riga con form per pagamento e carrello -->
+    <checkout
+      :foods="{{$user -> food}}"
+      :user_id="'{{$user -> id}}'"
+    ></checkout>
 
 </div>
 @endsection
