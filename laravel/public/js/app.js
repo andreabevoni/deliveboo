@@ -2658,6 +2658,17 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     typologies: Array
@@ -39128,7 +39139,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "container-fluid" }, [
     _c("div", { staticClass: "row justify-content-center mx-5" }, [
-      _c("div", { staticClass: "col-12 d-flex" }, [
+      _c("div", { staticClass: "col-12 d-flex altezza" }, [
         _c(
           "div",
           { staticClass: "d-flex flex-column align-items-start mt-5 bg-white" },
@@ -39186,24 +39197,51 @@ var render = function() {
         _vm._v(" "),
         _c(
           "div",
-          { staticClass: "search d-flex" },
+          { staticClass: "search d-flex flex-wrap align-items-start m-5" },
           _vm._l(_vm.restaurants, function(restaurant) {
-            return _c("div", { key: restaurant.id, staticClass: "user" }, [
-              _c("div", { staticClass: "my-3" }, [
-                _c("img", {
-                  attrs: { src: "/storage/icon/210326_1614854447.jpg", alt: "" }
-                })
-              ]),
-              _vm._v(" "),
-              _c("div", [
+            return _c(
+              "div",
+              { key: restaurant.id, staticClass: "user text-left" },
+              [
                 _c("a", { attrs: { href: "/show/" + restaurant.id } }, [
-                  _vm._v(_vm._s(restaurant.restaurant_name))
-                ]),
-                _vm._v(" "),
-                _c("br"),
-                _vm._v(_vm._s(restaurant.address) + "\n                    ")
-              ])
-            ])
+                  _c("div", { staticClass: "image" }, [
+                    _c("img", {
+                      staticClass: "img-fluid max-width: 100%",
+                      attrs: {
+                        src: "/storage/img/210326_1614854447.jpg",
+                        alt: ""
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "p-3" }, [
+                    _c("h4", [
+                      _c("strong", [
+                        _vm._v(
+                          "\n                                    " +
+                            _vm._s(restaurant.restaurant_name) +
+                            "\n                                "
+                        )
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("span", [
+                      _vm._v(
+                        "\n\n                                " +
+                          _vm._s(restaurant.address) +
+                          " "
+                      ),
+                      _c("br"),
+                      _vm._v(
+                        "\n                                Tel: " +
+                          _vm._s(restaurant.phone) +
+                          "\n                            "
+                      )
+                    ])
+                  ])
+                ])
+              ]
+            )
           }),
           0
         )
