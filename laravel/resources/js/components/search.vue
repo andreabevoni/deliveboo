@@ -25,7 +25,7 @@
                             <img :src="'/storage/icon/210326_1614854447.jpg'" alt="">
                         </div>
                         <div>
-                            
+
                             <a :href="'/show/' + restaurant.id">{{
                                 restaurant.restaurant_name
                             }}</a>
