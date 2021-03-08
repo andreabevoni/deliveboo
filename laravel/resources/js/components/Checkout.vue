@@ -1,9 +1,27 @@
 <template>
-    <div class="col-md-4">
 
-        <!-- mostro il carrello se pieno -->
-        <div class="cart-test d-flex flex-column" v-if="cart.length">
+    <div class="row">
 
+      <!-- stampo se il carrello é vuoto -->
+      <div class="col-md-12 text-center" v-if="!cart.length">
+        <h3>CARRELLO VUOTO</h3>
+      </div>
+
+      <!-- colonna con form -->
+      <div class="col-md-8" v-if="cart.length">
+        <form>
+          <div class="form-group">
+            <label for="exampleInputEmail1">Indirizzo email</label>
+            <input type="email" class="form-control" placeholder="Inserisci Email">
+          </div>
+
+          <button type="submit" class="btn btn-primary">Conferma Ordine</button>
+        </form>
+      </div>
+
+      <!-- colonna con carrello -->
+      <div class="col-md-4" v-if="cart.length">
+        <div class="cart-test d-flex flex-column">
           <div class="item-test" v-for="(item, i) in cart" :key="i">
             <!-- stampo quantitá -->
             <div class="quantity">
@@ -25,13 +43,9 @@
             <span>TOTALE:</span>
             <span>{{total() / 100}} &#8364;</span>
           </div>
-
         </div>
+      </div>
 
-        <!-- scrivo che il carrello é vuoto se lo é -->
-        <div class="cart-test" v-else>
-          <h4>CARRELLO VUOTO</h4>
-        </div>
     </div>
 </template>
 

@@ -31,6 +31,7 @@
     <food-cart
         :foods="{{$user -> food}}"
         :user_id="'{{$user -> id}}'"
+        :user_name='"{{$user -> restaurant_name}}"'
     ></food-cart>
 
 </div>
