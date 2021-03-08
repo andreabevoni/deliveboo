@@ -1,0 +1,28 @@
+// Mixins
+
+  // Elementi basici dei bottoni
+@mixin button-basic {
+  list-style: none;
+  text-decoration: none;
+  border-radius: 10px;
+}
+  // Bottone CTA sfondo colore logo
+@mixin cta-primary {
+  @include button-basic;
+    background-color: $logo-color;
+    color: white;
+    border: 1px solid $logo-color;
+    padding: 15px;
+    width: 100%;
+}
+
+  // Bottone CTA sfondo bianco + testo colore logo
+  @mixin cta-white {
+    @include button-basic;
+      background-color: white;
+      padding: 10px;
+      a {
+        color: $logo-color;
+        text-decoration: none;
+      }
+  }

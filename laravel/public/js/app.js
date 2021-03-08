@@ -2024,6 +2024,20 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     foods: Array,
@@ -2330,52 +2344,150 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     foods: Array,
-    user_id: String
+    user_id: String,
+    user_name: String
   },
   data: function data() {
     return {
-      'cart': []
+      'cart': [],
+      'quantity': 1,
+      'id_food': 0,
+      'old_cart': ''
     };
   },
   mounted: function mounted() {
+    // controllo se esiste giá un carrello per questo ristorante, in tal caso me lo recupero
     if (localStorage.cart && localStorage.user_id == this.user_id) {
       this.cart = JSON.parse(localStorage.getItem("cart"));
-    }
+    } // recupero il nome del ristorante collegato al carrello salvato in memoria
+
+
+    this.old_cart = localStorage.user_name;
+    console.log(JSON.parse(localStorage.cart).length);
   },
   methods: {
+    // funzione per salvare in localStorage i vari dati che servono
     updateLocalStorage: function updateLocalStorage() {
       localStorage.setItem("cart", JSON.stringify(this.cart));
       localStorage.setItem("user_id", this.user_id);
+      localStorage.setItem("user_name", this.user_name);
     },
+    // funzione per resettare la quantitá indicata nella card del cibo sempre a 1
+    resetQuantity: function resetQuantity() {
+      this.quantity = 1;
+    },
+    // funzione per aumentare la quantitá ordinabile nella card
+    plusOne: function plusOne() {
+      this.quantity += 1;
+    },
+    // funzione per diminuire la quantitá ordinabile nella card
+    minusOne: function minusOne() {
+      if (this.quantity > 1) this.quantity -= 1;
+    },
+    // funzione per controllare se esiste giá un carrello con un ristoratore differente (apre un alert di conferma)
+    checkCart: function checkCart(id) {
+      if (!JSON.parse(localStorage.cart).length || localStorage.user_id == this.user_id) {
+        this.addCart(id);
+      } else {
+        this.id_food = id;
+        $('#alert').modal('show');
+      }
+    },
+    // funzione per aggiungere un cibo al carrello
     addCart: function addCart(id) {
+      // se il cibo é giá presente nel carrello, aggiungo la nuova quantitá senza creare un nuovo oggetto
       if (this.cart.find(function (x) {
         return x.id === id;
       })) {
         this.cart.find(function (x) {
           return x.id === id;
-        }).quantity += 1;
+        }).quantity += this.quantity;
       } else {
         var item = {
           'id': id,
-          'quantity': 1
+          'quantity': this.quantity
         };
         this.cart.push(item);
       }
 
       this.updateLocalStorage();
     },
+    // funzione per rimuovere un cibo al carrello
     removeCart: function removeCart(i) {
       this.cart.splice(i, 1);
       this.updateLocalStorage();
     },
-    plusOne: function plusOne(i) {
+    // funzione per aumentare la quantitá di un cibo nel carrello
+    plusOneCart: function plusOneCart(i) {
       this.cart[i].quantity += 1;
       this.updateLocalStorage();
     },
-    minusOne: function minusOne(i) {
+    // funzione per diminuire la quantitá di un cibo nel carrello
+    minusOneCart: function minusOneCart(i) {
       if (this.cart[i].quantity > 1) {
         this.cart[i].quantity -= 1;
         this.updateLocalStorage();
@@ -2383,6 +2495,7 @@ __webpack_require__.r(__webpack_exports__);
         this.removeCart(i);
       }
     },
+    // funzione per calcolare dinamicamente il totale del carrello
     total: function total() {
       var _this = this;
 
@@ -2395,7 +2508,7 @@ __webpack_require__.r(__webpack_exports__);
         total += foodPrice * this.cart[i].quantity;
       }
 
-      return total;
+      return total / 100;
     }
   }
 });
@@ -2505,6 +2618,17 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -38263,78 +38387,116 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "col-md-4" }, [
-    _vm.cart.length
-      ? _c(
-          "div",
-          { staticClass: "cart-test d-flex flex-column" },
-          [
-            _vm._l(_vm.cart, function(item, i) {
-              return _c("div", { key: i, staticClass: "item-test" }, [
-                _c("div", { staticClass: "quantity" }, [
-                  _c("i", {
-                    staticClass: "fas fa-minus-circle",
-                    on: {
-                      click: function($event) {
-                        return _vm.minusOne(i)
-                      }
-                    }
-                  }),
-                  _vm._v(
-                    "\n          " + _vm._s(item.quantity) + "\n          "
-                  ),
-                  _c("i", {
-                    staticClass: "fas fa-plus-circle",
-                    on: {
-                      click: function($event) {
-                        return _vm.plusOne(i)
-                      }
-                    }
-                  })
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "name" }, [
-                  _vm._v(
-                    "\n          " +
-                      _vm._s(
-                        _vm.foods.find(function(x) {
-                          return x.id === item.id
-                        }).name
-                      ) +
-                      "\n        "
-                  )
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "total" }, [
-                  _vm._v(
-                    "\n          " +
-                      _vm._s(
-                        (_vm.foods.find(function(x) {
-                          return x.id === item.id
-                        }).price /
-                          100) *
-                          item.quantity
-                      ) +
-                      " €\n        "
-                  )
-                ])
-              ])
-            }),
-            _vm._v(" "),
-            _c("div", { staticClass: "d-flex justify-content-between px-2" }, [
-              _c("span", [_vm._v("TOTALE:")]),
-              _vm._v(" "),
-              _c("span", [_vm._v(_vm._s(_vm.total() / 100) + " €")])
-            ])
-          ],
-          2
-        )
-      : _c("div", { staticClass: "cart-test" }, [
-          _c("h4", [_vm._v("CARRELLO VUOTO")])
+  return _c("div", { staticClass: "row" }, [
+    !_vm.cart.length
+      ? _c("div", { staticClass: "col-md-12 text-center" }, [
+          _c("h3", [_vm._v("CARRELLO VUOTO")])
         ])
+      : _vm._e(),
+    _vm._v(" "),
+    _vm.cart.length
+      ? _c("div", { staticClass: "col-md-8" }, [_vm._m(0)])
+      : _vm._e(),
+    _vm._v(" "),
+    _vm.cart.length
+      ? _c("div", { staticClass: "col-md-4" }, [
+          _c(
+            "div",
+            { staticClass: "cart-test d-flex flex-column" },
+            [
+              _vm._l(_vm.cart, function(item, i) {
+                return _c("div", { key: i, staticClass: "item-test" }, [
+                  _c("div", { staticClass: "quantity" }, [
+                    _c("i", {
+                      staticClass: "fas fa-minus-circle",
+                      on: {
+                        click: function($event) {
+                          return _vm.minusOne(i)
+                        }
+                      }
+                    }),
+                    _vm._v(
+                      "\n          " + _vm._s(item.quantity) + "\n          "
+                    ),
+                    _c("i", {
+                      staticClass: "fas fa-plus-circle",
+                      on: {
+                        click: function($event) {
+                          return _vm.plusOne(i)
+                        }
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "name" }, [
+                    _vm._v(
+                      "\n          " +
+                        _vm._s(
+                          _vm.foods.find(function(x) {
+                            return x.id === item.id
+                          }).name
+                        ) +
+                        "\n        "
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "total" }, [
+                    _vm._v(
+                      "\n          " +
+                        _vm._s(
+                          (_vm.foods.find(function(x) {
+                            return x.id === item.id
+                          }).price /
+                            100) *
+                            item.quantity
+                        ) +
+                        " €\n        "
+                    )
+                  ])
+                ])
+              }),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "d-flex justify-content-between px-2" },
+                [
+                  _c("span", [_vm._v("TOTALE:")]),
+                  _vm._v(" "),
+                  _c("span", [_vm._v(_vm._s(_vm.total() / 100) + " €")])
+                ]
+              )
+            ],
+            2
+          )
+        ])
+      : _vm._e()
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("form", [
+      _c("div", { staticClass: "form-group" }, [
+        _c("label", { attrs: { for: "exampleInputEmail1" } }, [
+          _vm._v("Indirizzo email")
+        ]),
+        _vm._v(" "),
+        _c("input", {
+          staticClass: "form-control",
+          attrs: { type: "email", placeholder: "Inserisci Email" }
+        })
+      ]),
+      _vm._v(" "),
+      _c(
+        "button",
+        { staticClass: "btn btn-primary", attrs: { type: "submit" } },
+        [_vm._v("Conferma Ordine")]
+      )
+    ])
+  }
+]
 render._withStripped = true
 
 
@@ -38559,35 +38721,137 @@ var render = function() {
     _c("div", { staticClass: "col-md-8" }, [
       _c(
         "div",
-        { staticClass: "menu-test" },
+        { staticClass: "menu" },
         _vm._l(_vm.foods, function(food) {
           return _c("div", { key: food.id }, [
             food.visible
               ? _c(
                   "div",
                   {
-                    staticClass: "food-test show",
-                    on: {
-                      click: function($event) {
-                        return _vm.addCart(food.id)
-                      }
-                    }
+                    staticClass: "card food-item show",
+                    staticStyle: { width: "18rem" },
+                    attrs: {
+                      "data-toggle": "modal",
+                      "data-target": "#myModal" + food.id
+                    },
+                    on: { click: _vm.resetQuantity }
                   },
                   [
+                    _c("img", {
+                      staticClass: "card-img-top",
+                      attrs: {
+                        src:
+                          "https://flawless.life/wp-content/uploads/2016/03/lievita-pizza-gourmet.jpg",
+                        alt: "immagine piatto"
+                      }
+                    }),
+                    _vm._v(" "),
                     _c("h4", [_vm._v(_vm._s(food.name))]),
                     _vm._v(" "),
                     _c("div", [_vm._v(_vm._s(food.description))]),
                     _vm._v(" "),
-                    _c("h6", [_vm._v(_vm._s(food.price / 100) + " euro")])
+                    _c("h6", [_vm._v(_vm._s(food.price / 100) + " €")])
                   ]
                 )
-              : _c("div", { staticClass: "food-test hide" }, [
-                  _c("h4", [_vm._v(_vm._s(food.name))]),
-                  _vm._v(" "),
-                  _c("div", [_vm._v(_vm._s(food.description))]),
-                  _vm._v(" "),
-                  _c("h6", [_vm._v(_vm._s(food.price / 100) + " euro")])
+              : _c(
+                  "div",
+                  {
+                    staticClass: "card food-item hide",
+                    staticStyle: { width: "18rem" }
+                  },
+                  [
+                    _c("img", {
+                      staticClass: "card-img-top",
+                      attrs: {
+                        src:
+                          "https://flawless.life/wp-content/uploads/2016/03/lievita-pizza-gourmet.jpg",
+                        alt: "immagine piatto"
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("h4", [_vm._v(_vm._s(food.name))]),
+                    _vm._v(" "),
+                    _c("div", [_vm._v(_vm._s(food.description))]),
+                    _vm._v(" "),
+                    _c("h6", [_vm._v(_vm._s(food.price / 100) + " €")])
+                  ]
+                ),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass: "modal fade",
+                attrs: { id: "myModal" + food.id, role: "dialog" }
+              },
+              [
+                _c("div", { staticClass: "modal-dialog" }, [
+                  _c("div", { staticClass: "modal-content" }, [
+                    _c("div", { staticClass: "modal-body" }, [
+                      _c("img", {
+                        staticClass: "card-img-top",
+                        attrs: {
+                          src:
+                            "https://flawless.life/wp-content/uploads/2016/03/lievita-pizza-gourmet.jpg",
+                          alt: "immagine piatto"
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "food-item" }, [
+                        _c("h4", [_vm._v(_vm._s(food.name))]),
+                        _vm._v(" "),
+                        _c("span", [_vm._v(_vm._s(food.description))]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "price" }, [
+                          _c("h6", [_vm._v(_vm._s(food.price / 100) + " €")])
+                        ]),
+                        _vm._v(" "),
+                        _c("div", {}, [
+                          _c("i", {
+                            staticClass: "fas fa-minus-circle",
+                            on: { click: _vm.minusOne }
+                          }),
+                          _vm._v(
+                            "\n                      " +
+                              _vm._s(_vm.quantity) +
+                              "\n                    "
+                          ),
+                          _c("i", {
+                            staticClass: "fas fa-plus-circle",
+                            on: { click: _vm.plusOne }
+                          })
+                        ]),
+                        _vm._v(" "),
+                        _c(
+                          "button",
+                          {
+                            attrs: {
+                              type: "button",
+                              name: "button",
+                              "data-dismiss": "modal"
+                            },
+                            on: {
+                              click: function($event) {
+                                return _vm.checkCart(food.id)
+                              }
+                            }
+                          },
+                          [_vm._v("Aggiungi al carrello")]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "button",
+                          {
+                            staticClass: "btn btn-default",
+                            attrs: { type: "button", "data-dismiss": "modal" }
+                          },
+                          [_vm._v("Annulla")]
+                        )
+                      ])
+                    ])
+                  ])
                 ])
+              ]
+            )
           ])
         }),
         0
@@ -38598,7 +38862,7 @@ var render = function() {
       _vm.cart.length
         ? _c(
             "div",
-            { staticClass: "cart-test d-flex flex-column" },
+            { staticClass: "cart-test d-flex flex-column sticky-top" },
             [
               _vm._l(_vm.cart, function(item, i) {
                 return _c("div", { key: i, staticClass: "item-test" }, [
@@ -38607,7 +38871,7 @@ var render = function() {
                       staticClass: "fas fa-minus-circle",
                       on: {
                         click: function($event) {
-                          return _vm.minusOne(i)
+                          return _vm.minusOneCart(i)
                         }
                       }
                     }),
@@ -38618,7 +38882,7 @@ var render = function() {
                       staticClass: "fas fa-plus-circle",
                       on: {
                         click: function($event) {
-                          return _vm.plusOne(i)
+                          return _vm.plusOneCart(i)
                         }
                       }
                     })
@@ -38642,9 +38906,9 @@ var render = function() {
                         _vm._s(
                           (_vm.foods.find(function(x) {
                             return x.id === item.id
-                          }).price /
-                            100) *
-                            item.quantity
+                          }).price *
+                            item.quantity) /
+                            100
                         ) +
                         " €\n        "
                     )
@@ -38658,7 +38922,7 @@ var render = function() {
                 [
                   _c("span", [_vm._v("TOTALE:")]),
                   _vm._v(" "),
-                  _c("span", [_vm._v(_vm._s(_vm.total() / 100) + " €")])
+                  _c("span", [_vm._v(_vm._s(_vm.total()) + " €")])
                 ]
               ),
               _vm._v(" "),
@@ -38677,13 +38941,100 @@ var render = function() {
             ],
             2
           )
-        : _c("div", { staticClass: "cart-test" }, [
+        : _c("div", { staticClass: "cart-test sticky-top" }, [
             _c("h4", [_vm._v("CARRELLO VUOTO")])
           ])
-    ])
+    ]),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        staticClass: "modal fade",
+        attrs: {
+          id: "alert",
+          "data-backdrop": "static",
+          "data-keyboard": "false",
+          tabindex: "-1",
+          "aria-labelledby": "staticBackdropLabel",
+          "aria-hidden": "true"
+        }
+      },
+      [
+        _c(
+          "div",
+          { staticClass: "modal-dialog modal-dialog modal-dialog-centered" },
+          [
+            _c("div", { staticClass: "modal-content" }, [
+              _vm._m(0),
+              _vm._v(" "),
+              _c("div", { staticClass: "modal-body" }, [
+                _vm._v(
+                  "\n          In questo modo cancelli il carrello esistente da " +
+                    _vm._s(_vm.old_cart) +
+                    " e crei un nuovo carrello da " +
+                    _vm._s(_vm.user_name) +
+                    ".\n        "
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "modal-footer" }, [
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-secondary",
+                    attrs: { type: "button", "data-dismiss": "modal" }
+                  },
+                  [_vm._v("Annulla")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-primary",
+                    attrs: { type: "button", "data-dismiss": "modal" },
+                    on: {
+                      click: function($event) {
+                        return _vm.addCart(_vm.id_food)
+                      }
+                    }
+                  },
+                  [_vm._v("Nuovo Carrello")]
+                )
+              ])
+            ])
+          ]
+        )
+      ]
+    )
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-header" }, [
+      _c(
+        "h5",
+        { staticClass: "modal-title", attrs: { id: "staticBackdropLabel" } },
+        [_vm._v("Vuoi creare un nuovo carrello?")]
+      ),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "close",
+          attrs: {
+            type: "button",
+            "data-dismiss": "modal",
+            "aria-label": "Close"
+          }
+        },
+        [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+      )
+    ])
+  }
+]
 render._withStripped = true
 
 
@@ -38788,7 +39139,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "container-fluid" }, [
     _c("div", { staticClass: "row justify-content-center mx-5" }, [
-      _c("div", { staticClass: "col-12 d-flex" }, [
+      _c("div", { staticClass: "col-12 d-flex altezza" }, [
         _c(
           "div",
           { staticClass: "d-flex flex-column align-items-start mt-5 bg-white" },
@@ -38846,24 +39197,51 @@ var render = function() {
         _vm._v(" "),
         _c(
           "div",
-          { staticClass: "search d-flex" },
+          { staticClass: "search d-flex flex-wrap align-items-start m-5" },
           _vm._l(_vm.restaurants, function(restaurant) {
-            return _c("div", { key: restaurant.id, staticClass: "user" }, [
-              _c("div", { staticClass: "my-3" }, [
-                _c("img", {
-                  attrs: { src: "/storage/icon/210326_1614854447.jpg", alt: "" }
-                })
-              ]),
-              _vm._v(" "),
-              _c("div", [
+            return _c(
+              "div",
+              { key: restaurant.id, staticClass: "user text-left" },
+              [
                 _c("a", { attrs: { href: "/show/" + restaurant.id } }, [
-                  _vm._v(_vm._s(restaurant.restaurant_name))
-                ]),
-                _vm._v(" "),
-                _c("br"),
-                _vm._v(_vm._s(restaurant.address) + "\n                    ")
-              ])
-            ])
+                  _c("div", { staticClass: "image" }, [
+                    _c("img", {
+                      staticClass: "img-fluid max-width: 100%",
+                      attrs: {
+                        src: "/storage/img/210326_1614854447.jpg",
+                        alt: ""
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "p-3" }, [
+                    _c("h4", [
+                      _c("strong", [
+                        _vm._v(
+                          "\n                                    " +
+                            _vm._s(restaurant.restaurant_name) +
+                            "\n                                "
+                        )
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("span", [
+                      _vm._v(
+                        "\n\n                                " +
+                          _vm._s(restaurant.address) +
+                          " "
+                      ),
+                      _c("br"),
+                      _vm._v(
+                        "\n                                Tel: " +
+                          _vm._s(restaurant.phone) +
+                          "\n                            "
+                      )
+                    ])
+                  ])
+                ])
+              ]
+            )
           }),
           0
         )

@@ -2,12 +2,14 @@
 
 @section('content')
     <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card">
-                    <div class="card-header">{{ __('Register') }}</div>
-
-                    <div class="card-body">
+        <div class="row">
+            <div class="col-md-5">
+                <div>
+                    <div>
+                      <h1>Diventa subito partner di Deliveboo</h1>
+                     </div>
+                    <div class="form-registration">
+                      <p>Aumenta le tue vendite fino al 30% grazie alle consegne a domicilio</p>
                         <form method="POST" action="{{ route('register') }}">
                             @csrf
                             @method('POST')
@@ -131,7 +133,7 @@
                             <div class="form-group row mb-0">
                                 <div class="col-md-6 offset-md-4">
                                     <button type="submit" class="btn btn-primary">
-                                        {{ __('Register') }}
+                                        {{ __('Registrati') }}
                                     </button>
                                 </div>
                             </div>
@@ -139,6 +141,23 @@
                     </div>
                 </div>
             </div>
+
+            {{-- Carosello immagini --}}
+            <div class="col-md-7 img-background">
+              <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+                <div class="carousel-inner">
+                  <div class="carousel-item active">
+                    <img src="{{ asset('img/carousel-reg1.jpg')}}" class="d-block w-100" alt="...">
+                  </div>
+              <div class="carousel-item">
+                <img src="{{ asset('img/carousel-reg2.jpg')}}" class="d-block w-100" alt="...">
+              </div>
+              <div class="carousel-item">
+                <img src="{{ asset('img/carousel-reg3.jpg')}}" class="d-block w-100" alt="...">
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
     </div>
 @endsection
