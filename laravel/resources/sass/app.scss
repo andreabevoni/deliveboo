@@ -8,7 +8,19 @@
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
+// PAGINA REGISTER
+.img-background {
+  clip-path: polygon(25% 0%, 100% 0%, 100% 100%, 25% 100%, 0% 50%);
+}
 
+.form-registration {
+  button {
+    background-color: $logo-color;
+    color: white;
+    border: none;
+
+  }
+}
 // DASHBOARD
 .titolo-dashboard {
   background-color: $green;
@@ -160,6 +172,18 @@ label:hover {
 .menu {
   margin-top: 20px;
 }
+
+.alert-show {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.alert-hide {
+  display: none;
+}
+
 .food-item {
   background-color: white;
   padding: 10px;
@@ -172,6 +196,18 @@ label:hover {
     border: 1px solid #00ccbc;
     padding: 10px;
    }
+ }
+
+ .food-item.hide {
+   background-color: grey;
+ }
+
+ .food-item.show:hover {
+   cursor: pointer;
+ }
+
+ .food-item.hide:hover {
+   cursor: not-allowed;
  }
 
  li {
@@ -310,37 +346,6 @@ footer {
 
 
 // TEST CARRELLO
-.menu-test {
-  display: flex;
-  flex-wrap: wrap;
-  border: 1px solid red;
-
-  .food-test {
-    margin: 20px;
-    padding: 10px;
-    width: 300px;
-    height: 200px;
-    border: 1px solid blue;
-
-    div {
-      margin-bottom: 10px;
-      font-size: 10px;
-    }
-  }
-
-  .food-test.hide {
-    background-color: grey;
-  }
-
-  .food-test.show:hover {
-    cursor: pointer;
-  }
-
-  .food-test.hide:hover {
-    cursor: not-allowed;
-  }
-}
-
 .cart-test {
   border: 1px solid green;
   padding: 10px 0;

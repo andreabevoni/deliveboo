@@ -17,17 +17,20 @@
           <!-- Barra scelta categoria -->
           <nav class="navbar-menu">
             @foreach ($user -> food as $food)
-            <span><a href="#">{{ $food -> category }}</a></span>
+            <span><a href="#{{ $food -> category }}">{{ $food -> category }}</a></span>
             @endforeach
           </nav>
 
           <!-- Sezione menu -->
             <div class="col-md-6">
-              <div class="menu">
+              <div class="menu" data-spy="scroll" data-target=".navbar" data-offset="50">
   				      @foreach ($user -> food as $food)
 
                 <!-- Categoria principale -->
-  					    <h3>{{ $food -> category }}</h3>
+                <div class="" id="{{ $food -> category }}">
+                   <h3>{{ $food -> category }}</h3>
+                </div>
+
 
                 <!-- Card food -->
                 <div class="card" style="width: 18rem;" data-toggle="modal" data-target="#myModal">
@@ -91,6 +94,10 @@
           <img src="https://www.laghettofonteviva.it/wp-content/uploads/2016/05/pizza-400x250px.jpg" alt="">
 
           <!-- Carrello -->
+          {{-- <food-cart
+              :foods="{{$user -> food}}"
+              :user_id="'{{$user -> id}}'"
+          ></food-cart> --}}
         </div>
     </div> <!-- fine row -->
 </div> <!-- fine container -->
