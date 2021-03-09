@@ -33,12 +33,11 @@ class OrderController extends Controller
     public function mailSend(Request $request)
     {
 	    $mail = $request -> email;
-      $order = $request -> order;
       $cart = $request -> cart;
       $user = User::with('food')->findOrFail($request -> user);
 
 	    Mail::to($mail)
-	        ->send(new OrderMail($order, $cart, $user));
+	        ->send(new OrderMail($cart, $user));
 
       return response () -> json('mail inviata', 200);
     }

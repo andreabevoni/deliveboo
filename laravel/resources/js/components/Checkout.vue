@@ -195,7 +195,6 @@
           testMail: function() {
             axios.post('/mail/send', {
               email: 'testmail@email.it',
-              order: 119,
               cart: this.cart,
               user: this.user_id
             })

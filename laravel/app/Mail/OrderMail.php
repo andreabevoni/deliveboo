@@ -11,14 +11,12 @@ class OrderMail extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $order;
     public $cart;
     public $user;
 
-    public function __construct($order, $cart, $user)
+    public function __construct($cart, $user)
     // public function __construct($order)
       {
-        $this -> order = $order;
         $this -> cart = $cart;
         $this -> user = $user;
       }
@@ -26,7 +24,7 @@ class OrderMail extends Mailable
     public function build()
     {
         return $this->from('conferma-ordine@deliveboo.it')
-                    ->subject("Conferma ordine n. " . $this -> order)
+                    ->subject("Conferma ordine presso Deliveboo")
                     ->view('mails.order');
     }
 }
