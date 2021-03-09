@@ -11080,14 +11080,17 @@ a.text-dark:focus {
   background-color: #00ccbc;
   color: white;
   border: 1px solid #00ccbc;
-  padding: 10px;
+  padding: 5px 10px;
   margin: 5px;
-  width: 100%;
+  display: inline-block;
 }
 
 .piatti a:hover {
   background-color: #858585;
   border: 1px solid #858585;
+  list-style: none;
+  text-decoration: none;
+  color: white;
 }
 
 .cartella {
@@ -11358,5 +11361,25 @@ footer .social i {
 .food-img img {
   max-width: 100%;
   max-height: 100%;
+}
+
+.bottone-generale {
+  list-style: none;
+  text-decoration: none;
+  border-radius: 10px;
+  background-color: #00ccbc;
+  color: white;
+  border: 1px solid #00ccbc;
+  padding: 5px 10px;
+  margin: 5px;
+  display: inline-block;
+}
+
+.bottone-generale:hover {
+  background-color: #858585;
+  border: 1px solid #858585;
+  list-style: none;
+  text-decoration: none;
+  color: white;
 }
 

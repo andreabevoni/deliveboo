@@ -93,7 +93,7 @@
                                     <li class="my-2 card list-group-item"> 
                                         <strong>Telefono: </strong> {{ Auth::user()->phone }}
                                     </li>
-                                    <li class="my-2 card list-group-item"> 
+                                    {{-- <li class="my-2 card list-group-item"> 
                                         <strong>Giorno di chiusura: </strong> {{ Auth::user()->closing_day }}
                                     </li>
                                     <li class="my-2 card list-group-item"> 
@@ -101,7 +101,7 @@
                                     </li>
                                     <li class="my-2 card list-group-item"> 
                                         <strong>Chiusura alle: </strong> {{ Auth::user()->closing_time }}
-                                    </li>
+                                    </li> --}}
                                     {{-- <ul class="my-2 card list-group list-group-flush"> --}}
                                     <li class="my-2 card list-group-item">
                                         <strong>Tipologie: </strong>

@@ -1,8 +1,9 @@
 <template>
     <div class="container-fluid">
         <div class="row justify-content-center mx-5">
-            <div class="col-12 d-flex altezza">
-                <div class="d-flex flex-column align-items-start mt-5 bg-white">
+            <div class="col-sm-12 d-md-flex altezza">
+                
+                <div class="d-flex flex-sm-wrap flex-md-column align-items-start mt-5 bg-white">
 
                     <!-- stampo a schermo le tipologie per permettere all'utente di fare le ricerche -->
                     <label class="check" v-for="typology in typologies">
@@ -15,7 +16,7 @@
                 </div>
 
                 <!-- stampo i ristoranti appartenenti alla categoria selezionata dall'utente -->
-                <div class="search d-flex flex-wrap align-items-start m-5">
+                <div class="col-sm-10 d-flex flex-wrap align-items-start m-5">
 
                     <div
                         v-for="restaurant in restaurants"

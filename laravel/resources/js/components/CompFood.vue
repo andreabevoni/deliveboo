@@ -16,8 +16,7 @@
                             :href="'/food/' + id + '/edit'"
                             class="btn bottone-edit-elimina"
                         >
-                            M
-                            
+                            <img :src="'/img/edit.png'" alt="">
                         </a>
                         <a
                             :href="'/food/softdelete/' + id"
