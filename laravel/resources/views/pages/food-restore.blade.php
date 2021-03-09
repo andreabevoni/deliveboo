@@ -4,38 +4,37 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
-                <div class="card">
-                    <div class="card-header">{{ __('Ripristina Piatto') }}</div>
+                
+                <h2 class="mx-5 mt-5 mb-3">{{ __('Ripristina Piatto') }}</h2>
+                <div class="cartella mb-5 p-5">
 
-                    <div class="card-body">
+                    <form method="POST" action="{{ route('restore-task') }}">
+                        @csrf
+                        @method('POST')
 
-                        <form method="POST" action="{{ route('restore-task') }}">
-                            @csrf
-                            @method('POST')
-
-                            <div class="form-group row">
+                        <div class="d-flex justify-content-between">
+                            <div class="">
                                 <label for="name"
-                                    class="col-md-4 col-form-label text-md-right">{{ __('Nome Piatto') }}</label>
+                                    class="pr-3">{{ __('Nome Piatto') }}</label>
 
-                                <div class="col-md-6">
-                                    <select name="name" id="">
-                                        @foreach ($deletedFood as $food)
-                                            <option value="{{ $food->id }}">{{ $food->name }}</option>
+                                <select name="name" id="">
+                                    @foreach ($deletedFood as $food)
+                                        <option value="{{ $food->id }}">{{ $food->name }}</option>
 
-                                        @endforeach
-                                    </select>
-                                </div>
+                                    @endforeach
+                                </select>
                             </div>
-
-                            <div class="form-group row mb-0">
-                                <div class="col-md-6 offset-md-4">
-                                    <button type="submit" class="btn btn-primary">
-                                        {{ __('Ripristina') }}
-                                    </button>
-                                </div>
+                    
+                            <div class="">
+                                <button type="submit" class="btn btn-primary">
+                                    {{ __('Ripristina') }}
+                                </button>
                             </div>
-                        </form>
-                    </div>
+                        
+                        </div>
+
+                    </form>
+
                 </div>
             </div>
         </div>
