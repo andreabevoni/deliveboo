@@ -2,14 +2,15 @@
     <div class="row">
 
       <!-- colonna schede cibi -->
-      <div class="col-md-8">
+
+      <div class="col-md-8 menu">
         <div class="menu">
+          <h2>Menu</h2>
           <div v-for="food in foods" :key="food.id">
 
             <!-- cibi disponibili -->
             <div v-if="food.visible" class="card food-item show" @click="resetQuantity"
-                 style="width: 18rem;" data-toggle="modal" :data-target="'#myModal'+food.id"
-            >
+                 style="width: 18rem;" data-toggle="modal" :data-target="'#myModal'+food.id">
               <img src="https://flawless.life/wp-content/uploads/2016/03/lievita-pizza-gourmet.jpg" class="card-img-top" alt="immagine piatto">
               <h4>{{food.name}}</h4>
               <div>{{food.description}}</div>
@@ -18,7 +19,10 @@
 
             <!-- cibi non disponibili -->
             <div v-else class="card food-item hide" style="width: 18rem;">
-              <img src="https://flawless.life/wp-content/uploads/2016/03/lievita-pizza-gourmet.jpg" class="card-img-top" alt="immagine piatto">
+              <div class="overlay-img">
+                <img src="https://flawless.life/wp-content/uploads/2016/03/lievita-pizza-gourmet.jpg" class="card-img-top" alt="immagine piatto">
+              </div>
+
               <h4>{{food.name}}</h4>
               <div>{{food.description}}</div>
               <h6>{{food.price/100}} &#8364;</h6>
@@ -38,14 +42,14 @@
                         <h6>{{food.price/100}} &#8364;</h6>
                       </div>
                       <!-- parte con il numero di cibi da inserire -->
-                      <div class="">
+                      <div class="icon-color">
                         <i class="fas fa-minus-circle" @click="minusOne"></i>
                           {{quantity}}
                         <i class="fas fa-plus-circle" @click="plusOne"></i>
                       </div>
                       <!-- pulsante di conferma e di annulla -->
                       <button type="button" name="button" data-dismiss="modal" @click="checkCart(food.id)">Aggiungi al carrello</button>
-                      <button type="button" class="btn btn-default" data-dismiss="modal">Annulla</button>
+                      <button type="button" class="btn btn-default cta-white" data-dismiss="modal">Annulla</button>
                     </div>
                   </div>
                 </div>
@@ -59,12 +63,13 @@
 
       <!-- colonna carrello -->
       <div class="col-md-4">
+
         <!-- mostro il carrello se pieno -->
         <div class="cart-test d-flex flex-column sticky-top" v-if="cart.length">
 
           <div class="item-test" v-for="(item, i) in cart" :key="i">
             <!-- stampo quantitá -->
-            <div class="quantity">
+            <div class="icon-color s">
               <i class="fas fa-minus-circle" @click="minusOneCart(i)"></i>
               {{item.quantity}}
               <i class="fas fa-plus-circle" @click="plusOneCart(i)"></i>
@@ -84,15 +89,19 @@
             <span>{{total()}} &#8364;</span>
           </div>
 
-          <a :href="'/checkout/' + user_id" class="text-center">
-            <button class="btn btn-primary">CHECKOUT</button>
-          </a>
-
+          <div class="cta">
+            <a :href="'/checkout/' + user_id" class="text-center">
+              <button class="btn">Vai alla cassa</button>
+            </a>
+          </div>
         </div>
 
         <!-- scrivo che il carrello é vuoto se lo é -->
-        <div class="cart-test sticky-top" v-else>
-          <h4>CARRELLO VUOTO</h4>
+        <div class="cart-test sticky-top cart-headline" v-else>
+          <div class="img-user">
+            <button class="btn">Vai alla cassa</button>
+            <h5>Il tuo carrello è vuoto</h5>
+          </div>
         </div>
       </div>
 

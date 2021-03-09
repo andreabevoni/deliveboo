@@ -1,0 +1,16 @@
+// PAGINA REGISTER
+
+.headline {
+  padding: 20px;
+}
+.img-background {
+  padding-top: 40px;
+  clip-path: polygon(25% 0%, 100% 0%, 100% 100%, 25% 100%, 0% 50%);
+}
+
+.form-registration {
+  padding: 20px 0 20px 10px;
+  button {
+    @include cta-primary;
+  }
+}

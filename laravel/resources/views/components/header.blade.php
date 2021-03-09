@@ -5,7 +5,7 @@
         {{-- Left menu --}}
         <div class="menu-nav">
           {{-- Logo --}}
-         <div class="logo">
+         <div class="logo-header">
            <a class="navbar-brand" href="{{ url('/') }}">
                <img src="{{ asset('img/deliveboo-logo.svg') }}" alt="logo deliveboo">
            </a>
@@ -15,13 +15,13 @@
 
           {{-- Right menu --}}
           <div class="menu-nav">
-            <button class="navbar-toggler" type="button" data-toggle="collapse"
+            {{-- <button class="navbar-toggler" type="button" data-toggle="collapse"
                 data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="{{ __('Toggle navigation') }}">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+                {{-- <span class="navbar-toggler-icon"></span> --}}
+            {{-- </button> --}}
 
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            {{-- <div class="collapse navbar-collapse" id="navbarSupportedContent"> --}}
 
 
                 <!-- Right Side Of Navbar -->
@@ -50,7 +50,7 @@
                     @else
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                data-toggle="dropdown" aria-haspopup="false" aria-expanded="false" v-pre>
                                 {{ Auth::user()->restaurant_name }}
                             </a>
 
@@ -58,12 +58,10 @@
                               <a class="dropdown-item" href="{{ route('dashboard') }}">
                                   {{ __('Dashboard') }}
                               </a>
-                              <a class="dropdown-item" href="{{ route('home') }}">
-                                  {{ __('Home') }}
-                              </a>
+
                                 <a class="dropdown-item" href="{{ route('logout') }}"
                                     onclick="event.preventDefault();
-                                                                             document.getElementById('logout-form').submit();">
+                                    document.getElementById('logout-form').submit();">
                                     {{ __('Logout') }}
                                 </a>
 
