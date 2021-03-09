@@ -139,15 +139,20 @@
           // controllo se esiste giá un carrello per questo ristorante, in tal caso me lo recupero
           if ((localStorage.cart) && (localStorage.user_id == this.user_id)) {
             this.cart = JSON.parse(localStorage.getItem("cart"));
+            console.log(this.cart);
           }
           // recupero il nome del ristorante collegato al carrello salvato in memoria
           this.old_cart = localStorage.user_name;
-          console.log((JSON.parse(localStorage.cart).length));
+          console.log(this.old_cart);
         },
         methods: {
           // funzione per salvare in localStorage i vari dati che servono
           updateLocalStorage: function() {
-            localStorage.setItem("cart", JSON.stringify(this.cart));
+            if (this.cart.length > 0) {
+              localStorage.setItem("cart", JSON.stringify(this.cart));
+            } else {
+              localStorage.removeItem("cart");
+            }
             localStorage.setItem("user_id", this.user_id);
             localStorage.setItem("user_name", this.user_name);
           },
@@ -165,7 +170,7 @@
           },
           // funzione per controllare se esiste giá un carrello con un ristoratore differente (apre un alert di conferma)
           checkCart: function(id) {
-            if (!(JSON.parse(localStorage.cart).length) || (localStorage.user_id == this.user_id)) {
+            if (!(localStorage.cart) || (localStorage.user_id == this.user_id)) {
               this.addCart(id);
             } else {
               this.id_food = id;

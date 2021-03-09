@@ -2099,18 +2099,40 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     foods: Array,
-    user_id: String // client_token: String,
-
+    user_id: String
   },
   data: function data() {
     return {
-      'cart': [],
-      'errors': [],
-      'card': '',
-      'cvc': ''
+      csrf: document.querySelector('meta[name="csrf-token"]').getAttribute("content"),
+      cart: [],
+      card: "",
+      email: "",
+      name: "",
+      lastname: "",
+      phone_number: "",
+      address: ""
     };
   },
   mounted: function mounted() {
@@ -2154,58 +2176,80 @@ __webpack_require__.r(__webpack_exports__);
       return total;
     },
     testApi: function testApi() {
-      var method = "rejected";
+      var _this2 = this;
 
-      if (this.card === '1234123412341234' && this.cvc === "123") {
+      var method = "nope";
+
+      if (this.card === "1234123412341234") {
         method = "fake-valid-visa-nonce";
-      } else if (this.card === '1111222233334444' && this.cvc === "555") {
-        method = "fake-processor-declined-visa-nonce";
-      } else if (this.card === '9876987698769876' && this.cvc === "987") {
-        method = "fake-valid-mastercard-nonce";
-      } else if (this.card === '9999888877776666' && this.cvc === "000") {
-        method = "fake-processor-declined-mastercard-nonce";
       }
 
       var headers = {
-        "Authorization": "Basic cG54M3BmcndwcnZjbmh4ZDpjZDJkOGZmYzU3ZjQyNmQ2N2ZjM2FmMjgyYTE4M2RkNQ==",
+        Authorization: "Basic cG54M3BmcndwcnZjbmh4ZDpjZDJkOGZmYzU3ZjQyNmQ2N2ZjM2FmMjgyYTE4M2RkNQ==",
         "Braintree-Version": "2021-03-08"
       };
       var data = {
-        "query": "mutation chargePaymentMethod($input: ChargePaymentMethodInput!) {chargePaymentMethod(input: $input) {transaction {id status}}}",
-        "variables": {
-          "input": {
-            "paymentMethodId": method,
-            "transaction": {
-              "amount": this.total() / 100
+        query: "mutation chargePaymentMethod($input: ChargePaymentMethodInput!) {chargePaymentMethod(input: $input) {transaction {id status}}}",
+        variables: {
+          input: {
+            paymentMethodId: method,
+            transaction: {
+              amount: this.total() / 100
             }
           }
         }
       }; // chiamata axios a braintree
 
-      axios.post('https://payments.sandbox.braintree-api.com/graphql', data, {
+      axios.post("https://payments.sandbox.braintree-api.com/graphql", data, {
         headers: headers
       }).then(function (r) {
-        console.log('data', r.data); // se ci sono errori apro il popup di errore, altrimento proseguo
+        console.log("data", r.data);
 
-        if (r.data.hasOwnProperty('errors')) {
-          $('#alert').modal('show');
+        if (r.data.hasOwnProperty("errors")) {
+          console.log("carta non valida!");
         } else {
-          console.log('pagamento effettuato'); // 1) salviamo l'ordine nel db
-          // 2) mandiamo la mail di ricevuto ordine
+          console.log("pagamento effettuato"); // 1) salviamo l'ordine nel db
+
+          var order = {
+            name: _this2.name,
+            lastname: _this2.lastname,
+            phone_number: _this2.phone_number,
+            address: _this2.address,
+            cart: _this2.cart,
+            email: _this2.email,
+            total: _this2.total() / 100
+          }; // console.log("prova");
+
+          axios.post("http://localhost:8000/api/orders", order).then(function (r) {
+            console.log(r.data);
+          })["catch"](function (e) {
+            return console.log("error", e);
+          }); // 2) mandiamo la mail di ricevuto ordine
           // 3) svuotiamo il carrello
+
+          localStorage.cart = []; // this.cart = [];
+          // localStorage.setItem("cart", JSON.stringify(this.cart));
           // 4) cambiamo pagina in una che dice "pagamento effettuato"
         }
       })["catch"](function (e) {
-        return console.log('error', e);
+        return console.log("error", e);
       });
     },
-    testMail: function testMail() {
-      axios.post('/mail/send', {
-        email: 'testmail@email.it',
+    prova: function prova() {
+      alert("form");
+      console.log("prova");
+      var order = {
+        name: this.name,
+        lastname: this.lastname,
+        phone_number: this.phone_number,
+        address: this.address,
         cart: this.cart,
-        user: this.user_id
-      }).then(function (r) {
-        return console.log(r);
+        email: this.email,
+        total: this.total() / 100
+      }; // console.log("prova");
+
+      axios.post("http://localhost:8000/api/orders", order).then(function (r) {
+        console.log(r.data);
       })["catch"](function (e) {
         return console.log("error", e);
       });
@@ -2559,16 +2603,22 @@ __webpack_require__.r(__webpack_exports__);
     // controllo se esiste giá un carrello per questo ristorante, in tal caso me lo recupero
     if (localStorage.cart && localStorage.user_id == this.user_id) {
       this.cart = JSON.parse(localStorage.getItem("cart"));
+      console.log(this.cart);
     } // recupero il nome del ristorante collegato al carrello salvato in memoria
 
 
     this.old_cart = localStorage.user_name;
-    console.log(JSON.parse(localStorage.cart).length);
+    console.log(this.old_cart);
   },
   methods: {
     // funzione per salvare in localStorage i vari dati che servono
     updateLocalStorage: function updateLocalStorage() {
-      localStorage.setItem("cart", JSON.stringify(this.cart));
+      if (this.cart.length > 0) {
+        localStorage.setItem("cart", JSON.stringify(this.cart));
+      } else {
+        localStorage.removeItem("cart");
+      }
+
       localStorage.setItem("user_id", this.user_id);
       localStorage.setItem("user_name", this.user_name);
     },
@@ -2586,7 +2636,7 @@ __webpack_require__.r(__webpack_exports__);
     },
     // funzione per controllare se esiste giá un carrello con un ristoratore differente (apre un alert di conferma)
     checkCart: function checkCart(id) {
-      if (!JSON.parse(localStorage.cart).length || localStorage.user_id == this.user_id) {
+      if (!localStorage.cart || localStorage.user_id == this.user_id) {
         this.addCart(id);
       } else {
         this.id_food = id;
@@ -38522,85 +38572,275 @@ var render = function() {
       : _vm._e(),
     _vm._v(" "),
     _vm.cart.length
-      ? _c("div", { staticClass: "col-md-4" }, [_vm._m(0)])
-      : _vm._e(),
-    _vm._v(" "),
-    _vm.cart.length
-      ? _c("div", { staticClass: "col-md-4" }, [
-          _c("div", [
-            _vm._m(1),
-            _vm._v(" "),
-            _c("div", { staticClass: "form-group" }, [
-              _c("label", [_vm._v("Codice carta di credito")]),
-              _vm._v(" "),
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.card,
-                    expression: "card"
-                  }
-                ],
-                staticClass: "form-control",
-                attrs: { type: "text", placeholder: "Inserisci codice" },
-                domProps: { value: _vm.card },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.card = $event.target.value
-                  }
+      ? _c("div", { staticClass: "col-md-8" }, [
+          _c(
+            "form",
+            {
+              attrs: { method: "POST" },
+              on: {
+                submit: function($event) {
+                  $event.preventDefault()
+                  return _vm.testApi($event)
                 }
-              })
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "form-group" }, [
-              _c("label", [_vm._v("Codice CVC")]),
-              _vm._v(" "),
+              }
+            },
+            [
               _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.cvc,
-                    expression: "cvc"
-                  }
-                ],
-                staticClass: "form-control",
-                attrs: { type: "text", placeholder: "Inserisci codice" },
-                domProps: { value: _vm.cvc },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
+                attrs: { type: "hidden", name: "_token" },
+                domProps: { value: _vm.csrf }
+              }),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-group" }, [
+                _c("label", { attrs: { for: "exampleInputEmail1" } }, [
+                  _vm._v("Indirizzo email")
+                ]),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.email,
+                      expression: "email"
                     }
-                    _vm.cvc = $event.target.value
+                  ],
+                  staticClass: "form-control",
+                  attrs: {
+                    required: "",
+                    type: "email",
+                    name: "email",
+                    placeholder: "Inserisci Email"
+                  },
+                  domProps: { value: _vm.email },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.email = $event.target.value
+                    }
                   }
-                }
-              })
-            ]),
-            _vm._v(" "),
-            _c(
-              "button",
-              { staticClass: "btn btn-primary", on: { click: _vm.testApi } },
-              [_vm._v("Conferma Ordine")]
-            ),
-            _vm._v(" "),
-            _c(
-              "button",
-              { staticClass: "btn btn-warning", on: { click: _vm.testMail } },
-              [_vm._v("Invia Mail")]
-            )
-          ])
+                })
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-group" }, [
+                _c("label", { attrs: { for: "exampleInputEmail1" } }, [
+                  _vm._v("Name")
+                ]),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.name,
+                      expression: "name"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: {
+                    required: "",
+                    type: "text",
+                    name: "name",
+                    placeholder: "Inserisci Nome"
+                  },
+                  domProps: { value: _vm.name },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.name = $event.target.value
+                    }
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-group" }, [
+                _c("label", { attrs: { for: "exampleInputEmail1" } }, [
+                  _vm._v("LastName")
+                ]),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.lastname,
+                      expression: "lastname"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: {
+                    required: "",
+                    type: "text",
+                    name: "lastname",
+                    placeholder: "Inserisci Cognome"
+                  },
+                  domProps: { value: _vm.lastname },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.lastname = $event.target.value
+                    }
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-group" }, [
+                _c("label", [_vm._v("Codice CVC")]),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.cvc,
+                      expression: "cvc"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: { type: "text", placeholder: "Inserisci codice" },
+                  domProps: { value: _vm.cvc },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.cvc = $event.target.value
+                    }
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c(
+                "button",
+                { staticClass: "btn btn-primary", on: { click: _vm.testApi } },
+                [_vm._v("Conferma Ordine")]
+              ),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-group" }, [
+                _c("label", { attrs: { for: "exampleInputEmail1" } }, [
+                  _vm._v("Address")
+                ]),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.address,
+                      expression: "address"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: {
+                    required: "",
+                    type: "text",
+                    name: "address",
+                    placeholder: "Inserisci Indirizzo"
+                  },
+                  domProps: { value: _vm.address },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.address = $event.target.value
+                    }
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c(
+                "button",
+                { staticClass: "btn btn-warning", on: { click: _vm.testMail } },
+                [_vm._v("Invia Mail")]
+              ),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-group" }, [
+                _c("label", { attrs: { for: "exampleInputEmail1" } }, [
+                  _vm._v("Numero di telefono")
+                ]),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.phone_number,
+                      expression: "phone_number"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: {
+                    required: "",
+                    type: "text",
+                    name: "phone_number",
+                    placeholder: "Inserisci numero di telefono"
+                  },
+                  domProps: { value: _vm.phone_number },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.phone_number = $event.target.value
+                    }
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-group" }, [
+                _c("label", [_vm._v("Codice carta di credito")]),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.card,
+                      expression: "card"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: {
+                    type: "text",
+                    placeholder: "Inserisci codice",
+                    name: "card"
+                  },
+                  domProps: { value: _vm.card },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.card = $event.target.value
+                    }
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c(
+                "button",
+                { staticClass: "btn btn-primary", attrs: { type: "submit" } },
+                [_vm._v("\n                Conferma Ordine\n            ")]
+              ),
+              _vm._v(" "),
+              _c(
+                "button",
+                { staticClass: "btn btn-primary", attrs: { type: "submit" } },
+                [_vm._v("\n                Prova\n            ")]
+              )
+            ]
+          )
         ])
       : _vm._e(),
     _vm._v(" "),
     _vm.cart.length
       ? _c("div", { staticClass: "col-md-4" }, [
-          _c("h4", [_vm._v("\n      RIEPILOGO CARRELLO\n    ")]),
-          _vm._v(" "),
           _c(
             "div",
             { staticClass: "cart-test d-flex flex-column" },
@@ -38617,7 +38857,9 @@ var render = function() {
                       }
                     }),
                     _vm._v(
-                      "\n          " + _vm._s(item.quantity) + "\n          "
+                      "\n                    " +
+                        _vm._s(item.quantity) +
+                        "\n                    "
                     ),
                     _c("i", {
                       staticClass: "fas fa-plus-circle",
@@ -38631,19 +38873,19 @@ var render = function() {
                   _vm._v(" "),
                   _c("div", { staticClass: "name" }, [
                     _vm._v(
-                      "\n          " +
+                      "\n                    " +
                         _vm._s(
                           _vm.foods.find(function(x) {
                             return x.id === item.id
                           }).name
                         ) +
-                        "\n        "
+                        "\n                "
                     )
                   ]),
                   _vm._v(" "),
                   _c("div", { staticClass: "total" }, [
                     _vm._v(
-                      "\n          " +
+                      "\n                    " +
                         _vm._s(
                           (_vm.foods.find(function(x) {
                             return x.id === item.id
@@ -38651,7 +38893,7 @@ var render = function() {
                             100) *
                             item.quantity
                         ) +
-                        " €\n        "
+                        "\n                    €\n                "
                     )
                   ])
                 ])
@@ -38670,124 +38912,10 @@ var render = function() {
             2
           )
         ])
-      : _vm._e(),
-    _vm._v(" "),
-    _vm._m(2)
+      : _vm._e()
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", [
-      _c("div", { staticClass: "form-group" }, [
-        _c("label", [_vm._v("Nome")]),
-        _vm._v(" "),
-        _c("input", {
-          staticClass: "form-control",
-          attrs: { type: "text", placeholder: "Inserisci nome" }
-        })
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "form-group" }, [
-        _c("label", [_vm._v("Cognome")]),
-        _vm._v(" "),
-        _c("input", {
-          staticClass: "form-control",
-          attrs: { type: "text", placeholder: "Inserisci cognome" }
-        })
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "form-group" }, [
-        _c("label", [_vm._v("Indirizzo")]),
-        _vm._v(" "),
-        _c("input", {
-          staticClass: "form-control",
-          attrs: { type: "text", placeholder: "Inserisci indirizzo" }
-        })
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "form-group" }, [
-        _c("label", [_vm._v("Numero di telefono")]),
-        _vm._v(" "),
-        _c("input", {
-          staticClass: "form-control",
-          attrs: { type: "tel", placeholder: "Inserisci telefono" }
-        })
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group" }, [
-      _c("label", [_vm._v("Email")]),
-      _vm._v(" "),
-      _c("input", {
-        staticClass: "form-control",
-        attrs: { type: "email", placeholder: "Inserisci email" }
-      })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass: "modal fade",
-        attrs: {
-          id: "alert",
-          "data-backdrop": "static",
-          "data-keyboard": "false",
-          tabindex: "-1",
-          "aria-labelledby": "staticBackdropLabel",
-          "aria-hidden": "true"
-        }
-      },
-      [
-        _c(
-          "div",
-          { staticClass: "modal-dialog modal-dialog modal-dialog-centered" },
-          [
-            _c("div", { staticClass: "modal-content" }, [
-              _c("div", { staticClass: "modal-header" }, [
-                _c(
-                  "h5",
-                  {
-                    staticClass: "modal-title",
-                    attrs: { id: "staticBackdropLabel" }
-                  },
-                  [_vm._v("Errore durante il pagamento")]
-                )
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "modal-body" }, [
-                _vm._v(
-                  "\n          I dati della carta di credito non sono corretti.\n        "
-                )
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "modal-footer" }, [
-                _c(
-                  "button",
-                  {
-                    staticClass: "btn btn-danger",
-                    attrs: { type: "button", "data-dismiss": "modal" }
-                  },
-                  [_vm._v("Chiudi")]
-                )
-              ])
-            ])
-          ]
-        )
-      ]
-    )
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 

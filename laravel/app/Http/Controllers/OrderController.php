@@ -16,16 +16,18 @@ class OrderController extends Controller
     public function index()
     {
         if (Auth::user()) {
-            # code...
             $userAuth = Auth::user();
+            return view('pages.orders', compact('userAuth'));
+
+
+
+
         } else {
-            // dd('No logged user');
             return redirect()->route('home');
         }
 
-        // dd($food);
-
     }
+    
     public function store(Request $request)
     {
 
