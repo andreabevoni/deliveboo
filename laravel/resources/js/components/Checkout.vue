@@ -7,11 +7,36 @@
         <h3>CARRELLO VUOTO</h3>
       </div>
 
-      <!-- colonna con form -->
-      <div class="col-md-8" v-if="cart.length">
-        <form>
+      <!-- colonna con input a sinistra -->
+      <div class="col-md-4" v-if="cart.length">
+        <div>
           <div class="form-group">
-            <label>Indirizzo email</label>
+            <label>Nome</label>
+            <input type="text" class="form-control" placeholder="Inserisci nome">
+          </div>
+
+          <div class="form-group">
+            <label>Cognome</label>
+            <input type="text" class="form-control" placeholder="Inserisci cognome">
+          </div>
+
+          <div class="form-group">
+            <label>Indirizzo</label>
+            <input type="text" class="form-control" placeholder="Inserisci indirizzo">
+          </div>
+
+          <div class="form-group">
+            <label>Numero di telefono</label>
+            <input type="tel" class="form-control" placeholder="Inserisci telefono">
+          </div>
+        </div>
+      </div>
+
+      <!-- colonna con input centrale -->
+      <div class="col-md-4" v-if="cart.length">
+        <div>
+          <div class="form-group">
+            <label>Email</label>
             <input type="email" class="form-control" placeholder="Inserisci email">
           </div>
 
@@ -20,15 +45,25 @@
             <input type="text" class="form-control" placeholder="Inserisci codice" v-model="card"></input>
           </div>
 
+          <div class="form-group">
+            <label>Codice CVC</label>
+            <input type="text" class="form-control" placeholder="Inserisci codice" v-model="cvc"></input>
+          </div>
+
           <button class="btn btn-primary" @click="testApi">Conferma Ordine</button>
-        </form>
 
-        <button class="btn btn-primary" @click="testApi">testa</button>
+          <button class="btn btn-warning" @click="testMail">Invia Mail</button>
 
+        </div>
       </div>
 
-      <!-- colonna con carrello -->
+      <!-- colonna con carrello a destra -->
       <div class="col-md-4" v-if="cart.length">
+
+        <h4>
+          RIEPILOGO CARRELLO
+        </h4>
+
         <div class="cart-test d-flex flex-column">
           <div class="item-test" v-for="(item, i) in cart" :key="i">
             <!-- stampo quantitá -->
@@ -47,9 +82,27 @@
             </div>
           </div>
 
+          <!-- totale del carrello -->
           <div class="d-flex justify-content-between px-2">
             <span>TOTALE:</span>
             <span>{{total() / 100}} &#8364;</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- popup di errore carta di credito -->
+      <div class="modal fade" id="alert" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="staticBackdropLabel">Errore durante il pagamento</h5>
+            </div>
+            <div class="modal-body">
+              I dati della carta di credito non sono corretti.
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-danger" data-dismiss="modal">Chiudi</button>
+            </div>
           </div>
         </div>
       </div>
@@ -62,11 +115,14 @@
         props: {
           foods: Array,
           user_id: String,
+          // client_token: String,
         },
         data() {
           return {
             'cart' : [],
-            'card' : ''
+            'errors' : [],
+            'card' : '',
+            'cvc' : ''
           };
         },
         mounted() {
@@ -104,9 +160,15 @@
             return total;
           },
           testApi: function() {
-            var method = "nope";
-            if (this.card === '1234123412341234') {
+            var method = "rejected";
+            if (this.card === '1234123412341234' && this.cvc === "123"){
               method = "fake-valid-visa-nonce";
+            } else if (this.card === '1111222233334444' && this.cvc === "555") {
+              method = "fake-processor-declined-visa-nonce";
+            } else if (this.card === '9876987698769876' && this.cvc === "987") {
+              method = "fake-valid-mastercard-nonce";
+            } else if (this.card === '9999888877776666' && this.cvc === "000") {
+              method = "fake-processor-declined-mastercard-nonce";
             }
             const headers = {
               "Authorization": "Basic cG54M3BmcndwcnZjbmh4ZDpjZDJkOGZmYzU3ZjQyNmQ2N2ZjM2FmMjgyYTE4M2RkNQ==",
@@ -117,9 +179,9 @@
             axios.post('https://payments.sandbox.braintree-api.com/graphql', data, { headers })
                  .then(r => {
                       console.log('data', r.data);
-
+                      // se ci sono errori apro il popup di errore, altrimento proseguo
                       if (r.data.hasOwnProperty('errors')) {
-                        console.log('carta non valida!')
+                        $('#alert').modal('show');
                       } else {
                         console.log('pagamento effettuato');
                         // 1) salviamo l'ordine nel db
@@ -129,6 +191,15 @@
                       }
                   })
                  .catch(e => console.log('error', e));
+          },
+          testMail: function() {
+            axios.post('/mail/send', {
+              email: 'testmail@email.it',
+              cart: this.cart,
+              user: this.user_id
+            })
+            .then(r => console.log(r))
+            .catch(e => console.log("error", e));
           }
         }
       }

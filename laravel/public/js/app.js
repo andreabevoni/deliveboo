@@ -2046,15 +2046,71 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     foods: Array,
-    user_id: String
+    user_id: String // client_token: String,
+
   },
   data: function data() {
     return {
       'cart': [],
-      'card': ''
+      'errors': [],
+      'card': '',
+      'cvc': ''
     };
   },
   mounted: function mounted() {
@@ -2098,10 +2154,16 @@ __webpack_require__.r(__webpack_exports__);
       return total;
     },
     testApi: function testApi() {
-      var method = "nope";
+      var method = "rejected";
 
-      if (this.card === '1234123412341234') {
+      if (this.card === '1234123412341234' && this.cvc === "123") {
         method = "fake-valid-visa-nonce";
+      } else if (this.card === '1111222233334444' && this.cvc === "555") {
+        method = "fake-processor-declined-visa-nonce";
+      } else if (this.card === '9876987698769876' && this.cvc === "987") {
+        method = "fake-valid-mastercard-nonce";
+      } else if (this.card === '9999888877776666' && this.cvc === "000") {
+        method = "fake-processor-declined-mastercard-nonce";
       }
 
       var headers = {
@@ -2123,10 +2185,10 @@ __webpack_require__.r(__webpack_exports__);
       axios.post('https://payments.sandbox.braintree-api.com/graphql', data, {
         headers: headers
       }).then(function (r) {
-        console.log('data', r.data);
+        console.log('data', r.data); // se ci sono errori apro il popup di errore, altrimento proseguo
 
         if (r.data.hasOwnProperty('errors')) {
-          console.log('carta non valida!');
+          $('#alert').modal('show');
         } else {
           console.log('pagamento effettuato'); // 1) salviamo l'ordine nel db
           // 2) mandiamo la mail di ricevuto ordine
@@ -2135,6 +2197,17 @@ __webpack_require__.r(__webpack_exports__);
         }
       })["catch"](function (e) {
         return console.log('error', e);
+      });
+    },
+    testMail: function testMail() {
+      axios.post('/mail/send', {
+        email: 'testmail@email.it',
+        cart: this.cart,
+        user: this.user_id
+      }).then(function (r) {
+        return console.log(r);
+      })["catch"](function (e) {
+        return console.log("error", e);
       });
     }
   }
@@ -38435,9 +38508,13 @@ var render = function() {
       : _vm._e(),
     _vm._v(" "),
     _vm.cart.length
-      ? _c("div", { staticClass: "col-md-8" }, [
-          _c("form", [
-            _vm._m(0),
+      ? _c("div", { staticClass: "col-md-4" }, [_vm._m(0)])
+      : _vm._e(),
+    _vm._v(" "),
+    _vm.cart.length
+      ? _c("div", { staticClass: "col-md-4" }, [
+          _c("div", [
+            _vm._m(1),
             _vm._v(" "),
             _c("div", { staticClass: "form-group" }, [
               _c("label", [_vm._v("Codice carta di credito")]),
@@ -38465,23 +38542,51 @@ var render = function() {
               })
             ]),
             _vm._v(" "),
+            _c("div", { staticClass: "form-group" }, [
+              _c("label", [_vm._v("Codice CVC")]),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.cvc,
+                    expression: "cvc"
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: { type: "text", placeholder: "Inserisci codice" },
+                domProps: { value: _vm.cvc },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.cvc = $event.target.value
+                  }
+                }
+              })
+            ]),
+            _vm._v(" "),
             _c(
               "button",
               { staticClass: "btn btn-primary", on: { click: _vm.testApi } },
               [_vm._v("Conferma Ordine")]
+            ),
+            _vm._v(" "),
+            _c(
+              "button",
+              { staticClass: "btn btn-warning", on: { click: _vm.testMail } },
+              [_vm._v("Invia Mail")]
             )
-          ]),
-          _vm._v(" "),
-          _c(
-            "button",
-            { staticClass: "btn btn-primary", on: { click: _vm.testApi } },
-            [_vm._v("testa")]
-          )
+          ])
         ])
       : _vm._e(),
     _vm._v(" "),
     _vm.cart.length
       ? _c("div", { staticClass: "col-md-4" }, [
+          _c("h4", [_vm._v("\n      RIEPILOGO CARRELLO\n    ")]),
+          _vm._v(" "),
           _c(
             "div",
             { staticClass: "cart-test d-flex flex-column" },
@@ -38551,7 +38656,9 @@ var render = function() {
             2
           )
         ])
-      : _vm._e()
+      : _vm._e(),
+    _vm._v(" "),
+    _vm._m(2)
   ])
 }
 var staticRenderFns = [
@@ -38559,14 +38666,112 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
+    return _c("div", [
+      _c("div", { staticClass: "form-group" }, [
+        _c("label", [_vm._v("Nome")]),
+        _vm._v(" "),
+        _c("input", {
+          staticClass: "form-control",
+          attrs: { type: "text", placeholder: "Inserisci nome" }
+        })
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "form-group" }, [
+        _c("label", [_vm._v("Cognome")]),
+        _vm._v(" "),
+        _c("input", {
+          staticClass: "form-control",
+          attrs: { type: "text", placeholder: "Inserisci cognome" }
+        })
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "form-group" }, [
+        _c("label", [_vm._v("Indirizzo")]),
+        _vm._v(" "),
+        _c("input", {
+          staticClass: "form-control",
+          attrs: { type: "text", placeholder: "Inserisci indirizzo" }
+        })
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "form-group" }, [
+        _c("label", [_vm._v("Numero di telefono")]),
+        _vm._v(" "),
+        _c("input", {
+          staticClass: "form-control",
+          attrs: { type: "tel", placeholder: "Inserisci telefono" }
+        })
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
     return _c("div", { staticClass: "form-group" }, [
-      _c("label", [_vm._v("Indirizzo email")]),
+      _c("label", [_vm._v("Email")]),
       _vm._v(" "),
       _c("input", {
         staticClass: "form-control",
         attrs: { type: "email", placeholder: "Inserisci email" }
       })
     ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass: "modal fade",
+        attrs: {
+          id: "alert",
+          "data-backdrop": "static",
+          "data-keyboard": "false",
+          tabindex: "-1",
+          "aria-labelledby": "staticBackdropLabel",
+          "aria-hidden": "true"
+        }
+      },
+      [
+        _c(
+          "div",
+          { staticClass: "modal-dialog modal-dialog modal-dialog-centered" },
+          [
+            _c("div", { staticClass: "modal-content" }, [
+              _c("div", { staticClass: "modal-header" }, [
+                _c(
+                  "h5",
+                  {
+                    staticClass: "modal-title",
+                    attrs: { id: "staticBackdropLabel" }
+                  },
+                  [_vm._v("Errore durante il pagamento")]
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "modal-body" }, [
+                _vm._v(
+                  "\n          I dati della carta di credito non sono corretti.\n        "
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "modal-footer" }, [
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-danger",
+                    attrs: { type: "button", "data-dismiss": "modal" }
+                  },
+                  [_vm._v("Chiudi")]
+                )
+              ])
+            ])
+          ]
+        )
+      ]
+    )
   }
 ]
 render._withStripped = true
