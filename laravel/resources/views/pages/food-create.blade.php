@@ -129,7 +129,7 @@
 
                             <div class="col-sm-12 text-center mb-5">
 
-                                <input class="px-5 btn btn-success" type="submit" value="Salva">
+                                <input class="px-5 bottone-generale" type="submit" value="Salva">
 
                             </div>
 

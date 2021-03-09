@@ -435,3 +435,7 @@ footer {
     max-height: 100%;
   }
 }
+
+.bottone-generale {
+  @include edit-delete;
+}

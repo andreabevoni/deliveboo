@@ -13,6 +13,7 @@
                     <label for="exampleInputEmail1">Indirizzo email</label>
                     <input
                         required
+                        minlength="5"
                         type="email"
                         class="form-control"
                         name="email"
@@ -22,9 +23,10 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="exampleInputEmail1">Name</label>
+                    <label for="exampleInputEmail1">Nome</label>
                     <input
                         required
+                        minlength="2"
                         type="text"
                         class="form-control"
                         name="name"
@@ -34,9 +36,10 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="exampleInputEmail1">LastName</label>
+                    <label for="exampleInputEmail1">Cognome</label>
                     <input
                         required
+                        minlength="2"
                         type="text"
                         class="form-control"
                         name="lastname"
@@ -52,7 +55,36 @@
 
           <button class="btn btn-primary" @click="testApi">Conferma Ordine</button>
                 <div class="form-group">
-                    <label for="exampleInputEmail1">Address</label>
+                    <label>Codice carta di credito</label>
+                    <input
+                        required
+                        minlength="16"
+                        maxlength="16"
+                        type="text"
+                        class="form-control"
+                        placeholder="Inserisci codice"
+                        name="card"
+                        v-model="card"
+                    />
+                </div>
+
+          <button class="btn btn-warning" @click="testMail">Invia Mail</button>
+                <div class="form-group">
+                    <label>Codice CVC</label>
+                    <input
+                        required
+                        maxlength="3"
+                        minlength="3"
+                        type="text"
+                        class="form-control"
+                        placeholder="Inserisci codice"
+                        v-model="cvc"
+                    />
+                </div>
+
+                <!-- <button class="btn btn-primary" @click="testApi">Conferma Ordine</button> -->
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Indirizzo</label>
                     <input
                         required
                         type="text"
@@ -63,7 +95,8 @@
                     />
                 </div>
 
-          <button class="btn btn-warning" @click="testMail">Invia Mail</button>
+                <!-- <button class="btn btn-warning" @click="testMail"> -->
+                <!-- </button> -->
                 <div class="form-group">
                     <label for="exampleInputEmail1">Numero di telefono</label>
                     <input
@@ -76,28 +109,18 @@
                     />
                 </div>
 
-                <div class="form-group">
-                    <label>Codice carta di credito</label>
-                    <input
-                        type="text"
-                        class="form-control"
-                        placeholder="Inserisci codice"
-                        name="card"
-                        v-model="card"
-                    />
-                </div>
-
                 <button type="submit" class="btn btn-primary">
                     Conferma Ordine
-                </button>
-                <button type="submit" class="btn btn-primary">
-                    Prova
                 </button>
             </form>
         </div>
 
         <!-- colonna con carrello -->
         <div class="col-md-4" v-if="cart.length">
+            ​
+            <h4>
+                RIEPILOGO CARRELLO
+            </h4>
             <div class="cart-test d-flex flex-column">
                 <div class="item-test" v-for="(item, i) in cart" :key="i">
                     <!-- stampo quantitá -->
@@ -119,10 +142,44 @@
                         &#8364;
                     </div>
                 </div>
+                <!-- totale del carrello -->
 
                 <div class="d-flex justify-content-between px-2">
                     <span>TOTALE:</span>
                     <span>{{ total() / 100 }} &#8364;</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- popup di errore carta di credito -->
+        <div
+            class="modal fade"
+            id="alert"
+            data-backdrop="static"
+            data-keyboard="false"
+            tabindex="-1"
+            aria-labelledby="staticBackdropLabel"
+            aria-hidden="true"
+        >
+            <div class="modal-dialog modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="staticBackdropLabel">
+                            Errore durante il pagamento
+                        </h5>
+                    </div>
+                    <div class="modal-body">
+                        I dati della carta di credito non sono corretti.
+                    </div>
+                    <div class="modal-footer">
+                        <button
+                            type="button"
+                            class="btn btn-danger"
+                            data-dismiss="modal"
+                        >
+                            Chiudi
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -146,7 +203,9 @@ export default {
             name: "",
             lastname: "",
             phone_number: "",
-            address: ""
+            address: "",
+            errors: [],
+            cvc: ""
         };
     },
     mounted() {
@@ -156,8 +215,13 @@ export default {
     },
     methods: {
         updateLocalStorage: function() {
-            localStorage.setItem("cart", JSON.stringify(this.cart));
+            if (this.cart.length > 0) {
+                localStorage.setItem("cart", JSON.stringify(this.cart));
+            } else {
+                localStorage.removeItem("cart");
+            }
             localStorage.setItem("user_id", this.user_id);
+            // localStorage.setItem("user_name", this.user_name);
         },
         removeCart: function(i) {
             this.cart.splice(i, 1);
@@ -226,44 +290,23 @@ export default {
                             address: this.address,
                             cart: this.cart,
                             email: this.email,
-                            total: this.total() / 100
+                            total: this.total(),
+                            user: this.user_id
                         };
                         // console.log("prova");
+                        console.log(localStorage);
                         axios
                             .post("http://localhost:8000/api/orders", order)
                             .then(r => {
-                                console.log(r.data);
+                                // 2) mandiamo la mail di ricevuto ordine
                             })
                             .catch(e => console.log("error", e));
-                        // 2) mandiamo la mail di ricevuto ordine
-
                         // 3) svuotiamo il carrello
-                        localStorage.cart = [];
-                        // this.cart = [];
-                        // localStorage.setItem("cart", JSON.stringify(this.cart));
-
+                        localStorage.removeItem("cart");
+                        console.log(localStorage);
                         // 4) cambiamo pagina in una che dice "pagamento effettuato"
+                        window.location.href = "http://localhost:8000/payed";
                     }
-                })
-                .catch(e => console.log("error", e));
-        },
-        prova: function() {
-            alert("form");
-            console.log("prova");
-            const order = {
-                name: this.name,
-                lastname: this.lastname,
-                phone_number: this.phone_number,
-                address: this.address,
-                cart: this.cart,
-                email: this.email,
-                total: this.total() / 100
-            };
-            // console.log("prova");
-            axios
-                .post("http://localhost:8000/api/orders", order)
-                .then(r => {
-                    console.log(r.data);
                 })
                 .catch(e => console.log("error", e));
         }

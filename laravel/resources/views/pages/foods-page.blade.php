@@ -16,14 +16,14 @@
                         <h4>
                             Opss Nessun piatto!! Prova creando o ripristinando un piatto
                         </h4>
-                        <div class="mx-auto link pt-2">
+                        <div class="mx-auto link pt-4 text-center">
     
-                            <a class="btn btn-success" href="{{ route('food.create') }}">
+                            <a class="bottone-generale" href="{{ route('food.create') }}">
                                 Crea piatto
                             </a>
     
-                            <a href="{{ route('food-restore') }}" class="btn btn-primary">
-                                Restore
+                            <a href="{{ route('food-restore') }}" class="bottone-generale">
+                                Ripristina
                             </a>
     
                         </div>

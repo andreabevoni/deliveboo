@@ -26,7 +26,7 @@
                             </div>
                     
                             <div class="">
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" class="bottone-generale">
                                     {{ __('Ripristina') }}
                                 </button>
                             </div>

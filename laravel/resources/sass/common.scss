@@ -34,11 +34,15 @@
   background-color: $logo-color;
   color: white;
   border: 1px solid $logo-color;
-  padding: 10px;
+  padding: 5px 10px;
   margin: 5px;
-  width: 100%;
+  // width: 100%;
+  display: inline-block;
   &:hover{
     background-color: rgb(133, 133, 133);
     border: 1px solid rgb(133, 133, 133);
+    list-style: none;
+    text-decoration: none;
+    color: white;
   }
 }
