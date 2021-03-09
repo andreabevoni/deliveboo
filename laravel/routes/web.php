@@ -39,7 +39,7 @@ Route::resource('orders', 'OrderController');
 Route::resource('typologies', 'TypologyController');
 
 // Route Index User
-Route::get('/index', 'UserController@indexUser')->name('index');
+Route::get('/index', 'UserController@indexUser')->name('index-user');
 
 // Route Show User
 // Route::get('/show/{id}', 'UserController@showUser')->name('user-show');
@@ -58,3 +58,6 @@ Route::get('/cart', 'MainController@testCart')->name('test-cart');
 Route::get('/shop', 'MainController@testShop')->name('test-shop');
 Route::get('/show/{id}', 'MainController@testShow')->name('user-show');
 Route::get('/checkout/{id}', 'MainController@checkout')->name('checkout');
+
+// test per invio mail
+Route::post('/mail/send', 'OrderController@mailSend')->name('mail-send');
