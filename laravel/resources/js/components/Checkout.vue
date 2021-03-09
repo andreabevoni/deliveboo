@@ -266,7 +266,16 @@ export default {
                     console.log(r.data);
                 })
                 .catch(e => console.log("error", e));
-        }
+        },
+        testMail: function() {
+            axios.post('/mail/send', {
+              email: 'testmail@email.it',
+              cart: this.cart,
+              user: this.user_id
+            })
+            .then(r => console.log(r))
+            .catch(e => console.log("error", e));
+          }
     }
 };
 </script>

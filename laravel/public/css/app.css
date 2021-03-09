@@ -10961,27 +10961,8 @@ a.text-dark:focus {
   border: none;
 }
 
-.img-background {
-  -webkit-clip-path: polygon(25% 0%, 100% 0%, 100% 100%, 25% 100%, 0% 50%);
-          clip-path: polygon(25% 0%, 100% 0%, 100% 100%, 25% 100%, 0% 50%);
-}
-
-.hero {
-  width: 100vw;
-  background-image: url("https://res.cloudinary.com/wnotw/images/c_limit,w_1536,q_auto:eco,f_auto/v1582505115/ye9g26mw2moftw9cedaw/deliveroo-illustrations");
-  background-size: cover;
-  background-position: center;
-}
-
-.form-registration button {
-  background-color: #00ccbc;
-  color: white;
-  border: none;
-}
-
 .titolo-dashboard {
   background-color: #00ccbc;
-  background-color: #28a745;
   color: white;
   height: 200px;
 }
@@ -11099,14 +11080,17 @@ a.text-dark:focus {
   background-color: #00ccbc;
   color: white;
   border: 1px solid #00ccbc;
-  padding: 10px;
+  padding: 5px 10px;
   margin: 5px;
-  width: 100%;
+  display: inline-block;
 }
 
 .piatti a:hover {
   background-color: #858585;
   border: 1px solid #858585;
+  list-style: none;
+  text-decoration: none;
+  color: white;
 }
 
 .cartella {
@@ -11377,5 +11361,25 @@ footer .social i {
 .food-img img {
   max-width: 100%;
   max-height: 100%;
+}
+
+.bottone-generale {
+  list-style: none;
+  text-decoration: none;
+  border-radius: 10px;
+  background-color: #00ccbc;
+  color: white;
+  border: 1px solid #00ccbc;
+  padding: 5px 10px;
+  margin: 5px;
+  display: inline-block;
+}
+
+.bottone-generale:hover {
+  background-color: #858585;
+  border: 1px solid #858585;
+  list-style: none;
+  text-decoration: none;
+  color: white;
 }
 
