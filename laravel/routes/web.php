@@ -58,3 +58,8 @@ Route::get('/cart', 'MainController@testCart')->name('test-cart');
 Route::get('/shop', 'MainController@testShop')->name('test-shop');
 Route::get('/show/{id}', 'MainController@testShow')->name('user-show');
 Route::get('/checkout/{id}', 'MainController@checkout')->name('checkout');
+//rotta pagamento effettuato
+Route::get('/payed', function () {
+
+    return view('pages.payed');
+});
