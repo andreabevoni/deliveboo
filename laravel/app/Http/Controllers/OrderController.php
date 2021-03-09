@@ -16,16 +16,18 @@ class OrderController extends Controller
     public function index()
     {
         if (Auth::user()) {
-            # code...
             $userAuth = Auth::user();
+            return view('pages.orders', compact('userAuth'));
+
+
+
+
         } else {
-            // dd('No logged user');
             return redirect()->route('home');
         }
 
-        // dd($food);
-
     }
+    
     public function store(Request $request)
     {
 
@@ -49,16 +51,17 @@ class OrderController extends Controller
         for ($i = 0; $i < count($cartItems); $i++) {
             $sync_data[$cartItems[$i]] = ['quantity' => $quantityItems[$i]];
         }
+
         $order->food()->sync($sync_data);
+
+        $mail = $request->email;
+        $cart = $request->cart;
+        $user = User::with('food')->findOrFail($request->user);
+        Mail::to($mail)
+            ->send(new OrderMail($cart, $user));
 
 
         return response()->json('ok', 200);
-
-        // dd($order);
-        // $order->card = $request->card;
-
-
-        // return view('orders-page', compact('order'));
     }
 
     public function mailSend(Request $request)
