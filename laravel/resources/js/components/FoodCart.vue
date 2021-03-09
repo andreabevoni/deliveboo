@@ -224,18 +224,19 @@ export default {
         console.log(localStorage.user_name);
         if (localStorage.cart && localStorage.user_id == this.user_id) {
             this.cart = JSON.parse(localStorage.getItem("cart"));
-        }
-        // recupero il nome del ristorante collegato al carrello salvato in memoria
-        this.old_cart = localStorage.user_name;
-        console.log(JSON.parse(localStorage.cart).length);
-    },
-    methods: {
-        // funzione per salvare in localStorage i vari dati che servono
-        updateLocalStorage: function() {
+            console.log(this.cart);
+          }
+          // recupero il nome del ristorante collegato al carrello salvato in memoria
+          this.old_cart = localStorage.user_name;
+          console.log(this.old_cart);
+        },
+        methods: {
+          // funzione per salvare in localStorage i vari dati che servono
+          updateLocalStorage: function() {
             if (this.cart.length > 0) {
-                localStorage.setItem("cart", JSON.stringify(this.cart));
+              localStorage.setItem("cart", JSON.stringify(this.cart));
             } else {
-                localStorage.removeItem("cart");
+              localStorage.removeItem("cart");
             }
             localStorage.setItem("user_id", this.user_id);
             localStorage.setItem("user_name", this.user_name);
@@ -251,11 +252,11 @@ export default {
         // funzione per diminuire la quantitá ordinabile nella card
         minusOne: function() {
             if (this.quantity > 1) this.quantity -= 1;
-        },
-        // funzione per controllare se esiste giá un carrello con un ristoratore differente (apre un alert di conferma)
-        checkCart: function(id) {
-            if (!localStorage.cart || localStorage.user_id == this.user_id) {
-                this.addCart(id);
+          },
+          // funzione per controllare se esiste giá un carrello con un ristoratore differente (apre un alert di conferma)
+          checkCart: function(id) {
+            if (!(localStorage.cart) || (localStorage.user_id == this.user_id)) {
+              this.addCart(id);
             } else {
                 this.id_food = id;
                 $("#alert").modal("show");

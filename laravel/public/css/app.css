@@ -10961,27 +10961,8 @@ a.text-dark:focus {
   border: none;
 }
 
-.img-background {
-  -webkit-clip-path: polygon(25% 0%, 100% 0%, 100% 100%, 25% 100%, 0% 50%);
-          clip-path: polygon(25% 0%, 100% 0%, 100% 100%, 25% 100%, 0% 50%);
-}
-
-.hero {
-  width: 100vw;
-  background-image: url("https://res.cloudinary.com/wnotw/images/c_limit,w_1536,q_auto:eco,f_auto/v1582505115/ye9g26mw2moftw9cedaw/deliveroo-illustrations");
-  background-size: cover;
-  background-position: center;
-}
-
-.form-registration button {
-  background-color: #00ccbc;
-  color: white;
-  border: none;
-}
-
 .titolo-dashboard {
   background-color: #00ccbc;
-  background-color: #28a745;
   color: white;
   height: 200px;
 }
