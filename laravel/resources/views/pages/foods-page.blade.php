@@ -6,63 +6,75 @@
 
         @if (Auth::user()->food->isEmpty())
 
+            <div class="row py-5">
+                <div class="cartella col-md-4 mx-auto">
 
-            <div class="row">
-                <div class="col-md-12 mx-auto">
+                    <img src="{{asset('/img/piatto-vuoto.jpg')}}" width="100%" alt="">
 
-                    <h1>
-                        Opss Nessun piatto!! Prova creando o ripristinando un piatto
-                    </h1>
-                    <div class="mx-auto link">
+                    <div class="p-3">
 
-
-                        <a class="btn btn-success" href="{{ route('food.create') }}">
-                            Crea piatto
-                        </a>
-
-                        <a href="{{ route('food-restore') }}" class="btn btn-primary">
-                            Restore
-                        </a>
-
+                        <h4>
+                            Opss Nessun piatto!! Prova creando o ripristinando un piatto
+                        </h4>
+                        <div class="mx-auto link pt-2">
+    
+                            <a class="btn btn-success" href="{{ route('food.create') }}">
+                                Crea piatto
+                            </a>
+    
+                            <a href="{{ route('food-restore') }}" class="btn btn-primary">
+                                Restore
+                            </a>
+    
+                        </div>
                     </div>
                 </div>
-
-
-
-
+            </div>
 
             @else
-                <div class="col-sm-12">
-                    <h2>Foods</h2>
-                    <a class="btn btn-warning" href="{{ route('food.create') }}">
 
-                        Aggiungi
-                    </a>
+            <div class="row piatti">
 
-                    <a href="{{ route('food-restore') }}" class="btn btn-primary">
-                        Restore
-                    </a>
+                <div class="col-sm-12 d-flex justify-content-around pt-5">
+                    <h2>Elenco del cibo</h2>
+
+                    <div>
+
+                        <a class="" href="{{ route('food.create') }}">
+    
+                            Aggiungi
+                        </a>
+    
+                        <a href="{{ route('food-restore') }}" class="">
+                            Restore
+                        </a>
+                    </div>
 
                 </div>
-                <div class="row row-cols-2">
 
+            </div>
+                
+            <div class="row mx-3 mb-5">
 
+                {{-- <div class="col-sm-12"> --}}
 
                     @foreach ($foods as $food)
-                        <div class="col">
-
+                        <div class="col-sm-12 col-lg-6">
 
                             <comp-food :namefood="'{{ $food->name }}'" :price="{{ $food->price }}"
                                 :description="'{{ $food->description }}'" :id="{{ $food->id }}"
                                 :available="{{ $food->visible }}" :image="'{{ $food->image }}'">
                             </comp-food>
+  
                         </div>
-
                     @endforeach
-                </div>
+
+                {{-- </div> --}}
 
             </div>
+
         @endif
+
     </div>
 
 

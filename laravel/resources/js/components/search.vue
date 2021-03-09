@@ -25,7 +25,7 @@
     
                         <a :href="'/show/' + restaurant.id">
                             <div class="image">
-                                <img class="img-fluid max-width: 100%" :src="'/storage/img/210326_1614854447.jpg'" alt="">
+                                <img class="img-fluid max-width: 100%" :src="'/img/ristorante-1.jpg'" alt="">
                             </div>
                             <div class="p-3">
                                 <h4>
