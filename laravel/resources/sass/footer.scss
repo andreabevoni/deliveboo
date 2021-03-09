@@ -1,0 +1,30 @@
+// FOOTER
+
+footer {
+ background-color: #2E3333;
+ color: #FFF;
+ justify-content: center;
+
+ .footer-block {
+   background-color: #434848;
+   text-align: center;
+   margin: 10px 20px;
+   a {
+     color: #FFF;
+   }
+   img {
+     padding: 5px 0;
+     width: 100px;
+   }
+ }
+
+ .social {
+   color: #FFF;
+   padding-left: 10px;
+   text-align: center;
+   a {
+     color: #FFF;
+     padding: 10px;
+   }
+ }
+}
