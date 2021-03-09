@@ -33,7 +33,7 @@
                                     <img class="img-fluid" src="{{ asset('storage/icon/' . Auth::user()->image) }}" alt=""
                                         height="400px" width="400px">
                                 @else
-                                    <img class="img-fluid" src="{{ asset('storage/img/noimg.png') }}" alt=""
+                                    <img class="img-fluid" src="{{ asset('/img/noimg.png') }}" alt=""
                                         height="400px" width="400px">
                                 @endif
 

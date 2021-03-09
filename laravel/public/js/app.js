@@ -2279,6 +2279,20 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -38795,80 +38809,62 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "row justify-content-center" }, [
-    _c("div", { staticClass: "col-md-10 mb-3" }, [
-      _c("div", { staticClass: "card" }, [
+  return _c("div", { staticClass: "cartella my-3 py-4" }, [
+    _c("div", { staticClass: "d-flex justify-content-around" }, [
+      _c("h4", {}, [_vm._v(_vm._s(_vm.namefood))]),
+      _vm._v(" "),
+      _c("div", [
         _c(
-          "div",
-          { staticClass: "card-header d-flex justify-content-between" },
+          "a",
+          {
+            staticClass: "btn bottone-edit-elimina",
+            attrs: { href: "/food/" + _vm.id + "/edit" }
+          },
           [
-            _c("h4", [_vm._v(_vm._s(_vm.namefood))]),
-            _vm._v(" "),
-            _c("div", [
-              _c(
-                "a",
-                {
-                  staticClass: "btn btn-success",
-                  attrs: { href: "/food/" + _vm.id + "/edit" }
-                },
-                [_vm._v("Modifica")]
-              ),
-              _vm._v(" "),
-              _c(
-                "a",
-                {
-                  staticClass: "btn btn-danger",
-                  attrs: { href: "/food/softdelete/" + _vm.id }
-                },
-                [
-                  _vm._v(
-                    "\n                        Elimina\n                    "
-                  )
-                ]
-              )
-            ])
+            _vm._v(
+              "\n                        M\n                        \n                    "
+            )
           ]
         ),
         _vm._v(" "),
-        _c("div", { staticClass: "card-body col-md-12 d-flex" }, [
-          _c("div", { staticClass: "col-md-8" }, [
-            _vm._v(
-              "\n                    Descrizione: " +
-                _vm._s(_vm.description) +
-                " "
-            ),
-            _c("br"),
-            _vm._v(
-              "\n                    Prezzo: " + _vm._s(_vm.price) + " € "
-            ),
-            _c("br"),
-            _vm._v(
-              "\n                    Disponibile: " +
-                _vm._s(_vm.available) +
-                "\n                "
-            )
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "col-md-4" }, [
-            _vm.image
-              ? _c("img", {
-                  attrs: {
-                    src: _vm.baseURL + _vm.image,
-                    width: "200px",
-                    height: "200px",
-                    alt: "food image"
-                  }
-                })
-              : _c("img", {
-                  attrs: {
-                    src: _vm.defaultImg,
-                    width: "200px",
-                    height: "200px",
-                    alt: "food image"
-                  }
-                })
-          ])
-        ])
+        _c(
+          "a",
+          {
+            staticClass: "btn bottone-edit-elimina",
+            attrs: { href: "/food/softdelete/" + _vm.id }
+          },
+          [
+            _c("i", {
+              staticClass: "fa fa-trash",
+              attrs: { "aria-hidden": "true" }
+            })
+          ]
+        )
+      ])
+    ]),
+    _vm._v(" "),
+    _c("hr"),
+    _vm._v(" "),
+    _c("div", { staticClass: "d-flex justify-content-between" }, [
+      _c("div", { staticClass: "col-md-8" }, [
+        _c("strong", [_vm._v("Descrizione: ")]),
+        _vm._v(_vm._s(_vm.description) + " "),
+        _c("br"),
+        _vm._v(" "),
+        _c("strong", [_vm._v("Prezzo: ")]),
+        _vm._v(_vm._s(_vm.price) + " € "),
+        _c("br"),
+        _vm._v(" "),
+        _c("strong", [_vm._v("Disponibile: ")]),
+        _vm._v(_vm._s(_vm.available) + "\n                ")
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-md-4 food-img" }, [
+        _vm.image
+          ? _c("img", {
+              attrs: { src: _vm.baseURL + _vm.image, alt: "food image" }
+            })
+          : _c("img", { attrs: { src: _vm.defaultImg, alt: "food image" } })
       ])
     ])
   ])
@@ -39484,10 +39480,7 @@ var render = function() {
                   _c("div", { staticClass: "image" }, [
                     _c("img", {
                       staticClass: "img-fluid max-width: 100%",
-                      attrs: {
-                        src: "/storage/img/210326_1614854447.jpg",
-                        alt: ""
-                      }
+                      attrs: { src: "/img/ristorante-1.jpg", alt: "" }
                     })
                   ]),
                   _vm._v(" "),
