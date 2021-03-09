@@ -1,11 +1,11 @@
 <template>
-    <div class="container-fluid">
+    <!-- <div class="container-fluid"> -->
         <div class="row justify-content-center mx-5">
             <div class="col-12 d-flex altezza">
                 <div class="d-flex flex-column align-items-start mt-5 search-box">
 
                     <!-- stampo a schermo le tipologie per permettere all'utente di fare le ricerche -->
-                    <label class="check" v-for="typology in typologies">
+                    <label class="check" v-for="typology in typologies" :key="typology">
                     <input  type="checkbox"
                             :value="typology.name"
                             v-model="filters"
@@ -46,7 +46,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    <!-- </div> -->
 </template>
 
 <script>

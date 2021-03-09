@@ -24,10 +24,10 @@
 
 // HP
 .hero {
-  width: 100vw;
   background-image: url('/img/deliveroo-gradient.png');
   background-size: cover;
   background-position: left;
+  height: 100vh;
 }
 
 .main-headline {
@@ -40,7 +40,6 @@
 
 .search-box {
   background-color: $dark-green;
-  height: 60%;
   margin-right: 20px;
     label.check > span {
     color: white;
@@ -185,6 +184,17 @@ label:hover {
 
 // PAGINA SHOW
 
+.container-fluid {
+  background-color: $grey-bg;
+  border-top: 1px solid lightgrey;
+  padding-top: 20px;
+}
+
+.cart-test {
+  width: 100%;
+  background-color: #FFF;
+}
+
 .info {
   padding: 20px;
   span, h6 {
@@ -194,7 +204,7 @@ label:hover {
 }
 
 .img-user {
-  width: 90%;
+  width: 100%;
   margin: 0 auto;
   img {
     width: 100%;
@@ -202,7 +212,6 @@ label:hover {
   }
 }
 .menu {
-  background-color: $grey-bg;
   padding: 20px;
 }
 
@@ -222,6 +231,10 @@ label:hover {
   padding: 10px;
   // text-align: center;
   margin: 10px 0;
+
+  h6 {
+    padding: 10px 0;
+  }
 
   button {
     @include cta-primary;
@@ -298,6 +311,11 @@ label:hover {
      background-color: lightgrey;
      color: #FFF;
      width: 80%;
+     padding: 10px;
+
+     button:hover {
+       color: #FFF;
+     }
    }
 
    h5 {
@@ -306,6 +324,24 @@ label:hover {
    }
  }
 
+.pop-up-cart {
+
+   button {
+     color: $logo-color;
+     width: 100%;
+     border-radius: 10px;
+     border: 1px solid $logo-color;
+     text-decoration: none;
+     background-color: white;
+     padding: 10px;
+   }
+
+   button:last-child {
+     @include cta-primary;
+     margin-bottom: 10px;
+    }
+}
+
 
 
 // stile provvisorio per homepage
@@ -313,7 +349,7 @@ label:hover {
   color: white;
   background-image: url("/storage/img/Background-food.jpg");
   background-size: cover;
-  height: 300px;
+  // height: 300px;
 }
 
 .check {
@@ -393,10 +429,11 @@ label:hover {
 .cart-test {
   // border: 1px solid green;
   padding: 10px 0;
+  width: 100%;
 
   .item-test {
     margin-bottom: 10px;
-    padding: 0 10px;
+    // padding: 0 10px;
     height: 50px;
     // border: 1px solid purple;
     display: flex;

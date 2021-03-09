@@ -7,7 +7,7 @@
         <img src="{{asset('img/chart_illustration.svg')}}" alt="">
       </div>
         <div class="col-md-6">
-            <div>
+            <div class="container">
                 <div class="login-form">
                   <div class="headline">
                     <h1>{{ __('Accedi alla tua area riservata') }}</h1>
