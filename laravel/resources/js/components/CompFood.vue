@@ -27,7 +27,7 @@
                         <!-- Cibo: {{ namefood }} <br> -->
                         Descrizione: {{ description }} <br />
                         Prezzo: {{ price }} € <br />
-                        Disponibile: {{ available }}
+                        Disponibile: {{ available ? "Si" : "No" }}
                     </div>
                     <div class="col-md-4">
                         <img
