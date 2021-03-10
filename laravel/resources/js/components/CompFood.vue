@@ -1,55 +1,68 @@
 <template>
     <!-- <div class="container"> -->
-    <div class="row justify-content-center">
-        <div class="col-md-10 mb-3">
-            <div class="card">
-                <div class="card-header d-flex justify-content-between">
-                    <h4>{{ namefood }}</h4>
+    <!-- <div class="justify-content-center"> -->
+        <div class="cartella my-3 py-4">
+            <!-- <div class="card"> -->
+                <!-- <div class="card-body col-md-12 d-flex"> -->
+
+                <!-- <div class="card-header d-flex justify-content-between"> -->
+
+                <div class="d-flex justify-content-around">
+
+                    <h4 class="">{{ namefood }}</h4>
+
                     <div>
                         <a
                             :href="'/food/' + id + '/edit'"
-                            class="btn btn-success"
-                            >Modifica</a
+                            class="btn bottone-edit-elimina"
                         >
+                            <img :src="'/img/edit.png'" alt="">
+                        </a>
                         <a
                             :href="'/food/softdelete/' + id"
-                            class="btn btn-danger"
+                            class="btn bottone-edit-elimina"
                         >
-                            Elimina
+                            <i class="fa fa-trash" aria-hidden="true"></i>
                         </a>
                     </div>
                 </div>
 
+                <hr>
+                    
+                <!-- </div> -->
+
                 <!-- /food/softdelete/{id} -->
 
-                <div class="card-body col-md-12 d-flex">
+                <!-- <div class="card-body col-md-12 d-flex"> -->
+                <div class="d-flex justify-content-between">
+
                     <div class="col-md-8">
                         <!-- Cibo: {{ namefood }} <br> -->
-                        Descrizione: {{ description }} <br />
-                        Prezzo: {{ price }} € <br />
-                        Disponibile: {{ available }}
+                        <strong>Descrizione: </strong>{{ description }} <br/>
+                        <strong>Prezzo: </strong>{{ price }} € <br/>
+                        <strong>Disponibile: </strong>{{ available }}
                     </div>
-                    <div class="col-md-4">
+
+                    <div class="col-md-4 food-img">
                         <img
                             v-if="image"
                             :src="baseURL + image"
-                            width="200px"
-                            height="200px"
                             alt="food image"
                         />
 
                         <img
                             v-else
                             :src="defaultImg"
-                            width="200px"
-                            height="200px"
                             alt="food image"
                         />
                     </div>
+
                 </div>
-            </div>
+                <!-- </div> -->
+
+            <!-- </div> -->
         </div>
-    </div>
+    <!-- </div> -->
     <!-- </div> -->
 </template>
 

@@ -11133,22 +11133,23 @@ footer .social a {
   display: inline-block;
   font: normal normal 300 1.3em "Open Sans";
   text-decoration: none;
-  color: #1cbe83;
-  background-color: transparent;
-  border: 1px solid #1cbe83;
-  border-radius: 3px;
-  padding: 2px 10px;
+  color: white;
+  background-color: #00ccbc;
+  border: 1px solid #00ccbc;
+  border-radius: 10px;
+  padding: 4px 18px;
   margin: 5px;
   background-size: 200% 100%;
-  background-image: linear-gradient(to right, transparent 50%, #1cbe83 50%);
+  background-image: linear-gradient(to right, transparent 50%, #a0a0a0 50%);
   transition: background-position 0.3s cubic-bezier(0.19, 1, 0.22, 1) 0.1s, color 0.5s ease 0s, background-color 0.5s ease;
 }
 
 .dashboard a.button:hover,
 .dashboard input.button:hover {
   color: white;
-  background-color: #1cbe83;
+  background-color: #8f8f8f;
   background-position: -100% 100%;
+  border: 1px solid #a5a5a5;
 }
 
 .dashboard a {
@@ -11189,11 +11190,11 @@ footer .social a {
 }
 
 .dashboard .piatti {
-  background-image: url("/storage/img/lista-piatti.jpg");
+  background-image: url("/img/lista-piatti.jpg");
 }
 
 .dashboard .ordini {
-  background-image: url("/storage/img/lista-ordini.jpg");
+  background-image: url("/img/lista-ordini.jpg");
 }
 
 .container-fluid,
@@ -11394,7 +11395,7 @@ li {
 
 .sfondo {
   color: white;
-  background-image: url("/storage/img/Background-food.jpg");
+  background-image: url("/img/sfondo-home.png");
   background-size: cover;
 }
 
