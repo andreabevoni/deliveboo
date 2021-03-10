@@ -3,23 +3,27 @@
 @section('content')
 <div class="container">
 
-  {{$userAuth -> restaurant_name}}
-  [{{$userAuth -> id}}]
+  {{-- stampo dati del ristoratore per debug --}}
+  <div class="display-3">
+    {{$userAuth -> restaurant_name}}
+    [id {{$userAuth -> id}}]
+  </div>
 
-  @php
-    dd($orders);
-  @endphp
+  {{-- stampo tutti gli ordini ricevuti dal ristoratore --}}
+  @foreach ($orders as $order)
+    <div class="border border-primary mb-4">
 
-  <ul>
-    @foreach ($orders as $order)
+      <h5 class="">Ordine numero {{$order -> id}}</h5>
 
-      <li>
+      <div class="">Data Ordine: {{$order -> date}}</div>
 
-        {{$order -> id}}
+      <div class="">Totale Incassato: {{$order -> total / 100}} &#8364;</div>
 
-        <ul>
-          @foreach ($order -> foodByUser(1) as $food)
-
+      <div class="">
+        Cibo Ordinato:
+        @foreach ($order -> food as $food)
+          <div class="">
+            {{-- nella tabella ponte creata dal seed c'é null come quantitá standard, andrebbe fixato il factory --}}
             @if ($food -> pivot -> quantity)
               {{$food -> pivot -> quantity}}x
             @else
@@ -29,15 +33,12 @@
             {{$food -> name}}
             ({{$food -> id}})
             [{{$food -> user -> id}}]
-            <br>
+          </div>
+        @endforeach
+      </div>
 
-          @endforeach
-        </ul>
-
-      </li>
-
-    @endforeach
-  </ul>
+    </div>
+  @endforeach
 
 </div>
 @endsection
