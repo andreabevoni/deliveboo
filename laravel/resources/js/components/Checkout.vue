@@ -273,6 +273,7 @@ export default {
 
                     if (r.data.hasOwnProperty("errors")) {
                         console.log("carta non valida!");
+                        $("#alert").modal("show");
                     } else {
                         console.log("pagamento effettuato");
                         // 1) salviamo l'ordine nel db
