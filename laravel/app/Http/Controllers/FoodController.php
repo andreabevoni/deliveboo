@@ -81,7 +81,7 @@ class FoodController extends Controller
 
             $food = Food::make([
                 'name' => $request->name,
-                'price' => $request->price,
+                'price' => $request->price * 100,
                 'description' => $request->description,
                 'visible' => $request->visible,
                 'category' => $request->category,
