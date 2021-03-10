@@ -2118,6 +2118,63 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     foods: Array,
@@ -2132,7 +2189,9 @@ __webpack_require__.r(__webpack_exports__);
       name: "",
       lastname: "",
       phone_number: "",
-      address: ""
+      address: "",
+      errors: [],
+      cvc: ""
     };
   },
   mounted: function mounted() {
@@ -2211,6 +2270,7 @@ __webpack_require__.r(__webpack_exports__);
         console.log("data", r.data);
 
         if (r.data.hasOwnProperty("errors")) {
+          $("#alert").modal("show");
           console.log("carta non valida!");
         } else {
           console.log("pagamento effettuato"); // 1) salviamo l'ordine nel db
@@ -2222,39 +2282,21 @@ __webpack_require__.r(__webpack_exports__);
             address: _this2.address,
             cart: _this2.cart,
             email: _this2.email,
-            total: _this2.total() / 100
+            total: _this2.total(),
+            user: _this2.user_id
           }; // console.log("prova");
 
-          axios.post("http://localhost:8000/api/orders", order).then(function (r) {
-            console.log(r.data);
+          console.log(localStorage);
+          axios.post("http://localhost:8000/api/orders", order).then(function (r) {// 2) mandiamo la mail di ricevuto ordine
           })["catch"](function (e) {
             return console.log("error", e);
-          }); // 2) mandiamo la mail di ricevuto ordine
-          // 3) svuotiamo il carrello
+          }); // 3) svuotiamo il carrello
 
-          localStorage.cart = []; // this.cart = [];
-          // localStorage.setItem("cart", JSON.stringify(this.cart));
-          // 4) cambiamo pagina in una che dice "pagamento effettuato"
+          localStorage.removeItem("cart");
+          console.log(localStorage); // 4) cambiamo pagina in una che dice "pagamento effettuato"
+
+          window.location.href = "http://localhost:8000/payed";
         }
-      })["catch"](function (e) {
-        return console.log("error", e);
-      });
-    },
-    prova: function prova() {
-      alert("form");
-      console.log("prova");
-      var order = {
-        name: this.name,
-        lastname: this.lastname,
-        phone_number: this.phone_number,
-        address: this.address,
-        cart: this.cart,
-        email: this.email,
-        total: this.total() / 100
-      }; // console.log("prova");
-
-      axios.post("http://localhost:8000/api/orders", order).then(function (r) {
-        console.log(r.data);
       })["catch"](function (e) {
         return console.log("error", e);
       });
@@ -2589,6 +2631,89 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     foods: Array,
@@ -2597,14 +2722,17 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      'cart': [],
-      'quantity': 1,
-      'id_food': 0,
-      'old_cart': ''
+      cart: [],
+      quantity: 1,
+      id_food: 0,
+      old_cart: ""
     };
   },
   mounted: function mounted() {
     // controllo se esiste giá un carrello per questo ristorante, in tal caso me lo recupero
+    console.log(localStorage.cart);
+    console.log(localStorage.user_name);
+
     if (localStorage.cart && localStorage.user_id == this.user_id) {
       this.cart = JSON.parse(localStorage.getItem("cart"));
       console.log(this.cart);
@@ -2644,7 +2772,7 @@ __webpack_require__.r(__webpack_exports__);
         this.addCart(id);
       } else {
         this.id_food = id;
-        $('#alert').modal('show');
+        $("#alert").modal("show");
       }
     },
     // funzione per aggiungere un cibo al carrello
@@ -2658,8 +2786,8 @@ __webpack_require__.r(__webpack_exports__);
         }).quantity += this.quantity;
       } else {
         var item = {
-          'id': id,
-          'quantity': this.quantity
+          id: id,
+          quantity: this.quantity
         };
         this.cart.push(item);
       }
@@ -38613,6 +38741,7 @@ var render = function() {
                   staticClass: "form-control",
                   attrs: {
                     required: "",
+                    minlength: "5",
                     type: "email",
                     name: "email",
                     placeholder: "Inserisci Email"
@@ -38631,7 +38760,7 @@ var render = function() {
               _vm._v(" "),
               _c("div", { staticClass: "form-group" }, [
                 _c("label", { attrs: { for: "exampleInputEmail1" } }, [
-                  _vm._v("Name")
+                  _vm._v("Nome")
                 ]),
                 _vm._v(" "),
                 _c("input", {
@@ -38646,6 +38775,7 @@ var render = function() {
                   staticClass: "form-control",
                   attrs: {
                     required: "",
+                    minlength: "2",
                     type: "text",
                     name: "name",
                     placeholder: "Inserisci Nome"
@@ -38664,7 +38794,7 @@ var render = function() {
               _vm._v(" "),
               _c("div", { staticClass: "form-group" }, [
                 _c("label", { attrs: { for: "exampleInputEmail1" } }, [
-                  _vm._v("LastName")
+                  _vm._v("Cognome")
                 ]),
                 _vm._v(" "),
                 _c("input", {
@@ -38679,6 +38809,7 @@ var render = function() {
                   staticClass: "form-control",
                   attrs: {
                     required: "",
+                    minlength: "2",
                     type: "text",
                     name: "lastname",
                     placeholder: "Inserisci Cognome"
@@ -38728,8 +38859,79 @@ var render = function() {
               ),
               _vm._v(" "),
               _c("div", { staticClass: "form-group" }, [
+                _c("label", [_vm._v("Codice carta di credito")]),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.card,
+                      expression: "card"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: {
+                    required: "",
+                    minlength: "16",
+                    maxlength: "16",
+                    type: "text",
+                    placeholder: "Inserisci codice",
+                    name: "card"
+                  },
+                  domProps: { value: _vm.card },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.card = $event.target.value
+                    }
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c(
+                "button",
+                { staticClass: "btn btn-warning", on: { click: _vm.testMail } },
+                [_vm._v("Invia Mail")]
+              ),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-group" }, [
+                _c("label", [_vm._v("Codice CVC")]),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.cvc,
+                      expression: "cvc"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: {
+                    required: "",
+                    maxlength: "3",
+                    minlength: "3",
+                    type: "text",
+                    placeholder: "Inserisci codice"
+                  },
+                  domProps: { value: _vm.cvc },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.cvc = $event.target.value
+                    }
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-group" }, [
                 _c("label", { attrs: { for: "exampleInputEmail1" } }, [
-                  _vm._v("Address")
+                  _vm._v("Indirizzo")
                 ]),
                 _vm._v(" "),
                 _c("input", {
@@ -38759,12 +38961,6 @@ var render = function() {
                   }
                 })
               ]),
-              _vm._v(" "),
-              _c(
-                "button",
-                { staticClass: "btn btn-warning", on: { click: _vm.testMail } },
-                [_vm._v("Invia Mail")]
-              ),
               _vm._v(" "),
               _c("div", { staticClass: "form-group" }, [
                 _c("label", { attrs: { for: "exampleInputEmail1" } }, [
@@ -38799,46 +38995,10 @@ var render = function() {
                 })
               ]),
               _vm._v(" "),
-              _c("div", { staticClass: "form-group" }, [
-                _c("label", [_vm._v("Codice carta di credito")]),
-                _vm._v(" "),
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.card,
-                      expression: "card"
-                    }
-                  ],
-                  staticClass: "form-control",
-                  attrs: {
-                    type: "text",
-                    placeholder: "Inserisci codice",
-                    name: "card"
-                  },
-                  domProps: { value: _vm.card },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.card = $event.target.value
-                    }
-                  }
-                })
-              ]),
-              _vm._v(" "),
               _c(
                 "button",
                 { staticClass: "btn btn-primary", attrs: { type: "submit" } },
                 [_vm._v("\n                Conferma Ordine\n            ")]
-              ),
-              _vm._v(" "),
-              _c(
-                "button",
-                { staticClass: "btn btn-primary", attrs: { type: "submit" } },
-                [_vm._v("\n                Prova\n            ")]
               )
             ]
           )
@@ -38926,7 +39086,72 @@ var render = function() {
     _vm._m(0)
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass: "modal fade",
+        attrs: {
+          id: "alert",
+          "data-backdrop": "static",
+          "data-keyboard": "false",
+          tabindex: "-1",
+          "aria-labelledby": "staticBackdropLabel",
+          "aria-hidden": "true"
+        }
+      },
+      [
+        _c(
+          "div",
+          { staticClass: "modal-dialog modal-dialog modal-dialog-centered" },
+          [
+            _c("div", { staticClass: "modal-content" }, [
+              _c("div", { staticClass: "modal-header" }, [
+                _c(
+                  "h5",
+                  {
+                    staticClass: "modal-title",
+                    attrs: { id: "staticBackdropLabel" }
+                  },
+                  [
+                    _vm._v(
+                      "\n                        Errore durante il pagamento\n                    "
+                    )
+                  ]
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "modal-body" }, [
+                _vm._v(
+                  "\n                    I dati della carta di credito non sono corretti.\n                "
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "modal-footer" }, [
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-danger",
+                    attrs: { type: "button", "data-dismiss": "modal" }
+                  },
+                  [
+                    _vm._v(
+                      "\n                        Chiudi\n                    "
+                    )
+                  ]
+                )
+              ])
+            ])
+          ]
+        )
+      ]
+    )
+  }
+]
 render._withStripped = true
 
 
@@ -39121,8 +39346,357 @@ render._withStripped = true
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
-var render = function () {}
-var staticRenderFns = []
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "row" }, [
+    _c("div", { staticClass: "col-md-8" }, [
+      _c(
+        "div",
+        { staticClass: "menu" },
+        _vm._l(_vm.foods, function(food) {
+          return _c("div", { key: food.id }, [
+            food.visible
+              ? _c(
+                  "div",
+                  {
+                    staticClass: "card food-item show",
+                    staticStyle: { width: "18rem" },
+                    attrs: {
+                      "data-toggle": "modal",
+                      "data-target": "#myModal" + food.id
+                    },
+                    on: { click: _vm.resetQuantity }
+                  },
+                  [
+                    _c("img", {
+                      staticClass: "card-img-top",
+                      attrs: {
+                        src:
+                          "https://flawless.life/wp-content/uploads/2016/03/lievita-pizza-gourmet.jpg",
+                        alt: "immagine piatto"
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("h4", [_vm._v(_vm._s(food.name))]),
+                    _vm._v(" "),
+                    _c("div", [_vm._v(_vm._s(food.description))]),
+                    _vm._v(" "),
+                    _c("h6", [_vm._v(_vm._s(food.price / 100) + " €")])
+                  ]
+                )
+              : _c(
+                  "div",
+                  {
+                    staticClass: "card food-item hide",
+                    staticStyle: { width: "18rem" }
+                  },
+                  [
+                    _c("img", {
+                      staticClass: "card-img-top",
+                      attrs: {
+                        src:
+                          "https://flawless.life/wp-content/uploads/2016/03/lievita-pizza-gourmet.jpg",
+                        alt: "immagine piatto"
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("h4", [_vm._v(_vm._s(food.name))]),
+                    _vm._v(" "),
+                    _c("div", [_vm._v(_vm._s(food.description))]),
+                    _vm._v(" "),
+                    _c("h6", [_vm._v(_vm._s(food.price / 100) + " €")])
+                  ]
+                ),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass: "modal fade",
+                attrs: { id: "myModal" + food.id, role: "dialog" }
+              },
+              [
+                _c("div", { staticClass: "modal-dialog" }, [
+                  _c("div", { staticClass: "modal-content" }, [
+                    _c("div", { staticClass: "modal-body" }, [
+                      _c("img", {
+                        staticClass: "card-img-top",
+                        attrs: {
+                          src:
+                            "https://flawless.life/wp-content/uploads/2016/03/lievita-pizza-gourmet.jpg",
+                          alt: "immagine piatto"
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "food-item" }, [
+                        _c("h4", [_vm._v(_vm._s(food.name))]),
+                        _vm._v(" "),
+                        _c("span", [_vm._v(_vm._s(food.description))]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "price" }, [
+                          _c("h6", [
+                            _vm._v(
+                              "\n                                            " +
+                                _vm._s(food.price / 100) +
+                                " €\n                                        "
+                            )
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _c("div", {}, [
+                          _c("i", {
+                            staticClass: "fas fa-minus-circle",
+                            on: { click: _vm.minusOne }
+                          }),
+                          _vm._v(
+                            "\n                                        " +
+                              _vm._s(_vm.quantity) +
+                              "\n                                        "
+                          ),
+                          _c("i", {
+                            staticClass: "fas fa-plus-circle",
+                            on: { click: _vm.plusOne }
+                          })
+                        ]),
+                        _vm._v(" "),
+                        _c(
+                          "button",
+                          {
+                            attrs: {
+                              type: "button",
+                              name: "button",
+                              "data-dismiss": "modal"
+                            },
+                            on: {
+                              click: function($event) {
+                                return _vm.checkCart(food.id)
+                              }
+                            }
+                          },
+                          [
+                            _vm._v(
+                              "\n                                        Aggiungi al carrello\n                                    "
+                            )
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "button",
+                          {
+                            staticClass: "btn btn-default",
+                            attrs: { type: "button", "data-dismiss": "modal" }
+                          },
+                          [
+                            _vm._v(
+                              "\n                                        Annulla\n                                    "
+                            )
+                          ]
+                        )
+                      ])
+                    ])
+                  ])
+                ])
+              ]
+            )
+          ])
+        }),
+        0
+      )
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "col-md-4" }, [
+      _vm.cart.length
+        ? _c(
+            "div",
+            { staticClass: "cart-test d-flex flex-column sticky-top" },
+            [
+              _vm._l(_vm.cart, function(item, i) {
+                return _c("div", { key: i, staticClass: "item-test" }, [
+                  _c("div", { staticClass: "quantity" }, [
+                    _c("i", {
+                      staticClass: "fas fa-minus-circle",
+                      on: {
+                        click: function($event) {
+                          return _vm.minusOneCart(i)
+                        }
+                      }
+                    }),
+                    _vm._v(
+                      "\n                    " +
+                        _vm._s(item.quantity) +
+                        "\n                    "
+                    ),
+                    _c("i", {
+                      staticClass: "fas fa-plus-circle",
+                      on: {
+                        click: function($event) {
+                          return _vm.plusOneCart(i)
+                        }
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "name" }, [
+                    _vm._v(
+                      "\n                    " +
+                        _vm._s(
+                          _vm.foods.find(function(x) {
+                            return x.id === item.id
+                          }).name
+                        ) +
+                        "\n                "
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "total" }, [
+                    _vm._v(
+                      "\n                    " +
+                        _vm._s(
+                          (_vm.foods.find(function(x) {
+                            return x.id === item.id
+                          }).price *
+                            item.quantity) /
+                            100
+                        ) +
+                        "\n                    €\n                "
+                    )
+                  ])
+                ])
+              }),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "d-flex justify-content-between px-2" },
+                [
+                  _c("span", [_vm._v("TOTALE:")]),
+                  _vm._v(" "),
+                  _c("span", [_vm._v(_vm._s(_vm.total()) + " €")])
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "a",
+                {
+                  staticClass: "text-center",
+                  attrs: { href: "/checkout/" + _vm.user_id }
+                },
+                [
+                  _c("button", { staticClass: "btn btn-primary" }, [
+                    _vm._v("CHECKOUT")
+                  ])
+                ]
+              )
+            ],
+            2
+          )
+        : _c("div", { staticClass: "cart-test sticky-top" }, [
+            _c("h4", [_vm._v("CARRELLO VUOTO")])
+          ])
+    ]),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        staticClass: "modal fade",
+        attrs: {
+          id: "alert",
+          "data-backdrop": "static",
+          "data-keyboard": "false",
+          tabindex: "-1",
+          "aria-labelledby": "staticBackdropLabel",
+          "aria-hidden": "true"
+        }
+      },
+      [
+        _c(
+          "div",
+          { staticClass: "modal-dialog modal-dialog modal-dialog-centered" },
+          [
+            _c("div", { staticClass: "modal-content" }, [
+              _vm._m(0),
+              _vm._v(" "),
+              _c("div", { staticClass: "modal-body" }, [
+                _vm._v(
+                  "\n                    In questo modo cancelli il carrello esistente da\n                    " +
+                    _vm._s(_vm.old_cart) +
+                    " e crei un nuovo carrello da\n                    " +
+                    _vm._s(_vm.user_name) +
+                    ".\n                "
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "modal-footer" }, [
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-secondary",
+                    attrs: { type: "button", "data-dismiss": "modal" }
+                  },
+                  [
+                    _vm._v(
+                      "\n                        Annulla\n                    "
+                    )
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-primary",
+                    attrs: { type: "button", "data-dismiss": "modal" },
+                    on: {
+                      click: function($event) {
+                        return _vm.addCart(_vm.id_food)
+                      }
+                    }
+                  },
+                  [
+                    _vm._v(
+                      "\n                        Nuovo Carrello\n                    "
+                    )
+                  ]
+                )
+              ])
+            ])
+          ]
+        )
+      ]
+    )
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-header" }, [
+      _c(
+        "h5",
+        { staticClass: "modal-title", attrs: { id: "staticBackdropLabel" } },
+        [
+          _vm._v(
+            "\n                        Vuoi creare un nuovo carrello?\n                    "
+          )
+        ]
+      ),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "close",
+          attrs: {
+            type: "button",
+            "data-dismiss": "modal",
+            "aria-label": "Close"
+          }
+        },
+        [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+      )
+    ])
+  }
+]
+render._withStripped = true
 
 
 
@@ -52272,8 +52846,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! D:\Progetto finale Deliveboo\deliveboo\laravel\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! D:\Progetto finale Deliveboo\deliveboo\laravel\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Boolean\Esercizi\deliveboo\laravel\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Boolean\Esercizi\deliveboo\laravel\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
