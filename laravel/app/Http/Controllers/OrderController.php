@@ -39,6 +39,15 @@ class OrderController extends Controller
             $orders = Order::with('food')
                            ->find($ids)
                            ->sortKeysDesc();
+<<<<<<< HEAD
+=======
+            //                ->reverse();
+
+            // $orders = Order::with('food')
+            //                ->whereIn('id', $ids)
+            //                ->orderBy('date', 'desc')
+            //                ->get();
+>>>>>>> 99a143fc644b1df5171a589d8d09b5bac8a5106a
 
             return view('pages.orders', compact('userAuth', 'orders'));
 
