@@ -230,16 +230,16 @@ export default {
           this.old_cart = localStorage.user_name;
           console.log(this.old_cart);
         },
-        methods: {
-          // funzione per salvare in localStorage i vari dati che servono
-          updateLocalStorage: function() {
-            if (this.cart.length > 0) {
-              localStorage.setItem("cart", JSON.stringify(this.cart));
-            } else {
-              localStorage.removeItem("cart");
-            }
-            localStorage.setItem("user_id", this.user_id);
-            localStorage.setItem("user_name", this.user_name);
+    methods: {
+        // funzione per salvare in localStorage i vari dati che servono
+        updateLocalStorage: function() {
+          if (this.cart.length > 0) {
+            localStorage.setItem("cart", JSON.stringify(this.cart));
+          } else {
+            localStorage.removeItem("cart");
+          }
+          localStorage.setItem("user_id", this.user_id);
+          localStorage.setItem("user_name", this.user_name);
         },
         // funzione per resettare la quantitá indicata nella card del cibo sempre a 1
         resetQuantity: function() {
@@ -254,13 +254,13 @@ export default {
             if (this.quantity > 1) this.quantity -= 1;
           },
           // funzione per controllare se esiste giá un carrello con un ristoratore differente (apre un alert di conferma)
-          checkCart: function(id) {
-            if (!(localStorage.cart) || (localStorage.user_id == this.user_id)) {
-              this.addCart(id);
-            } else {
-                this.id_food = id;
-                $("#alert").modal("show");
-            }
+        checkCart: function(id) {
+          if (!(localStorage.cart) || (localStorage.user_id == this.user_id)) {
+            this.addCart(id);
+          } else {
+              this.id_food = id;
+              $("#alert").modal("show");
+          }
         },
         // funzione per aggiungere un cibo al carrello
         addCart: function(id) {

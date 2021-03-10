@@ -17,17 +17,17 @@ class OrderController extends Controller
     {
         if (Auth::user()) {
             $userAuth = Auth::user();
-            return view('pages.orders', compact('userAuth'));
 
+            $orders = Order::with('food')->get();
 
-
+            return view('pages.orders', compact('userAuth', 'orders'));
 
         } else {
             return redirect()->route('home');
         }
 
     }
-    
+
     public function store(Request $request)
     {
 
