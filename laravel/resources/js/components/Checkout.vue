@@ -279,6 +279,7 @@ export default {
                     console.log("data", r.data);
 
                     if (r.data.hasOwnProperty("errors")) {
+                        $("#alert").modal("show");
                         console.log("carta non valida!");
                     } else {
                         console.log("pagamento effettuato");

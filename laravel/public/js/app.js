@@ -2270,6 +2270,7 @@ __webpack_require__.r(__webpack_exports__);
         console.log("data", r.data);
 
         if (r.data.hasOwnProperty("errors")) {
+          $("#alert").modal("show");
           console.log("carta non valida!");
         } else {
           console.log("pagamento effettuato"); // 1) salviamo l'ordine nel db
@@ -2508,14 +2509,6 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -39365,163 +39358,153 @@ var render = function() {
         _c(
           "div",
           { staticClass: "menu" },
-          [
-            _vm._m(0),
-            _vm._v(" "),
-            _c("p", [
-              _vm._v(
-                "Seleziona i piatti per scegliere la quantità e aggiungerli al carrello"
-              )
-            ]),
-            _vm._v(" "),
-            _vm._l(_vm.foods, function(food) {
-              return _c("div", { key: food.id }, [
-                food.visible
-                  ? _c(
-                      "div",
-                      {
-                        staticClass: "card food-item show",
-                        staticStyle: { width: "18rem" },
+          _vm._l(_vm.foods, function(food) {
+            return _c("div", { key: food.id }, [
+              food.visible
+                ? _c(
+                    "div",
+                    {
+                      staticClass: "card food-item show",
+                      staticStyle: { width: "18rem" },
+                      attrs: {
+                        "data-toggle": "modal",
+                        "data-target": "#myModal" + food.id
+                      },
+                      on: { click: _vm.resetQuantity }
+                    },
+                    [
+                      _c("img", {
+                        staticClass: "card-img-top",
                         attrs: {
-                          "data-toggle": "modal",
-                          "data-target": "#myModal" + food.id
-                        },
-                        on: { click: _vm.resetQuantity }
-                      },
-                      [
+                          src:
+                            "https://flawless.life/wp-content/uploads/2016/03/lievita-pizza-gourmet.jpg",
+                          alt: "immagine piatto"
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("h4", [_vm._v(_vm._s(food.name))]),
+                      _vm._v(" "),
+                      _c("div", [_vm._v(_vm._s(food.description))]),
+                      _vm._v(" "),
+                      _c("h6", [_vm._v(_vm._s(food.price / 100) + " €")])
+                    ]
+                  )
+                : _c(
+                    "div",
+                    {
+                      staticClass: "card food-item hide",
+                      staticStyle: { width: "18rem" }
+                    },
+                    [
+                      _c("img", {
+                        staticClass: "card-img-top",
+                        attrs: {
+                          src:
+                            "https://flawless.life/wp-content/uploads/2016/03/lievita-pizza-gourmet.jpg",
+                          alt: "immagine piatto"
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("h4", [_vm._v(_vm._s(food.name))]),
+                      _vm._v(" "),
+                      _c("div", [_vm._v(_vm._s(food.description))]),
+                      _vm._v(" "),
+                      _c("h6", [_vm._v(_vm._s(food.price / 100) + " €")])
+                    ]
+                  ),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass: "modal fade",
+                  attrs: { id: "myModal" + food.id, role: "dialog" }
+                },
+                [
+                  _c("div", { staticClass: "modal-dialog" }, [
+                    _c("div", { staticClass: "modal-content" }, [
+                      _c("div", { staticClass: "modal-body" }, [
                         _c("img", {
                           staticClass: "card-img-top",
                           attrs: {
-                            src: "/img/food-img/1.jpg",
+                            src:
+                              "https://flawless.life/wp-content/uploads/2016/03/lievita-pizza-gourmet.jpg",
                             alt: "immagine piatto"
                           }
                         }),
                         _vm._v(" "),
-                        _c("h4", [_vm._v(_vm._s(food.name))]),
-                        _vm._v(" "),
-                        _c("div", [_vm._v(_vm._s(food.description))]),
-                        _vm._v(" "),
-                        _c("h6", [_vm._v(_vm._s(food.price / 100) + " €")])
-                      ]
-                    )
-                  : _c(
-                      "div",
-                      {
-                        staticClass: "card food-item hide",
-                        staticStyle: { width: "18rem" }
-                      },
-                      [
-                        _c("img", {
-                          staticClass: "card-img-top",
-                          attrs: {
-                            src: "/img/food-img/2.jpg",
-                            alt: "immagine piatto"
-                          }
-                        }),
-                        _vm._v(" "),
-                        _vm._m(1, true),
-                        _vm._v(" "),
-                        _c("h4", [_vm._v(_vm._s(food.name))]),
-                        _vm._v(" "),
-                        _c("div", [_vm._v(_vm._s(food.description))]),
-                        _vm._v(" "),
-                        _c("h6", [_vm._v(_vm._s(food.price / 100) + " €")])
-                      ]
-                    ),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  {
-                    staticClass: "modal fade",
-                    attrs: { id: "myModal" + food.id, role: "dialog" }
-                  },
-                  [
-                    _c("div", { staticClass: "modal-dialog" }, [
-                      _c("div", { staticClass: "modal-content" }, [
-                        _c("div", { staticClass: "modal-body" }, [
-                          _c("img", {
-                            staticClass: "card-img-top",
-                            attrs: {
-                              src: "/img/food-img/1.jpg",
-                              alt: "immagine piatto"
-                            }
-                          }),
+                        _c("div", { staticClass: "food-item" }, [
+                          _c("h4", [_vm._v(_vm._s(food.name))]),
                           _vm._v(" "),
-                          _c("div", { staticClass: "food-item" }, [
-                            _c("h4", [_vm._v(_vm._s(food.name))]),
-                            _vm._v(" "),
-                            _c("span", [_vm._v(_vm._s(food.description))]),
-                            _vm._v(" "),
+                          _c("span", [_vm._v(_vm._s(food.description))]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "price" }, [
                             _c("h6", [
                               _vm._v(
-                                "\n                                            " +
+                                "\n                                              " +
                                   _vm._s(food.price / 100) +
-                                  " €\n                                        "
+                                  " €\n                                          "
                               )
-                            ]),
-                            _vm._v(" "),
-                            _c("div", { staticClass: "quantity" }, [
-                              _c("i", {
-                                staticClass: "fas fa-minus-circle",
-                                on: { click: _vm.minusOne }
-                              }),
-                              _vm._v(
-                                "\n                                          " +
-                                  _vm._s(_vm.quantity) +
-                                  "\n                                          "
-                              ),
-                              _c("i", {
-                                staticClass: "fas fa-plus-circle",
-                                on: { click: _vm.plusOne }
-                              })
-                            ]),
-                            _vm._v(" "),
-                            _c(
-                              "button",
-                              {
-                                attrs: {
-                                  type: "button",
-                                  name: "button",
-                                  "data-dismiss": "modal"
-                                },
-                                on: {
-                                  click: function($event) {
-                                    return _vm.checkCart(food.id)
-                                  }
-                                }
-                              },
-                              [
-                                _vm._v(
-                                  "\n                                          Aggiungi al carrello\n                                      "
-                                )
-                              ]
+                            ])
+                          ]),
+                          _vm._v(" "),
+                          _c("div", {}, [
+                            _c("i", {
+                              staticClass: "fas fa-minus-circle",
+                              on: { click: _vm.minusOne }
+                            }),
+                            _vm._v(
+                              "\n                                          " +
+                                _vm._s(_vm.quantity) +
+                                "\n                                          "
                             ),
-                            _vm._v(" "),
-                            _c(
-                              "button",
-                              {
-                                staticClass: "btn btn-default",
-                                attrs: {
-                                  type: "button",
-                                  "data-dismiss": "modal"
-                                }
+                            _c("i", {
+                              staticClass: "fas fa-plus-circle",
+                              on: { click: _vm.plusOne }
+                            })
+                          ]),
+                          _vm._v(" "),
+                          _c(
+                            "button",
+                            {
+                              attrs: {
+                                type: "button",
+                                name: "button",
+                                "data-dismiss": "modal"
                               },
-                              [
-                                _vm._v(
-                                  "\n                                          Annulla\n                                      "
-                                )
-                              ]
-                            )
-                          ])
+                              on: {
+                                click: function($event) {
+                                  return _vm.checkCart(food.id)
+                                }
+                              }
+                            },
+                            [
+                              _vm._v(
+                                "\n                                          Aggiungi al carrello\n                                      "
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "button",
+                            {
+                              staticClass: "btn btn-default",
+                              attrs: { type: "button", "data-dismiss": "modal" }
+                            },
+                            [
+                              _vm._v(
+                                "\n                                          Annulla\n                                      "
+                              )
+                            ]
+                          )
                         ])
                       ])
                     ])
-                  ]
-                )
-              ])
-            })
-          ],
-          2
+                  ])
+                ]
+              )
+            ])
+          }),
+          0
         )
       ]),
       _vm._v(" "),
@@ -39579,7 +39562,7 @@ var render = function() {
                               item.quantity) /
                               100
                           ) +
-                          "\n                      € \n                  "
+                          "\n                      €\n                  "
                       )
                     ])
                   ])
@@ -39589,7 +39572,7 @@ var render = function() {
                   "div",
                   { staticClass: "d-flex justify-content-between px-2" },
                   [
-                    _vm._m(2),
+                    _c("span", [_vm._v("TOTALE:")]),
                     _vm._v(" "),
                     _c("span", [_vm._v(_vm._s(_vm.total()) + " €")])
                   ]
@@ -39602,18 +39585,16 @@ var render = function() {
                     attrs: { href: "/checkout/" + _vm.user_id }
                   },
                   [
-                    _c("button", { staticClass: "checkout" }, [
-                      _vm._v("Vai alla cassa")
+                    _c("button", { staticClass: "btn btn-primary" }, [
+                      _vm._v("CHECKOUT")
                     ])
                   ]
                 )
               ],
               2
             )
-          : _c("div", { staticClass: "cart-test sticky-top cart-headline" }, [
-              _c("button", [_vm._v("Vai alla cassa")]),
-              _vm._v(" "),
-              _vm._m(3)
+          : _c("div", { staticClass: "cart-test sticky-top" }, [
+              _c("h4", [_vm._v("CARRELLO VUOTO")])
             ])
       ]),
       _vm._v(" "),
@@ -39636,7 +39617,7 @@ var render = function() {
             { staticClass: "modal-dialog modal-dialog modal-dialog-centered" },
             [
               _c("div", { staticClass: "modal-content" }, [
-                _vm._m(4),
+                _vm._m(0),
                 _vm._v(" "),
                 _c("div", { staticClass: "modal-body" }, [
                   _vm._v(
@@ -39648,10 +39629,13 @@ var render = function() {
                   )
                 ]),
                 _vm._v(" "),
-                _c("div", { staticClass: "modal-footer pop-up-cart" }, [
+                _c("div", { staticClass: "modal-footer" }, [
                   _c(
                     "button",
-                    { attrs: { type: "button", "data-dismiss": "modal" } },
+                    {
+                      staticClass: "btn btn-secondary",
+                      attrs: { type: "button", "data-dismiss": "modal" }
+                    },
                     [
                       _vm._v(
                         "\n                          Annulla\n                      "
@@ -39662,6 +39646,7 @@ var render = function() {
                   _c(
                     "button",
                     {
+                      staticClass: "btn btn-primary",
                       attrs: { type: "button", "data-dismiss": "modal" },
                       on: {
                         click: function($event) {
@@ -39685,42 +39670,6 @@ var render = function() {
   ])
 }
 var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("h2", [
-      _c("i", { staticClass: "fas fa-utensils" }),
-      _vm._v(" Menu")
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "card-img-overlay" }, [
-      _c("i", { staticClass: "fas fa-times-circle" }),
-      _vm._v(" "),
-      _c("h5", { staticClass: "card-title" }, [
-        _vm._v("Piatto non disponibile")
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("span", [_c("strong", [_vm._v("TOTALE:")])])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("h5", [
-      _c("i", { staticClass: "fas fa-shopping-cart" }),
-      _vm._v("\n                 Il tuo carrello è vuoto\n              ")
-    ])
-  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
@@ -52875,7 +52824,7 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-// removed by extract-text-webpack-plugin
+throw new Error("Module build failed (from ./node_modules/css-loader/index.js):\nModuleBuildError: Module build failed (from ./node_modules/sass-loader/dist/cjs.js):\nSassError: unmatched \"}\".\n    ╷\n195 │   }\r\n    │   ^\n    ╵\n  C:\\Laravel\\deliveboo\\laravel\\resources\\sass\\app.scss 195:3  root stylesheet\n    at C:\\Laravel\\deliveboo\\laravel\\node_modules\\webpack\\lib\\NormalModule.js:316:20\n    at C:\\Laravel\\deliveboo\\laravel\\node_modules\\loader-runner\\lib\\LoaderRunner.js:367:11\n    at C:\\Laravel\\deliveboo\\laravel\\node_modules\\loader-runner\\lib\\LoaderRunner.js:233:18\n    at context.callback (C:\\Laravel\\deliveboo\\laravel\\node_modules\\loader-runner\\lib\\LoaderRunner.js:111:13)\n    at C:\\Laravel\\deliveboo\\laravel\\node_modules\\sass-loader\\dist\\index.js:73:7\n    at Function.call$2 (C:\\Laravel\\deliveboo\\laravel\\node_modules\\sass\\sass.dart.js:91729:16)\n    at _render_closure1.call$2 (C:\\Laravel\\deliveboo\\laravel\\node_modules\\sass\\sass.dart.js:80373:12)\n    at _RootZone.runBinary$3$3 (C:\\Laravel\\deliveboo\\laravel\\node_modules\\sass\\sass.dart.js:27269:18)\n    at _FutureListener.handleError$1 (C:\\Laravel\\deliveboo\\laravel\\node_modules\\sass\\sass.dart.js:25797:19)\n    at _Future__propagateToListeners_handleError.call$0 (C:\\Laravel\\deliveboo\\laravel\\node_modules\\sass\\sass.dart.js:26094:49)\n    at Object._Future__propagateToListeners (C:\\Laravel\\deliveboo\\laravel\\node_modules\\sass\\sass.dart.js:4543:77)\n    at _Future._completeError$2 (C:\\Laravel\\deliveboo\\laravel\\node_modules\\sass\\sass.dart.js:25927:9)\n    at _AsyncAwaitCompleter.completeError$2 (C:\\Laravel\\deliveboo\\laravel\\node_modules\\sass\\sass.dart.js:25270:12)\n    at Object._asyncRethrow (C:\\Laravel\\deliveboo\\laravel\\node_modules\\sass\\sass.dart.js:4292:17)\n    at C:\\Laravel\\deliveboo\\laravel\\node_modules\\sass\\sass.dart.js:13233:20\n    at _wrapJsFunctionForAsync_closure.$protected (C:\\Laravel\\deliveboo\\laravel\\node_modules\\sass\\sass.dart.js:4317:15)\n    at _wrapJsFunctionForAsync_closure.call$2 (C:\\Laravel\\deliveboo\\laravel\\node_modules\\sass\\sass.dart.js:25291:12)\n    at _awaitOnObject_closure0.call$2 (C:\\Laravel\\deliveboo\\laravel\\node_modules\\sass\\sass.dart.js:25283:25)\n    at _RootZone.runBinary$3$3 (C:\\Laravel\\deliveboo\\laravel\\node_modules\\sass\\sass.dart.js:27269:18)\n    at _FutureListener.handleError$1 (C:\\Laravel\\deliveboo\\laravel\\node_modules\\sass\\sass.dart.js:25797:19)\n    at _Future__propagateToListeners_handleError.call$0 (C:\\Laravel\\deliveboo\\laravel\\node_modules\\sass\\sass.dart.js:26094:49)\n    at Object._Future__propagateToListeners (C:\\Laravel\\deliveboo\\laravel\\node_modules\\sass\\sass.dart.js:4543:77)\n    at _Future._completeError$2 (C:\\Laravel\\deliveboo\\laravel\\node_modules\\sass\\sass.dart.js:25927:9)\n    at _Future__asyncCompleteError_closure.call$0 (C:\\Laravel\\deliveboo\\laravel\\node_modules\\sass\\sass.dart.js:26016:18)\n    at Object._microtaskLoop (C:\\Laravel\\deliveboo\\laravel\\node_modules\\sass\\sass.dart.js:4594:24)\n    at StaticClosure._startMicrotaskLoop (C:\\Laravel\\deliveboo\\laravel\\node_modules\\sass\\sass.dart.js:4600:11)\n    at _AsyncRun__scheduleImmediateJsOverride_internalCallback.call$0 (C:\\Laravel\\deliveboo\\laravel\\node_modules\\sass\\sass.dart.js:25181:21)\n    at invokeClosure (C:\\Laravel\\deliveboo\\laravel\\node_modules\\sass\\sass.dart.js:1401:26)\n    at Immediate.<anonymous> (C:\\Laravel\\deliveboo\\laravel\\node_modules\\sass\\sass.dart.js:1422:18)\n    at processImmediate (internal/timers.js:461:21)");
 
 /***/ }),
 
