@@ -2118,63 +2118,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     foods: Array,
@@ -2189,9 +2132,7 @@ __webpack_require__.r(__webpack_exports__);
       name: "",
       lastname: "",
       phone_number: "",
-      address: "",
-      errors: [],
-      cvc: ""
+      address: ""
     };
   },
   mounted: function mounted() {
@@ -2281,21 +2222,39 @@ __webpack_require__.r(__webpack_exports__);
             address: _this2.address,
             cart: _this2.cart,
             email: _this2.email,
-            total: _this2.total(),
-            user: _this2.user_id
+            total: _this2.total() / 100
           }; // console.log("prova");
 
-          console.log(localStorage);
-          axios.post("http://localhost:8000/api/orders", order).then(function (r) {// 2) mandiamo la mail di ricevuto ordine
+          axios.post("http://localhost:8000/api/orders", order).then(function (r) {
+            console.log(r.data);
           })["catch"](function (e) {
             return console.log("error", e);
-          }); // 3) svuotiamo il carrello
+          }); // 2) mandiamo la mail di ricevuto ordine
+          // 3) svuotiamo il carrello
 
-          localStorage.removeItem("cart");
-          console.log(localStorage); // 4) cambiamo pagina in una che dice "pagamento effettuato"
-
-          window.location.href = "http://localhost:8000/payed";
+          localStorage.cart = []; // this.cart = [];
+          // localStorage.setItem("cart", JSON.stringify(this.cart));
+          // 4) cambiamo pagina in una che dice "pagamento effettuato"
         }
+      })["catch"](function (e) {
+        return console.log("error", e);
+      });
+    },
+    prova: function prova() {
+      alert("form");
+      console.log("prova");
+      var order = {
+        name: this.name,
+        lastname: this.lastname,
+        phone_number: this.phone_number,
+        address: this.address,
+        cart: this.cart,
+        email: this.email,
+        total: this.total() / 100
+      }; // console.log("prova");
+
+      axios.post("http://localhost:8000/api/orders", order).then(function (r) {
+        console.log(r.data);
       })["catch"](function (e) {
         return console.log("error", e);
       });
@@ -2506,7 +2465,243 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nSyntaxError: C:\\Laravel\\deliveboo\\laravel\\resources\\js\\components\\FoodCart.vue: Unexpected token (326:0)\n\n\u001b[0m \u001b[90m 324 |\u001b[39m \u001b[90m//\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 325 |\u001b[39m\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 326 |\u001b[39m \u001b[33m<<\u001b[39m\u001b[33m<<\u001b[39m\u001b[33m<<\u001b[39m\u001b[33m<\u001b[39m \u001b[33mHEAD\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m     |\u001b[39m \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 327 |\u001b[39m     \u001b[36mexport\u001b[39m \u001b[36mdefault\u001b[39m {\u001b[0m\n\u001b[0m \u001b[90m 328 |\u001b[39m         props\u001b[33m:\u001b[39m {\u001b[0m\n\u001b[0m \u001b[90m 329 |\u001b[39m           foods\u001b[33m:\u001b[39m \u001b[33mArray\u001b[39m\u001b[33m,\u001b[39m\u001b[0m\n    at Parser._raise (C:\\Laravel\\deliveboo\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:776:17)\n    at Parser.raiseWithData (C:\\Laravel\\deliveboo\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:769:17)\n    at Parser.raise (C:\\Laravel\\deliveboo\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:737:17)\n    at Parser.unexpected (C:\\Laravel\\deliveboo\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:9675:16)\n    at Parser.parseExprAtom (C:\\Laravel\\deliveboo\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:11069:20)\n    at Parser.parseExprSubscripts (C:\\Laravel\\deliveboo\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:10644:23)\n    at Parser.parseUpdate (C:\\Laravel\\deliveboo\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:10624:21)\n    at Parser.parseMaybeUnary (C:\\Laravel\\deliveboo\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:10602:23)\n    at Parser.parseExprOps (C:\\Laravel\\deliveboo\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:10463:23)\n    at Parser.parseMaybeConditional (C:\\Laravel\\deliveboo\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:10437:23)\n    at Parser.parseMaybeAssign (C:\\Laravel\\deliveboo\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:10400:21)\n    at Parser.parseExpressionBase (C:\\Laravel\\deliveboo\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:10345:23)\n    at C:\\Laravel\\deliveboo\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:10339:39\n    at Parser.allowInAnd (C:\\Laravel\\deliveboo\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:12037:16)\n    at Parser.parseExpression (C:\\Laravel\\deliveboo\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:10339:17)\n    at Parser.parseStatementContent (C:\\Laravel\\deliveboo\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:12326:23)\n    at Parser.parseStatement (C:\\Laravel\\deliveboo\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:12195:17)\n    at Parser.parseBlockOrModuleBlockBody (C:\\Laravel\\deliveboo\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:12777:25)\n    at Parser.parseBlockBody (C:\\Laravel\\deliveboo\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:12768:10)\n    at Parser.parseProgram (C:\\Laravel\\deliveboo\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:12129:10)\n    at Parser.parseTopLevel (C:\\Laravel\\deliveboo\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:12120:25)\n    at Parser.parse (C:\\Laravel\\deliveboo\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:13836:10)\n    at parse (C:\\Laravel\\deliveboo\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:13889:38)\n    at parser (C:\\Laravel\\deliveboo\\laravel\\node_modules\\@babel\\core\\lib\\parser\\index.js:54:34)\n    at parser.next (<anonymous>)\n    at normalizeFile (C:\\Laravel\\deliveboo\\laravel\\node_modules\\@babel\\core\\lib\\transformation\\normalize-file.js:99:38)\n    at normalizeFile.next (<anonymous>)\n    at run (C:\\Laravel\\deliveboo\\laravel\\node_modules\\@babel\\core\\lib\\transformation\\index.js:31:50)\n    at run.next (<anonymous>)\n    at Function.transform (C:\\Laravel\\deliveboo\\laravel\\node_modules\\@babel\\core\\lib\\transform.js:27:41)\n    at transform.next (<anonymous>)\n    at step (C:\\Laravel\\deliveboo\\laravel\\node_modules\\gensync\\index.js:261:32)\n    at C:\\Laravel\\deliveboo\\laravel\\node_modules\\gensync\\index.js:273:13\n    at async.call.result.err.err (C:\\Laravel\\deliveboo\\laravel\\node_modules\\gensync\\index.js:223:11)\n    at C:\\Laravel\\deliveboo\\laravel\\node_modules\\gensync\\index.js:189:28\n    at C:\\Laravel\\deliveboo\\laravel\\node_modules\\@babel\\core\\lib\\gensync-utils\\async.js:72:7");
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: {
+    foods: Array,
+    user_id: String,
+    user_name: String
+  },
+  data: function data() {
+    return {
+      'cart': [],
+      'quantity': 1,
+      'id_food': 0,
+      'old_cart': ''
+    };
+  },
+  mounted: function mounted() {
+    // controllo se esiste giá un carrello per questo ristorante, in tal caso me lo recupero
+    if (localStorage.cart && localStorage.user_id == this.user_id) {
+      this.cart = JSON.parse(localStorage.getItem("cart"));
+      console.log(this.cart);
+    } // recupero il nome del ristorante collegato al carrello salvato in memoria
+
+
+    this.old_cart = localStorage.user_name;
+    console.log(this.old_cart);
+  },
+  methods: {
+    // funzione per salvare in localStorage i vari dati che servono
+    updateLocalStorage: function updateLocalStorage() {
+      if (this.cart.length > 0) {
+        localStorage.setItem("cart", JSON.stringify(this.cart));
+      } else {
+        localStorage.removeItem("cart");
+      }
+
+      localStorage.setItem("user_id", this.user_id);
+      localStorage.setItem("user_name", this.user_name);
+    },
+    // funzione per resettare la quantitá indicata nella card del cibo sempre a 1
+    resetQuantity: function resetQuantity() {
+      this.quantity = 1;
+    },
+    // funzione per aumentare la quantitá ordinabile nella card
+    plusOne: function plusOne() {
+      this.quantity += 1;
+    },
+    // funzione per diminuire la quantitá ordinabile nella card
+    minusOne: function minusOne() {
+      if (this.quantity > 1) this.quantity -= 1;
+    },
+    // funzione per controllare se esiste giá un carrello con un ristoratore differente (apre un alert di conferma)
+    checkCart: function checkCart(id) {
+      if (!localStorage.cart || localStorage.user_id == this.user_id) {
+        this.addCart(id);
+      } else {
+        this.id_food = id;
+        $('#alert').modal('show');
+      }
+    },
+    // funzione per aggiungere un cibo al carrello
+    addCart: function addCart(id) {
+      // se il cibo é giá presente nel carrello, aggiungo la nuova quantitá senza creare un nuovo oggetto
+      if (this.cart.find(function (x) {
+        return x.id === id;
+      })) {
+        this.cart.find(function (x) {
+          return x.id === id;
+        }).quantity += this.quantity;
+      } else {
+        var item = {
+          'id': id,
+          'quantity': this.quantity
+        };
+        this.cart.push(item);
+      }
+
+      this.updateLocalStorage();
+    },
+    // funzione per rimuovere un cibo al carrello
+    removeCart: function removeCart(i) {
+      this.cart.splice(i, 1);
+      this.updateLocalStorage();
+    },
+    // funzione per aumentare la quantitá di un cibo nel carrello
+    plusOneCart: function plusOneCart(i) {
+      this.cart[i].quantity += 1;
+      this.updateLocalStorage();
+    },
+    // funzione per diminuire la quantitá di un cibo nel carrello
+    minusOneCart: function minusOneCart(i) {
+      if (this.cart[i].quantity > 1) {
+        this.cart[i].quantity -= 1;
+        this.updateLocalStorage();
+      } else {
+        this.removeCart(i);
+      }
+    },
+    // funzione per calcolare dinamicamente il totale del carrello
+    total: function total() {
+      var _this = this;
+
+      var total = 0;
+
+      for (var i = 0; i < this.cart.length; i++) {
+        var foodPrice = this.foods.find(function (x) {
+          return x.id === _this.cart[i].id;
+        }).price;
+        total += foodPrice * this.cart[i].quantity;
+      }
+
+      return total / 100;
+    }
+  }
+});
 
 /***/ }),
 
@@ -2613,6 +2808,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
 //
 //
 //
@@ -38417,7 +38613,6 @@ var render = function() {
                   staticClass: "form-control",
                   attrs: {
                     required: "",
-                    minlength: "5",
                     type: "email",
                     name: "email",
                     placeholder: "Inserisci Email"
@@ -38436,7 +38631,7 @@ var render = function() {
               _vm._v(" "),
               _c("div", { staticClass: "form-group" }, [
                 _c("label", { attrs: { for: "exampleInputEmail1" } }, [
-                  _vm._v("Nome")
+                  _vm._v("Name")
                 ]),
                 _vm._v(" "),
                 _c("input", {
@@ -38451,7 +38646,6 @@ var render = function() {
                   staticClass: "form-control",
                   attrs: {
                     required: "",
-                    minlength: "2",
                     type: "text",
                     name: "name",
                     placeholder: "Inserisci Nome"
@@ -38470,7 +38664,7 @@ var render = function() {
               _vm._v(" "),
               _c("div", { staticClass: "form-group" }, [
                 _c("label", { attrs: { for: "exampleInputEmail1" } }, [
-                  _vm._v("Cognome")
+                  _vm._v("LastName")
                 ]),
                 _vm._v(" "),
                 _c("input", {
@@ -38485,7 +38679,6 @@ var render = function() {
                   staticClass: "form-control",
                   attrs: {
                     required: "",
-                    minlength: "2",
                     type: "text",
                     name: "lastname",
                     placeholder: "Inserisci Cognome"
@@ -38535,79 +38728,8 @@ var render = function() {
               ),
               _vm._v(" "),
               _c("div", { staticClass: "form-group" }, [
-                _c("label", [_vm._v("Codice carta di credito")]),
-                _vm._v(" "),
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.card,
-                      expression: "card"
-                    }
-                  ],
-                  staticClass: "form-control",
-                  attrs: {
-                    required: "",
-                    minlength: "16",
-                    maxlength: "16",
-                    type: "text",
-                    placeholder: "Inserisci codice",
-                    name: "card"
-                  },
-                  domProps: { value: _vm.card },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.card = $event.target.value
-                    }
-                  }
-                })
-              ]),
-              _vm._v(" "),
-              _c(
-                "button",
-                { staticClass: "btn btn-warning", on: { click: _vm.testMail } },
-                [_vm._v("Invia Mail")]
-              ),
-              _vm._v(" "),
-              _c("div", { staticClass: "form-group" }, [
-                _c("label", [_vm._v("Codice CVC")]),
-                _vm._v(" "),
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.cvc,
-                      expression: "cvc"
-                    }
-                  ],
-                  staticClass: "form-control",
-                  attrs: {
-                    required: "",
-                    maxlength: "3",
-                    minlength: "3",
-                    type: "text",
-                    placeholder: "Inserisci codice"
-                  },
-                  domProps: { value: _vm.cvc },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.cvc = $event.target.value
-                    }
-                  }
-                })
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "form-group" }, [
                 _c("label", { attrs: { for: "exampleInputEmail1" } }, [
-                  _vm._v("Indirizzo")
+                  _vm._v("Address")
                 ]),
                 _vm._v(" "),
                 _c("input", {
@@ -38637,6 +38759,12 @@ var render = function() {
                   }
                 })
               ]),
+              _vm._v(" "),
+              _c(
+                "button",
+                { staticClass: "btn btn-warning", on: { click: _vm.testMail } },
+                [_vm._v("Invia Mail")]
+              ),
               _vm._v(" "),
               _c("div", { staticClass: "form-group" }, [
                 _c("label", { attrs: { for: "exampleInputEmail1" } }, [
@@ -38671,10 +38799,46 @@ var render = function() {
                 })
               ]),
               _vm._v(" "),
+              _c("div", { staticClass: "form-group" }, [
+                _c("label", [_vm._v("Codice carta di credito")]),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.card,
+                      expression: "card"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: {
+                    type: "text",
+                    placeholder: "Inserisci codice",
+                    name: "card"
+                  },
+                  domProps: { value: _vm.card },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.card = $event.target.value
+                    }
+                  }
+                })
+              ]),
+              _vm._v(" "),
               _c(
                 "button",
                 { staticClass: "btn btn-primary", attrs: { type: "submit" } },
                 [_vm._v("\n                Conferma Ordine\n            ")]
+              ),
+              _vm._v(" "),
+              _c(
+                "button",
+                { staticClass: "btn btn-primary", attrs: { type: "submit" } },
+                [_vm._v("\n                Prova\n            ")]
               )
             ]
           )
@@ -38762,72 +38926,7 @@ var render = function() {
     _vm._m(0)
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass: "modal fade",
-        attrs: {
-          id: "alert",
-          "data-backdrop": "static",
-          "data-keyboard": "false",
-          tabindex: "-1",
-          "aria-labelledby": "staticBackdropLabel",
-          "aria-hidden": "true"
-        }
-      },
-      [
-        _c(
-          "div",
-          { staticClass: "modal-dialog modal-dialog modal-dialog-centered" },
-          [
-            _c("div", { staticClass: "modal-content" }, [
-              _c("div", { staticClass: "modal-header" }, [
-                _c(
-                  "h5",
-                  {
-                    staticClass: "modal-title",
-                    attrs: { id: "staticBackdropLabel" }
-                  },
-                  [
-                    _vm._v(
-                      "\n                        Errore durante il pagamento\n                    "
-                    )
-                  ]
-                )
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "modal-body" }, [
-                _vm._v(
-                  "\n                    I dati della carta di credito non sono corretti.\n                "
-                )
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "modal-footer" }, [
-                _c(
-                  "button",
-                  {
-                    staticClass: "btn btn-danger",
-                    attrs: { type: "button", "data-dismiss": "modal" }
-                  },
-                  [
-                    _vm._v(
-                      "\n                        Chiudi\n                    "
-                    )
-                  ]
-                )
-              ])
-            ])
-          ]
-        )
-      ]
-    )
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -39125,40 +39224,50 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "row justify-content-center mx-5" }, [
-    _c("div", { staticClass: "col-12 d-flex altezza" }, [
-      _c(
-        "div",
-        { staticClass: "d-flex flex-column align-items-start mt-5 search-box" },
-        _vm._l(_vm.typologies, function(typology) {
-          return _c("label", { key: typology, staticClass: "check" }, [
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.filters,
-                  expression: "filters"
-                }
-              ],
-              attrs: { type: "checkbox" },
-              domProps: {
-                value: typology.name,
-                checked: Array.isArray(_vm.filters)
-                  ? _vm._i(_vm.filters, typology.name) > -1
-                  : _vm.filters
-              },
-              on: {
-                change: [
-                  function($event) {
-                    var $$a = _vm.filters,
-                      $$el = $event.target,
-                      $$c = $$el.checked ? true : false
-                    if (Array.isArray($$a)) {
-                      var $$v = typology.name,
-                        $$i = _vm._i($$a, $$v)
-                      if ($$el.checked) {
-                        $$i < 0 && (_vm.filters = $$a.concat([$$v]))
+  return _c("div", { staticClass: "container-fluid" }, [
+    _c("div", { staticClass: "row justify-content-center mx-5" }, [
+      _c("div", { staticClass: "col-sm-12 d-md-flex altezza" }, [
+        _c(
+          "div",
+          {
+            staticClass:
+              "d-flex flex-sm-wrap flex-md-column align-items-start mt-5 bg-white"
+          },
+          _vm._l(_vm.typologies, function(typology) {
+            return _c("label", { staticClass: "check" }, [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.filters,
+                    expression: "filters"
+                  }
+                ],
+                attrs: { type: "checkbox" },
+                domProps: {
+                  value: typology.name,
+                  checked: Array.isArray(_vm.filters)
+                    ? _vm._i(_vm.filters, typology.name) > -1
+                    : _vm.filters
+                },
+                on: {
+                  change: [
+                    function($event) {
+                      var $$a = _vm.filters,
+                        $$el = $event.target,
+                        $$c = $$el.checked ? true : false
+                      if (Array.isArray($$a)) {
+                        var $$v = typology.name,
+                          $$i = _vm._i($$a, $$v)
+                        if ($$el.checked) {
+                          $$i < 0 && (_vm.filters = $$a.concat([$$v]))
+                        } else {
+                          $$i > -1 &&
+                            (_vm.filters = $$a
+                              .slice(0, $$i)
+                              .concat($$a.slice($$i + 1)))
+                        }
                       } else {
                         $$i > -1 &&
                           (_vm.filters = $$a
@@ -39168,39 +39277,44 @@ var render = function() {
                     } else {
                       _vm.filters = $$c
                     }
-                  },
-                  function($event) {
-                    return _vm.searchRestaurants()
-                  }
-                ]
-              }
-            }),
-            _vm._v(" "),
-            _c("span", [_vm._v(_vm._s(typology.name))])
-          ])
-        }),
-        0
-      ),
-      _vm._v(" "),
-      _c(
-        "div",
-        { staticClass: "search d-flex flex-wrap align-items-start m-6" },
-        _vm._l(_vm.restaurants, function(restaurant) {
-          return _c(
-            "div",
-            { key: restaurant.id, staticClass: "user text-left" },
-            [
-              _c("a", { attrs: { href: "/show/" + restaurant.id } }, [
-                _c("div", { staticClass: "image" }, [
-                  _c("img", {
-                    staticClass: "img-fluid max-width: 100%",
-                    attrs: { src: _vm.img + restaurant.id + ".jpg", alt: "" }
-                  })
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "p-3" }, [
-                  _c("h4", [
-                    _c("strong", [
+                  ]
+                }
+              }),
+              _vm._v(" "),
+              _c("span", [_vm._v(_vm._s(typology.name))])
+            ])
+          }),
+          0
+        ),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "col-sm-10 d-flex flex-wrap align-items-start m-5" },
+          _vm._l(_vm.restaurants, function(restaurant) {
+            return _c(
+              "div",
+              { key: restaurant.id, staticClass: "user text-left" },
+              [
+                _c("a", { attrs: { href: "/show/" + restaurant.id } }, [
+                  _c("div", { staticClass: "image" }, [
+                    _c("img", {
+                      staticClass: "img-fluid max-width: 100%",
+                      attrs: { src: "/img/ristorante-1.jpg", alt: "" }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "p-3" }, [
+                    _c("h4", [
+                      _c("strong", [
+                        _vm._v(
+                          "\n                                    " +
+                            _vm._s(restaurant.restaurant_name) +
+                            "\n                                "
+                        )
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("span", [
                       _vm._v(
                         "\n                                    " +
                           _vm._s(restaurant.restaurant_name) +
@@ -52158,8 +52272,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Laravel\deliveboo\laravel\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Laravel\deliveboo\laravel\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! D:\Progetto finale Deliveboo\deliveboo\laravel\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! D:\Progetto finale Deliveboo\deliveboo\laravel\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
