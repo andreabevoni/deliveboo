@@ -2,26 +2,48 @@
 @import url('https://fonts.googleapis.com/css?family=Nunito');
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,600');
 
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+
 // Variables
 @import 'variables';
 
 // Common
 @import 'common';
 
-// Bootstrap
-@import '~bootstrap/scss/bootstrap';
+@import 'header';
+@import 'footer';
+// @import 'hp';
+@import 'login';
+@import 'register';
+// @import 'show';
+// @import 'checkout';
+// @import 'dashoboard';
+// @import 'foodlist';
+// @import 'orderlist';
 
-
-// PAGINA REGISTER
-.img-background {
-  clip-path: polygon(25% 0%, 100% 0%, 100% 100%, 25% 100%, 0% 50%);
-}
 // HP
 .hero {
-  width: 100vw;
-  // background-image: url('https://res.cloudinary.com/wnotw/images/c_limit,w_1536,q_auto:eco,f_auto/v1582505115/ye9g26mw2moftw9cedaw/deliveroo-illustrations');
+  background-image: url('/img/deliveroo-gradient.png');
   background-size: cover;
-  background-position: center;
+  background-position: left;
+  height: 100vh;
+}
+
+.main-headline {
+  h1,h3 {
+    color: $blue-color;
+    font-weight: 600;
+    padding-bottom: 20px;
+  }
+}
+
+.search-box {
+  background-color: $dark-green;
+  margin-right: 20px;
+    label.check > span {
+    color: white;
+  }
 }
 
 .form-registration {
@@ -170,62 +192,48 @@
 }
 
 
-// LOGIN
-.hero-login {
-  img {
-    width: 100%;
-    height: 100%;
   }
+
+
 }
 
-// PAGINA REGISTER
-.img-background {
-  clip-path: polygon(25% 0%, 100% 0%, 100% 100%, 25% 100%, 0% 50%);
+.cartella {
+  background-color: white;
+  padding: 10px;
+  margin: 10px;
+  box-shadow: 3px 3px 6px -3px rgb(177, 177, 177);
+
 }
 
-.form-registration {
-  button {
-    @include cta-primary;
-  }
+.container-fluid {
+  background-color: $grey-bg;
+  border-top: 1px solid lightgrey;
+  padding-top: 20px;
 }
 
-// PAGINA LOGIN
-.login-form {
-  h1 {
-    text-align: center;
-  }
-
-  button {
-    @include cta-primary;
-    margin-bottom: 10px;
-  }
-  button.white {
-    @include cta-white;
-  }
+.cart-test {
+  width: 100%;
+  background-color: #FFF;
 }
-
-// PAGINA SHOW
 
 .info {
-  padding: 20px 0;
-  span {
+  padding: 20px;
+  span, h6 {
     color: $grey-color;
+    padding-top: 20px;
   }
 }
 
-.navbar-menu {
-  a {
-    color: white;
-    font-weight: bolder;
-    background-color: $logo-color;
-    border-radius: 30%;
-    padding: 5px;
-    margin: 20px 5px 20px 0;
+.img-user {
+  width: 100%;
+  margin: 0 auto;
+  img {
+    width: 100%;
+    padding-top: 20px;
   }
 }
-
 .menu {
-  margin-top: 20px;
+  padding: 20px;
 }
 
 .alert-show {
@@ -243,15 +251,49 @@
   background-color: white;
   padding: 10px;
   // text-align: center;
-  margin: 10px;
+  margin: 10px 0;
+
+  h6 {
+    padding: 10px 0;
+  }
 
   button {
     @include cta-primary;
+    margin-bottom: 10px;
+   }
+
+   button:last-child {
+     @include cta-white;
+    color: $logo-color;
    }
  }
 
+ .icon-color {
+   text-align: center;
+   font-size: 1.5rem;
+
+   i {
+     color: $logo-color;
+     font-size: 1.3rem;
+     padding: 20px 40px;
+   }
+ }
+
+ .icon-color.s {
+   font-size: 1rem;
+   i {
+      padding: 10px;
+   }
+
+ }
+
  .food-item.hide {
-   background-color: grey;
+   background-color: rgba($grey-color, 0.6);
+   color: $grey-color;
+
+   img {
+     opacity: 0.5;
+   }
  }
 
  .food-item.show:hover {
@@ -274,46 +316,54 @@
    }
  }
 
- // HEADER
-.logo {
-  img {
-    width: 120px;
-  }
-}
+ .cta {
+   text-align: center;
+   button {
+     @include cta-primary;
+     width: 90%;
+     margin-top: 10px;
+   }
+ }
 
-.menu-nav {
-  button {
-    background-color: white;
-    margin-left: 10px;
-    border: 1px lightgrey solid;
-    i {
-      color: #00ccbc;
+ .cart-headline {
+   text-align: center;
+   button {
+     @include button-basic;
+     background-color: lightgrey;
+     color: #FFF;
+     width: 80%;
+     padding: 10px;
+
+     button:hover {
+       color: #FFF;
+     }
+   }
+
+   h5 {
+     color: $grey-color;
+     font-size: 1rem;
+   }
+ }
+
+.pop-up-cart {
+
+   button {
+     color: $logo-color;
+     width: 100%;
+     border-radius: 10px;
+     border: 1px solid $logo-color;
+     text-decoration: none;
+     background-color: white;
+     padding: 10px;
+   }
+
+   button:last-child {
+     @include cta-primary;
+     margin-bottom: 10px;
     }
-
-  }
 }
 
- // FOOTER
-footer {
-  background-color: #2E3333;
-  color: white;
-  justify-content: center;
 
-  .footer-block {
-    background-color: #434848;
-    text-align: center;
-    margin: 20px;
-
-    a {
-      color: white;
-    }
-  }
-
-  .social i {
-    color: white;
-    padding-left: 10px;
-  }
-}
 
 // stile provvisorio per homepage
 .sfondo {
@@ -399,14 +449,15 @@ footer {
 
 // TEST CARRELLO
 .cart-test {
-  border: 1px solid green;
+  // border: 1px solid green;
   padding: 10px 0;
+  width: 100%;
 
   .item-test {
     margin-bottom: 10px;
-    padding: 0 10px;
+    // padding: 0 10px;
     height: 50px;
-    border: 1px solid purple;
+    // border: 1px solid purple;
     display: flex;
     justify-content: space-between;
     align-items: center;

@@ -1,12 +1,12 @@
 <template>
-    <div class="container-fluid">
+    <!-- <div class="container-fluid"> -->
         <div class="row justify-content-center mx-5">
             <div class="col-sm-12 d-md-flex altezza">
                 
                 <div class="d-flex flex-sm-wrap flex-md-column align-items-start mt-5 bg-white">
 
                     <!-- stampo a schermo le tipologie per permettere all'utente di fare le ricerche -->
-                    <label class="check" v-for="typology in typologies">
+                    <label class="check" v-for="typology in typologies" :key="typology">
                     <input  type="checkbox"
                             :value="typology.name"
                             v-model="filters"
@@ -23,7 +23,7 @@
                         :key="restaurant.id"
                         class="user text-left"
                     >
-    
+
                         <a :href="'/show/' + restaurant.id">
                             <div class="image">
                                 <img class="img-fluid max-width: 100%" :src="'/img/ristorante-1.jpg'" alt="">
@@ -47,7 +47,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    <!-- </div> -->
 </template>
 
 <script>
@@ -58,7 +58,8 @@ export default {
     data() {
         return {
             restaurants: [],
-            filters: []
+            filters: [],
+            img: "/img/user-img/"
         };
     },
     methods: {

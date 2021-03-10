@@ -1,15 +1,17 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+{{-- <div class="container"> --}}
     <div class="row">
       <div class="col-md-6 hero-login">
         <img src="{{asset('img/chart_illustration.svg')}}" alt="">
       </div>
         <div class="col-md-6">
-            <div>
+            <div class="container">
                 <div class="login-form">
-                  <h1>{{ __('Accedi alla tua area riservata') }}</h1>
+                  <div class="headline">
+                    <h1>{{ __('Accedi alla tua area riservata') }}</h1>
+                  </div>
                 </div>
 
                 <div>
@@ -79,5 +81,5 @@
             </div>
         </div>
     </div>
-</div>
+{{-- </div> --}}
 @endsection

@@ -1,4 +1,5 @@
 <template>
+  <div class="container-fluid">
     <div class="row">
         <!-- colonna schede cibi -->
         <div class="col-md-8">
@@ -201,6 +202,7 @@
             </div>
         </div>
     </div>
+  </div>
 </template>
 
 <script>

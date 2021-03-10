@@ -1,12 +1,12 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
+    {{-- <div class="container"> --}}
         <div class="row">
-            <div class="col-md-5">
-                <div>
+            <div class="col-md-6">
+                <div class="headline">
+                  <h1>Diventa subito partner di Deliveboo</h1>
                     <div>
-                      <h1>Diventa subito partner di Deliveboo</h1>
                      </div>
                     <div class="form-registration">
                       <p>Aumenta le tue vendite fino al 30% grazie alle consegne a domicilio</p>
@@ -143,7 +143,7 @@
             </div>
 
             {{-- Carosello immagini --}}
-            <div class="col-md-7 img-background">
+            <div class="col-md-6 img-background">
               <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
                 <div class="carousel-inner">
                   <div class="carousel-item active">
@@ -159,5 +159,5 @@
           </div>
         </div>
       </div>
-    </div>
+    {{-- </div> --}}
 @endsection
