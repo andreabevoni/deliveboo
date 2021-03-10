@@ -29,6 +29,7 @@
   margin: 0;
   box-sizing: border-box;
 }
+
 // HP
 .hero {
   background-image: url('/img/deliveroo-gradient.png');
@@ -285,45 +286,29 @@
 // fine stile homepage
 
 
-// TEST CARRELLO
-.cart-test {
-  // border: 1px solid green;
-  padding: 10px 0;
-  width: 100%;
 
-  .item-test {
-    margin-bottom: 10px;
-    // padding: 0 10px;
-    height: 50px;
-    // border: 1px solid purple;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-}
 
 .bottone-edit-elimina {
-  background-color: white;
-  border-radius: 100%;
-  margin-left: 10px;
-  box-shadow: 2px 2px 5px 2px rgb(216, 216, 216);
-  &:hover {
-    box-shadow: 0px 0px 0px 0px rgb(216, 216, 216);
-    background-color: rgb(233, 233, 233);
-  }
-}
+   background-color: white;
+   border-radius: 100%;
+   margin-left: 10px;
+   box-shadow: 2px 2px 5px 2px rgb(216, 216, 216);
+   &:hover {
+     box-shadow: 0px 0px 0px 0px rgb(216, 216, 216);
+     background-color: rgb(233, 233, 233);
+   }
+ }
 
+ .food-img {
+   width: 150px;
+   max-height: 100px;
+   text-align: end;
 
-.food-img {
-  width: 150px;
-  max-height: 100px;
-  text-align: end;
-
-  img {
-    max-width: 100%;
-    max-height: 100%;
-  }
-}
+   img {
+     max-width: 100%;
+     max-height: 100%;
+   }
+ }
 
 .bottone-generale {
   @include edit-delete;

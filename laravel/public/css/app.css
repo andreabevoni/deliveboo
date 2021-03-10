@@ -11197,7 +11197,16 @@ footer .social a {
 
 .cart-test {
   background-color: #FFF;
-  padding-right: 20px;
+  padding: 10px 0;
+  width: 100%;
+}
+
+.cart-test .item-test {
+  margin-bottom: 10px;
+  height: 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .cart-test .quantity {
@@ -11490,19 +11499,6 @@ button.checkout {
 
 .altezza {
   min-height: 80vh;
-}
-
-.cart-test {
-  padding: 10px 0;
-  width: 100%;
-}
-
-.cart-test .item-test {
-  margin-bottom: 10px;
-  height: 50px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
 }
 
 .bottone-edit-elimina {
