@@ -1,0 +1,176 @@
+@import 'common';
+
+// PAGINA SHOW
+
+// Info
+.info {
+  border-bottom: 1px solid lightgrey;
+  padding: 20px;
+  i {
+    color: $logo-color;
+  }
+  span, h6 {
+    color: $grey-color;
+    padding-top: 20px;
+  }
+}
+
+// Img ristorante
+.img-user {
+  img {
+    width: 100%;
+    padding-top: 20px;
+  }
+}
+
+// Sezione Menu
+
+.container-fluid {
+  background-color: $grey-bg;
+  padding-top: 20px;
+}
+
+.menu {
+  padding: 20px;
+
+  p {
+    color: $grey-color;
+  }
+}
+
+  // Card Piatto
+  .food-item {
+    background-color: #FFF;
+    padding: 10px;
+    text-align: center;
+    margin: 10px 0;
+
+    h4 {
+      font-weight: bolder;
+    }
+
+    h6 {
+      font-weight: bold;
+      padding: 10px 0;
+    }
+
+    button {
+      @include cta-primary;
+      margin: 10px 0;
+     }
+
+     button:last-child {
+       @include cta-white;
+      color: $logo-color;
+     }
+
+     .card-img-overlay {
+       text-align: center;
+       color: #FFF;
+       font-weight: 400;
+       font-size: 1.5rem;
+     }
+   }
+
+   .food-item.hide {
+     background-color: rgba($grey-color, 0.6);
+     color: $grey-color;
+
+     img {
+       opacity: 0.5;
+     }
+   }
+
+   .food-item.show:hover {
+     cursor: pointer;
+   }
+
+   .food-item.hide:hover {
+     cursor: not-allowed;
+   }
+
+   // Bottoni quantità
+   .quantity {
+     text-align: center;
+     font-size: 1.5rem;
+     font-weight: bold;
+
+     i {
+       color: $logo-color;
+       font-size: 1.3rem;
+       padding: 20px 40px;
+     }
+   }
+
+  // Carrello
+    // Vuoto
+    .cart-headline {
+      text-align: center;
+
+      button {
+        background-color: lightgrey;
+        border-radius: 10px;
+        border: 1px solid lightgrey;
+        color: #FFF;
+        width: 80%;
+        padding: 10px;
+        cursor: not-allowed;
+
+        button:hover {
+          color: #FFF;
+
+        }
+      }
+
+      h5 {
+        color: $grey-color;
+        font-size: 1rem;
+        padding-top: 20px;
+      }
+    }
+
+
+   // Pieno
+  .cart-test {
+    background-color: #FFF;
+    padding-right: 20px;
+
+    .quantity {
+      font-size: 1rem;
+
+      i {
+        padding: 10px;
+        }
+      }
+    }
+
+    .total {
+      padding-right: 20px;
+    }
+
+
+// Pop-up carrello già esistente
+.pop-up-cart {
+  text-align: center;
+
+   button {
+     color: $logo-color;
+     width: 100%;
+     border-radius: 10px;
+     border: 1px solid $logo-color;
+     text-decoration: none;
+     background-color: white;
+     padding: 10px;
+   }
+
+   button:last-child {
+     @include cta-primary;
+     margin-bottom: 10px;
+    }
+}
+
+   button.checkout {
+     @include cta-primary;
+     width: 90%;
+     margin-top: 10px;
+   }

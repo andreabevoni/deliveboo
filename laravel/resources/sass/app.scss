@@ -16,12 +16,19 @@
 // @import 'hp';
 @import 'login';
 @import 'register';
-// @import 'show';
+@import 'show';
 // @import 'checkout';
 // @import 'dashoboard';
 // @import 'foodlist';
 // @import 'orderlist';
 
+
+// Regole generali
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
 // HP
 .hero {
   background-image: url('/img/deliveroo-gradient.png');
@@ -100,17 +107,17 @@
     display:inline-block;
 
     font:normal normal 300 1.3em 'Open Sans';
-    text-decoration:none;	
-    
+    text-decoration:none;
+
     color:white;
     background-color: $logo-color;
     border:1px solid $logo-color;
     border-radius:10px;
-    
+
     padding: 4px 18px;
     margin:5px;
-        
-    background-size: 200% 100%;	
+
+    background-size: 200% 100%;
     background-image: linear-gradient(to right, transparent 50%, rgb(160, 160, 160) 50%);
     transition: background-position .3s cubic-bezier(0.19, 1, 0.22, 1) .1s, color .5s ease 0s, background-color .5s ease;
   }
@@ -161,7 +168,7 @@
       background-color: rgba(0, 0, 0, 0.6);
       padding: 5px;
     }
-    
+
   }
 
   .piatti {
@@ -192,176 +199,7 @@
 }
 
 
-  }
 
-
-}
-
-.cartella {
-  background-color: white;
-  padding: 10px;
-  margin: 10px;
-  box-shadow: 3px 3px 6px -3px rgb(177, 177, 177);
-
-}
-
-.container-fluid {
-  background-color: $grey-bg;
-  border-top: 1px solid lightgrey;
-  padding-top: 20px;
-}
-
-.cart-test {
-  width: 100%;
-  background-color: #FFF;
-}
-
-.info {
-  padding: 20px;
-  span, h6 {
-    color: $grey-color;
-    padding-top: 20px;
-  }
-}
-
-.img-user {
-  width: 100%;
-  margin: 0 auto;
-  img {
-    width: 100%;
-    padding-top: 20px;
-  }
-}
-.menu {
-  padding: 20px;
-}
-
-.alert-show {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-.alert-hide {
-  display: none;
-}
-
-.food-item {
-  background-color: white;
-  padding: 10px;
-  // text-align: center;
-  margin: 10px 0;
-
-  h6 {
-    padding: 10px 0;
-  }
-
-  button {
-    @include cta-primary;
-    margin-bottom: 10px;
-   }
-
-   button:last-child {
-     @include cta-white;
-    color: $logo-color;
-   }
- }
-
- .icon-color {
-   text-align: center;
-   font-size: 1.5rem;
-
-   i {
-     color: $logo-color;
-     font-size: 1.3rem;
-     padding: 20px 40px;
-   }
- }
-
- .icon-color.s {
-   font-size: 1rem;
-   i {
-      padding: 10px;
-   }
-
- }
-
- .food-item.hide {
-   background-color: rgba($grey-color, 0.6);
-   color: $grey-color;
-
-   img {
-     opacity: 0.5;
-   }
- }
-
- .food-item.show:hover {
-   cursor: pointer;
- }
-
- .food-item.hide:hover {
-   cursor: not-allowed;
- }
-
- li {
-   list-style: none;
- }
-
- .price {
-
-   padding: 20px 0;
-   h6 {
-     font-weight: bolder;
-   }
- }
-
- .cta {
-   text-align: center;
-   button {
-     @include cta-primary;
-     width: 90%;
-     margin-top: 10px;
-   }
- }
-
- .cart-headline {
-   text-align: center;
-   button {
-     @include button-basic;
-     background-color: lightgrey;
-     color: #FFF;
-     width: 80%;
-     padding: 10px;
-
-     button:hover {
-       color: #FFF;
-     }
-   }
-
-   h5 {
-     color: $grey-color;
-     font-size: 1rem;
-   }
- }
-
-.pop-up-cart {
-
-   button {
-     color: $logo-color;
-     width: 100%;
-     border-radius: 10px;
-     border: 1px solid $logo-color;
-     text-decoration: none;
-     background-color: white;
-     padding: 10px;
-   }
-
-   button:last-child {
-     @include cta-primary;
-     margin-bottom: 10px;
-    }
-}
 
 
 
