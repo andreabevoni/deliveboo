@@ -8,8 +8,11 @@
     </div>
 
     <div>
+        {{-- @php
+            dd($order);
+        @endphp --}}
 
-        @foreach ($foods as $food)
+        {{-- @foreach ($order as $food)
 
             <comp-order :namefood="'{{ $food->name }}'" :price="{{ $food->price }}"
                 :description="'{{ $food->description }}'"></comp-order>
@@ -19,7 +22,7 @@
 
             @endforeach
 
-        @endforeach
+        @endforeach --}}
 
     </div>
 
