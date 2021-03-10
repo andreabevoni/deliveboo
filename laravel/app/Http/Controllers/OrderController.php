@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\OrderMail;
+use Illuminate\Support\Facades\DB;
 
 use App\Food;
 use App\User;
@@ -18,7 +19,26 @@ class OrderController extends Controller
         if (Auth::user()) {
             $userAuth = Auth::user();
 
-            $orders = Order::with('food')->get();
+            // ottengo un array di oggetti contenente gli ID di tutti gli ordini effettuati al ristoratore connesso
+            $userOrders = DB::table('orders')
+                        ->join('food_order', 'orders.id', '=', 'food_order.order_id')
+                        ->join('food', 'food_order.food_id', '=', 'food.id')
+                        ->where('food.user_id', "=", $userAuth -> id)
+                        ->select('orders.id')
+                        ->groupBy('orders.id')
+                        ->get()
+                        ->toArray();
+
+            // trasformo questo array di oggetti in array normale
+            $ids = [];
+            foreach ($userOrders as $order) {
+              $ids[]= $order -> id;
+            }
+
+            // recupero tutti gli ordini effettuati con le loro informazioni
+            $orders = Order::with('food')
+                           ->find($ids)
+                           ->sortKeysDesc();
 
             return view('pages.orders', compact('userAuth', 'orders'));
 
