@@ -60,4 +60,16 @@ class OrderController extends Controller
 
         return response()->json('ok', 200);
     }
+
+    public function mailSend(Request $request)
+    {
+        $mail = $request->email;
+        $cart = $request->cart;
+        $user = User::with('food')->findOrFail($request->user);
+
+        Mail::to($mail)
+            ->send(new OrderMail($cart, $user));
+
+        return response()->json('mail inviata', 200);
+    }
 }
