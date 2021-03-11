@@ -24,7 +24,7 @@ Route::resource('food', 'FoodController');
 // Route::get('food/create/', 'FoodController@create')->name('create-food');
 // Route::post('food/store/', 'FoodController@store')->name('store-food');
 Route::get('form/restore/food', 'FoodController@goToRestore')->name('food-restore');
-Route::post('/restore/food', 'FoodController@restore')->name('restore-task');
+Route::post('/restore/food', 'FoodController@restore')->name('restore-food');
 Route::get('/food/softdelete/{id}', 'FoodController@destroy')->name('softdelete-food');
 //clear img food
 Route::get('/clear/image/food/{id}', 'FoodController@clearImg')->name('clear-food-img');
