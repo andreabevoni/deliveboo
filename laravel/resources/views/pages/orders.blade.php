@@ -4,11 +4,8 @@
 <div class="container">
 
   {{-- stampo dati del ristoratore per debug --}}
-  <div class="display-3   info">
+  <div class="display-3 info">
     <h1>{{$userAuth -> restaurant_name}}</h1>
-    {{-- <div class="image">
-      <img class="img-fluid max-width: 100%" src="{{ asset('/img/user-img/1.jpg')}}" alt="">
-    </div> --}}
     {{-- [id {{$userAuth -> id}}] --}}
 
     <h4><i class="fas fa-cart-arrow-down"></i>  Lista ordini ricevuti</h4>
@@ -16,8 +13,7 @@
 
   {{-- stampo tutti gli ordini ricevuti dal ristoratore --}}
   @foreach ($orders as $order)
-    <div class="">
-      <div class="card order" style="width: 100%;">
+      <div class="card order">
         <div class="card-body">
           <h5 class="card-title"> <i class="far fa-sticky-note"></i>  Ordine n° {{$order -> id}}</h5>
         <ul class="list-group list-group-flush">
@@ -40,12 +36,9 @@
               </li>
             @endforeach
           </ul>
-        </ul>
+         </ul>
         </div>
        </div>
-      </div>
-    </div>
   @endforeach
-
 </div>
 @endsection
