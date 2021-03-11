@@ -3,7 +3,7 @@
         <div class="row justify-content-center mx-5">
             <div class="col-sm-12 d-md-flex altezza">
                 
-                <div class="d-flex flex-sm-wrap flex-md-column align-items-start mt-5 bg-white">
+                <div class="d-flex flex-sm-wrap flex-md-column align-items-start align-self-start mt-5 bg-white cartella">
 
                     <!-- stampo a schermo le tipologie per permettere all'utente di fare le ricerche -->
                     <label class="check" v-for="typology in typologies" :key="typology">
@@ -26,9 +26,10 @@
 
                         <a :href="'/show/' + restaurant.id">
                             <div class="image">
-                                <img class="img-fluid max-width: 100%" :src="'/img/ristorante-1.jpg'" alt="">
+                                <img class="img-fluid max-width: 100%" :src="'/storage/icon/nulla.png'" alt="" v-if="restaurant.image == null">
+                                <img class="img-fluid max-width: 100%" :src="'/storage/icon/' + restaurant.image" alt="" v-else>
                             </div>
-                            <div class="p-3">
+                            <div class="p-3 testo-user">
                                 <h4>
                                     <strong>
                                         {{ restaurant.restaurant_name }}

@@ -11056,76 +11056,30 @@ footer .social a {
   width: 100%;
 }
 
-.hero {
-  background-image: url("/img/deliveroo-gradient.png");
-  background-size: cover;
-  background-position: left;
-  height: 100vh;
-}
-
-.main-headline h1,
-.main-headline h3 {
-  color: #440063;
-  font-weight: 600;
-  padding-bottom: 20px;
-}
-
-.search-box {
-  background-color: #007E8A;
-  margin-right: 20px;
-}
-
-.search-box label.check > span {
-  color: white;
-}
-
-.form-registration button {
+.piatti a {
+  list-style: none;
+  text-decoration: none;
+  border-radius: 10px;
   background-color: #00ccbc;
   color: white;
-  border: none;
-}
-
-.titolo-dashboard {
-  background-color: #28a745;
-  color: white;
-  height: 200px;
-}
-
-.dashboard .inputfile {
-  width: 0.1px;
-  height: 0.1px;
-  opacity: 0;
-  overflow: hidden;
-  position: absolute;
-  z-index: -1;
-}
-
-.dashboard .inputfile,
-.dashboard label {
-  color: white;
-  background-color: black;
+  border: 1px solid #00ccbc;
+  padding: 5px 10px;
+  margin: 5px;
   display: inline-block;
 }
 
-.dashboard label:hover {
-  color: red;
+.piatti a:hover {
+  background-color: #858585;
+  border: 1px solid #858585;
+  list-style: none;
+  text-decoration: none;
+  color: white;
 }
 
-.dashboard .inputfile:focus,
-.dashboard label,
-.dashboard .inputfile,
-.dashboard label:hover {
-  background-color: transparent;
-  color: #1cbe83;
-  border: 1px solid #1cbe83;
-  font: normal normal 300 1.3em "Open Sans";
-  padding: 2px 10px;
-}
-
-.dashboard .inputfile,
-.dashboard label {
-  cursor: pointer;
-  /* "hand" cursor */
+.titolo-dashboard {
+  background-color: #00ccbc;
+  color: white;
+  height: 200px;
 }
 
 .dashboard a.button,
@@ -11139,16 +11093,11 @@ footer .social a {
   border-radius: 10px;
   padding: 4px 18px;
   margin: 5px;
-  background-size: 200% 100%;
-  background-image: linear-gradient(to right, transparent 50%, #a0a0a0 50%);
-  transition: background-position 0.3s cubic-bezier(0.19, 1, 0.22, 1) 0.1s, color 0.5s ease 0s, background-color 0.5s ease;
 }
 
 .dashboard a.button:hover,
 .dashboard input.button:hover {
-  color: white;
   background-color: #8f8f8f;
-  background-position: -100% 100%;
   border: 1px solid #a5a5a5;
 }
 
@@ -11195,6 +11144,126 @@ footer .social a {
 
 .dashboard .ordini {
   background-image: url("/img/lista-ordini.jpg");
+}
+
+.sfondo {
+  color: white;
+  background-image: url("/img/sfondo-home.png");
+  background-size: cover;
+  background-position: bottom;
+  height: 300px;
+  padding-top: 35px;
+}
+
+.check {
+  margin: 10px;
+  cursor: pointer;
+}
+
+.check input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.check span {
+  padding: 5px 10px;
+  display: inline-block;
+  color: gray;
+  border-left: 2px solid #f8fafc;
+  font-size: 12px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.check span:hover {
+  border-left: 2px solid #a3a3a3;
+}
+
+.check input:checked + span {
+  color: #00ccbc;
+  border-left: 2px solid #00ccbc;
+}
+
+.user {
+  box-shadow: 1px 1px 10px 2px #c7c7c7;
+  background-color: white;
+  width: 300px;
+  min-height: 200px;
+  margin: 10px;
+  border-radius: 3px;
+}
+
+.user:hover {
+  box-shadow: 1px 1px 1px #dfdfdf;
+  transform: scale(0.95);
+}
+
+.user a {
+  text-decoration: none;
+  color: gray;
+}
+
+.user .image img {
+  border-radius: 3px 3px 0 0;
+}
+
+.user .testo-user {
+  min-height: 150px;
+}
+
+.altezza {
+  min-height: 80vh;
+}
+
+.img-background {
+  -webkit-clip-path: polygon(25% 0%, 100% 0%, 100% 100%, 25% 100%, 0% 50%);
+          clip-path: polygon(25% 0%, 100% 0%, 100% 100%, 25% 100%, 0% 50%);
+}
+
+.hero {
+  background-image: url("/img/deliveroo-gradient.png");
+  background-size: cover;
+  background-position: left;
+  height: 100vh;
+}
+
+.main-headline h1,
+.main-headline h3 {
+  color: #440063;
+  font-weight: 600;
+  padding-bottom: 20px;
+}
+
+.search-box {
+  background-color: #007E8A;
+  margin-right: 20px;
+}
+
+.search-box label.check > span {
+  color: white;
+}
+
+.form-registration button {
+  background-color: #00ccbc;
+  color: white;
+  border: none;
+}
+
+.cartella {
+  background-color: white;
+  padding: 10px;
+  margin: 10px;
+  box-shadow: 3px 3px 6px -3px #b1b1b1;
+}
+
+.cartella {
+  background-color: white;
+  padding: 10px;
+  margin: 10px;
+  box-shadow: 3px 3px 6px -3px #b1b1b1;
 }
 
 .container-fluid,
@@ -11393,71 +11462,6 @@ li {
   margin-bottom: 10px;
 }
 
-.sfondo {
-  color: white;
-  background-image: url("/img/sfondo-home.png");
-  background-size: cover;
-}
-
-.check {
-  margin: 10px;
-  cursor: pointer;
-}
-
-.check input {
-  position: absolute;
-  top: 0;
-  left: 0;
-  visibility: hidden;
-  pointer-events: none;
-}
-
-.check span {
-  padding: 5px 10px;
-  display: inline-block;
-  color: gray;
-  border-left: 2px solid #f8fafc;
-  font-size: 12px;
-  font-weight: bold;
-  text-transform: uppercase;
-}
-
-.check span:hover {
-  border-left: 2px solid #a3a3a3;
-}
-
-.check input:checked + span {
-  color: red;
-  border-left: 2px solid red;
-}
-
-.user {
-  box-shadow: 1px 1px 10px 2px #c7c7c7;
-  background-color: white;
-  width: 300px;
-  min-height: 200px;
-  margin: 10px;
-  border-radius: 3px;
-}
-
-.user:hover {
-  box-shadow: 1px 1px 1px #dfdfdf;
-  transform: scale(0.95);
-}
-
-.user a {
-  text-decoration: none;
-  color: gray;
-}
-
-.user .image img {
-  border-radius: 3px 3px 0 0;
-}
-
-.altezza {
-  min-height: 80vh;
-}
-
 .cart-test {
   padding: 10px 0;
   width: 100%;
@@ -11469,5 +11473,48 @@ li {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.bottone-edit-elimina {
+  background-color: white;
+  border-radius: 100%;
+  margin-left: 10px;
+  box-shadow: 2px 2px 5px 2px #d8d8d8;
+}
+
+.bottone-edit-elimina:hover {
+  box-shadow: 0px 0px 0px 0px #d8d8d8;
+  background-color: #e9e9e9;
+}
+
+.food-img {
+  width: 150px;
+  max-height: 100px;
+  text-align: end;
+}
+
+.food-img img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.bottone-generale {
+  list-style: none;
+  text-decoration: none;
+  border-radius: 10px;
+  background-color: #00ccbc;
+  color: white;
+  border: 1px solid #00ccbc;
+  padding: 5px 10px;
+  margin: 5px;
+  display: inline-block;
+}
+
+.bottone-generale:hover {
+  background-color: #858585;
+  border: 1px solid #858585;
+  list-style: none;
+  text-decoration: none;
+  color: white;
 }
 
