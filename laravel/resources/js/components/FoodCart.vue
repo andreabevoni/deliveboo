@@ -1,9 +1,13 @@
 <template>
+  <div class="container-fluid">
     <div class="row">
         <!-- colonna schede cibi -->
         <div class="col-md-8">
             <div class="menu">
+              <h2> <i class="fas fa-utensils"></i> Menu</h2>
+                <p>Seleziona i piatti per scegliere la quantità e aggiungerli al carrello</p>
                 <div v-for="food in foods" :key="food.id">
+
                     <!-- cibi disponibili -->
                     <div
                         v-if="food.visible"
@@ -14,7 +18,7 @@
                         :data-target="'#myModal' + food.id"
                     >
                         <img
-                            src="https://flawless.life/wp-content/uploads/2016/03/lievita-pizza-gourmet.jpg"
+                            src="/img/food-img/1.jpg"
                             class="card-img-top"
                             alt="immagine piatto"
                         />
@@ -30,10 +34,15 @@
                         style="width: 18rem;"
                     >
                         <img
-                            src="https://flawless.life/wp-content/uploads/2016/03/lievita-pizza-gourmet.jpg"
+                            src="/img/food-img/2.jpg"
                             class="card-img-top"
                             alt="immagine piatto"
                         />
+                        <div class="card-img-overlay">
+                          <i class="fas fa-times-circle"></i>
+                          <h5 class="card-title">Piatto non disponibile</h5>
+                        </div>
+
                         <h4>{{ food.name }}</h4>
                         <div>{{ food.description }}</div>
                         <h6>{{ food.price / 100 }} &#8364;</h6>
@@ -50,20 +59,19 @@
                                 <div class="modal-body">
                                     <!-- scheda del cibo -->
                                     <img
-                                        src="https://flawless.life/wp-content/uploads/2016/03/lievita-pizza-gourmet.jpg"
+                                        src="/img/food-img/1.jpg"
                                         class="card-img-top"
                                         alt="immagine piatto"
                                     />
                                     <div class="food-item">
                                         <h4>{{ food.name }}</h4>
                                         <span>{{ food.description }}</span>
-                                        <div class="price">
-                                            <h6>
-                                                {{ food.price / 100 }} &#8364;
-                                            </h6>
-                                        </div>
+                                          <h6>
+                                              {{ food.price / 100 }} &#8364;
+                                          </h6>
+
                                         <!-- parte con il numero di cibi da inserire -->
-                                        <div class="">
+                                        <div class="quantity">
                                             <i
                                                 class="fas fa-minus-circle"
                                                 @click="minusOne"
@@ -130,23 +138,26 @@
                                 item.quantity) /
                                 100
                         }}
-                        &#8364;
+                        &#8364; 
                     </div>
                 </div>
 
                 <div class="d-flex justify-content-between px-2">
-                    <span>TOTALE:</span>
+                    <span><strong>TOTALE:</strong></span>
                     <span>{{ total() }} &#8364;</span>
                 </div>
 
                 <a :href="'/checkout/' + user_id" class="text-center">
-                    <button class="btn btn-primary">CHECKOUT</button>
+                    <button class="checkout">Vai alla cassa</button>
                 </a>
             </div>
 
             <!-- scrivo che il carrello é vuoto se lo é -->
-            <div class="cart-test sticky-top" v-else>
-                <h4>CARRELLO VUOTO</h4>
+            <div class="cart-test sticky-top cart-headline" v-else>
+              <button>Vai alla cassa</button>
+                <h5><i class="fas fa-shopping-cart"></i>
+                   Il tuo carrello è vuoto
+                </h5>
             </div>
         </div>
 
@@ -180,17 +191,15 @@
                         {{ old_cart }} e crei un nuovo carrello da
                         {{ user_name }}.
                     </div>
-                    <div class="modal-footer">
+                    <div class="modal-footer pop-up-cart">
                         <button
                             type="button"
-                            class="btn btn-secondary"
                             data-dismiss="modal"
                         >
                             Annulla
                         </button>
                         <button
                             type="button"
-                            class="btn btn-primary"
                             data-dismiss="modal"
                             @click="addCart(id_food)"
                         >
@@ -201,6 +210,7 @@
             </div>
         </div>
     </div>
+  </div>
 </template>
 
 <script>
@@ -224,21 +234,22 @@ export default {
         console.log(localStorage.user_name);
         if (localStorage.cart && localStorage.user_id == this.user_id) {
             this.cart = JSON.parse(localStorage.getItem("cart"));
-        }
-        // recupero il nome del ristorante collegato al carrello salvato in memoria
-        this.old_cart = localStorage.user_name;
-        console.log(JSON.parse(localStorage.cart).length);
-    },
+            console.log(this.cart);
+          }
+          // recupero il nome del ristorante collegato al carrello salvato in memoria
+          this.old_cart = localStorage.user_name;
+          console.log(this.old_cart);
+        },
     methods: {
         // funzione per salvare in localStorage i vari dati che servono
         updateLocalStorage: function() {
-            if (this.cart.length > 0) {
-                localStorage.setItem("cart", JSON.stringify(this.cart));
-            } else {
-                localStorage.removeItem("cart");
-            }
-            localStorage.setItem("user_id", this.user_id);
-            localStorage.setItem("user_name", this.user_name);
+          if (this.cart.length > 0) {
+            localStorage.setItem("cart", JSON.stringify(this.cart));
+          } else {
+            localStorage.removeItem("cart");
+          }
+          localStorage.setItem("user_id", this.user_id);
+          localStorage.setItem("user_name", this.user_name);
         },
         // funzione per resettare la quantitá indicata nella card del cibo sempre a 1
         resetQuantity: function() {
@@ -251,15 +262,15 @@ export default {
         // funzione per diminuire la quantitá ordinabile nella card
         minusOne: function() {
             if (this.quantity > 1) this.quantity -= 1;
-        },
-        // funzione per controllare se esiste giá un carrello con un ristoratore differente (apre un alert di conferma)
+          },
+          // funzione per controllare se esiste giá un carrello con un ristoratore differente (apre un alert di conferma)
         checkCart: function(id) {
-            if (!localStorage.cart || localStorage.user_id == this.user_id) {
-                this.addCart(id);
-            } else {
-                this.id_food = id;
-                $("#alert").modal("show");
-            }
+          if (!(localStorage.cart) || (localStorage.user_id == this.user_id)) {
+            this.addCart(id);
+          } else {
+              this.id_food = id;
+              $("#alert").modal("show");
+          }
         },
         // funzione per aggiungere un cibo al carrello
         addCart: function(id) {

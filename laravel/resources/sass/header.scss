@@ -1,0 +1,17 @@
+// HEADER
+.logo-header {
+ img {
+   width: 120px;
+ }
+}
+
+.menu-nav {
+ button {
+   background-color: #FFF;
+   margin-left: 10px;
+   border: 1px lightgrey solid;
+   i {
+     color: $logo-color;
+   }
+ }
+}

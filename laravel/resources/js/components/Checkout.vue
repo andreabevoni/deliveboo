@@ -48,6 +48,12 @@
                     />
                 </div>
 
+          <div class="form-group">
+            <label>Codice CVC</label>
+            <input type="text" class="form-control" placeholder="Inserisci codice" v-model="cvc"></input>
+          </div>
+
+          <button class="btn btn-primary" @click="testApi">Conferma Ordine</button>
                 <div class="form-group">
                     <label>Codice carta di credito</label>
                     <input
@@ -62,6 +68,7 @@
                     />
                 </div>
 
+          <button class="btn btn-warning" @click="testMail">Invia Mail</button>
                 <div class="form-group">
                     <label>Codice CVC</label>
                     <input
@@ -272,6 +279,7 @@ export default {
                     console.log("data", r.data);
 
                     if (r.data.hasOwnProperty("errors")) {
+                        $("#alert").modal("show");
                         console.log("carta non valida!");
                         $("#alert").modal("show");
                     } else {

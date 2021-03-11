@@ -28,14 +28,6 @@ class MainController extends Controller
   }
 
   // test per carrello
-  public function testShop() {
-    return view('test-shop');
-  }
-
-  public function testCart() {
-    return view('test-cart');
-  }
-
   public function testShow($id) {
     $user = User::with('food')->findOrFail($id);
     return view('pages.testCart', compact('user'));

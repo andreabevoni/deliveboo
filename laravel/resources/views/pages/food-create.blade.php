@@ -4,13 +4,21 @@
 
 
     <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card">
-                    <div class="card-header">{{ __('Crea un piatto') }}</div>
 
-                    <div class="card-body">
+        <div class="row">
+
+            <div class="col-md-10 text-center">
+
+                <h2 class="mb-4 mt-5">{{ __('Crea un piatto') }}</h2>
+            </div>
+
+            <div class="col-sm-12 col-md-12 mb-4 d-lg-flex">
+
+                <div class="col-sm-12 col-lg-8">
+
+                    {{-- <div class="col-md-12"> --}}
                         <form method="POST" action="{{ route('food.store') }}" enctype="multipart/form-data">
+                            
                             @csrf
                             @method('POST')
                             <div class="form-group row">
@@ -66,13 +74,10 @@
                                 </div>
                             </div>
 
-
-
-
                             <div class="form-group row">
                                 <label for="category"
                                     class="col-md-4 col-form-label text-md-right">{{ __('Categoria') }}</label>
-                                <div class="col-md-6 input-group mb-3">
+                                <div class="col-md-6 input-group">
 
                                     <select required name="category" class="custom-select" id="inputGroupSelect01">
                                         @foreach ($foods as $food)
@@ -85,17 +90,18 @@
                                     </select>
                                 </div>
 
-
                             </div>
 
                             <div class="form-group row">
                                 <label for="image"
                                     class="col-md-4 col-form-label text-md-right">{{ __('Aggiungi immagine') }}</label>
 
-                                <div class="col-md-6">
+                                <div class="col-md-6 d-flex">
                                     <input id="image" type="file" class="form-control" name="image">
-                                    <a href="{{ route('clear-food-img', $food->id) }}" class="btn btn-danger">Clear</a>
-
+                                    <a href="{{ route('clear-food-img', $food->id) }}" class="btn bottone-edit-elimina">
+                                        <i class="fa fa-trash" aria-hidden="true"></i>
+                                    </a>
+                                    
                                 </div>
                             </div>
 
@@ -105,7 +111,7 @@
                                 <label for="visible"
                                     class="col-md-4 col-form-label text-md-right">{{ __('Disponibile') }}
                                 </label>
-                                <div class="form-check form-check-inline">
+                                <div class="form-check form-check-inline mx-3">
                                     <input class="form-check-input" type="radio" name="visible" id="inlineRadio1" value="1">
                                     <label class="form-check-label" for="visible">Sì</label>
                                 </div>
@@ -121,35 +127,35 @@
                             </div>
 
 
-                            <div class="col-md-6">
+                            <div class="col-sm-12 text-center mb-5">
 
-                                <input class="btn btn-success" type="submit" value="Salva">
+                                <input class="px-5 bottone-generale" type="submit" value="Salva">
 
                             </div>
 
 
                         </form>
 
-
-                    </div>
+                    {{-- </div> --}}
+                    
                 </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="card text-center">
-                            <div class="card-header">Preview Immagine</div>
-                            <div class="card-content">
 
-                                <img class="img-thumbnail rounded mx-auto" src="#" id="preview" width="300px"
-                                    height="200px">
-                            </div>
-                        </div>
-                    </div>
+                <div class="col-sm-12 col-lg-4 text-center">
+                    {{-- <div class="card text-center"> --}}
+                        {{-- <div class="cartella"> --}}
+                            {{-- <div class="">Anteprima Immagine</div> --}}
+
+                            <img class="img-thumbnail rounded mx-auto" src="{{asset('img/piatto-vuoto.jpg')}}" id="preview" width="300px"
+                                height="200px">
+                        {{-- </div> --}}
+                    {{-- </div> --}}
                 </div>
+        
             </div>
         </div>
 
-
     </div>
+
     <script type="application/javascript">
         $(document).ready(function() {
 

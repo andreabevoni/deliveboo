@@ -15,11 +15,11 @@
 
 
           <!-- Barra scelta categoria -->
-          <nav class="navbar-menu">
+          {{-- <nav class="navbar-menu">
             @foreach ($user -> food as $food)
             <span><a href="#{{ $food -> category }}">{{ $food -> category }}</a></span>
             @endforeach
-          </nav>
+          </nav> --}}
 
           <!-- Sezione menu -->
             <div class="col-md-6">

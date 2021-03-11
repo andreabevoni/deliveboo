@@ -35,11 +35,12 @@ Route::get('/clear/image/food/{id}', 'FoodController@clearImg')->name('clear-foo
 // Route ORDERS
 Route::resource('orders', 'OrderController');
 
+
 // Route Typologies
 Route::resource('typologies', 'TypologyController');
 
 // Route Index User
-Route::get('/index', 'UserController@indexUser')->name('index');
+Route::get('/index', 'UserController@indexUser')->name('index-user');
 
 // Route Show User
 // Route::get('/show/{id}', 'UserController@showUser')->name('user-show');
@@ -63,6 +64,9 @@ Route::get('/payed', function () {
 
     return view('pages.payed');
 });
+
+// test per invio mail
+Route::post('/mail/send', 'OrderController@mailSend')->name('mail-send');
 
 Route::get('/chart', function () {
     return view('pages.chart');

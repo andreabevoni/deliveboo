@@ -4,7 +4,7 @@
 
   <div class="hero text-center">
     <div class="container-hp">
-      <div class="display-1">
+      <div class="display-1 sfondo">
         <div class="main-logo">
           <img src="{{ asset('img/deliveboo-logo-white.svg')}}" alt="">
         </div>
