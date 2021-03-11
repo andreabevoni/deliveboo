@@ -20,135 +20,90 @@
     <div class="container">
         <div class="row justify-content-center dashboard">
             <div class="col-sm-12 my-5">
-                {{-- <div class="card p-4"> --}}
-                    {{-- <div class="card-header">{{ __('User Dashboard') }}</div> --}}
 
-                    <div class="row">
-                        <div class="col-sm-6">
+                <div class="row">
 
-                            <h2 class="px-3 card-title">La tua Immagine</h2>
-                            <div class="card p-4">
+                    {{-- colonna di sinistra img user --}}
+                    <div class="col-sm-12 col-md-6 mb-5">
 
-                                @if (Auth::user()->image)
-                                    <img class="img-fluid" src="{{ asset('storage/icon/' . Auth::user()->image) }}" alt=""
-                                        height="400px" width="400px">
-                                @else
-                                    <img class="img-fluid" src="{{ asset('/img/noimg.png') }}" alt=""
-                                        height="400px" width="400px">
-                                @endif
+                        <h2 class="px-3 card-title">La tua Immagine</h2>
+                        <div class="card p-4">
 
-                                {{-- <div class="card-body">
-                                    <h5 class="card-title">Tipologie</h5>
-                                    <p class="card-text">With supporting text below as a natural lead-in to additional
-                                        content.</p>
-                                </div> --}}
+                            @if (Auth::user()->image)
+                                <img class="img-fluid" src="{{ asset('storage/icon/' . Auth::user()->image) }}" alt=""
+                                    height="400px" width="400px">
+                            @else
+                                <img class="img-fluid" src="{{ asset('/img/noimg.png') }}" alt=""
+                                    height="400px" width="400px">
+                            @endif
 
-                                <form action="{{ route('upload-avatar') }}" method="POST" enctype="multipart/form-data">
-                                    @csrf
-                                    @method('POST')
+                            <form action="{{ route('upload-avatar') }}" method="POST" enctype="multipart/form-data">
+                                @csrf
+                                @method('POST')
 
-                                    <div class="form-group">
-                                        <br>
+                                <div class="form-group">
+                                    <br>
 
-                                        <label for="icon"></label>
-                                        <input type="file" name="icon" id="icon" class="mb-3 ml-1" placeholder=""
-                                            aria-describedby="helpId">
+                                    <label for="icon"></label>
+                                    <input type="file" name="icon" id="icon" class="mb-3 ml-1" placeholder=""
+                                        aria-describedby="helpId">
 
-                                        <br>
-                                        <input type="submit" class="button" value="Carica">
+                                    <br>
+                                    <input type="submit" class="button" value="Carica">
 
-                                        <a href="{{ route('clear-avatar') }}" class="button">Elimina</a>
-                                        <small id="helpId" class="text-muted"></small>
-                                    </div>
-                                </form>
-                                {{-- <ul class="list-group list-group-flush">
+                                    <a href="{{ route('clear-avatar') }}" class="button">Elimina</a>
+                                    <small id="helpId" class="text-muted"></small>
+                                </div>
+                            </form>
 
-                                    @foreach (Auth::user()->typologies as $typ)
-                                        <li class="list-group-item">{{ $typ->name }}</li>
-
-                                    @endforeach
-                                </ul> --}}
-                            </div>
-                        </div>
-
-                        <div class="col-sm-6">
-                            <div class="">
-                                {{-- <div class="card list-group-item"> --}}
-                                    <h2 class="px-3 card-title">Le tue Informazioni</h2>
-                                    {{-- <p class="card-text">With supporting text below as a natural lead-in to additional
-                                        content.</p> --}}
-                                {{-- </div> --}}
-
-                                <ul class="list-group list-group-flush">
-                                    <li class="my-2 card list-group-item">
-                                        <strong>Nome: </strong> {{ Auth::user()->restaurant_name }}
-                                    </li>
-                                    <li class="my-2 card list-group-item">
-                                        <strong>Indirizzo: </strong> {{ Auth::user()->address }}
-                                    </li>
-                                    <li class="my-2 card list-group-item">
-                                        <strong>P. Iva: </strong> {{ Auth::user()->p_iva }}
-                                        {{-- <strong>Email: </strong> {{ Auth::user()->email }} --}}
-                                    </li>
-                                    {{-- <li class="my-2 card list-group-item"> 
-                                        <strong>Telefono: </strong> {{ Auth::user()->phone }}
-                                    </li> --}}
-                                    {{-- <li class="my-2 card list-group-item"> 
-                                        <strong>Giorno di chiusura: </strong> {{ Auth::user()->closing_day }}
-                                    </li>
-                                    <li class="my-2 card list-group-item">
-                                        <strong>Apertura da: </strong> {{ Auth::user()->opening_time }}
-                                    </li>
-                                    <li class="my-2 card list-group-item">
-                                        <strong>Chiusura alle: </strong> {{ Auth::user()->closing_time }}
-                                    </li> --}}
-                                    {{-- <ul class="my-2 card list-group list-group-flush"> --}}
-                                    <li class="my-2 card list-group-item">
-                                        <strong>Tipologie: </strong>
-                                        @foreach (Auth::user()->typologies as $typ)
-                                            {{ $typ->name }}
-
-                                        @endforeach
-                                    </li>
-
-                                    {{-- </ul> --}}
-                                </ul>
-
-                            </div>
                         </div>
                     </div>
-                    {{-- <div class="card-body"> --}}
 
-                        {{-- <form action="{{ route('upload-avatar') }}" method="POST" enctype="multipart/form-data">
-                            @csrf
-                            @method('POST')
+                    {{-- colonna di destra con info user --}}
+                    <div class="col-sm-12 col-md-6 mb-5">
+                        {{-- <div class=""> --}}
 
-                            <div class="form-group">
-                                <label for="icon">Upload your Image</label>
-                                <input type="file" name="icon" id="" class="form-control border-0 mb-2" placeholder=""
-                                    aria-describedby="helpId">
-                                <input type="submit" class="btn btn-success" value="Upload">
-                                <a href="{{ route('clear-avatar') }}" class="btn btn-danger">Delete</a>
-                                <small id="helpId" class="text-muted">Upload your image here</small>
-                            </div>
-                        </form> --}}
+                            <h2 class="px-3 card-title">Le tue Informazioni</h2>
+                        
 
-                    {{-- </div> --}}
-                {{-- </div> --}}
+                            <ul class="list-group list-group-flush">
+                                <li class="my-2 card list-group-item">
+                                    <strong>Nome: </strong> {{ Auth::user()->restaurant_name }}
+                                </li>
+                                <li class="my-2 card list-group-item">
+                                    <strong>Indirizzo: </strong> {{ Auth::user()->address }}
+                                </li>
+                                <li class="my-2 card list-group-item">
+                                    <strong>P. Iva: </strong> {{ Auth::user()->p_iva }}
+                                </li>
+                                {{-- <ul class="my-2 card list-group list-group-flush"> --}}
+                                <li class="my-2 card list-group-item">
+                                    <strong>Tipologie: </strong>
+                                    @foreach (Auth::user()->typologies as $typ)
+                                        {{ $typ->name }}
 
-                <div class="row mt-4">
+                                    @endforeach
+                                </li>
+
+                            </ul>
+
+                        {{-- </div> --}}
+                    </div>
+                </div>
+
+                <div class="row mb-4">
+
                     <div class="col-sm-6">
                         <a href="{{ route('food.index') }}">
 
                             <div class="card lista piatti">
                                 <h2>I tuoi cibi</h2>
-                                {{-- <p class="card-text">With supporting text below as a natural lead-in to additional content.</p> --}}
-                                {{-- <a href="{{ route('food.index') }}" class="btn btn-primary">Lista piatti</a> --}}
                             </div>
+
                         </a>
                     </div>
-                    <div class="col-sm-6">
 
+                    <div class="col-sm-6">
                         <a href="{{ route('orders.index') }}">
 
                             <div class="card lista ordini">

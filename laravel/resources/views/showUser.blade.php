@@ -40,7 +40,7 @@
                       <h4>{{ $food->name }}</h4>
                       <span>{{ $food->description }}</span>
                       <div class="price">
-                        <h6>{{ $food->price/100 }} euro</h6>
+                        <h6>{{ $food->price/100}} euro</h6>
                       </div>
                     </div>
                   </div>

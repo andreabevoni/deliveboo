@@ -287,6 +287,7 @@ export default {
                     if (r.data.hasOwnProperty("errors")) {
                         $("#alert").modal("show");
                         console.log("carta non valida!");
+                        $("#alert").modal("show");
                     } else {
                         console.log("pagamento effettuato");
                         // 1) salviamo l'ordine nel db
