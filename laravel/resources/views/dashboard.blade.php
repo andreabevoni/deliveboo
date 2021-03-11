@@ -50,8 +50,8 @@
                                     <div class="form-group">
                                         <br>
 
-                                        <label for="icon">Seleziona Immagine</label>
-                                        <input type="file" name="icon" id="icon" class="inputfile" placeholder=""
+                                        <label for="icon"></label>
+                                        <input type="file" name="icon" id="icon" class="mb-3 ml-1" placeholder=""
                                             aria-describedby="helpId">
 
                                         <br>
@@ -90,9 +90,9 @@
                                         <strong>P. Iva: </strong> {{ Auth::user()->p_iva }}
                                         {{-- <strong>Email: </strong> {{ Auth::user()->email }} --}}
                                     </li>
-                                    <li class="my-2 card list-group-item"> 
+                                    {{-- <li class="my-2 card list-group-item"> 
                                         <strong>Telefono: </strong> {{ Auth::user()->phone }}
-                                    </li>
+                                    </li> --}}
                                     {{-- <li class="my-2 card list-group-item"> 
                                         <strong>Giorno di chiusura: </strong> {{ Auth::user()->closing_day }}
                                     </li>
