@@ -11498,6 +11498,11 @@ button.checkout {
   color: gray;
 }
 
+.user .image {
+  min-height: 200px;
+  background-color: #b6b6b6;
+}
+
 .user .image img {
   border-radius: 3px 3px 0 0;
 }
