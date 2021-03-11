@@ -1,4 +1,4 @@
-// stile provvisorio per homepage
+//homepage
 .sfondo {
     color: white;
     background-image: url("/img/sfondo-home.png");
@@ -74,4 +74,19 @@
 .altezza {
     min-height: 80vh;
 }
-// fine stile homepage
+
+
+// HP
+.hero {
+    // background-image: url('/img/deliveroo-gradient.png');
+    background-size: cover;
+    background-position: left;
+    // height: 100vh;
+  }
+
+.main-headline {
+    h1,h3 {
+        font-weight: 600;
+        padding-bottom: 20px;
+    }
+}
