@@ -11056,30 +11056,286 @@ footer .social a {
   width: 100%;
 }
 
-.piatti a {
+.info {
+  border-bottom: 1px solid lightgrey;
+  padding: 20px;
+}
+
+.info i {
+  color: #00ccbc;
+}
+
+.info span,
+.info h6 {
+  color: #828585;
+  padding-top: 20px;
+}
+
+.img-user img {
+  width: 100%;
+  padding-top: 20px;
+}
+
+.container-fluid,
+.container-sm,
+.container-md,
+.container-lg,
+.container-xl {
+  background-color: #F4F5F5;
+  padding-top: 20px;
+}
+
+.menu {
+  padding: 20px;
+}
+
+.menu p {
+  color: #828585;
+}
+
+.food-item {
+  background-color: #FFF;
+  padding: 10px;
+  text-align: center;
+  margin: 10px 0;
+}
+
+.food-item h4 {
+  font-weight: bolder;
+}
+
+.food-item h6 {
+  font-weight: bold;
+  padding: 10px 0;
+}
+
+.food-item button {
   list-style: none;
   text-decoration: none;
   border-radius: 10px;
   background-color: #00ccbc;
   color: white;
   border: 1px solid #00ccbc;
-  padding: 5px 10px;
-  margin: 5px;
-  display: inline-block;
+  padding: 15px;
+  width: 100%;
+  margin: 10px 0;
 }
 
-.piatti a:hover {
-  background-color: #858585;
-  border: 1px solid #858585;
+.food-item button:last-child {
   list-style: none;
   text-decoration: none;
+  border-radius: 10px;
+  background-color: white;
+  padding: 10px;
+  color: #00ccbc;
+}
+
+.food-item button:last-child a {
+  color: #00ccbc;
+  text-decoration: none;
+}
+
+.food-item .card-img-overlay {
+  text-align: center;
+  color: #FFF;
+  font-weight: 400;
+  font-size: 1.5rem;
+}
+
+.food-item.hide {
+  background-color: rgba(130, 133, 133, 0.6);
+  color: #828585;
+}
+
+.food-item.hide img {
+  opacity: 0.5;
+}
+
+.food-item.show:hover {
+  cursor: pointer;
+}
+
+.food-item.hide:hover {
+  cursor: not-allowed;
+}
+
+.quantity {
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.quantity i {
+  color: #00ccbc;
+  font-size: 1.3rem;
+  padding: 20px 40px;
+}
+
+.cart-headline {
+  text-align: center;
+}
+
+.cart-headline button {
+  background-color: lightgrey;
+  border-radius: 10px;
+  border: 1px solid lightgrey;
+  color: #FFF;
+  width: 80%;
+  padding: 10px;
+  cursor: not-allowed;
+}
+
+.cart-headline button button:hover {
+  color: #FFF;
+}
+
+.cart-headline h5 {
+  color: #828585;
+  font-size: 1rem;
+  padding-top: 20px;
+}
+
+.cart-test {
+  background-color: #FFF;
+  padding: 10px 0;
+  width: 100%;
+}
+
+.cart-test .item-test {
+  margin-bottom: 10px;
+  height: 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cart-test .quantity {
+  font-size: 1rem;
+}
+
+.cart-test .quantity i {
+  padding: 10px;
+}
+
+.total {
+  padding-right: 20px;
+}
+
+.pop-up-cart {
+  text-align: center;
+}
+
+.pop-up-cart button {
+  color: #00ccbc;
+  width: 100%;
+  border-radius: 10px;
+  border: 1px solid #00ccbc;
+  text-decoration: none;
+  background-color: white;
+  padding: 10px;
+}
+
+.pop-up-cart button:last-child {
+  list-style: none;
+  text-decoration: none;
+  border-radius: 10px;
+  background-color: #00ccbc;
   color: white;
+  border: 1px solid #00ccbc;
+  padding: 15px;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+button.checkout {
+  list-style: none;
+  text-decoration: none;
+  border-radius: 10px;
+  background-color: #00ccbc;
+  color: white;
+  border: 1px solid #00ccbc;
+  padding: 15px;
+  width: 100%;
+  width: 90%;
+  margin-top: 10px;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.hero {
+  background-image: url("/img/deliveroo-gradient.png");
+  background-size: cover;
+  background-position: left;
+  height: 100vh;
+}
+
+.main-headline h1,
+.main-headline h3 {
+  color: #440063;
+  font-weight: 600;
+  padding-bottom: 20px;
+}
+
+.search-box {
+  background-color: #007E8A;
+  margin-right: 20px;
+}
+
+.search-box label.check > span {
+  color: white;
+}
+
+.form-registration button {
+  background-color: #00ccbc;
+  color: white;
+  border: none;
 }
 
 .titolo-dashboard {
   background-color: #00ccbc;
   color: white;
   height: 200px;
+}
+
+.dashboard .inputfile {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}
+
+.dashboard .inputfile,
+.dashboard label {
+  color: white;
+  background-color: black;
+  display: inline-block;
+}
+
+.dashboard label:hover {
+  color: red;
+}
+
+.dashboard .inputfile:focus,
+.dashboard label,
+.dashboard .inputfile,
+.dashboard label:hover {
+  background-color: transparent;
+  color: #1cbe83;
+  border: 1px solid #1cbe83;
+  font: normal normal 300 1.3em "Open Sans";
+  padding: 2px 10px;
+}
+
+.dashboard .inputfile,
+.dashboard label {
+  cursor: pointer;
+  /* "hand" cursor */
 }
 
 .dashboard a.button,
@@ -11093,11 +11349,16 @@ footer .social a {
   border-radius: 10px;
   padding: 4px 18px;
   margin: 5px;
+  background-size: 200% 100%;
+  background-image: linear-gradient(to right, transparent 50%, #a0a0a0 50%);
+  transition: background-position 0.3s cubic-bezier(0.19, 1, 0.22, 1) 0.1s, color 0.5s ease 0s, background-color 0.5s ease;
 }
 
 .dashboard a.button:hover,
 .dashboard input.button:hover {
+  color: white;
   background-color: #8f8f8f;
+  background-position: -100% 100%;
   border: 1px solid #a5a5a5;
 }
 
@@ -11146,13 +11407,39 @@ footer .social a {
   background-image: url("/img/lista-ordini.jpg");
 }
 
+.piatti a {
+  list-style: none;
+  text-decoration: none;
+  border-radius: 10px;
+  background-color: #00ccbc;
+  color: white;
+  border: 1px solid #00ccbc;
+  padding: 5px 10px;
+  margin: 5px;
+  display: inline-block;
+}
+
+.piatti a:hover {
+  background-color: #858585;
+  border: 1px solid #858585;
+  list-style: none;
+  text-decoration: none;
+  color: white;
+}
+
+.cartella {
+  background-color: white;
+  padding: 10px;
+  margin: 10px;
+  box-shadow: 3px 3px 6px -3px #b1b1b1;
+}
+
 .sfondo {
   color: white;
   background-image: url("/img/sfondo-home.png");
   background-size: cover;
   background-position: bottom;
   height: 300px;
-  padding-top: 35px;
 }
 
 .check {
@@ -11183,8 +11470,8 @@ footer .social a {
 }
 
 .check input:checked + span {
-  color: #00ccbc;
-  border-left: 2px solid #00ccbc;
+  color: red;
+  border-left: 2px solid red;
 }
 
 .user {
@@ -11210,269 +11497,8 @@ footer .social a {
   border-radius: 3px 3px 0 0;
 }
 
-.user .testo-user {
-  min-height: 150px;
-}
-
 .altezza {
   min-height: 80vh;
-}
-
-.img-background {
-  -webkit-clip-path: polygon(25% 0%, 100% 0%, 100% 100%, 25% 100%, 0% 50%);
-          clip-path: polygon(25% 0%, 100% 0%, 100% 100%, 25% 100%, 0% 50%);
-}
-
-.hero {
-  background-image: url("/img/deliveroo-gradient.png");
-  background-size: cover;
-  background-position: left;
-  height: 100vh;
-}
-
-.main-headline h1,
-.main-headline h3 {
-  color: #440063;
-  font-weight: 600;
-  padding-bottom: 20px;
-}
-
-.search-box {
-  background-color: #007E8A;
-  margin-right: 20px;
-}
-
-.search-box label.check > span {
-  color: white;
-}
-
-.form-registration button {
-  background-color: #00ccbc;
-  color: white;
-  border: none;
-}
-
-.cartella {
-  background-color: white;
-  padding: 10px;
-  margin: 10px;
-  box-shadow: 3px 3px 6px -3px #b1b1b1;
-}
-
-.cartella {
-  background-color: white;
-  padding: 10px;
-  margin: 10px;
-  box-shadow: 3px 3px 6px -3px #b1b1b1;
-}
-
-.container-fluid,
-.container-sm,
-.container-md,
-.container-lg,
-.container-xl {
-  background-color: #F4F5F5;
-  border-top: 1px solid lightgrey;
-  padding-top: 20px;
-}
-
-.cart-test {
-  width: 100%;
-  background-color: #FFF;
-}
-
-.info {
-  padding: 20px;
-}
-
-.info span,
-.info h6 {
-  color: #828585;
-  padding-top: 20px;
-}
-
-.img-user {
-  width: 100%;
-  margin: 0 auto;
-}
-
-.img-user img {
-  width: 100%;
-  padding-top: 20px;
-}
-
-.menu {
-  padding: 20px;
-}
-
-.alert-show {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-.alert-hide {
-  display: none;
-}
-
-.food-item {
-  background-color: white;
-  padding: 10px;
-  margin: 10px 0;
-}
-
-.food-item h6 {
-  padding: 10px 0;
-}
-
-.food-item button {
-  list-style: none;
-  text-decoration: none;
-  border-radius: 10px;
-  background-color: #00ccbc;
-  color: white;
-  border: 1px solid #00ccbc;
-  padding: 15px;
-  width: 100%;
-  margin-bottom: 10px;
-}
-
-.food-item button:last-child {
-  list-style: none;
-  text-decoration: none;
-  border-radius: 10px;
-  background-color: white;
-  padding: 10px;
-  color: #00ccbc;
-}
-
-.food-item button:last-child a {
-  color: #00ccbc;
-  text-decoration: none;
-}
-
-.icon-color {
-  text-align: center;
-  font-size: 1.5rem;
-}
-
-.icon-color i {
-  color: #00ccbc;
-  font-size: 1.3rem;
-  padding: 20px 40px;
-}
-
-.icon-color.s {
-  font-size: 1rem;
-}
-
-.icon-color.s i {
-  padding: 10px;
-}
-
-.food-item.hide {
-  background-color: rgba(130, 133, 133, 0.6);
-  color: #828585;
-}
-
-.food-item.hide img {
-  opacity: 0.5;
-}
-
-.food-item.show:hover {
-  cursor: pointer;
-}
-
-.food-item.hide:hover {
-  cursor: not-allowed;
-}
-
-li {
-  list-style: none;
-}
-
-.price {
-  padding: 20px 0;
-}
-
-.price h6 {
-  font-weight: bolder;
-}
-
-.cta {
-  text-align: center;
-}
-
-.cta button {
-  list-style: none;
-  text-decoration: none;
-  border-radius: 10px;
-  background-color: #00ccbc;
-  color: white;
-  border: 1px solid #00ccbc;
-  padding: 15px;
-  width: 100%;
-  width: 90%;
-  margin-top: 10px;
-}
-
-.cart-headline {
-  text-align: center;
-}
-
-.cart-headline button {
-  list-style: none;
-  text-decoration: none;
-  border-radius: 10px;
-  background-color: lightgrey;
-  color: #FFF;
-  width: 80%;
-  padding: 10px;
-}
-
-.cart-headline button button:hover {
-  color: #FFF;
-}
-
-.cart-headline h5 {
-  color: #828585;
-  font-size: 1rem;
-}
-
-.pop-up-cart button {
-  color: #00ccbc;
-  width: 100%;
-  border-radius: 10px;
-  border: 1px solid #00ccbc;
-  text-decoration: none;
-  background-color: white;
-  padding: 10px;
-}
-
-.pop-up-cart button:last-child {
-  list-style: none;
-  text-decoration: none;
-  border-radius: 10px;
-  background-color: #00ccbc;
-  color: white;
-  border: 1px solid #00ccbc;
-  padding: 15px;
-  width: 100%;
-  margin-bottom: 10px;
-}
-
-.cart-test {
-  padding: 10px 0;
-  width: 100%;
-}
-
-.cart-test .item-test {
-  margin-bottom: 10px;
-  height: 50px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
 }
 
 .bottone-edit-elimina {
