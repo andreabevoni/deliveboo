@@ -2,16 +2,17 @@
     <!-- <div class="container-fluid"> -->
         <div class="row justify-content-center mx-5">
             <div class="col-sm-12 d-md-flex altezza">
-                
+
                 <div class="d-flex flex-sm-wrap flex-md-column align-items-start align-self-start mt-5 bg-white cartella">
 
                     <!-- stampo a schermo le tipologie per permettere all'utente di fare le ricerche -->
-                    <label class="check" v-for="typology in typologies" :key="typology">
-                    <input  type="checkbox"
+                    <label class="check" v-for="typology in typologies">
+                      <input  type="checkbox"
                             :value="typology.name"
                             v-model="filters"
-                            @change="searchRestaurants()">
-                    <span>{{ typology.name }}</span>
+                            @change="searchRestaurants()"
+                      >
+                      <span>{{ typology.name }}</span>
                     </label>
                 </div>
 
@@ -63,7 +64,6 @@ export default {
         return {
             restaurants: [],
             filters: [],
-            img: "/img/user-img/"
         };
     },
     methods: {

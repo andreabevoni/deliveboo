@@ -67,7 +67,7 @@ class FoodController extends Controller
 
             $food = Food::make([
                 'name' => $request->name,
-                'price' => $request->price,
+                'price' => $request->price * 100,
                 'description' => $request->description,
                 'visible' => $request->visible,
                 'category' => $request->category,
@@ -81,7 +81,7 @@ class FoodController extends Controller
 
             $food = Food::make([
                 'name' => $request->name,
-                'price' => $request->price,
+                'price' => $request->price * 100,
                 'description' => $request->description,
                 'visible' => $request->visible,
                 'category' => $request->category,
@@ -143,7 +143,7 @@ class FoodController extends Controller
             $food->update(
                 [
                     'name' => $request->name,
-                    'price' => $request->price,
+                    'price' => $request->price * 100,
                     'description' => $request->description,
                     'visible' => $request->visible,
                     'category' => $request->category,
@@ -155,7 +155,7 @@ class FoodController extends Controller
             $food->update(
                 [
                     'name' => $request->name,
-                    'price' => $request->price,
+                    'price' => $request->price * 100,
                     'description' => $request->description,
                     'visible' => $request->visible,
                     'category' => $request->category,
@@ -193,9 +193,6 @@ class FoodController extends Controller
                 })
                 ->get();
 
-            return view('pages.food-restore', compact('deletedFood'));
-        } else {
-            // dd('No logged user');
             return redirect()->route('home');
         }
     }

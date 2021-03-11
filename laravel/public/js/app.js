@@ -2175,6 +2175,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     foods: Array,
@@ -2988,6 +2994,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     typologies: Array
@@ -2995,8 +3002,7 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       restaurants: [],
-      filters: [],
-      img: "/img/user-img/"
+      filters: []
     };
   },
   methods: {
@@ -38716,6 +38722,8 @@ var render = function() {
     _vm._v(" "),
     _vm.cart.length
       ? _c("div", { staticClass: "col-md-8" }, [
+          _vm._m(0),
+          _vm._v(" "),
           _c(
             "form",
             {
@@ -38734,9 +38742,7 @@ var render = function() {
               }),
               _vm._v(" "),
               _c("div", { staticClass: "form-group" }, [
-                _c("label", { attrs: { for: "exampleInputEmail1" } }, [
-                  _vm._v("Indirizzo email")
-                ]),
+                _vm._m(1),
                 _vm._v(" "),
                 _c("input", {
                   directives: [
@@ -38768,9 +38774,7 @@ var render = function() {
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "form-group" }, [
-                _c("label", { attrs: { for: "exampleInputEmail1" } }, [
-                  _vm._v("Nome")
-                ]),
+                _vm._m(2),
                 _vm._v(" "),
                 _c("input", {
                   directives: [
@@ -38802,9 +38806,7 @@ var render = function() {
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "form-group" }, [
-                _c("label", { attrs: { for: "exampleInputEmail1" } }, [
-                  _vm._v("Cognome")
-                ]),
+                _vm._m(3),
                 _vm._v(" "),
                 _c("input", {
                   directives: [
@@ -38836,7 +38838,7 @@ var render = function() {
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "form-group" }, [
-                _c("label", [_vm._v("Codice CVC")]),
+                _vm._m(4),
                 _vm._v(" "),
                 _c("input", {
                   directives: [
@@ -38861,14 +38863,12 @@ var render = function() {
                 })
               ]),
               _vm._v(" "),
-              _c(
-                "button",
-                { staticClass: "btn btn-primary", on: { click: _vm.testApi } },
-                [_vm._v("Conferma Ordine")]
-              ),
+              _c("button", { staticClass: "btn", on: { click: _vm.testApi } }, [
+                _c("strong", [_vm._v("Conferma Ordine")])
+              ]),
               _vm._v(" "),
               _c("div", { staticClass: "form-group" }, [
-                _c("label", [_vm._v("Codice carta di credito")]),
+                _vm._m(5),
                 _vm._v(" "),
                 _c("input", {
                   directives: [
@@ -38902,12 +38902,15 @@ var render = function() {
               _vm._v(" "),
               _c(
                 "button",
-                { staticClass: "btn btn-warning", on: { click: _vm.testMail } },
-                [_vm._v("Invia Mail")]
+                { staticClass: "btn mail", on: { click: _vm.testMail } },
+                [
+                  _c("i", { staticClass: "fas fa-envelope" }),
+                  _vm._v("\n        Ricevi Mail di conferma\n      ")
+                ]
               ),
               _vm._v(" "),
               _c("div", { staticClass: "form-group" }, [
-                _c("label", [_vm._v("Codice CVC")]),
+                _vm._m(6),
                 _vm._v(" "),
                 _c("input", {
                   directives: [
@@ -38939,9 +38942,7 @@ var render = function() {
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "form-group" }, [
-                _c("label", { attrs: { for: "exampleInputEmail1" } }, [
-                  _vm._v("Indirizzo")
-                ]),
+                _vm._m(7),
                 _vm._v(" "),
                 _c("input", {
                   directives: [
@@ -38972,9 +38973,7 @@ var render = function() {
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "form-group" }, [
-                _c("label", { attrs: { for: "exampleInputEmail1" } }, [
-                  _vm._v("Numero di telefono")
-                ]),
+                _vm._m(8),
                 _vm._v(" "),
                 _c("input", {
                   directives: [
@@ -39004,11 +39003,7 @@ var render = function() {
                 })
               ]),
               _vm._v(" "),
-              _c(
-                "button",
-                { staticClass: "btn btn-primary", attrs: { type: "submit" } },
-                [_vm._v("\n                Conferma Ordine\n            ")]
-              )
+              _vm._m(9)
             ]
           )
         ])
@@ -39092,10 +39087,84 @@ var render = function() {
         ])
       : _vm._e(),
     _vm._v(" "),
-    _vm._m(0)
+    _vm._m(10)
   ])
 }
 var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "subtitle" }, [
+      _c("h5", [_vm._v("Inserisci i tuoi dati per completare l'ordine")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("label", { attrs: { for: "exampleInputEmail1" } }, [
+      _c("strong", [_vm._v("Indirizzo email")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("label", { attrs: { for: "exampleInputEmail1" } }, [
+      _c("strong", [_vm._v("Nome")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("label", { attrs: { for: "exampleInputEmail1" } }, [
+      _c("strong", [_vm._v("Cognome")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("label", [_c("strong", [_vm._v("Codice CVC")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("label", [_c("strong", [_vm._v("Numero carta di credito")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("label", [_c("strong", [_vm._v("Codice CVC")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("label", { attrs: { for: "exampleInputEmail1" } }, [
+      _c("strong", [_vm._v("Indirizzo di consegna")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("label", { attrs: { for: "exampleInputEmail1" } }, [
+      _c("strong", [_vm._v("Numero di telefono")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("button", { staticClass: "btn", attrs: { type: "submit" } }, [
+      _c("strong", [_vm._v("Conferma Ordine")])
+    ])
+  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
@@ -39862,7 +39931,7 @@ var render = function() {
             "d-flex flex-sm-wrap flex-md-column align-items-start align-self-start mt-5 bg-white cartella"
         },
         _vm._l(_vm.typologies, function(typology) {
-          return _c("label", { key: typology, staticClass: "check" }, [
+          return _c("label", { staticClass: "check" }, [
             _c("input", {
               directives: [
                 {
@@ -39926,15 +39995,7 @@ var render = function() {
                   restaurant.image == null
                     ? _c("img", {
                         staticClass: "img-fluid max-width: 100%",
-                        attrs: { src: "/img/risto-img/nulla.png", alt: "" }
-                      })
-                    : restaurant.image.length < 16
-                    ? _c("img", {
-                        staticClass: "img-fluid max-width: 100%",
-                        attrs: {
-                          src: "/img/risto-img/" + restaurant.image,
-                          alt: ""
-                        }
+                        attrs: { src: "/storage/icon/nulla.png", alt: "" }
                       })
                     : _c("img", {
                         staticClass: "img-fluid max-width: 100%",
@@ -52902,8 +52963,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! D:\Progetto finale Deliveboo\deliveboo\laravel\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! D:\Progetto finale Deliveboo\deliveboo\laravel\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Boolean\Esercizi\deliveboo\laravel\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Boolean\Esercizi\deliveboo\laravel\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

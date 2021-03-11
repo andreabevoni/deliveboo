@@ -1,65 +1,44 @@
 // Fonts
 @import url('https://fonts.googleapis.com/css?family=Nunito');
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,600');
-
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
-
 // Variables
 @import 'variables';
-
 // Common
 @import 'common';
-
 // Header
 @import 'partials/header';
-
 // Footer
 @import 'partials/footer';
-
 // Login
 @import 'partials/login';
-
 // Register
 @import 'partials/register';
-
 // Show
 @import 'partials/show';
-
 // Orders
 @import 'partials/orders';
-
 // Foods
 @import 'partials/foods';
-
 // Dashboard
 @import 'partials/dashboard';
-
 // Home
 @import 'partials/home';
+// Checkout
+@import 'partials/checkout';
+// Payed
+@import 'partials/payed';
 
 // Regole generali
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-
   li {
     list-style: none;
   }
 }
-
 main {
   background-color: $body-bg;
 }
-
-// .alert-show {
-//   position: fixed;
-//   top: 50%;
-//   left: 50%;
-//   transform: translate(-50%, -50%);
-// }
-
-// .alert-hide {
-//   display: none;
-// }
