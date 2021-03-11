@@ -10966,7 +10966,6 @@ footer {
 
 footer .footer-block {
   background-color: #434848;
-  text-align: center;
   margin: 10px 20px;
 }
 
@@ -10982,7 +10981,6 @@ footer .footer-block img {
 footer .social {
   color: #FFF;
   padding-left: 10px;
-  text-align: center;
 }
 
 footer .social a {
@@ -11443,7 +11441,7 @@ button.checkout {
   background-image: url("/img/sfondo-home.png");
   background-size: cover;
   background-position: bottom;
-  height: 300px;
+  height: 330px;
   padding-top: 35px;
 }
 
