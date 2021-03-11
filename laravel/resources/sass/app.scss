@@ -16,11 +16,11 @@
 // @import 'hp';
 @import 'login';
 @import 'register';
-// @import 'show';
+@import 'show';
 // @import 'checkout';
 // @import 'dashoboard';
 // @import 'foodlist';
-// @import 'orderlist';
+@import 'orders';
 
 // HP
 .hero {
@@ -100,17 +100,17 @@
     display:inline-block;
 
     font:normal normal 300 1.3em 'Open Sans';
-    text-decoration:none;	
-    
+    text-decoration:none;
+
     color:white;
     background-color: $logo-color;
     border:1px solid $logo-color;
     border-radius:10px;
-    
+
     padding: 4px 18px;
     margin:5px;
-        
-    background-size: 200% 100%;	
+
+    background-size: 200% 100%;
     background-image: linear-gradient(to right, transparent 50%, rgb(160, 160, 160) 50%);
     transition: background-position .3s cubic-bezier(0.19, 1, 0.22, 1) .1s, color .5s ease 0s, background-color .5s ease;
   }
@@ -161,7 +161,7 @@
       background-color: rgba(0, 0, 0, 0.6);
       padding: 5px;
     }
-    
+
   }
 
   .piatti {
@@ -191,11 +191,6 @@
 
 }
 
-
-  }
-
-
-}
 
 .cartella {
   background-color: white;
