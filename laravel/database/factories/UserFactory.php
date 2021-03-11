@@ -47,7 +47,26 @@ $factory->define(User::class, function (Faker $faker) {
         'closing_day' => rand(0, 7),
         'opening_time' => $faker->time,
         'closing_time' => $faker->time,
-
+        'image' => $faker->unique()->randomElement([
+            'risto (1).jpg',
+            'risto (2).jpg',
+            'risto (3).jpg',
+            'risto (4).jpg',
+            'risto (5).jpg',
+            'risto (6).jpg',
+            'risto (7).jpg',
+            'risto (8).jpg',
+            'risto (9).jpg',
+            'risto (10).jpg',
+            'risto (11).jpg',
+            'risto (12).jpg',
+            'risto (13).jpg',
+            'risto (14).jpg',
+            'risto (15).jpg',
+            'risto (16).jpg',
+            'risto (17).jpg',
+            'risto (18).jpg',
+        ]),
         'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
         'remember_token' => Str::random(10),
     ];
