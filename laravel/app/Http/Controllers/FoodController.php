@@ -193,7 +193,7 @@ class FoodController extends Controller
                 })
                 ->get();
 
-            return redirect()->route('home');
+            return view('pages.food-restore', compact('deletedFood'));
         }
     }
 

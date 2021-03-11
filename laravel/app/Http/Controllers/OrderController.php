@@ -160,16 +160,17 @@ class OrderController extends Controller
             // recupero tutti gli ordini effettuati con le loro informazioni
             $date = Order::with('food')
                 ->find($ids)
+                ->where("")
                 ->pluck('date');
 
             $years = [];
-            dd(Carbon::createFromFormat('Y-m-d H:i:s', '2012-09-03')->year);
+            // dd(Carbon::createFromFormat('Y-m-d', '2012-09-03')->year);
             foreach ($date as $key => $value) {
 
-                $year = Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $value)->year;
-                dd($year);
+                $year = Carbon::createFromFormat('Y-m-d', $value)->year;
                 $years[] = $year;
             }
+            dd($years);
 
             //creo array mesi vuoto
 
