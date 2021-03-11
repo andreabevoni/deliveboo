@@ -16,11 +16,19 @@
 // @import 'hp';
 @import 'login';
 @import 'register';
-// @import 'show';
+@import 'show';
 // @import 'checkout';
 // @import 'dashoboard';
 // @import 'foodlist';
-// @import 'orderlist';
+@import 'orders';
+
+
+// Regole generali
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
 
 // Foods
 @import 'partials/foods';
@@ -32,10 +40,6 @@
 @import 'partials/home';
 
 
-// PAGINA REGISTER
-.img-background {
-  clip-path: polygon(25% 0%, 100% 0%, 100% 100%, 25% 100%, 0% 50%);
-}
 // HP
 .hero {
   background-image: url('/img/deliveroo-gradient.png');
@@ -79,11 +83,6 @@
 
 }
 
-
-  }
-
-
-}
 
 .cartella {
   background-color: white;
@@ -252,45 +251,117 @@
 }
 
 
+
+// stile provvisorio per homepage
+.sfondo {
+  color: white;
+  background-image: url("/img/sfondo-home.png");
+  background-size: cover;
+  background-position: bottom;
+  height: 300px;
+}
+
+.check {
+    margin: 10px;
+    cursor: pointer;
+}
+
+.check input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.check span {
+    padding: 5px 10px;
+    display: inline-block;
+    color: gray;
+    border-left: 2px solid $body-bg;
+    // border-radius: 3px;
+    font-size: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+    &:hover {
+      border-left: 2px solid rgb(163, 163, 163);
+      // background-color: red;
+        // box-shadow: 1px 1px 5px rgb(212, 212, 212);
+    }
+}
+
+.check input:checked+span {
+    color: red;
+    // background-color: red;
+    border-left: 2px solid red;
+}
+
+.user {
+  box-shadow: 1px 1px 10px 2px rgb(199, 199, 199);
+  background-color: white;
+  width: 300px;
+  min-height: 200px;
+  margin: 10px;
+  border-radius: 3px;
+
+  &:hover {
+    // background-color: red;
+      box-shadow: 1px 1px 1px rgb(223, 223, 223);
+      transform: scale(0.95);
+  }
+  // padding: 10px;
+  // border: 2px solid blue;
+  // display: flex;
+  // justify-content: center;
+  // align-items: center;
+  a {
+    text-decoration: none;
+    color: gray;
+  }
+  .image {
+    // width: 300px;
+
+    img {
+      border-radius: 3px 3px 0 0;
+    }
+  }
+
+}
+
+.altezza {
+  min-height: 80vh;
+}
+// fine stile homepage
+
+
 // TEST CARRELLO
 .cart-test {
   // border: 1px solid green;
   padding: 10px 0;
   width: 100%;
 
-  .item-test {
-    margin-bottom: 10px;
-    // padding: 0 10px;
-    height: 50px;
-    // border: 1px solid purple;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-}
 
 .bottone-edit-elimina {
-  background-color: white;
-  border-radius: 100%;
-  margin-left: 10px;
-  box-shadow: 2px 2px 5px 2px rgb(216, 216, 216);
-  &:hover {
-    box-shadow: 0px 0px 0px 0px rgb(216, 216, 216);
-    background-color: rgb(233, 233, 233);
-  }
-}
+   background-color: white;
+   border-radius: 100%;
+   margin-left: 10px;
+   box-shadow: 2px 2px 5px 2px rgb(216, 216, 216);
+   &:hover {
+     box-shadow: 0px 0px 0px 0px rgb(216, 216, 216);
+     background-color: rgb(233, 233, 233);
+   }
+ }
 
+ .food-img {
+   width: 150px;
+   max-height: 100px;
+   text-align: end;
 
-.food-img {
-  width: 150px;
-  max-height: 100px;
-  text-align: end;
-
-  img {
-    max-width: 100%;
-    max-height: 100%;
-  }
-}
+   img {
+     max-width: 100%;
+     max-height: 100%;
+   }
+ }
 
 .bottone-generale {
   @include edit-delete;

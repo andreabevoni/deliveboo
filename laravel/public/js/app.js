@@ -39809,7 +39809,7 @@ var render = function() {
         "div",
         {
           staticClass:
-            "d-flex flex-sm-wrap flex-md-column align-items-start mt-5 bg-white"
+            "d-flex flex-sm-wrap flex-md-column align-items-start align-self-start mt-5 bg-white cartella"
         },
         _vm._l(_vm.typologies, function(typology) {
           return _c("label", { key: typology, staticClass: "check" }, [
@@ -39873,13 +39873,21 @@ var render = function() {
             [
               _c("a", { attrs: { href: "/show/" + restaurant.id } }, [
                 _c("div", { staticClass: "image" }, [
-                  _c("img", {
-                    staticClass: "img-fluid max-width: 100%",
-                    attrs: { src: "/img/ristorante-1.jpg", alt: "" }
-                  })
+                  restaurant.image == null
+                    ? _c("img", {
+                        staticClass: "img-fluid max-width: 100%",
+                        attrs: { src: "/storage/icon/nulla.png", alt: "" }
+                      })
+                    : _c("img", {
+                        staticClass: "img-fluid max-width: 100%",
+                        attrs: {
+                          src: "/storage/icon/" + restaurant.image,
+                          alt: ""
+                        }
+                      })
                 ]),
                 _vm._v(" "),
-                _c("div", { staticClass: "p-3" }, [
+                _c("div", { staticClass: "p-3 testo-user" }, [
                   _c("h4", [
                     _c("strong", [
                       _vm._v(
@@ -52825,7 +52833,11 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-throw new Error("Module build failed (from ./node_modules/css-loader/index.js):\nModuleBuildError: Module build failed (from ./node_modules/sass-loader/dist/cjs.js):\nSassError: unmatched \"}\".\n    ╷\n195 │   }\r\n    │   ^\n    ╵\n  C:\\Laravel\\deliveboo\\laravel\\resources\\sass\\app.scss 195:3  root stylesheet\n    at C:\\Laravel\\deliveboo\\laravel\\node_modules\\webpack\\lib\\NormalModule.js:316:20\n    at C:\\Laravel\\deliveboo\\laravel\\node_modules\\loader-runner\\lib\\LoaderRunner.js:367:11\n    at C:\\Laravel\\deliveboo\\laravel\\node_modules\\loader-runner\\lib\\LoaderRunner.js:233:18\n    at context.callback (C:\\Laravel\\deliveboo\\laravel\\node_modules\\loader-runner\\lib\\LoaderRunner.js:111:13)\n    at C:\\Laravel\\deliveboo\\laravel\\node_modules\\sass-loader\\dist\\index.js:73:7\n    at Function.call$2 (C:\\Laravel\\deliveboo\\laravel\\node_modules\\sass\\sass.dart.js:91729:16)\n    at _render_closure1.call$2 (C:\\Laravel\\deliveboo\\laravel\\node_modules\\sass\\sass.dart.js:80373:12)\n    at _RootZone.runBinary$3$3 (C:\\Laravel\\deliveboo\\laravel\\node_modules\\sass\\sass.dart.js:27269:18)\n    at _FutureListener.handleError$1 (C:\\Laravel\\deliveboo\\laravel\\node_modules\\sass\\sass.dart.js:25797:19)\n    at _Future__propagateToListeners_handleError.call$0 (C:\\Laravel\\deliveboo\\laravel\\node_modules\\sass\\sass.dart.js:26094:49)\n    at Object._Future__propagateToListeners (C:\\Laravel\\deliveboo\\laravel\\node_modules\\sass\\sass.dart.js:4543:77)\n    at _Future._completeError$2 (C:\\Laravel\\deliveboo\\laravel\\node_modules\\sass\\sass.dart.js:25927:9)\n    at _AsyncAwaitCompleter.completeError$2 (C:\\Laravel\\deliveboo\\laravel\\node_modules\\sass\\sass.dart.js:25270:12)\n    at Object._asyncRethrow (C:\\Laravel\\deliveboo\\laravel\\node_modules\\sass\\sass.dart.js:4292:17)\n    at C:\\Laravel\\deliveboo\\laravel\\node_modules\\sass\\sass.dart.js:13233:20\n    at _wrapJsFunctionForAsync_closure.$protected (C:\\Laravel\\deliveboo\\laravel\\node_modules\\sass\\sass.dart.js:4317:15)\n    at _wrapJsFunctionForAsync_closure.call$2 (C:\\Laravel\\deliveboo\\laravel\\node_modules\\sass\\sass.dart.js:25291:12)\n    at _awaitOnObject_closure0.call$2 (C:\\Laravel\\deliveboo\\laravel\\node_modules\\sass\\sass.dart.js:25283:25)\n    at _RootZone.runBinary$3$3 (C:\\Laravel\\deliveboo\\laravel\\node_modules\\sass\\sass.dart.js:27269:18)\n    at _FutureListener.handleError$1 (C:\\Laravel\\deliveboo\\laravel\\node_modules\\sass\\sass.dart.js:25797:19)\n    at _Future__propagateToListeners_handleError.call$0 (C:\\Laravel\\deliveboo\\laravel\\node_modules\\sass\\sass.dart.js:26094:49)\n    at Object._Future__propagateToListeners (C:\\Laravel\\deliveboo\\laravel\\node_modules\\sass\\sass.dart.js:4543:77)\n    at _Future._completeError$2 (C:\\Laravel\\deliveboo\\laravel\\node_modules\\sass\\sass.dart.js:25927:9)\n    at _Future__asyncCompleteError_closure.call$0 (C:\\Laravel\\deliveboo\\laravel\\node_modules\\sass\\sass.dart.js:26016:18)\n    at Object._microtaskLoop (C:\\Laravel\\deliveboo\\laravel\\node_modules\\sass\\sass.dart.js:4594:24)\n    at StaticClosure._startMicrotaskLoop (C:\\Laravel\\deliveboo\\laravel\\node_modules\\sass\\sass.dart.js:4600:11)\n    at _AsyncRun__scheduleImmediateJsOverride_internalCallback.call$0 (C:\\Laravel\\deliveboo\\laravel\\node_modules\\sass\\sass.dart.js:25181:21)\n    at invokeClosure (C:\\Laravel\\deliveboo\\laravel\\node_modules\\sass\\sass.dart.js:1401:26)\n    at Immediate.<anonymous> (C:\\Laravel\\deliveboo\\laravel\\node_modules\\sass\\sass.dart.js:1422:18)\n    at processImmediate (internal/timers.js:461:21)");
+<<<<<<< HEAD
+throw new Error("Module build failed (from ./node_modules/css-loader/index.js):\nModuleBuildError: Module build failed (from ./node_modules/sass-loader/dist/cjs.js):\nSassError: unmatched \"}\".\n   ╷\n83 │   }\r\n   │   ^\n   ╵\n  C:\\Boolean\\Esercizi\\deliveboo\\laravel\\resources\\sass\\app.scss 83:3  root stylesheet\n    at C:\\Boolean\\Esercizi\\deliveboo\\laravel\\node_modules\\webpack\\lib\\NormalModule.js:316:20\n    at C:\\Boolean\\Esercizi\\deliveboo\\laravel\\node_modules\\loader-runner\\lib\\LoaderRunner.js:367:11\n    at C:\\Boolean\\Esercizi\\deliveboo\\laravel\\node_modules\\loader-runner\\lib\\LoaderRunner.js:233:18\n    at context.callback (C:\\Boolean\\Esercizi\\deliveboo\\laravel\\node_modules\\loader-runner\\lib\\LoaderRunner.js:111:13)\n    at C:\\Boolean\\Esercizi\\deliveboo\\laravel\\node_modules\\sass-loader\\dist\\index.js:73:7\n    at Function.call$2 (C:\\Boolean\\Esercizi\\deliveboo\\laravel\\node_modules\\sass\\sass.dart.js:91729:16)\n    at _render_closure1.call$2 (C:\\Boolean\\Esercizi\\deliveboo\\laravel\\node_modules\\sass\\sass.dart.js:80373:12)\n    at _RootZone.runBinary$3$3 (C:\\Boolean\\Esercizi\\deliveboo\\laravel\\node_modules\\sass\\sass.dart.js:27269:18)\n    at _FutureListener.handleError$1 (C:\\Boolean\\Esercizi\\deliveboo\\laravel\\node_modules\\sass\\sass.dart.js:25797:19)\n    at _Future__propagateToListeners_handleError.call$0 (C:\\Boolean\\Esercizi\\deliveboo\\laravel\\node_modules\\sass\\sass.dart.js:26094:49)\n    at Object._Future__propagateToListeners (C:\\Boolean\\Esercizi\\deliveboo\\laravel\\node_modules\\sass\\sass.dart.js:4543:77)\n    at _Future._completeError$2 (C:\\Boolean\\Esercizi\\deliveboo\\laravel\\node_modules\\sass\\sass.dart.js:25927:9)\n    at _AsyncAwaitCompleter.completeError$2 (C:\\Boolean\\Esercizi\\deliveboo\\laravel\\node_modules\\sass\\sass.dart.js:25270:12)\n    at Object._asyncRethrow (C:\\Boolean\\Esercizi\\deliveboo\\laravel\\node_modules\\sass\\sass.dart.js:4292:17)\n    at C:\\Boolean\\Esercizi\\deliveboo\\laravel\\node_modules\\sass\\sass.dart.js:13233:20\n    at _wrapJsFunctionForAsync_closure.$protected (C:\\Boolean\\Esercizi\\deliveboo\\laravel\\node_modules\\sass\\sass.dart.js:4317:15)\n    at _wrapJsFunctionForAsync_closure.call$2 (C:\\Boolean\\Esercizi\\deliveboo\\laravel\\node_modules\\sass\\sass.dart.js:25291:12)\n    at _awaitOnObject_closure0.call$2 (C:\\Boolean\\Esercizi\\deliveboo\\laravel\\node_modules\\sass\\sass.dart.js:25283:25)\n    at _RootZone.runBinary$3$3 (C:\\Boolean\\Esercizi\\deliveboo\\laravel\\node_modules\\sass\\sass.dart.js:27269:18)\n    at _FutureListener.handleError$1 (C:\\Boolean\\Esercizi\\deliveboo\\laravel\\node_modules\\sass\\sass.dart.js:25797:19)\n    at _Future__propagateToListeners_handleError.call$0 (C:\\Boolean\\Esercizi\\deliveboo\\laravel\\node_modules\\sass\\sass.dart.js:26094:49)\n    at Object._Future__propagateToListeners (C:\\Boolean\\Esercizi\\deliveboo\\laravel\\node_modules\\sass\\sass.dart.js:4543:77)\n    at _Future._completeError$2 (C:\\Boolean\\Esercizi\\deliveboo\\laravel\\node_modules\\sass\\sass.dart.js:25927:9)\n    at _Future__asyncCompleteError_closure.call$0 (C:\\Boolean\\Esercizi\\deliveboo\\laravel\\node_modules\\sass\\sass.dart.js:26016:18)\n    at Object._microtaskLoop (C:\\Boolean\\Esercizi\\deliveboo\\laravel\\node_modules\\sass\\sass.dart.js:4594:24)\n    at StaticClosure._startMicrotaskLoop (C:\\Boolean\\Esercizi\\deliveboo\\laravel\\node_modules\\sass\\sass.dart.js:4600:11)\n    at _AsyncRun__scheduleImmediateJsOverride_internalCallback.call$0 (C:\\Boolean\\Esercizi\\deliveboo\\laravel\\node_modules\\sass\\sass.dart.js:25181:21)\n    at invokeClosure (C:\\Boolean\\Esercizi\\deliveboo\\laravel\\node_modules\\sass\\sass.dart.js:1401:26)\n    at Immediate.<anonymous> (C:\\Boolean\\Esercizi\\deliveboo\\laravel\\node_modules\\sass\\sass.dart.js:1422:18)\n    at processImmediate (internal/timers.js:461:21)");
+=======
+// removed by extract-text-webpack-plugin
+>>>>>>> main
 
 /***/ }),
 
@@ -52836,8 +52848,8 @@ throw new Error("Module build failed (from ./node_modules/css-loader/index.js):\
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Laravel\deliveboo\laravel\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Laravel\deliveboo\laravel\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Boolean\Esercizi\deliveboo\laravel\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Boolean\Esercizi\deliveboo\laravel\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
