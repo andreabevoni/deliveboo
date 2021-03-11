@@ -17,15 +17,15 @@
                             Opss Nessun piatto!! Prova creando o ripristinando un piatto
                         </h4>
                         <div class="mx-auto link pt-4 text-center">
-    
+
                             <a class="bottone-generale" href="{{ route('food.create') }}">
                                 Crea piatto
                             </a>
-    
+
                             <a href="{{ route('food-restore') }}" class="bottone-generale">
                                 Ripristina
                             </a>
-    
+
                         </div>
                     </div>
                 </div>
@@ -41,10 +41,10 @@
                     <div>
 
                         <a class="" href="{{ route('food.create') }}">
-    
+
                             Aggiungi
                         </a>
-    
+
                         <a href="{{ route('food-restore') }}" class="">
                             Restore
                         </a>
@@ -53,7 +53,7 @@
                 </div>
 
             </div>
-                
+
             <div class="row mx-3 mb-5">
 
                 {{-- <div class="col-sm-12"> --}}
@@ -61,11 +61,11 @@
                     @foreach ($foods as $food)
                         <div class="col-sm-12 col-lg-6">
 
-                            <comp-food :namefood="'{{ $food->name }}'" :price="{{ $food->price }}"
+                            <comp-food :namefood='"{{ $food->name }}"' :price="{{ $food->price }}"
                                 :description="'{{ $food->description }}'" :id="{{ $food->id }}"
                                 :available="{{ $food->visible }}" :image="'{{ $food->image }}'">
                             </comp-food>
-  
+
                         </div>
                     @endforeach
 

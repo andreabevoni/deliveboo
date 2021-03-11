@@ -14,4 +14,11 @@ class Order extends Model
     {
         return $this->belongsToMany(Food::class)->withPivot(['quantity']);
     }
+
+    public function foodByUser()
+    {
+
+        return $this->belongsToMany(Food::class)->where('user_id', 1);
+        // return $this->belongsToMany(Food::class)->where('user_id', $id);
+    }
 }

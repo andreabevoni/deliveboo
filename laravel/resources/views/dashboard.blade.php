@@ -4,7 +4,7 @@
     <div class="container-fluid">
 
         <div class="row titolo-dashboard">
-            
+
             <div class="pt-5 pl-5">
 
                 <h1 class="display-5">
@@ -46,7 +46,7 @@
                                 <form action="{{ route('upload-avatar') }}" method="POST" enctype="multipart/form-data">
                                     @csrf
                                     @method('POST')
-        
+
                                     <div class="form-group">
                                         <br>
 
@@ -70,7 +70,7 @@
                                 </ul> --}}
                             </div>
                         </div>
-                        
+
                         <div class="col-sm-6">
                             <div class="">
                                 {{-- <div class="card list-group-item"> --}}
@@ -80,13 +80,13 @@
                                 {{-- </div> --}}
 
                                 <ul class="list-group list-group-flush">
-                                    <li class="my-2 card list-group-item"> 
+                                    <li class="my-2 card list-group-item">
                                         <strong>Nome: </strong> {{ Auth::user()->restaurant_name }}
                                     </li>
-                                    <li class="my-2 card list-group-item"> 
+                                    <li class="my-2 card list-group-item">
                                         <strong>Indirizzo: </strong> {{ Auth::user()->address }}
                                     </li>
-                                    <li class="my-2 card list-group-item"> 
+                                    <li class="my-2 card list-group-item">
                                         <strong>P. Iva: </strong> {{ Auth::user()->p_iva }}
                                         {{-- <strong>Email: </strong> {{ Auth::user()->email }} --}}
                                     </li>
@@ -96,10 +96,10 @@
                                     {{-- <li class="my-2 card list-group-item"> 
                                         <strong>Giorno di chiusura: </strong> {{ Auth::user()->closing_day }}
                                     </li>
-                                    <li class="my-2 card list-group-item"> 
+                                    <li class="my-2 card list-group-item">
                                         <strong>Apertura da: </strong> {{ Auth::user()->opening_time }}
                                     </li>
-                                    <li class="my-2 card list-group-item"> 
+                                    <li class="my-2 card list-group-item">
                                         <strong>Chiusura alle: </strong> {{ Auth::user()->closing_time }}
                                     </li> --}}
                                     {{-- <ul class="my-2 card list-group list-group-flush"> --}}
@@ -107,7 +107,7 @@
                                         <strong>Tipologie: </strong>
                                         @foreach (Auth::user()->typologies as $typ)
                                             {{ $typ->name }}
-    
+
                                         @endforeach
                                     </li>
 
@@ -139,7 +139,7 @@
                 <div class="row mt-4">
                     <div class="col-sm-6">
                         <a href="{{ route('food.index') }}">
-                        
+
                             <div class="card lista piatti">
                                 <h2>I tuoi cibi</h2>
                                 {{-- <p class="card-text">With supporting text below as a natural lead-in to additional content.</p> --}}

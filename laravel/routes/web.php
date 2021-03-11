@@ -35,6 +35,7 @@ Route::get('/clear/image/food/{id}', 'FoodController@clearImg')->name('clear-foo
 // Route ORDERS
 Route::resource('orders', 'OrderController');
 
+
 // Route Typologies
 Route::resource('typologies', 'TypologyController');
 

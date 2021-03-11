@@ -2270,6 +2270,7 @@ __webpack_require__.r(__webpack_exports__);
         console.log("data", r.data);
 
         if (r.data.hasOwnProperty("errors")) {
+          $("#alert").modal("show");
           console.log("carta non valida!");
         } else {
           console.log("pagamento effettuato"); // 1) salviamo l'ordine nel db
@@ -2508,6 +2509,8 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
 //
 //
 //
@@ -2995,7 +2998,8 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       restaurants: [],
-      filters: []
+      filters: [],
+      img: "/img/user-img/"
     };
   },
   methods: {
@@ -7469,17 +7473,17 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
- * jQuery JavaScript Library v3.6.0
+ * jQuery JavaScript Library v3.5.1
  * https://jquery.com/
  *
  * Includes Sizzle.js
  * https://sizzlejs.com/
  *
- * Copyright OpenJS Foundation and other contributors
+ * Copyright JS Foundation and other contributors
  * Released under the MIT license
  * https://jquery.org/license
  *
- * Date: 2021-03-02T17:08Z
+ * Date: 2020-05-04T22:49Z
  */
 ( function( global, factory ) {
 
@@ -7546,16 +7550,12 @@ var support = {};
 
 var isFunction = function isFunction( obj ) {
 
-		// Support: Chrome <=57, Firefox <=52
-		// In some browsers, typeof returns "function" for HTML <object> elements
-		// (i.e., `typeof document.createElement( "object" ) === "function"`).
-		// We don't want to classify *any* DOM node as a function.
-		// Support: QtWeb <=3.8.5, WebKit <=534.34, wkhtmltopdf tool <=0.12.5
-		// Plus for old WebKit, typeof returns "function" for HTML collections
-		// (e.g., `typeof document.getElementsByTagName("div") === "function"`). (gh-4756)
-		return typeof obj === "function" && typeof obj.nodeType !== "number" &&
-			typeof obj.item !== "function";
-	};
+      // Support: Chrome <=57, Firefox <=52
+      // In some browsers, typeof returns "function" for HTML <object> elements
+      // (i.e., `typeof document.createElement( "object" ) === "function"`).
+      // We don't want to classify *any* DOM node as a function.
+      return typeof obj === "function" && typeof obj.nodeType !== "number";
+  };
 
 
 var isWindow = function isWindow( obj ) {
@@ -7621,7 +7621,7 @@ function toType( obj ) {
 
 
 var
-	version = "3.6.0",
+	version = "3.5.1",
 
 	// Define a local copy of jQuery
 	jQuery = function( selector, context ) {
@@ -7875,7 +7875,7 @@ jQuery.extend( {
 			if ( isArrayLike( Object( arr ) ) ) {
 				jQuery.merge( ret,
 					typeof arr === "string" ?
-						[ arr ] : arr
+					[ arr ] : arr
 				);
 			} else {
 				push.call( ret, arr );
@@ -7970,9 +7970,9 @@ if ( typeof Symbol === "function" ) {
 
 // Populate the class2type map
 jQuery.each( "Boolean Number String Function Array Date RegExp Object Error Symbol".split( " " ),
-	function( _i, name ) {
-		class2type[ "[object " + name + "]" ] = name.toLowerCase();
-	} );
+function( _i, name ) {
+	class2type[ "[object " + name + "]" ] = name.toLowerCase();
+} );
 
 function isArrayLike( obj ) {
 
@@ -7992,14 +7992,14 @@ function isArrayLike( obj ) {
 }
 var Sizzle =
 /*!
- * Sizzle CSS Selector Engine v2.3.6
+ * Sizzle CSS Selector Engine v2.3.5
  * https://sizzlejs.com/
  *
  * Copyright JS Foundation and other contributors
  * Released under the MIT license
  * https://js.foundation/
  *
- * Date: 2021-02-16
+ * Date: 2020-03-14
  */
 ( function( window ) {
 var i,
@@ -8582,8 +8582,8 @@ support = Sizzle.support = {};
  * @returns {Boolean} True iff elem is a non-HTML XML node
  */
 isXML = Sizzle.isXML = function( elem ) {
-	var namespace = elem && elem.namespaceURI,
-		docElem = elem && ( elem.ownerDocument || elem ).documentElement;
+	var namespace = elem.namespaceURI,
+		docElem = ( elem.ownerDocument || elem ).documentElement;
 
 	// Support: IE <=8
 	// Assume HTML when documentElement doesn't yet exist, such as inside loading iframes
@@ -10498,9 +10498,9 @@ var rneedsContext = jQuery.expr.match.needsContext;
 
 function nodeName( elem, name ) {
 
-	return elem.nodeName && elem.nodeName.toLowerCase() === name.toLowerCase();
+  return elem.nodeName && elem.nodeName.toLowerCase() === name.toLowerCase();
 
-}
+};
 var rsingleTag = ( /^<([a-z][^\/\0>:\x20\t\r\n\f]*)[\x20\t\r\n\f]*\/?>(?:<\/\1>|)$/i );
 
 
@@ -11471,8 +11471,8 @@ jQuery.extend( {
 			resolveContexts = Array( i ),
 			resolveValues = slice.call( arguments ),
 
-			// the primary Deferred
-			primary = jQuery.Deferred(),
+			// the master Deferred
+			master = jQuery.Deferred(),
 
 			// subordinate callback factory
 			updateFunc = function( i ) {
@@ -11480,30 +11480,30 @@ jQuery.extend( {
 					resolveContexts[ i ] = this;
 					resolveValues[ i ] = arguments.length > 1 ? slice.call( arguments ) : value;
 					if ( !( --remaining ) ) {
-						primary.resolveWith( resolveContexts, resolveValues );
+						master.resolveWith( resolveContexts, resolveValues );
 					}
 				};
 			};
 
 		// Single- and empty arguments are adopted like Promise.resolve
 		if ( remaining <= 1 ) {
-			adoptValue( singleValue, primary.done( updateFunc( i ) ).resolve, primary.reject,
+			adoptValue( singleValue, master.done( updateFunc( i ) ).resolve, master.reject,
 				!remaining );
 
 			// Use .then() to unwrap secondary thenables (cf. gh-3000)
-			if ( primary.state() === "pending" ||
+			if ( master.state() === "pending" ||
 				isFunction( resolveValues[ i ] && resolveValues[ i ].then ) ) {
 
-				return primary.then();
+				return master.then();
 			}
 		}
 
 		// Multiple arguments are aggregated like Promise.all array elements
 		while ( i-- ) {
-			adoptValue( resolveValues[ i ], updateFunc( i ), primary.reject );
+			adoptValue( resolveValues[ i ], updateFunc( i ), master.reject );
 		}
 
-		return primary.promise();
+		return master.promise();
 	}
 } );
 
@@ -11654,8 +11654,8 @@ var access = function( elems, fn, key, value, chainable, emptyGet, raw ) {
 			for ( ; i < len; i++ ) {
 				fn(
 					elems[ i ], key, raw ?
-						value :
-						value.call( elems[ i ], i, fn( elems[ i ], key ) )
+					value :
+					value.call( elems[ i ], i, fn( elems[ i ], key ) )
 				);
 			}
 		}
@@ -12563,7 +12563,10 @@ function buildFragment( elems, context, scripts, selection, ignored ) {
 }
 
 
-var rtypenamespace = /^([^.]*)(?:\.(.+)|)/;
+var
+	rkeyEvent = /^key/,
+	rmouseEvent = /^(?:mouse|pointer|contextmenu|drag|drop)|click/,
+	rtypenamespace = /^([^.]*)(?:\.(.+)|)/;
 
 function returnTrue() {
 	return true;
@@ -12858,8 +12861,8 @@ jQuery.event = {
 			event = jQuery.event.fix( nativeEvent ),
 
 			handlers = (
-				dataPriv.get( this, "events" ) || Object.create( null )
-			)[ event.type ] || [],
+					dataPriv.get( this, "events" ) || Object.create( null )
+				)[ event.type ] || [],
 			special = jQuery.event.special[ event.type ] || {};
 
 		// Use the fix-ed jQuery.Event rather than the (read-only) native event
@@ -12983,12 +12986,12 @@ jQuery.event = {
 			get: isFunction( hook ) ?
 				function() {
 					if ( this.originalEvent ) {
-						return hook( this.originalEvent );
+							return hook( this.originalEvent );
 					}
 				} :
 				function() {
 					if ( this.originalEvent ) {
-						return this.originalEvent[ name ];
+							return this.originalEvent[ name ];
 					}
 				},
 
@@ -13127,13 +13130,7 @@ function leverageNative( el, type, expectSync ) {
 						// Cancel the outer synthetic event
 						event.stopImmediatePropagation();
 						event.preventDefault();
-
-						// Support: Chrome 86+
-						// In Chrome, if an element having a focusout handler is blurred by
-						// clicking outside of it, it invokes the handler synchronously. If
-						// that handler calls `.remove()` on the element, the data is cleared,
-						// leaving `result` undefined. We need to guard against this.
-						return result && result.value;
+						return result.value;
 					}
 
 				// If this is an inner synthetic event for an event with a bubbling surrogate
@@ -13298,7 +13295,34 @@ jQuery.each( {
 	targetTouches: true,
 	toElement: true,
 	touches: true,
-	which: true
+
+	which: function( event ) {
+		var button = event.button;
+
+		// Add which for key events
+		if ( event.which == null && rkeyEvent.test( event.type ) ) {
+			return event.charCode != null ? event.charCode : event.keyCode;
+		}
+
+		// Add which for click: 1 === left; 2 === middle; 3 === right
+		if ( !event.which && button !== undefined && rmouseEvent.test( event.type ) ) {
+			if ( button & 1 ) {
+				return 1;
+			}
+
+			if ( button & 2 ) {
+				return 3;
+			}
+
+			if ( button & 4 ) {
+				return 2;
+			}
+
+			return 0;
+		}
+
+		return event.which;
+	}
 }, jQuery.event.addProp );
 
 jQuery.each( { focus: "focusin", blur: "focusout" }, function( type, delegateType ) {
@@ -13321,12 +13345,6 @@ jQuery.each( { focus: "focusin", blur: "focusout" }, function( type, delegateTyp
 			leverageNative( this, type );
 
 			// Return non-false to allow normal event-path propagation
-			return true;
-		},
-
-		// Suppress native focus or blur as it's already being fired
-		// in leverageNative.
-		_default: function() {
 			return true;
 		},
 
@@ -13997,10 +14015,6 @@ var rboxStyle = new RegExp( cssExpand.join( "|" ), "i" );
 		// set in CSS while `offset*` properties report correct values.
 		// Behavior in IE 9 is more subtle than in newer versions & it passes
 		// some versions of this test; make sure not to make it pass there!
-		//
-		// Support: Firefox 70+
-		// Only Firefox includes border widths
-		// in computed dimensions. (gh-4529)
 		reliableTrDimensions: function() {
 			var table, tr, trChild, trStyle;
 			if ( reliableTrDimensionsVal == null ) {
@@ -14008,22 +14022,9 @@ var rboxStyle = new RegExp( cssExpand.join( "|" ), "i" );
 				tr = document.createElement( "tr" );
 				trChild = document.createElement( "div" );
 
-				table.style.cssText = "position:absolute;left:-11111px;border-collapse:separate";
-				tr.style.cssText = "border:1px solid";
-
-				// Support: Chrome 86+
-				// Height set through cssText does not get applied.
-				// Computed height then comes back as 0.
+				table.style.cssText = "position:absolute;left:-11111px";
 				tr.style.height = "1px";
 				trChild.style.height = "9px";
-
-				// Support: Android 8 Chrome 86+
-				// In our bodyBackground.html iframe,
-				// display for all div elements is set to "inline",
-				// which causes a problem only in Android 8 Chrome 86.
-				// Ensuring the div is display: block
-				// gets around this issue.
-				trChild.style.display = "block";
 
 				documentElement
 					.appendChild( table )
@@ -14031,9 +14032,7 @@ var rboxStyle = new RegExp( cssExpand.join( "|" ), "i" );
 					.appendChild( trChild );
 
 				trStyle = window.getComputedStyle( tr );
-				reliableTrDimensionsVal = ( parseInt( trStyle.height, 10 ) +
-					parseInt( trStyle.borderTopWidth, 10 ) +
-					parseInt( trStyle.borderBottomWidth, 10 ) ) === tr.offsetHeight;
+				reliableTrDimensionsVal = parseInt( trStyle.height ) > 3;
 
 				documentElement.removeChild( table );
 			}
@@ -14497,10 +14496,10 @@ jQuery.each( [ "height", "width" ], function( _i, dimension ) {
 					// Running getBoundingClientRect on a disconnected node
 					// in IE throws an error.
 					( !elem.getClientRects().length || !elem.getBoundingClientRect().width ) ?
-					swap( elem, cssShow, function() {
-						return getWidthOrHeight( elem, dimension, extra );
-					} ) :
-					getWidthOrHeight( elem, dimension, extra );
+						swap( elem, cssShow, function() {
+							return getWidthOrHeight( elem, dimension, extra );
+						} ) :
+						getWidthOrHeight( elem, dimension, extra );
 			}
 		},
 
@@ -14559,7 +14558,7 @@ jQuery.cssHooks.marginLeft = addGetHookIf( support.reliableMarginLeft,
 					swap( elem, { marginLeft: 0 }, function() {
 						return elem.getBoundingClientRect().left;
 					} )
-			) + "px";
+				) + "px";
 		}
 	}
 );
@@ -14698,7 +14697,7 @@ Tween.propHooks = {
 			if ( jQuery.fx.step[ tween.prop ] ) {
 				jQuery.fx.step[ tween.prop ]( tween );
 			} else if ( tween.elem.nodeType === 1 && (
-				jQuery.cssHooks[ tween.prop ] ||
+					jQuery.cssHooks[ tween.prop ] ||
 					tween.elem.style[ finalPropName( tween.prop ) ] != null ) ) {
 				jQuery.style( tween.elem, tween.prop, tween.now + tween.unit );
 			} else {
@@ -14943,7 +14942,7 @@ function defaultPrefilter( elem, props, opts ) {
 
 			anim.done( function() {
 
-				/* eslint-enable no-loop-func */
+			/* eslint-enable no-loop-func */
 
 				// The final step of a "hide" animation is actually hiding the element
 				if ( !hidden ) {
@@ -15063,7 +15062,7 @@ function Animation( elem, properties, options ) {
 			tweens: [],
 			createTween: function( prop, end ) {
 				var tween = jQuery.Tween( elem, animation.opts, prop, end,
-					animation.opts.specialEasing[ prop ] || animation.opts.easing );
+						animation.opts.specialEasing[ prop ] || animation.opts.easing );
 				animation.tweens.push( tween );
 				return tween;
 			},
@@ -15236,8 +15235,7 @@ jQuery.fn.extend( {
 					anim.stop( true );
 				}
 			};
-
-		doAnimation.finish = doAnimation;
+			doAnimation.finish = doAnimation;
 
 		return empty || optall.queue === false ?
 			this.each( doAnimation ) :
@@ -15877,8 +15875,8 @@ jQuery.fn.extend( {
 				if ( this.setAttribute ) {
 					this.setAttribute( "class",
 						className || value === false ?
-							"" :
-							dataPriv.get( this, "__className__" ) || ""
+						"" :
+						dataPriv.get( this, "__className__" ) || ""
 					);
 				}
 			}
@@ -15893,7 +15891,7 @@ jQuery.fn.extend( {
 		while ( ( elem = this[ i++ ] ) ) {
 			if ( elem.nodeType === 1 &&
 				( " " + stripAndCollapse( getClass( elem ) ) + " " ).indexOf( className ) > -1 ) {
-				return true;
+					return true;
 			}
 		}
 
@@ -16183,7 +16181,9 @@ jQuery.extend( jQuery.event, {
 				special.bindType || type;
 
 			// jQuery handler
-			handle = ( dataPriv.get( cur, "events" ) || Object.create( null ) )[ event.type ] &&
+			handle = (
+					dataPriv.get( cur, "events" ) || Object.create( null )
+				)[ event.type ] &&
 				dataPriv.get( cur, "handle" );
 			if ( handle ) {
 				handle.apply( cur, data );
@@ -16330,7 +16330,7 @@ var rquery = ( /\?/ );
 
 // Cross-browser xml parsing
 jQuery.parseXML = function( data ) {
-	var xml, parserErrorElem;
+	var xml;
 	if ( !data || typeof data !== "string" ) {
 		return null;
 	}
@@ -16339,17 +16339,12 @@ jQuery.parseXML = function( data ) {
 	// IE throws on parseFromString with invalid input.
 	try {
 		xml = ( new window.DOMParser() ).parseFromString( data, "text/xml" );
-	} catch ( e ) {}
+	} catch ( e ) {
+		xml = undefined;
+	}
 
-	parserErrorElem = xml && xml.getElementsByTagName( "parsererror" )[ 0 ];
-	if ( !xml || parserErrorElem ) {
-		jQuery.error( "Invalid XML: " + (
-			parserErrorElem ?
-				jQuery.map( parserErrorElem.childNodes, function( el ) {
-					return el.textContent;
-				} ).join( "\n" ) :
-				data
-		) );
+	if ( !xml || xml.getElementsByTagName( "parsererror" ).length ) {
+		jQuery.error( "Invalid XML: " + data );
 	}
 	return xml;
 };
@@ -16450,14 +16445,16 @@ jQuery.fn.extend( {
 			// Can add propHook for "elements" to filter or add form elements
 			var elements = jQuery.prop( this, "elements" );
 			return elements ? jQuery.makeArray( elements ) : this;
-		} ).filter( function() {
+		} )
+		.filter( function() {
 			var type = this.type;
 
 			// Use .is( ":disabled" ) so that fieldset[disabled] works
 			return this.name && !jQuery( this ).is( ":disabled" ) &&
 				rsubmittable.test( this.nodeName ) && !rsubmitterTypes.test( type ) &&
 				( this.checked || !rcheckableType.test( type ) );
-		} ).map( function( _i, elem ) {
+		} )
+		.map( function( _i, elem ) {
 			var val = jQuery( this ).val();
 
 			if ( val == null ) {
@@ -16510,8 +16507,7 @@ var
 
 	// Anchor tag for parsing the document origin
 	originAnchor = document.createElement( "a" );
-
-originAnchor.href = location.href;
+	originAnchor.href = location.href;
 
 // Base "constructor" for jQuery.ajaxPrefilter and jQuery.ajaxTransport
 function addToPrefiltersOrTransports( structure ) {
@@ -16892,8 +16888,8 @@ jQuery.extend( {
 			// Context for global events is callbackContext if it is a DOM node or jQuery collection
 			globalEventContext = s.context &&
 				( callbackContext.nodeType || callbackContext.jquery ) ?
-				jQuery( callbackContext ) :
-				jQuery.event,
+					jQuery( callbackContext ) :
+					jQuery.event,
 
 			// Deferreds
 			deferred = jQuery.Deferred(),
@@ -17205,10 +17201,8 @@ jQuery.extend( {
 				response = ajaxHandleResponses( s, jqXHR, responses );
 			}
 
-			// Use a noop converter for missing script but not if jsonp
-			if ( !isSuccess &&
-				jQuery.inArray( "script", s.dataTypes ) > -1 &&
-				jQuery.inArray( "json", s.dataTypes ) < 0 ) {
+			// Use a noop converter for missing script
+			if ( !isSuccess && jQuery.inArray( "script", s.dataTypes ) > -1 ) {
 				s.converters[ "text script" ] = function() {};
 			}
 
@@ -17946,6 +17940,12 @@ jQuery.offset = {
 			options.using.call( elem, props );
 
 		} else {
+			if ( typeof props.top === "number" ) {
+				props.top += "px";
+			}
+			if ( typeof props.left === "number" ) {
+				props.left += "px";
+			}
 			curElem.css( props );
 		}
 	}
@@ -18114,11 +18114,8 @@ jQuery.each( [ "top", "left" ], function( _i, prop ) {
 
 // Create innerHeight, innerWidth, height, width, outerHeight and outerWidth methods
 jQuery.each( { Height: "height", Width: "width" }, function( name, type ) {
-	jQuery.each( {
-		padding: "inner" + name,
-		content: type,
-		"": "outer" + name
-	}, function( defaultExtra, funcName ) {
+	jQuery.each( { padding: "inner" + name, content: type, "": "outer" + name },
+		function( defaultExtra, funcName ) {
 
 		// Margin is only for outerHeight, outerWidth
 		jQuery.fn[ funcName ] = function( margin, value ) {
@@ -18203,8 +18200,7 @@ jQuery.fn.extend( {
 	}
 } );
 
-jQuery.each(
-	( "blur focus focusin focusout resize scroll click dblclick " +
+jQuery.each( ( "blur focus focusin focusout resize scroll click dblclick " +
 	"mousedown mouseup mousemove mouseover mouseout mouseenter mouseleave " +
 	"change select submit keydown keypress keyup contextmenu" ).split( " " ),
 	function( _i, name ) {
@@ -18215,8 +18211,7 @@ jQuery.each(
 				this.on( name, null, data, fn ) :
 				this.trigger( name );
 		};
-	}
-);
+	} );
 
 
 
@@ -39358,76 +39353,27 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "row" }, [
-    _c("div", { staticClass: "col-md-8" }, [
-      _c(
-        "div",
-        { staticClass: "menu" },
-        _vm._l(_vm.foods, function(food) {
-          return _c("div", { key: food.id }, [
-            food.visible
-              ? _c(
-                  "div",
-                  {
-                    staticClass: "card food-item show",
-                    staticStyle: { width: "18rem" },
-                    attrs: {
-                      "data-toggle": "modal",
-                      "data-target": "#myModal" + food.id
+  return _c("div", { staticClass: "container-fluid" }, [
+    _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-md-8" }, [
+        _c(
+          "div",
+          { staticClass: "menu" },
+          _vm._l(_vm.foods, function(food) {
+            return _c("div", { key: food.id }, [
+              food.visible
+                ? _c(
+                    "div",
+                    {
+                      staticClass: "card food-item show",
+                      staticStyle: { width: "18rem" },
+                      attrs: {
+                        "data-toggle": "modal",
+                        "data-target": "#myModal" + food.id
+                      },
+                      on: { click: _vm.resetQuantity }
                     },
-                    on: { click: _vm.resetQuantity }
-                  },
-                  [
-                    _c("img", {
-                      staticClass: "card-img-top",
-                      attrs: {
-                        src:
-                          "https://flawless.life/wp-content/uploads/2016/03/lievita-pizza-gourmet.jpg",
-                        alt: "immagine piatto"
-                      }
-                    }),
-                    _vm._v(" "),
-                    _c("h4", [_vm._v(_vm._s(food.name))]),
-                    _vm._v(" "),
-                    _c("div", [_vm._v(_vm._s(food.description))]),
-                    _vm._v(" "),
-                    _c("h6", [_vm._v(_vm._s(food.price / 100) + " €")])
-                  ]
-                )
-              : _c(
-                  "div",
-                  {
-                    staticClass: "card food-item hide",
-                    staticStyle: { width: "18rem" }
-                  },
-                  [
-                    _c("img", {
-                      staticClass: "card-img-top",
-                      attrs: {
-                        src:
-                          "https://flawless.life/wp-content/uploads/2016/03/lievita-pizza-gourmet.jpg",
-                        alt: "immagine piatto"
-                      }
-                    }),
-                    _vm._v(" "),
-                    _c("h4", [_vm._v(_vm._s(food.name))]),
-                    _vm._v(" "),
-                    _c("div", [_vm._v(_vm._s(food.description))]),
-                    _vm._v(" "),
-                    _c("h6", [_vm._v(_vm._s(food.price / 100) + " €")])
-                  ]
-                ),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass: "modal fade",
-                attrs: { id: "myModal" + food.id, role: "dialog" }
-              },
-              [
-                _c("div", { staticClass: "modal-dialog" }, [
-                  _c("div", { staticClass: "modal-content" }, [
-                    _c("div", { staticClass: "modal-body" }, [
+                    [
                       _c("img", {
                         staticClass: "card-img-top",
                         attrs: {
@@ -39437,240 +39383,291 @@ var render = function() {
                         }
                       }),
                       _vm._v(" "),
-                      _c("div", { staticClass: "food-item" }, [
-                        _c("h4", [_vm._v(_vm._s(food.name))]),
-                        _vm._v(" "),
-                        _c("span", [_vm._v(_vm._s(food.description))]),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "price" }, [
-                          _c("h6", [
-                            _vm._v(
-                              "\n                                            " +
-                                _vm._s(food.price / 100) +
-                                " €\n                                        "
-                            )
-                          ])
-                        ]),
-                        _vm._v(" "),
-                        _c("div", {}, [
-                          _c("i", {
-                            staticClass: "fas fa-minus-circle",
-                            on: { click: _vm.minusOne }
-                          }),
-                          _vm._v(
-                            "\n                                        " +
-                              _vm._s(_vm.quantity) +
-                              "\n                                        "
-                          ),
-                          _c("i", {
-                            staticClass: "fas fa-plus-circle",
-                            on: { click: _vm.plusOne }
-                          })
-                        ]),
-                        _vm._v(" "),
-                        _c(
-                          "button",
-                          {
-                            attrs: {
-                              type: "button",
-                              name: "button",
-                              "data-dismiss": "modal"
-                            },
-                            on: {
-                              click: function($event) {
-                                return _vm.checkCart(food.id)
-                              }
-                            }
-                          },
-                          [
-                            _vm._v(
-                              "\n                                        Aggiungi al carrello\n                                    "
-                            )
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "button",
-                          {
-                            staticClass: "btn btn-default",
-                            attrs: { type: "button", "data-dismiss": "modal" }
-                          },
-                          [
-                            _vm._v(
-                              "\n                                        Annulla\n                                    "
-                            )
-                          ]
-                        )
-                      ])
-                    ])
-                  ])
-                ])
-              ]
-            )
-          ])
-        }),
-        0
-      )
-    ]),
-    _vm._v(" "),
-    _c("div", { staticClass: "col-md-4" }, [
-      _vm.cart.length
-        ? _c(
-            "div",
-            { staticClass: "cart-test d-flex flex-column sticky-top" },
-            [
-              _vm._l(_vm.cart, function(item, i) {
-                return _c("div", { key: i, staticClass: "item-test" }, [
-                  _c("div", { staticClass: "quantity" }, [
-                    _c("i", {
-                      staticClass: "fas fa-minus-circle",
-                      on: {
-                        click: function($event) {
-                          return _vm.minusOneCart(i)
+                      _c("h4", [_vm._v(_vm._s(food.name))]),
+                      _vm._v(" "),
+                      _c("div", [_vm._v(_vm._s(food.description))]),
+                      _vm._v(" "),
+                      _c("h6", [_vm._v(_vm._s(food.price / 100) + " €")])
+                    ]
+                  )
+                : _c(
+                    "div",
+                    {
+                      staticClass: "card food-item hide",
+                      staticStyle: { width: "18rem" }
+                    },
+                    [
+                      _c("img", {
+                        staticClass: "card-img-top",
+                        attrs: {
+                          src:
+                            "https://flawless.life/wp-content/uploads/2016/03/lievita-pizza-gourmet.jpg",
+                          alt: "immagine piatto"
                         }
-                      }
-                    }),
-                    _vm._v(
-                      "\n                    " +
-                        _vm._s(item.quantity) +
-                        "\n                    "
-                    ),
-                    _c("i", {
-                      staticClass: "fas fa-plus-circle",
-                      on: {
-                        click: function($event) {
-                          return _vm.plusOneCart(i)
-                        }
-                      }
-                    })
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "name" }, [
-                    _vm._v(
-                      "\n                    " +
-                        _vm._s(
-                          _vm.foods.find(function(x) {
-                            return x.id === item.id
-                          }).name
-                        ) +
-                        "\n                "
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "total" }, [
-                    _vm._v(
-                      "\n                    " +
-                        _vm._s(
-                          (_vm.foods.find(function(x) {
-                            return x.id === item.id
-                          }).price *
-                            item.quantity) /
-                            100
-                        ) +
-                        "\n                    €\n                "
-                    )
-                  ])
-                ])
-              }),
+                      }),
+                      _vm._v(" "),
+                      _c("h4", [_vm._v(_vm._s(food.name))]),
+                      _vm._v(" "),
+                      _c("div", [_vm._v(_vm._s(food.description))]),
+                      _vm._v(" "),
+                      _c("h6", [_vm._v(_vm._s(food.price / 100) + " €")])
+                    ]
+                  ),
               _vm._v(" "),
               _c(
                 "div",
-                { staticClass: "d-flex justify-content-between px-2" },
-                [
-                  _c("span", [_vm._v("TOTALE:")]),
-                  _vm._v(" "),
-                  _c("span", [_vm._v(_vm._s(_vm.total()) + " €")])
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "a",
                 {
-                  staticClass: "text-center",
-                  attrs: { href: "/checkout/" + _vm.user_id }
+                  staticClass: "modal fade",
+                  attrs: { id: "myModal" + food.id, role: "dialog" }
                 },
                 [
-                  _c("button", { staticClass: "btn btn-primary" }, [
-                    _vm._v("CHECKOUT")
+                  _c("div", { staticClass: "modal-dialog" }, [
+                    _c("div", { staticClass: "modal-content" }, [
+                      _c("div", { staticClass: "modal-body" }, [
+                        _c("img", {
+                          staticClass: "card-img-top",
+                          attrs: {
+                            src:
+                              "https://flawless.life/wp-content/uploads/2016/03/lievita-pizza-gourmet.jpg",
+                            alt: "immagine piatto"
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "food-item" }, [
+                          _c("h4", [_vm._v(_vm._s(food.name))]),
+                          _vm._v(" "),
+                          _c("span", [_vm._v(_vm._s(food.description))]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "price" }, [
+                            _c("h6", [
+                              _vm._v(
+                                "\n                                              " +
+                                  _vm._s(food.price / 100) +
+                                  " €\n                                          "
+                              )
+                            ])
+                          ]),
+                          _vm._v(" "),
+                          _c("div", {}, [
+                            _c("i", {
+                              staticClass: "fas fa-minus-circle",
+                              on: { click: _vm.minusOne }
+                            }),
+                            _vm._v(
+                              "\n                                          " +
+                                _vm._s(_vm.quantity) +
+                                "\n                                          "
+                            ),
+                            _c("i", {
+                              staticClass: "fas fa-plus-circle",
+                              on: { click: _vm.plusOne }
+                            })
+                          ]),
+                          _vm._v(" "),
+                          _c(
+                            "button",
+                            {
+                              attrs: {
+                                type: "button",
+                                name: "button",
+                                "data-dismiss": "modal"
+                              },
+                              on: {
+                                click: function($event) {
+                                  return _vm.checkCart(food.id)
+                                }
+                              }
+                            },
+                            [
+                              _vm._v(
+                                "\n                                          Aggiungi al carrello\n                                      "
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "button",
+                            {
+                              staticClass: "btn btn-default",
+                              attrs: { type: "button", "data-dismiss": "modal" }
+                            },
+                            [
+                              _vm._v(
+                                "\n                                          Annulla\n                                      "
+                              )
+                            ]
+                          )
+                        ])
+                      ])
+                    ])
                   ])
                 ]
               )
-            ],
-            2
-          )
-        : _c("div", { staticClass: "cart-test sticky-top" }, [
-            _c("h4", [_vm._v("CARRELLO VUOTO")])
-          ])
-    ]),
-    _vm._v(" "),
-    _c(
-      "div",
-      {
-        staticClass: "modal fade",
-        attrs: {
-          id: "alert",
-          "data-backdrop": "static",
-          "data-keyboard": "false",
-          tabindex: "-1",
-          "aria-labelledby": "staticBackdropLabel",
-          "aria-hidden": "true"
-        }
-      },
-      [
-        _c(
-          "div",
-          { staticClass: "modal-dialog modal-dialog modal-dialog-centered" },
-          [
-            _c("div", { staticClass: "modal-content" }, [
-              _vm._m(0),
-              _vm._v(" "),
-              _c("div", { staticClass: "modal-body" }, [
-                _vm._v(
-                  "\n                    In questo modo cancelli il carrello esistente da\n                    " +
-                    _vm._s(_vm.old_cart) +
-                    " e crei un nuovo carrello da\n                    " +
-                    _vm._s(_vm.user_name) +
-                    ".\n                "
-                )
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "modal-footer" }, [
+            ])
+          }),
+          0
+        )
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-md-4" }, [
+        _vm.cart.length
+          ? _c(
+              "div",
+              { staticClass: "cart-test d-flex flex-column sticky-top" },
+              [
+                _vm._l(_vm.cart, function(item, i) {
+                  return _c("div", { key: i, staticClass: "item-test" }, [
+                    _c("div", { staticClass: "quantity" }, [
+                      _c("i", {
+                        staticClass: "fas fa-minus-circle",
+                        on: {
+                          click: function($event) {
+                            return _vm.minusOneCart(i)
+                          }
+                        }
+                      }),
+                      _vm._v(
+                        "\n                      " +
+                          _vm._s(item.quantity) +
+                          "\n                      "
+                      ),
+                      _c("i", {
+                        staticClass: "fas fa-plus-circle",
+                        on: {
+                          click: function($event) {
+                            return _vm.plusOneCart(i)
+                          }
+                        }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "name" }, [
+                      _vm._v(
+                        "\n                      " +
+                          _vm._s(
+                            _vm.foods.find(function(x) {
+                              return x.id === item.id
+                            }).name
+                          ) +
+                          "\n                  "
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "total" }, [
+                      _vm._v(
+                        "\n                      " +
+                          _vm._s(
+                            (_vm.foods.find(function(x) {
+                              return x.id === item.id
+                            }).price *
+                              item.quantity) /
+                              100
+                          ) +
+                          "\n                      €\n                  "
+                      )
+                    ])
+                  ])
+                }),
+                _vm._v(" "),
                 _c(
-                  "button",
-                  {
-                    staticClass: "btn btn-secondary",
-                    attrs: { type: "button", "data-dismiss": "modal" }
-                  },
+                  "div",
+                  { staticClass: "d-flex justify-content-between px-2" },
                   [
-                    _vm._v(
-                      "\n                        Annulla\n                    "
-                    )
+                    _c("span", [_vm._v("TOTALE:")]),
+                    _vm._v(" "),
+                    _c("span", [_vm._v(_vm._s(_vm.total()) + " €")])
                   ]
                 ),
                 _vm._v(" "),
                 _c(
-                  "button",
+                  "a",
                   {
-                    staticClass: "btn btn-primary",
-                    attrs: { type: "button", "data-dismiss": "modal" },
-                    on: {
-                      click: function($event) {
-                        return _vm.addCart(_vm.id_food)
-                      }
-                    }
+                    staticClass: "text-center",
+                    attrs: { href: "/checkout/" + _vm.user_id }
                   },
                   [
-                    _vm._v(
-                      "\n                        Nuovo Carrello\n                    "
-                    )
+                    _c("button", { staticClass: "btn btn-primary" }, [
+                      _vm._v("CHECKOUT")
+                    ])
                   ]
                 )
-              ])
+              ],
+              2
+            )
+          : _c("div", { staticClass: "cart-test sticky-top" }, [
+              _c("h4", [_vm._v("CARRELLO VUOTO")])
             ])
-          ]
-        )
-      ]
-    )
+      ]),
+      _vm._v(" "),
+      _c(
+        "div",
+        {
+          staticClass: "modal fade",
+          attrs: {
+            id: "alert",
+            "data-backdrop": "static",
+            "data-keyboard": "false",
+            tabindex: "-1",
+            "aria-labelledby": "staticBackdropLabel",
+            "aria-hidden": "true"
+          }
+        },
+        [
+          _c(
+            "div",
+            { staticClass: "modal-dialog modal-dialog modal-dialog-centered" },
+            [
+              _c("div", { staticClass: "modal-content" }, [
+                _vm._m(0),
+                _vm._v(" "),
+                _c("div", { staticClass: "modal-body" }, [
+                  _vm._v(
+                    "\n                      In questo modo cancelli il carrello esistente da\n                      " +
+                      _vm._s(_vm.old_cart) +
+                      " e crei un nuovo carrello da\n                      " +
+                      _vm._s(_vm.user_name) +
+                      ".\n                  "
+                  )
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "modal-footer" }, [
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-secondary",
+                      attrs: { type: "button", "data-dismiss": "modal" }
+                    },
+                    [
+                      _vm._v(
+                        "\n                          Annulla\n                      "
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-primary",
+                      attrs: { type: "button", "data-dismiss": "modal" },
+                      on: {
+                        click: function($event) {
+                          return _vm.addCart(_vm.id_food)
+                        }
+                      }
+                    },
+                    [
+                      _vm._v(
+                        "\n                          Nuovo Carrello\n                      "
+                      )
+                    ]
+                  )
+                ])
+              ])
+            ]
+          )
+        ]
+      )
+    ])
   ])
 }
 var staticRenderFns = [
@@ -39684,7 +39681,7 @@ var staticRenderFns = [
         { staticClass: "modal-title", attrs: { id: "staticBackdropLabel" } },
         [
           _vm._v(
-            "\n                        Vuoi creare un nuovo carrello?\n                    "
+            "\n                          Vuoi creare un nuovo carrello?\n                      "
           )
         ]
       ),
@@ -39806,123 +39803,113 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "container-fluid" }, [
-    _c("div", { staticClass: "row justify-content-center mx-5" }, [
-      _c("div", { staticClass: "col-sm-12 d-md-flex altezza" }, [
-        _c(
-          "div",
-          {
-            staticClass:
-              "d-flex flex-sm-wrap flex-md-column align-items-start align-self-start mt-5 bg-white cartella"
-          },
-          _vm._l(_vm.typologies, function(typology) {
-            return _c("label", { staticClass: "check" }, [
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.filters,
-                    expression: "filters"
-                  }
-                ],
-                attrs: { type: "checkbox" },
-                domProps: {
-                  value: typology.name,
-                  checked: Array.isArray(_vm.filters)
-                    ? _vm._i(_vm.filters, typology.name) > -1
-                    : _vm.filters
-                },
-                on: {
-                  change: [
-                    function($event) {
-                      var $$a = _vm.filters,
-                        $$el = $event.target,
-                        $$c = $$el.checked ? true : false
-                      if (Array.isArray($$a)) {
-                        var $$v = typology.name,
-                          $$i = _vm._i($$a, $$v)
-                        if ($$el.checked) {
-                          $$i < 0 && (_vm.filters = $$a.concat([$$v]))
-                        } else {
-                          $$i > -1 &&
-                            (_vm.filters = $$a
-                              .slice(0, $$i)
-                              .concat($$a.slice($$i + 1)))
-                        }
-                      } else {
-                        _vm.filters = $$c
-                      }
-                    },
-                    function($event) {
-                      return _vm.searchRestaurants()
-                    }
-                  ]
+  return _c("div", { staticClass: "row justify-content-center mx-5" }, [
+    _c("div", { staticClass: "col-sm-12 d-md-flex altezza" }, [
+      _c(
+        "div",
+        {
+          staticClass:
+            "d-flex flex-sm-wrap flex-md-column align-items-start mt-5 bg-white"
+        },
+        _vm._l(_vm.typologies, function(typology) {
+          return _c("label", { key: typology, staticClass: "check" }, [
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.filters,
+                  expression: "filters"
                 }
-              }),
-              _vm._v(" "),
-              _c("span", [_vm._v(_vm._s(typology.name))])
-            ])
-          }),
-          0
-        ),
-        _vm._v(" "),
-        _c(
-          "div",
-          { staticClass: "col-sm-10 d-flex flex-wrap align-items-start m-5" },
-          _vm._l(_vm.restaurants, function(restaurant) {
-            return _c(
-              "div",
-              { key: restaurant.id, staticClass: "user text-left" },
-              [
-                _c("a", { attrs: { href: "/show/" + restaurant.id } }, [
-                  _c("div", { staticClass: "image" }, [
-                    restaurant.image == null
-                      ? _c("img", {
-                          staticClass: "img-fluid max-width: 100%",
-                          attrs: { src: "/storage/icon/nulla.png", alt: "" }
-                        })
-                      : _c("img", {
-                          staticClass: "img-fluid max-width: 100%",
-                          attrs: {
-                            src: "/storage/icon/" + restaurant.image,
-                            alt: ""
-                          }
-                        })
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "p-3 testo-user" }, [
-                    _c("h4", [
-                      _c("strong", [
-                        _vm._v(
-                          "\n                                    " +
-                            _vm._s(restaurant.restaurant_name) +
-                            "\n                                "
-                        )
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("span", [
+              ],
+              attrs: { type: "checkbox" },
+              domProps: {
+                value: typology.name,
+                checked: Array.isArray(_vm.filters)
+                  ? _vm._i(_vm.filters, typology.name) > -1
+                  : _vm.filters
+              },
+              on: {
+                change: [
+                  function($event) {
+                    var $$a = _vm.filters,
+                      $$el = $event.target,
+                      $$c = $$el.checked ? true : false
+                    if (Array.isArray($$a)) {
+                      var $$v = typology.name,
+                        $$i = _vm._i($$a, $$v)
+                      if ($$el.checked) {
+                        $$i < 0 && (_vm.filters = $$a.concat([$$v]))
+                      } else {
+                        $$i > -1 &&
+                          (_vm.filters = $$a
+                            .slice(0, $$i)
+                            .concat($$a.slice($$i + 1)))
+                      }
+                    } else {
+                      _vm.filters = $$c
+                    }
+                  },
+                  function($event) {
+                    return _vm.searchRestaurants()
+                  }
+                ]
+              }
+            }),
+            _vm._v(" "),
+            _c("span", [_vm._v(_vm._s(typology.name))])
+          ])
+        }),
+        0
+      ),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "col-sm-10 d-flex flex-wrap align-items-start m-5" },
+        _vm._l(_vm.restaurants, function(restaurant) {
+          return _c(
+            "div",
+            { key: restaurant.id, staticClass: "user text-left" },
+            [
+              _c("a", { attrs: { href: "/show/" + restaurant.id } }, [
+                _c("div", { staticClass: "image" }, [
+                  _c("img", {
+                    staticClass: "img-fluid max-width: 100%",
+                    attrs: { src: "/img/ristorante-1.jpg", alt: "" }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "p-3" }, [
+                  _c("h4", [
+                    _c("strong", [
                       _vm._v(
-                        "\n\n                                " +
-                          _vm._s(restaurant.address) +
-                          " "
-                      ),
-                      _c("br"),
-                      _vm._v(
-                        "\n                                Tel: " +
-                          _vm._s(restaurant.phone) +
-                          "\n                            "
+                        "\n                                    " +
+                          _vm._s(restaurant.restaurant_name) +
+                          "\n                                "
                       )
                     ])
+                  ]),
+                  _vm._v(" "),
+                  _c("span", [
+                    _vm._v(
+                      "\n\n                                " +
+                        _vm._s(restaurant.address) +
+                        " "
+                    ),
+                    _c("br"),
+                    _vm._v(
+                      "\n                                Tel: " +
+                        _vm._s(restaurant.phone) +
+                        "\n                            "
+                    )
                   ])
                 ])
-              ]
-            )
-          }),
-          0
-        )
-      ])
+              ])
+            ]
+          )
+        }),
+        0
+      )
     ])
   ])
 }
@@ -52849,8 +52836,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! D:\Progetto finale Deliveboo\deliveboo\laravel\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! D:\Progetto finale Deliveboo\deliveboo\laravel\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Laravel\deliveboo\laravel\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Laravel\deliveboo\laravel\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

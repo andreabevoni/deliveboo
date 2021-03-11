@@ -1,0 +1,18 @@
+.info {
+  h4 {
+    color: $grey-color;
+  }
+}
+
+.card.order {
+  padding: 20px;
+  margin-bottom: 20px;
+
+  .far.fa-sticky-note {
+    color: black;
+  }
+
+  i {
+    color: $logo-color;
+  }
+}
