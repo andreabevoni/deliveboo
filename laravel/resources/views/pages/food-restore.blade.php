@@ -12,10 +12,10 @@
                         @csrf
                         @method('POST')
 
-                        <div class="d-flex justify-content-between">
-                            <div class="">
+                        <div class="d-flex flex-wrap justify-content-between">
+                            <div class="col-sm-10">
                                 <label for="name"
-                                    class="pr-3">{{ __('Nome Piatto') }}</label>
+                                    class="p-3">{{ __('Nome Piatto') }}</label>
 
                                 <select name="name" id="">
                                     @foreach ($deletedFood as $food)
