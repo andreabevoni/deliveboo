@@ -4,6 +4,9 @@
 <div class="container">
 
   {{-- stampo dati del ristoratore per debug --}}
+
+{{-- cIAO --}}
+
   <div class="display-3">
     {{$userAuth -> restaurant_name}}
     [id {{$userAuth -> id}}]
