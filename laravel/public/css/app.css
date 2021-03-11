@@ -11459,28 +11459,6 @@ button.checkout {
   height: 100vh;
 }
 
-.main-headline h1,
-.main-headline h3 {
-  color: #440063;
-  font-weight: 600;
-  padding-bottom: 20px;
-}
-
-.search-box {
-  background-color: #007E8A;
-  margin-right: 20px;
-}
-
-.search-box label.check > span {
-  color: white;
-}
-
-.form-registration button {
-  background-color: #00ccbc;
-  color: white;
-  border: none;
-}
-
 .cartella {
   background-color: white;
   padding: 10px;
