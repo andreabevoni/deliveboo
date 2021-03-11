@@ -2181,6 +2181,19 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     foods: Array,
@@ -38702,11 +38715,10 @@ var render = function() {
     _vm._v(" "),
     _vm.cart.length
       ? _c("div", { staticClass: "col-md-8" }, [
-          _vm._m(0),
-          _vm._v(" "),
           _c(
             "form",
             {
+              staticClass: "checkout",
               attrs: { method: "POST" },
               on: {
                 submit: function($event) {
@@ -38721,269 +38733,238 @@ var render = function() {
                 domProps: { value: _vm.csrf }
               }),
               _vm._v(" "),
-              _c("div", { staticClass: "form-group" }, [
-                _vm._m(1),
-                _vm._v(" "),
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.email,
-                      expression: "email"
-                    }
-                  ],
-                  staticClass: "form-control",
-                  attrs: {
-                    required: "",
-                    minlength: "5",
-                    type: "email",
-                    name: "email",
-                    placeholder: "Inserisci Email"
-                  },
-                  domProps: { value: _vm.email },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
+              _vm._m(0),
+              _vm._v(" "),
+              _c("div", { staticClass: "d-flex justify-content-center" }, [
+                _c("div", { staticClass: "col-md-6" }, [
+                  _c("div", { staticClass: "form-group" }, [
+                    _vm._m(1),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.name,
+                          expression: "name"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: {
+                        required: "",
+                        minlength: "2",
+                        type: "text",
+                        name: "name",
+                        placeholder: "Inserisci Nome"
+                      },
+                      domProps: { value: _vm.name },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.name = $event.target.value
+                        }
                       }
-                      _vm.email = $event.target.value
-                    }
-                  }
-                })
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "form-group" }, [
-                _vm._m(2),
-                _vm._v(" "),
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.name,
-                      expression: "name"
-                    }
-                  ],
-                  staticClass: "form-control",
-                  attrs: {
-                    required: "",
-                    minlength: "2",
-                    type: "text",
-                    name: "name",
-                    placeholder: "Inserisci Nome"
-                  },
-                  domProps: { value: _vm.name },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-group" }, [
+                    _vm._m(2),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.lastname,
+                          expression: "lastname"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: {
+                        required: "",
+                        minlength: "2",
+                        type: "text",
+                        name: "lastname",
+                        placeholder: "Inserisci Cognome"
+                      },
+                      domProps: { value: _vm.lastname },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.lastname = $event.target.value
+                        }
                       }
-                      _vm.name = $event.target.value
-                    }
-                  }
-                })
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "form-group" }, [
-                _vm._m(3),
-                _vm._v(" "),
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.lastname,
-                      expression: "lastname"
-                    }
-                  ],
-                  staticClass: "form-control",
-                  attrs: {
-                    required: "",
-                    minlength: "2",
-                    type: "text",
-                    name: "lastname",
-                    placeholder: "Inserisci Cognome"
-                  },
-                  domProps: { value: _vm.lastname },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-group" }, [
+                    _vm._m(3),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.email,
+                          expression: "email"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: {
+                        required: "",
+                        minlength: "5",
+                        type: "email",
+                        name: "email",
+                        placeholder: "Inserisci Email"
+                      },
+                      domProps: { value: _vm.email },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.email = $event.target.value
+                        }
                       }
-                      _vm.lastname = $event.target.value
-                    }
-                  }
-                })
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "form-group" }, [
-                _vm._m(4),
+                    })
+                  ])
+                ]),
                 _vm._v(" "),
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.cvc,
-                      expression: "cvc"
-                    }
-                  ],
-                  staticClass: "form-control",
-                  attrs: { type: "text", placeholder: "Inserisci codice" },
-                  domProps: { value: _vm.cvc },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
+                _c("div", { staticClass: "col-md-6" }, [
+                  _c("div", { staticClass: "form-group" }, [
+                    _vm._m(4),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.card,
+                          expression: "card"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: {
+                        required: "",
+                        minlength: "16",
+                        maxlength: "16",
+                        type: "text",
+                        placeholder: "Inserisci codice",
+                        name: "card"
+                      },
+                      domProps: { value: _vm.card },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.card = $event.target.value
+                        }
                       }
-                      _vm.cvc = $event.target.value
-                    }
-                  }
-                })
-              ]),
-              _vm._v(" "),
-              _c("button", { staticClass: "btn", on: { click: _vm.testApi } }, [
-                _c("strong", [_vm._v("Conferma Ordine")])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "form-group" }, [
-                _vm._m(5),
-                _vm._v(" "),
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.card,
-                      expression: "card"
-                    }
-                  ],
-                  staticClass: "form-control",
-                  attrs: {
-                    required: "",
-                    minlength: "16",
-                    maxlength: "16",
-                    type: "text",
-                    placeholder: "Inserisci codice",
-                    name: "card"
-                  },
-                  domProps: { value: _vm.card },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-group" }, [
+                    _vm._m(5),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.cvc,
+                          expression: "cvc"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: {
+                        required: "",
+                        maxlength: "3",
+                        minlength: "3",
+                        type: "text",
+                        placeholder: "Inserisci codice"
+                      },
+                      domProps: { value: _vm.cvc },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.cvc = $event.target.value
+                        }
                       }
-                      _vm.card = $event.target.value
-                    }
-                  }
-                })
-              ]),
-              _vm._v(" "),
-              _c(
-                "button",
-                { staticClass: "btn mail", on: { click: _vm.testMail } },
-                [
-                  _c("i", { staticClass: "fas fa-envelope" }),
-                  _vm._v("\n        Ricevi Mail di conferma\n      ")
-                ]
-              ),
-              _vm._v(" "),
-              _c("div", { staticClass: "form-group" }, [
-                _vm._m(6),
-                _vm._v(" "),
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.cvc,
-                      expression: "cvc"
-                    }
-                  ],
-                  staticClass: "form-control",
-                  attrs: {
-                    required: "",
-                    maxlength: "3",
-                    minlength: "3",
-                    type: "text",
-                    placeholder: "Inserisci codice"
-                  },
-                  domProps: { value: _vm.cvc },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-group" }, [
+                    _vm._m(6),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.address,
+                          expression: "address"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: {
+                        required: "",
+                        type: "text",
+                        name: "address",
+                        placeholder: "Inserisci Indirizzo"
+                      },
+                      domProps: { value: _vm.address },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.address = $event.target.value
+                        }
                       }
-                      _vm.cvc = $event.target.value
-                    }
-                  }
-                })
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "form-group" }, [
-                _vm._m(7),
-                _vm._v(" "),
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.address,
-                      expression: "address"
-                    }
-                  ],
-                  staticClass: "form-control",
-                  attrs: {
-                    required: "",
-                    type: "text",
-                    name: "address",
-                    placeholder: "Inserisci Indirizzo"
-                  },
-                  domProps: { value: _vm.address },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-group" }, [
+                    _vm._m(7),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.phone_number,
+                          expression: "phone_number"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: {
+                        required: "",
+                        type: "text",
+                        name: "phone_number",
+                        placeholder: "Inserisci numero di telefono"
+                      },
+                      domProps: { value: _vm.phone_number },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.phone_number = $event.target.value
+                        }
                       }
-                      _vm.address = $event.target.value
-                    }
-                  }
-                })
+                    })
+                  ])
+                ])
               ]),
               _vm._v(" "),
-              _c("div", { staticClass: "form-group" }, [
-                _vm._m(8),
-                _vm._v(" "),
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.phone_number,
-                      expression: "phone_number"
-                    }
-                  ],
-                  staticClass: "form-control",
-                  attrs: {
-                    required: "",
-                    type: "text",
-                    name: "phone_number",
-                    placeholder: "Inserisci numero di telefono"
-                  },
-                  domProps: { value: _vm.phone_number },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.phone_number = $event.target.value
-                    }
-                  }
-                })
-              ]),
-              _vm._v(" "),
-              _vm._m(9)
+              _vm._m(8)
             ]
           )
         ])
@@ -38992,7 +38973,7 @@ var render = function() {
     _vm.cart.length
       ? _c("div", { staticClass: "col-md-4" }, [
           _vm._v("\n        ​\n        "),
-          _c("h4", [_vm._v("\n            RIEPILOGO CARRELLO\n        ")]),
+          _vm._m(9),
           _vm._v(" "),
           _c(
             "div",
@@ -39084,14 +39065,6 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("label", { attrs: { for: "exampleInputEmail1" } }, [
-      _c("strong", [_vm._v("Indirizzo email")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("label", { attrs: { for: "exampleInputEmail1" } }, [
       _c("strong", [_vm._v("Nome")])
     ])
   },
@@ -39107,7 +39080,9 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("label", [_c("strong", [_vm._v("Codice CVC")])])
+    return _c("label", { attrs: { for: "exampleInputEmail1" } }, [
+      _c("strong", [_vm._v("Indirizzo email")])
+    ])
   },
   function() {
     var _vm = this
@@ -39141,8 +39116,21 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("button", { staticClass: "btn", attrs: { type: "submit" } }, [
-      _c("strong", [_vm._v("Conferma Ordine")])
+    return _c("div", { staticClass: "row justify-content-center" }, [
+      _c("div", { staticClass: "col-md-6" }, [
+        _c("button", { staticClass: "btn submit", attrs: { type: "submit" } }, [
+          _vm._v("\n                  Conferma Ordine\n              ")
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("h4", [
+      _c("i", { staticClass: "fas fa-cart-arrow-down" }),
+      _vm._v("\n              RIEPILOGO CARRELLO\n        ")
     ])
   },
   function() {
