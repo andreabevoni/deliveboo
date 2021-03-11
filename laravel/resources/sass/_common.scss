@@ -21,6 +21,7 @@
     @include button-basic;
       background-color: white;
       padding: 10px;
+      border-color: $logo-color;
       a {
         color: $logo-color;
         text-decoration: none;

@@ -7,10 +7,13 @@
 
         <!-- colonna con form -->
         <div class="col-md-8" v-if="cart.length">
+          <div class="subtitle">
+            <h5>Inserisci i tuoi dati per completare l'ordine</h5>
+          </div>
             <form @submit.prevent="testApi" method="POST">
                 <input type="hidden" name="_token" :value="csrf" />
                 <div class="form-group">
-                    <label for="exampleInputEmail1">Indirizzo email</label>
+                    <label for="exampleInputEmail1"><strong>Indirizzo email</strong></label>
                     <input
                         required
                         minlength="5"
@@ -23,7 +26,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="exampleInputEmail1">Nome</label>
+                    <label for="exampleInputEmail1"><strong>Nome</strong></label>
                     <input
                         required
                         minlength="2"
@@ -36,7 +39,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="exampleInputEmail1">Cognome</label>
+                    <label for="exampleInputEmail1"><strong>Cognome</strong></label>
                     <input
                         required
                         minlength="2"
@@ -49,13 +52,13 @@
                 </div>
 
           <div class="form-group">
-            <label>Codice CVC</label>
-            <input type="text" class="form-control" placeholder="Inserisci codice" v-model="cvc"></input>
+            <label><strong>Codice CVC</strong></label>
+            <input type="text" class="form-control" placeholder="Inserisci codice" v-model="cvc">
           </div>
 
-          <button class="btn btn-primary" @click="testApi">Conferma Ordine</button>
+          <button class="btn" @click="testApi"><strong>Conferma Ordine</strong></button>
                 <div class="form-group">
-                    <label>Codice carta di credito</label>
+                    <label><strong>Numero carta di credito</strong></label>
                     <input
                         required
                         minlength="16"
@@ -68,9 +71,12 @@
                     />
                 </div>
 
-          <button class="btn btn-warning" @click="testMail">Invia Mail</button>
+          <button class="btn mail" @click="testMail">
+            <i class="fas fa-envelope"></i>
+            Ricevi Mail di conferma
+          </button>
                 <div class="form-group">
-                    <label>Codice CVC</label>
+                    <label><strong>Codice CVC</strong></label>
                     <input
                         required
                         maxlength="3"
@@ -84,7 +90,7 @@
 
                 <!-- <button class="btn btn-primary" @click="testApi">Conferma Ordine</button> -->
                 <div class="form-group">
-                    <label for="exampleInputEmail1">Indirizzo</label>
+                    <label for="exampleInputEmail1"><strong>Indirizzo di consegna</strong></label>
                     <input
                         required
                         type="text"
@@ -98,7 +104,7 @@
                 <!-- <button class="btn btn-warning" @click="testMail"> -->
                 <!-- </button> -->
                 <div class="form-group">
-                    <label for="exampleInputEmail1">Numero di telefono</label>
+                    <label for="exampleInputEmail1"><strong>Numero di telefono</strong></label>
                     <input
                         required
                         type="text"
@@ -109,8 +115,8 @@
                     />
                 </div>
 
-                <button type="submit" class="btn btn-primary">
-                    Conferma Ordine
+                <button type="submit" class="btn">
+                    <strong>Conferma Ordine</strong>
                 </button>
             </form>
         </div>
@@ -281,6 +287,7 @@ export default {
                     if (r.data.hasOwnProperty("errors")) {
                         $("#alert").modal("show");
                         console.log("carta non valida!");
+                        $("#alert").modal("show");
                     } else {
                         console.log("pagamento effettuato");
                         // 1) salviamo l'ordine nel db

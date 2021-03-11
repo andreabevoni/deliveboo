@@ -67,3 +67,6 @@ Route::get('/payed', function () {
 
 // test per invio mail
 Route::post('/mail/send', 'OrderController@mailSend')->name('mail-send');
+
+Route::get('/chart/months', 'OrderController@chartMonths');
+Route::get('/chart/years', 'OrderController@chartYears');

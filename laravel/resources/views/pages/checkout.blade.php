@@ -4,13 +4,13 @@
 <div class="container">
 
     <!-- riga con le info del ristorante -->
-    <div class="row d-flex align-items-center">
+    <div class="checkout-head row d-flex align-items-center">
 
       <a href="{{route('user-show', $user -> id)}}" class="text-center">
-        <button class="btn btn-success">&#171; Torna al ristorante</button>
+        <button class="btn">&#171; Torna al ristorante</button>
       </a>
 
-      <div class="info">
+      <div class="title">
         <h1>{{ $user -> restaurant_name }}</h1>
       </div>
     </div>

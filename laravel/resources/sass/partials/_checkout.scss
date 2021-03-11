@@ -1,0 +1,33 @@
+.checkout-head {
+  padding: 20px 0;
+  button {
+    @include cta-white;
+    color: $logo-color;
+  }
+}
+
+.title {
+  padding-left: 20px;
+}
+
+.subtitle {
+  color: $grey-color;
+}
+
+form {
+  border: 2px solid $logo-color;
+  padding: 20px;
+  margin: 20px 0;
+  border-radius: 10px;
+
+  button.mail {
+      background-color: #FFF;
+      margin-left: 10px;
+      border: 1px lightgrey solid;
+      padding: 10px;
+      color: $grey-color;
+      i {
+        color: $logo-color;
+      }
+  }
+}
