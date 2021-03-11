@@ -7,10 +7,11 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\OrderMail;
 use Illuminate\Support\Facades\DB;
-
+use Carbon\Carbon;
 use App\Food;
 use App\User;
 use App\Order;
+use Illuminate\Support\Carbon as SupportCarbon;
 
 class OrderController extends Controller
 {
@@ -21,31 +22,29 @@ class OrderController extends Controller
 
             // ottengo un array di oggetti contenente gli ID di tutti gli ordini effettuati al ristoratore connesso
             $userOrders = DB::table('orders')
-                        ->join('food_order', 'orders.id', '=', 'food_order.order_id')
-                        ->join('food', 'food_order.food_id', '=', 'food.id')
-                        ->where('food.user_id', "=", $userAuth -> id)
-                        ->select('orders.id')
-                        ->groupBy('orders.id')
-                        ->get()
-                        ->toArray();
+                ->join('food_order', 'orders.id', '=', 'food_order.order_id')
+                ->join('food', 'food_order.food_id', '=', 'food.id')
+                ->where('food.user_id', "=", $userAuth->id)
+                ->select('orders.id')
+                ->groupBy('orders.id')
+                ->get()
+                ->toArray();
 
             // trasformo questo array di oggetti in array normale
             $ids = [];
             foreach ($userOrders as $order) {
-              $ids[]= $order -> id;
+                $ids[] = $order->id;
             }
 
             // recupero tutti gli ordini effettuati con le loro informazioni
             $orders = Order::with('food')
-                           ->find($ids)
-                           ->sortKeysDesc();
-
+                ->find($ids)
+                ->sortKeysDesc();
+            // dd($orders);
             return view('pages.orders', compact('userAuth', 'orders'));
-
         } else {
             return redirect()->route('home');
         }
-
     }
 
     public function store(Request $request)
@@ -84,15 +83,117 @@ class OrderController extends Controller
         return response()->json('ok', 200);
     }
 
-    public function mailSend(Request $request)
+
+    public function chartMonths()
     {
-	    $mail = $request -> email;
-      $cart = $request -> cart;
-      $user = User::with('food')->findOrFail($request -> user);
+        if (Auth::user()) {
+            $userAuth = Auth::user();
 
-	    Mail::to($mail)
-	        ->send(new OrderMail($cart, $user));
+            // ottengo un array di oggetti contenente gli ID di tutti gli ordini effettuati al ristoratore connesso
+            $userOrders = DB::table('orders')
+                ->join('food_order', 'orders.id', '=', 'food_order.order_id')
+                ->join('food', 'food_order.food_id', '=', 'food.id')
+                ->where('food.user_id', "=", $userAuth->id)
+                ->select('orders.id')
+                ->groupBy('orders.id')
+                ->get()
+                ->toArray();
 
-      return response () -> json('mail inviata', 200);
+            // trasformo questo array di oggetti in array normale
+            $ids = [];
+            foreach ($userOrders as $order) {
+                $ids[] = $order->id;
+            }
+
+            // recupero tutti gli ordini effettuati con le loro informazioni
+
+            //creo array mesi vuoto
+            $months = [];
+
+            //creo i mesi usando gli indici
+            for ($i = 0; $i < 12; $i++) {
+                $months[] = $i + 1;
+            }
+
+            //creo array ordini vuoto
+            $order = [];
+
+            //per ogni ordine faccio la count di ogni mese passando il valore dell array month 
+            foreach ($months as $key => $value) {
+                // dd($months);
+                $order[] =
+                    Order::with('food')
+                    ->whereMonth('created_at', $value)
+                    ->find($ids)
+                    ->count();
+            }
+
+            return view('pages.chart-months')->with('order', json_encode($order))->with('months', json_encode($months));
+        } else {
+            return redirect()->route('home');
+        }
+    }
+
+    //chart per anni
+
+    public function chartYears()
+    {
+        if (Auth::user()) {
+            $userAuth = Auth::user();
+
+            // ottengo un array di oggetti contenente gli ID di tutti gli ordini effettuati al ristoratore connesso
+            $userOrders = DB::table('orders')
+                ->join('food_order', 'orders.id', '=', 'food_order.order_id')
+                ->join('food', 'food_order.food_id', '=', 'food.id')
+                ->where('food.user_id', "=", $userAuth->id)
+                ->select('orders.id')
+                ->groupBy('orders.id')
+                ->get()
+                ->toArray();
+
+            // trasformo questo array di oggetti in array normale
+            $ids = [];
+            foreach ($userOrders as $order) {
+                $ids[] = $order->id;
+            }
+
+            // recupero tutti gli ordini effettuati con le loro informazioni
+            $date = Order::with('food')
+                ->find($ids)
+                ->pluck('date');
+
+            $years = [];
+            dd(Carbon::createFromFormat('Y-m-d H:i:s', '2012-09-03')->year);
+            foreach ($date as $key => $value) {
+
+                $year = Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $value)->year;
+                dd($year);
+                $years[] = $year;
+            }
+
+            //creo array mesi vuoto
+
+            //creo gli anni 
+            /* foreach ($orders as $key => $value) {
+                # code...
+            } */
+
+            //creo array ordini vuoto
+            $order = [];
+
+            //per ogni ordine faccio la count di ogni mese passando il valore dell array month 
+            foreach ($years as $key => $value) {
+                // dd($months);
+                $order[] =
+                    Order::with('food')
+                    ->whereYear('created_at', $value)
+                    ->find($ids)
+                    ->count();
+            }
+
+            return view('pages.chart-months')->with('order', json_encode($order))->with('months', json_encode($years));
+        } else {
+            return redirect()->route('home');
+        }
     }
 }

@@ -2375,20 +2375,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -3005,6 +2991,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     typologies: Array
@@ -3012,8 +3002,7 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       restaurants: [],
-      filters: [],
-      img: "/img/user-img/"
+      filters: []
     };
   },
   methods: {
@@ -39305,7 +39294,7 @@ var render = function() {
         _c("br"),
         _vm._v(" "),
         _c("strong", [_vm._v("Disponibile: ")]),
-        _vm._v(_vm._s(_vm.available) + "\n                ")
+        _vm._v(_vm._s(_vm.available) + "\n        ")
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "col-md-4 food-img" }, [
@@ -39942,7 +39931,7 @@ var render = function() {
             "d-flex flex-sm-wrap flex-md-column align-items-start align-self-start mt-5 bg-white cartella"
         },
         _vm._l(_vm.typologies, function(typology) {
-          return _c("label", { key: typology, staticClass: "check" }, [
+          return _c("label", { staticClass: "check" }, [
             _c("input", {
               directives: [
                 {
@@ -52974,8 +52963,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Laravel\deliveboo\laravel\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Laravel\deliveboo\laravel\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Boolean\Esercizi\deliveboo\laravel\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Boolean\Esercizi\deliveboo\laravel\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
