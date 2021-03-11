@@ -26,8 +26,11 @@
 
                         <a :href="'/show/' + restaurant.id">
                             <div class="image">
-                                <img class="img-fluid max-width: 100%" :src="'/storage/icon/nulla.png'" alt="" v-if="restaurant.image == null">
+                                <img class="img-fluid max-width: 100%" :src="'/img/risto-img/nulla.png'" alt="" v-if="restaurant.image == null">
+                                <img class="img-fluid max-width: 100%" :src="'/img/risto-img/' + restaurant.image" alt="" v-else-if="restaurant.image.length < 16">
                                 <img class="img-fluid max-width: 100%" :src="'/storage/icon/' + restaurant.image" alt="" v-else>
+
+
                             </div>
                             <div class="p-3 testo-user">
                                 <h4>
