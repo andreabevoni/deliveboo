@@ -2278,6 +2278,7 @@ __webpack_require__.r(__webpack_exports__);
         if (r.data.hasOwnProperty("errors")) {
           $("#alert").modal("show");
           console.log("carta non valida!");
+          $("#alert").modal("show");
         } else {
           console.log("pagamento effettuato"); // 1) salviamo l'ordine nel db
 
@@ -2321,21 +2322,6 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -2903,12 +2889,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2923,7 +2903,7 @@ __webpack_require__.r(__webpack_exports__);
     description: String
   },
   mounted: function mounted() {
-    console.log('Component mounted.');
+    console.log("Component mounted.");
   }
 });
 
@@ -39290,7 +39270,7 @@ var render = function() {
         _c("br"),
         _vm._v(" "),
         _c("strong", [_vm._v("Prezzo: ")]),
-        _vm._v(_vm._s(_vm.price) + " € "),
+        _vm._v(_vm._s(_vm.price / 100) + " € "),
         _c("br"),
         _vm._v(" "),
         _c("strong", [_vm._v("Disponibile: ")]),
@@ -39995,7 +39975,15 @@ var render = function() {
                   restaurant.image == null
                     ? _c("img", {
                         staticClass: "img-fluid max-width: 100%",
-                        attrs: { src: "/storage/icon/nulla.png", alt: "" }
+                        attrs: { src: "/img/risto-img/nulla.png", alt: "" }
+                      })
+                    : restaurant.image.length < 16
+                    ? _c("img", {
+                        staticClass: "img-fluid max-width: 100%",
+                        attrs: {
+                          src: "/img/risto-img/" + restaurant.image,
+                          alt: ""
+                        }
                       })
                     : _c("img", {
                         staticClass: "img-fluid max-width: 100%",
@@ -52963,8 +52951,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Boolean\Esercizi\deliveboo\laravel\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Boolean\Esercizi\deliveboo\laravel\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Laravel\deliveboo\laravel\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Laravel\deliveboo\laravel\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
