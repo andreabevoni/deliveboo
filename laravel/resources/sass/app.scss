@@ -13,14 +13,11 @@
 
 @import 'header';
 @import 'footer';
-// @import 'hp';
 @import 'login';
 @import 'register';
 @import 'show';
-// @import 'checkout';
-// @import 'dashoboard';
-// @import 'foodlist';
 @import 'orders';
+@import 'payed';
 
 
 // Regole generali
@@ -365,4 +362,5 @@
 
 .bottone-generale {
   @include edit-delete;
+}
 }
