@@ -63,3 +63,7 @@ Route::get('/payed', function () {
 
     return view('pages.payed');
 });
+
+Route::get('/chart', function () {
+    return view('pages.chart');
+});
