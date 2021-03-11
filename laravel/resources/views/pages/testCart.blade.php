@@ -7,10 +7,10 @@
           <!-- Info ristorante -->
           <div class="info">
             <h1>{{ $user -> restaurant_name }} </h1>
-            <span>{{ $user -> address }} ° </span>
-            <span>Telefono: {{ $user -> phone }}  ° </span>
-            <span>Email: {{ $user -> email }}   </span>
-            <h6>Ordina il tuo piatto preferito a casa tua da {{ $user -> restaurant_name }} grazie alla consegna a domicilio di Deliveroo.</h6>
+            <span><i class="fas fa-map-marker-alt"></i> Indirizzo: {{ $user -> address }} </span>
+            <span><i class="fas fa-phone"></i> Telefono: {{ $user -> phone }} </span>
+            <span><i class="fas fa-at"></i> Email:  {{ $user -> email }}   </span>
+            <h6>Ordina il tuo piatto preferito a casa tua da <strong> {{ $user -> restaurant_name }} </strong> grazie alla consegna a domicilio di Deliveroo.</h6>
           </div>
 
           <!-- Barra scelta categoria -->
@@ -19,7 +19,6 @@
             <span><a href="#">{{ $food -> category }}</a></span>
             @endforeach
           </nav> --}}
-          <hr>
         </div> <!-- fine contenitore di sinistra -->
 
 
