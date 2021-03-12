@@ -2721,12 +2721,21 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       baseURL: "storage/food_images/",
-      defaultImg: "storage/img/noimg.png"
+      defaultImg: "img/piatto-vuoto.jpg"
     };
+  },
+  computed: {
+    descriptionShort: function descriptionShort() {
+      var max = 100;
+      return this.description.length > max ? this.description.substring(0, max) + '...' : this.description;
+    }
   },
   mounted: function mounted() {
     console.log("Component food mounted.");
@@ -2757,18 +2766,50 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       baseURL: "storage/food_images/",
-      defaultImg: "img/piatto-vuoto.jpg"
+      defaultImg: "storage/img/noimg.png"
     };
-  },
-  computed: {
-    descriptionShort: function descriptionShort() {
-      var max = 100;
-      return this.description.length > max ? this.description.substring(0, max) + '...' : this.description;
-    }
   },
   mounted: function mounted() {
     console.log("Component food mounted.");
@@ -54884,8 +54925,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! D:\Progetto finale Deliveboo\deliveboo\laravel\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! D:\Progetto finale Deliveboo\deliveboo\laravel\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Boolean\Esercizi\deliveboo\laravel\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Boolean\Esercizi\deliveboo\laravel\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
