@@ -135,7 +135,20 @@ return [
         ],
         'visible' => [
             'required' => 'Seleziona la disponibilità'
-        ]
+        ],
+        'phone' => [
+            'required' => 'Inserisci numero di telefono',
+            'digits_between' => 'Il numero di telefono deve essere min 8 caratteri e max 60',
+        ],
+        'p_iva' => [
+            'required' => 'Inserisci numero partita iva',
+            'numeric' => 'Il campo deve contenere solo numeri',
+            'digits' => 'Il campo deve contenere 11 numeri',
+        ],
+        'email' => [
+            'required' => 'Inserisci email',
+            'unique' => 'Email già utilizzata, inseriscine una nuova',
+        ],
     ],
 
     /*
