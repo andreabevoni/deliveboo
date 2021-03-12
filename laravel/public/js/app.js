@@ -39122,7 +39122,7 @@ var render = function() {
             staticClass: "btn bottone-edit-elimina",
             attrs: { href: "/food/" + _vm.id + "/edit" }
           },
-          [_c("img", { attrs: { src: "/img/edit.png", alt: "" } })]
+          [_c("i", { staticClass: "fas fa-pen-square" })]
         ),
         _vm._v(" "),
         _c(
@@ -39515,7 +39515,10 @@ var render = function() {
                 _vm._v(" "),
                 _c(
                   "div",
-                  { staticClass: "d-flex justify-content-between px-4" },
+                  {
+                    staticClass:
+                      "d-flex justify-content-between px-4 pt-2 border-top"
+                  },
                   [
                     _vm._m(2),
                     _vm._v(" "),

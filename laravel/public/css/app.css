@@ -11077,8 +11077,15 @@ footer .social a {
   padding-top: 20px;
 }
 
+.img-user {
+  margin: 0px auto;
+}
+
 .img-user img {
-  width: 100%;
+  width: 400px;
+  height: 280px;
+  -o-object-fit: cover;
+     object-fit: cover;
   border-radius: 5px;
   box-shadow: 1px 1px 7px 5px #c7c7c7;
 }
@@ -11444,6 +11451,13 @@ button.checkout {
 
 .dashboard a:hover {
   text-decoration: none;
+}
+
+.dashboard .card-img img {
+  width: 490px;
+  height: 350px;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 .dashboard img {

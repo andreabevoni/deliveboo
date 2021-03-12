@@ -176,7 +176,7 @@
                     </div>
                 </div>
 
-                <div class="d-flex justify-content-between px-4">
+                <div class="d-flex justify-content-between px-4 pt-2 border-top">
                     <span><strong>TOTALE:</strong></span>
                     <span>{{ total() }} &#8364;</span>
                 </div>

@@ -39,6 +39,15 @@
     }
   }
 
+  .card-img {
+
+    img {
+      width: 490px;
+      height: 350px;
+      object-fit: cover;
+    }
+  }
+
   img {
     border-radius: 4px;
     box-shadow: 1px 1px 5px rgb(187, 187, 187);

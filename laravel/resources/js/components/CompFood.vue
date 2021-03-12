@@ -8,7 +8,7 @@
                     :href="'/food/' + id + '/edit'"
                     class="btn bottone-edit-elimina"
                 >
-                    <img :src="'/img/edit.png'" alt="" />
+                    <i class="fas fa-pen-square"></i>
                 </a>
                 <a
                     :href="'/food/softdelete/' + id"
