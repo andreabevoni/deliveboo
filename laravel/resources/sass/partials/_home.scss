@@ -127,3 +127,15 @@
         min-height: 140px;
     }
 }
+
+@media all and (min-width: 268px) and (max-width: 770px) {
+    .user {
+        width: 200px;
+        margin: 10px auto;
+    }
+    .main-headline {
+        h1 {
+            font-size: 30px;
+        }
+    }
+}

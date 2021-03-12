@@ -79,3 +79,13 @@
     background-image: url("/img/lista-ordini.jpg");
   }
 }
+
+// media query
+@media all and (min-width: 268px) and (max-width: 770px) {
+ 
+  .titolo-dashboard {
+    h1 {
+      font-size: 30px;
+    }
+  }
+}

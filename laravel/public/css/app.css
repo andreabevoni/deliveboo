@@ -11058,8 +11058,12 @@ footer .social a {
   width: 100%;
 }
 
+.sfondo-info {
+  background-color: white;
+  box-shadow: 1px 1px 7px 1px #dadada;
+}
+
 .info {
-  border-bottom: 1px solid lightgrey;
   padding: 20px;
 }
 
@@ -11075,19 +11079,12 @@ footer .social a {
 
 .img-user img {
   width: 100%;
-  padding-top: 20px;
-}
-
-.container-fluid,
-.container-sm,
-.container-md,
-.container-lg,
-.container-xl {
-  background-color: #F4F5F5;
+  border-radius: 5px;
+  box-shadow: 1px 1px 7px 5px #c7c7c7;
 }
 
 .menu {
-  padding: 20px;
+  padding-top: 15px;
 }
 
 .menu p {
@@ -11097,12 +11094,24 @@ footer .social a {
 .food-item {
   background-color: #FFF;
   padding: 10px;
-  text-align: center;
   margin: 10px 0;
+}
+
+.food-item img {
+  height: 180px;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 .food-item h4 {
   font-weight: bolder;
+  padding-top: 13px;
+}
+
+.food-item .descrizione {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  height: 100px;
 }
 
 .food-item h6 {
@@ -11199,7 +11208,8 @@ footer .social a {
 
 .cart-test {
   background-color: #FFF;
-  padding: 10px 0;
+  box-shadow: -3px 3px 6px -3px #b1b1b1;
+  padding: 10px;
   width: 100%;
 }
 
@@ -11213,14 +11223,37 @@ footer .social a {
 
 .cart-test .quantity {
   font-size: 1rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.cart-test .quantity span {
+  display: inline-block;
+  width: 20px;
 }
 
 .cart-test .quantity i {
-  padding: 10px;
+  padding: 8px;
+  font-size: 0.9rem;
+}
+
+.cart-test .quantity i:hover {
+  color: gray;
+}
+
+.name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 179px;
+  padding: 0 10px;
+  text-align: left;
 }
 
 .total {
-  padding-right: 20px;
+  padding-right: 8px;
+  white-space: nowrap;
 }
 
 .pop-up-cart {
@@ -11260,6 +11293,11 @@ button.checkout {
   width: 100%;
   width: 90%;
   margin-top: 10px;
+}
+
+.img-popup {
+  width: 300px;
+  margin: auto;
 }
 
 .info h4 {
@@ -11445,6 +11483,12 @@ button.checkout {
   background-image: url("/img/lista-ordini.jpg");
 }
 
+@media all and (min-width: 268px) and (max-width: 770px) {
+  .titolo-dashboard h1 {
+    font-size: 30px;
+  }
+}
+
 .sfondo {
   color: white;
   background-image: url("/img/sfondo-home.png");
@@ -11563,6 +11607,17 @@ button.checkout {
 
   .user .testo-user {
     min-height: 140px;
+  }
+}
+
+@media all and (min-width: 268px) and (max-width: 770px) {
+  .user {
+    width: 200px;
+    margin: 10px auto;
+  }
+
+  .main-headline h1 {
+    font-size: 30px;
   }
 }
 

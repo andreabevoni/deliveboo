@@ -1,15 +1,15 @@
 <template>
   <div class="container-fluid">
-    <div class="row">
+    <div class="row px-3 py-4">
         <!-- colonna schede cibi -->
         <div class="col-md-8">
             <div class="menu">
               <h2> <i class="fas fa-utensils"></i> Menu</h2>
               <p>Seleziona i piatti per scegliere la quantità e aggiungerli al carrello</p>
 
-              <div class="d-flex flex-wrap justify-content-around border border-danger">
+              <div class="d-flex flex-wrap justify-content-center justify-content-md-start">
 
-                <div class="mx-5 my-2" v-for="food in foods" :key="food.id">
+                <div class="mx-3 my-2" v-for="food in foods" :key="food.id">
 
                     <!-- cibi disponibili -->
                     <div
@@ -21,13 +21,20 @@
                         :data-target="'#myModal' + food.id"
                     >
                         <img
-                            src="/img/food-img/1.jpg"
+                            :src="'/storage/food_images/' + food.image" 
                             class="card-img-top"
                             alt="immagine piatto"
+                            v-if="food.image"
+                        />
+                        <img
+                            :src="'/img/piatto-vuoto-show.jpg'"
+                            class="card-img-top"
+                            alt="immagine piatto"
+                            v-else
                         />
                         <h4>{{ food.name }}</h4>
-                        <div>{{ food.description }}</div>
-                        <h6>{{ food.price / 100 }} &#8364;</h6>
+                        <div class="descrizione">{{ food.description }}</div>
+                        <h6>Prezzo: {{ food.price / 100 }} &#8364;</h6>
                     </div>
 
                     <!-- cibi non disponibili -->
@@ -37,9 +44,16 @@
                         style="width: 18rem;"
                     >
                         <img
-                            src="/img/food-img/2.jpg"
+                            :src="'/storage/food_images/' + food.image"
                             class="card-img-top"
                             alt="immagine piatto"
+                            v-if="food.image"
+                        />
+                        <img
+                            :src="'/img/piatto-vuoto-show.jpg'"
+                            class="card-img-top"
+                            alt="immagine piatto"
+                            v-else
                         />
                         <div class="card-img-overlay">
                           <i class="fas fa-times-circle"></i>
@@ -47,8 +61,8 @@
                         </div>
 
                         <h4>{{ food.name }}</h4>
-                        <div>{{ food.description }}</div>
-                        <h6>{{ food.price / 100 }} &#8364;</h6>
+                        <div class="descrizione">{{ food.description }}</div>
+                        <h6>Prezzo: {{ food.price / 100 }} &#8364;</h6>
                     </div>
 
                     <!-- scheda popup-->
@@ -61,16 +75,26 @@
                             <div class="modal-content">
                                 <div class="modal-body">
                                     <!-- scheda del cibo -->
-                                    <img
-                                        src="/img/food-img/1.jpg"
-                                        class="card-img-top"
-                                        alt="immagine piatto"
-                                    />
+                                    <div class="img-popup">
+
+                                        <img
+                                            :src="'/storage/food_images/' + food.image"
+                                            class="card-img-top"
+                                            alt="immagine piatto"
+                                            v-if="food.image"
+                                        />
+                                        <img
+                                            :src="'/img/piatto-vuoto-show.jpg'"
+                                            class="card-img-top"
+                                            alt="immagine piatto"
+                                            v-else
+                                        />
+                                    </div>
                                     <div class="food-item">
                                         <h4>{{ food.name }}</h4>
                                         <span>{{ food.description }}</span>
                                           <h6>
-                                              {{ food.price / 100 }} &#8364;
+                                              Prezzo: {{ food.price / 100 }} &#8364;
                                           </h6>
 
                                         <!-- parte con il numero di cibi da inserire -->
@@ -114,7 +138,7 @@
         </div>
 
         <!-- colonna carrello -->
-        <div class="col-md-4">
+        <div class="col-md-4 pt-4">
             <!-- mostro il carrello se pieno -->
             <div
                 class="cart-test d-flex flex-column sticky-top"
@@ -122,20 +146,24 @@
             >
                 <div class="item-test" v-for="(item, i) in cart" :key="i">
                     <!-- stampo quantitá -->
-                    <div class="quantity">
-                        <i
-                            class="fas fa-minus-circle"
-                            @click="minusOneCart(i)"
-                        ></i>
-                        {{ item.quantity }}
-                        <i
-                            class="fas fa-plus-circle"
-                            @click="plusOneCart(i)"
-                        ></i>
-                    </div>
-                    <!-- stampo il nome -->
-                    <div class="name">
-                        {{ foods.find(x => x.id === item.id).name }}
+                    <div class="quantity d-flex flex-no-wrap align-items-baseline">
+                        <div>
+
+                            <i
+                                class="fas fa-minus-circle"
+                                @click="minusOneCart(i)"
+                            ></i>
+                            <span>{{ item.quantity }}</span>
+                            <i
+                                class="fas fa-plus-circle"
+                                @click="plusOneCart(i)"
+                            ></i>
+
+                        </div>
+                        <!-- stampo il nome -->
+                        <div class="name">
+                            {{ foods.find(x => x.id === item.id).name }}
+                        </div>
                     </div>
                     <!-- stampo il totale -->
                     <div class="total">
@@ -148,18 +176,18 @@
                     </div>
                 </div>
 
-                <div class="d-flex justify-content-between px-2">
+                <div class="d-flex justify-content-between px-4">
                     <span><strong>TOTALE:</strong></span>
                     <span>{{ total() }} &#8364;</span>
                 </div>
 
-                <a :href="'/checkout/' + user_id" class="text-center">
+                <a :href="'/checkout/' + user_id" class="text-center py-2">
                     <button class="checkout">Vai alla cassa</button>
                 </a>
             </div>
 
             <!-- scrivo che il carrello é vuoto se lo é -->
-            <div class="cart-test sticky-top cart-headline" v-else>
+            <div class="cart-test sticky-top cart-headline py-4" v-else>
               <button>Vai alla cassa</button>
                 <h5><i class="fas fa-shopping-cart"></i>
                    Il tuo carrello è vuoto

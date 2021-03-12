@@ -7,7 +7,7 @@
 
             <div class="pt-5 pl-5">
 
-                <h1 class="display-5">
+                <h1>
                     Benvenuto {{ Auth::user()->restaurant_name }}
                 </h1>
                 <h4>
