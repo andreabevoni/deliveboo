@@ -59,3 +59,8 @@
 .bottone-generale {
   @include edit-delete;
 }
+
+// card lista piatti descrizione
+.card-food-user {
+  min-height: 120px;
+}

@@ -2757,50 +2757,18 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       baseURL: "storage/food_images/",
-      defaultImg: "storage/img/noimg.png"
+      defaultImg: "img/piatto-vuoto.jpg"
     };
+  },
+  computed: {
+    descriptionShort: function descriptionShort() {
+      var max = 100;
+      return this.description.length > max ? this.description.substring(0, max) + '...' : this.description;
+    }
   },
   mounted: function mounted() {
     console.log("Component food mounted.");
@@ -40525,9 +40493,10 @@ var render = function() {
     _vm._v(" "),
     _c("div", { staticClass: "d-flex justify-content-between" }, [
       _c("div", { staticClass: "col-md-8" }, [
-        _c("strong", [_vm._v("Descrizione: ")]),
-        _vm._v(_vm._s(_vm.description) + " "),
-        _c("br"),
+        _c("div", { staticClass: "card-food-user" }, [
+          _c("strong", [_vm._v("Descrizione: ")]),
+          _vm._v(_vm._s(_vm.descriptionShort) + "\n            ")
+        ]),
         _vm._v(" "),
         _c("strong", [_vm._v("Prezzo: ")]),
         _vm._v(_vm._s(_vm.price / 100) + " € "),
@@ -41663,7 +41632,7 @@ var render = function() {
         "div",
         {
           staticClass:
-            "d-flex flex-sm-wrap flex-md-column align-items-start align-self-start mt-5 bg-white cartella"
+            "text-left d-sm-flex flex-sm-wrap flex-md-column align-items-start align-self-start mt-5 cartella"
         },
         _vm._l(_vm.typologies, function(typology) {
           return _c("label", { staticClass: "check" }, [
@@ -41719,64 +41688,63 @@ var render = function() {
       _vm._v(" "),
       _c(
         "div",
-        { staticClass: "col-sm-10 d-flex flex-wrap align-items-start m-5" },
+        {
+          staticClass:
+            "col-sm-12 col-md-10 d-flex flex-wrap align-items-start mt-5 mx-auto"
+        },
         _vm._l(_vm.restaurants, function(restaurant) {
-          return _c(
-            "div",
-            { key: restaurant.id, staticClass: "user text-left" },
-            [
-              _c("a", { attrs: { href: "/show/" + restaurant.id } }, [
-                _c("div", { staticClass: "image" }, [
-                  restaurant.image == null
-                    ? _c("img", {
-                        staticClass: "img-fluid max-width: 100%",
-                        attrs: { src: "/img/risto-img/nulla.png", alt: "" }
-                      })
-                    : restaurant.image.length < 16
-                    ? _c("img", {
-                        staticClass: "img-fluid max-width: 100%",
-                        attrs: {
-                          src: "/img/risto-img/" + restaurant.image,
-                          alt: ""
-                        }
-                      })
-                    : _c("img", {
-                        staticClass: "img-fluid max-width: 100%",
-                        attrs: {
-                          src: "/storage/icon/" + restaurant.image,
-                          alt: ""
-                        }
-                      })
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "p-3 testo-user" }, [
-                  _c("h4", [
-                    _c("strong", [
-                      _vm._v(
-                        "\n                                    " +
-                          _vm._s(restaurant.restaurant_name) +
-                          "\n                                "
-                      )
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("span", [
+          return _c("div", { key: restaurant.id, staticClass: "user" }, [
+            _c("a", { attrs: { href: "/show/" + restaurant.id } }, [
+              _c("div", { staticClass: "image" }, [
+                restaurant.image == null
+                  ? _c("img", {
+                      staticClass: "img-fluid max-width: 100%",
+                      attrs: { src: "/img/risto-img/nulla.png", alt: "" }
+                    })
+                  : restaurant.image.length < 16
+                  ? _c("img", {
+                      staticClass: "img-fluid max-width: 100%",
+                      attrs: {
+                        src: "/img/risto-img/" + restaurant.image,
+                        alt: ""
+                      }
+                    })
+                  : _c("img", {
+                      staticClass: "img-fluid max-width: 100%",
+                      attrs: {
+                        src: "/storage/icon/" + restaurant.image,
+                        alt: ""
+                      }
+                    })
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "p-3 testo-user" }, [
+                _c("h4", [
+                  _c("strong", [
                     _vm._v(
-                      "\n\n                                " +
-                        _vm._s(restaurant.address) +
-                        " "
-                    ),
-                    _c("br"),
-                    _vm._v(
-                      "\n                                Tel: " +
-                        _vm._s(restaurant.phone) +
-                        "\n                            "
+                      "\n                                    " +
+                        _vm._s(restaurant.restaurant_name) +
+                        "\n                                "
                     )
                   ])
+                ]),
+                _vm._v(" "),
+                _c("span", [
+                  _vm._v(
+                    "\n\n                                " +
+                      _vm._s(restaurant.address) +
+                      " "
+                  ),
+                  _c("br"),
+                  _vm._v(
+                    "\n                                Tel: " +
+                      _vm._s(restaurant.phone) +
+                      "\n                            "
+                  )
                 ])
               ])
-            ]
-          )
+            ])
+          ])
         }),
         0
       )
@@ -54916,8 +54884,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Boolean\Esercizi\deliveboo\laravel\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Boolean\Esercizi\deliveboo\laravel\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! D:\Progetto finale Deliveboo\deliveboo\laravel\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! D:\Progetto finale Deliveboo\deliveboo\laravel\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
