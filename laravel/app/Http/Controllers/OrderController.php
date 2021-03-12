@@ -105,9 +105,38 @@ class OrderController extends Controller
                 $ids[] = $order->id;
             }
 
-            // recupero tutti gli ordini effettuati con le loro informazioni
+            //================================== 
 
-            //creo array mesi vuoto
+
+            $orders = Order::with('food')
+                ->find($ids)
+                ->groupBy(
+                    function ($d) {
+                        return Carbon::parse($d->date)->format('Y');
+                    }
+
+                );
+
+            $output = null;
+
+            foreach ($orders as $key => $order) {
+                foreach ($order as $item) {
+                    //get each item in the group
+                    // dd($item);
+                }
+                $output[$key] = $order->count();
+            }
+
+
+
+
+            dd($output);
+            // =================================================
+
+
+
+
+            /*           //creo array mesi vuoto
             $months = [];
 
             //creo i mesi usando gli indici
@@ -124,10 +153,12 @@ class OrderController extends Controller
                 $order[] =
                     Order::with('food')
                     ->whereMonth('created_at', $value)
+                    // ->whereYear('date', year)
                     ->find($ids)
+                    // ->groupBy('date')
                     ->count();
-            }
-
+            } */
+            // dd($order);
             return view('pages.chart-months')->with('order', json_encode($order))->with('months', json_encode($months));
         } else {
             return redirect()->route('home');
@@ -160,39 +191,37 @@ class OrderController extends Controller
             // recupero tutti gli ordini effettuati con le loro informazioni
             $date = Order::with('food')
                 ->find($ids)
-                ->where("")
                 ->pluck('date');
 
             $years = [];
-            // dd(Carbon::createFromFormat('Y-m-d', '2012-09-03')->year);
+
             foreach ($date as $key => $value) {
 
                 $year = Carbon::createFromFormat('Y-m-d', $value)->year;
+
+
                 $years[] = $year;
             }
-            dd($years);
+            $uniqueYear =  array_values(array_unique($years, SORT_REGULAR));
 
-            //creo array mesi vuoto
 
-            //creo gli anni 
-            /* foreach ($orders as $key => $value) {
-                # code...
-            } */
+            // dd($date);
 
             //creo array ordini vuoto
             $order = [];
 
             //per ogni ordine faccio la count di ogni mese passando il valore dell array month 
-            foreach ($years as $key => $value) {
+            foreach ($uniqueYear as $key => $value) {
                 // dd($months);
                 $order[] =
                     Order::with('food')
-                    ->whereYear('created_at', $value)
+                    ->whereYear('date', $value)
                     ->find($ids)
                     ->count();
             }
+            // dd($order);
 
-            return view('pages.chart-months')->with('order', json_encode($order))->with('months', json_encode($years));
+            return view('pages.chart-years')->with('order', json_encode($order))->with('uniqueYear', json_encode($uniqueYear));
         } else {
             return redirect()->route('home');
         }

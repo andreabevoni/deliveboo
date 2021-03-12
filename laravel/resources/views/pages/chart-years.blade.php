@@ -13,12 +13,14 @@
     <canvas id="myChart" width="400" height="200"></canvas>
     <script>
         var ctx = document.getElementById('myChart');
-        var years = <?php echo $years; ?>;        var order = <?php echo $order; ?>;        var myChart = new Chart(ctx, {
+        var years = <?php echo $uniqueYear; ?>;        console.log(years);
+        var order = <?php echo $order; ?>;        console.log(order);
+        var myChart = new Chart(ctx, {
             type: 'bar',
             data: {
                 labels: years,
                 datasets: [{
-                    label: 'Ordini per anno',
+                    label: 'Ordini per anni',
                     data: order,
                     backgroundColor: [
                         'rgba(255, 99, 132, 0.2)',
