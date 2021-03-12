@@ -18,7 +18,7 @@
 
                     {{-- <div class="col-md-12"> --}}
                         <form method="POST" action="{{ route('food.store') }}" enctype="multipart/form-data">
-                            
+
                             @csrf
                             @method('POST')
                             <div class="form-group row">
@@ -74,23 +74,23 @@
                                 </div>
                             </div>
 
-                            <div class="form-group row">
+                            {{-- <div class="form-group row">
                                 <label for="category"
                                     class="col-md-4 col-form-label text-md-right">{{ __('Categoria') }}</label>
                                 <div class="col-md-6 input-group">
 
-                                    <select required name="category" class="custom-select" id="inputGroupSelect01">
+                                    <select required name="category" class="custom-select" id="inputGroupSelect01"> --}}
                                         @foreach ($foods as $food)
 
-                                            <option value="{{ $food->category }}">
+                                            {{-- <option value="{{ $food->category }}">
                                                 {{ $food->category }}
-                                            </option>
+                                            </option> --}}
                                         @endforeach
 
-                                    </select>
+                                    {{-- </select>
                                 </div>
 
-                            </div>
+                            </div> --}}
 
                             <div class="form-group row">
                                 <label for="image"
@@ -101,7 +101,7 @@
                                     <a href="{{ route('clear-food-img', $food->id) }}" class="btn bottone-edit-elimina">
                                         <i class="fa fa-trash" aria-hidden="true"></i>
                                     </a>
-                                    
+
                                 </div>
                             </div>
 
@@ -137,7 +137,7 @@
                         </form>
 
                     {{-- </div> --}}
-                    
+
                 </div>
 
                 <div class="col-sm-12 col-lg-4 text-center">
@@ -150,7 +150,7 @@
                         {{-- </div> --}}
                     {{-- </div> --}}
                 </div>
-        
+
             </div>
         </div>
 

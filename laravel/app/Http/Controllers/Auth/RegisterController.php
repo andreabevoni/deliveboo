@@ -59,6 +59,7 @@ class RegisterController extends Controller
             'password' => ['required', 'string', 'min:8', 'confirmed'],
             'p_iva' => ['required', 'string', 'min:11', 'max:11'],
             'address' => ['required', 'string', 'min:8', 'max:100'],
+            'phone' => ['required', 'string', 'min:5', 'max:60'],
             'typologies' => ['required']
         ]);
     }
@@ -86,6 +87,7 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
             'p_iva' => $data['p_iva'],
             'address' => $data['address'],
+            'phone' => $data['phone'],
         ]);
 
         $user->typologies()->attach($typologies);
