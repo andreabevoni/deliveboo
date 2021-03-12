@@ -5,8 +5,11 @@
         <div class="col-md-8">
             <div class="menu">
               <h2> <i class="fas fa-utensils"></i> Menu</h2>
-                <p>Seleziona i piatti per scegliere la quantità e aggiungerli al carrello</p>
-                <div v-for="food in foods" :key="food.id">
+              <p>Seleziona i piatti per scegliere la quantità e aggiungerli al carrello</p>
+
+              <div class="d-flex flex-wrap justify-content-around border border-danger">
+
+                <div class="mx-5 my-2" v-for="food in foods" :key="food.id">
 
                     <!-- cibi disponibili -->
                     <div
@@ -104,6 +107,9 @@
                         </div>
                     </div>
                 </div>
+
+              </div>
+
             </div>
         </div>
 
@@ -138,7 +144,7 @@
                                 item.quantity) /
                                 100
                         }}
-                        &#8364; 
+                        &#8364;
                     </div>
                 </div>
 
