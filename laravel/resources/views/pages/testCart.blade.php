@@ -33,17 +33,11 @@
     </div> <!-- fine row -->
 
     <!-- cibo e carrello -->
-    {{-- <food-cart
+    <food-cart
         :foods="{{$user -> food}}"
         :user_id="'{{$user -> id}}'"
         :user_name='"{{$user -> restaurant_name}}"'
-    ></food-cart> --}}
-
-    <food-cart2
-        :foods="{{$user -> food}}"
-        :user_id="'{{$user -> id}}'"
-        :user_name='"{{$user -> restaurant_name}}"'
-    ></food-cart2>
+    ></food-cart>
 
 {{-- </div> --}}
 @endsection

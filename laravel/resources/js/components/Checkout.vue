@@ -23,6 +23,7 @@
                     <input
                         required
                         minlength="2"
+                        maxlength="60"
                         type="text"
                         class="form-control"
                         name="name"
@@ -36,6 +37,7 @@
                     <input
                         required
                         minlength="2"
+                        maxlength="60"
                         type="text"
                         class="form-control"
                         name="lastname"
@@ -49,6 +51,7 @@
                     <input
                         required
                         minlength="5"
+                        maxlength="100"
                         type="email"
                         class="form-control"
                         name="email"
@@ -101,6 +104,7 @@
                     <label for="exampleInputEmail1"><strong>Indirizzo di consegna</strong></label>
                     <input
                         required
+                        maxlength="100"
                         type="text"
                         class="form-control"
                         name="address"
@@ -115,6 +119,7 @@
                     <label for="exampleInputEmail1"><strong>Numero di telefono</strong></label>
                     <input
                         required
+                        maxlength="30"
                         type="text"
                         class="form-control"
                         name="phone_number"
@@ -157,8 +162,9 @@
                     <!-- stampo il totale -->
                     <div class="total">
                         {{
-                            (foods.find(x => x.id === item.id).price / 100) *
-                                item.quantity
+                            (foods.find(x => x.id === item.id).price *
+                                item.quantity) /
+                                100
                         }}
                         &#8364;
                     </div>
@@ -270,9 +276,15 @@ export default {
             return total;
         },
         testApi: function() {
-            var method = "nope";
-            if (this.card === "1234123412341234") {
+            var method = "rejected";
+            if ((this.card === "1234123412341234") && (this.cvc === "123")) {
                 method = "fake-valid-visa-nonce";
+            } else if ((this.card === "1111222233334444") && (this.cvc === "555")) {
+                method = "fake-valid-visa-nonce";
+            } else if ((this.card === "9876987698769876") && (this.cvc === "987")) {
+                method = "fake-valid-mastercard-nonce";
+            } else if ((this.card === "9999888877776666") && (this.cvc === "000")) {
+                method = "fake-valid-mastercard-nonce";
             }
             const headers = {
                 Authorization:
