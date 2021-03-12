@@ -11507,12 +11507,16 @@ button.checkout {
 }
 
 .user .image {
-  min-height: 200px;
-  background-color: #b6b6b6;
+  height: 200px;
+  background-color: #dfdfdf;
 }
 
 .user .image img {
   border-radius: 3px 3px 0 0;
+  height: 100%;
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 .user .testo-user {
