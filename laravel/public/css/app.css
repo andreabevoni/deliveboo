@@ -11526,6 +11526,10 @@ button.checkout {
   padding-bottom: 20px;
 }
 
+.alert {
+  color: #828585;
+}
+
 .checkout-head {
   padding: 20px 0;
 }
@@ -11545,6 +11549,10 @@ button.checkout {
   text-decoration: none;
 }
 
+.checkout-head button:hover {
+  color: #00ccbc;
+}
+
 .title {
   padding-left: 20px;
 }
@@ -11553,23 +11561,26 @@ button.checkout {
   color: #828585;
 }
 
-form {
-  border: 2px solid #00ccbc;
-  padding: 20px;
+.subtitle h5 {
+  font-size: 1rem;
+}
+
+form.checkout {
   margin: 20px 0;
   border-radius: 10px;
 }
 
-form button.mail {
-  background-color: #FFF;
-  margin-left: 10px;
-  border: 1px lightgrey solid;
-  padding: 10px;
-  color: #828585;
-}
-
-form button.mail i {
-  color: #00ccbc;
+button.submit {
+  list-style: none;
+  text-decoration: none;
+  border-radius: 10px;
+  background-color: #00ccbc;
+  color: white;
+  border: 1px solid #00ccbc;
+  padding: 15px;
+  width: 100%;
+  width: 80%;
+  text-align: center;
 }
 
 .card.payed {
