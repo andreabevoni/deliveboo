@@ -23,9 +23,10 @@
 
         <div class="d-flex justify-content-between">
             <div class="col-md-8">
-                <div class="card-food-user">
+                <div @click="espandi" class="card-food-user">
 
-                    <strong>Descrizione: </strong>{{ description }}
+                    <strong>Descrizione: </strong>{{ descriptionShort }}
+
                 </div>
                 <strong>Prezzo: </strong>{{ price / 100 }} € <br />
                 <strong>Disponibile: </strong>
@@ -47,14 +48,37 @@ export default {
     data: function() {
         return {
             baseURL: "storage/food_images/",
-            defaultImg: "img/piatto-vuoto.jpg"
+            defaultImg: "img/piatto-vuoto.jpg",
+            max: 130,
+            arrowUp: true,
+            arrowDn: false
         };
+    },
+    computed: {
+        descriptionShort: function() {
+
+            return (this.description.length > this.max)
+                ? this.description.substring(0, this.max) + '...'
+                : this.description;
+        }
     },
     mounted() {
         console.log("Component food mounted.");
+        document.addEventListener('scroll', this.comprimi)
     },
 
-    methods: {},
+    methods: {
+        espandi() {
+            if (this.max == 130) {
+                this.max = 300;
+            } else if (this.max == 300) {
+                this.max = 130;
+            }
+        },
+        comprimi() {
+            this.max = 130;
+        }
+    },
 
     props: {
         // prop foods

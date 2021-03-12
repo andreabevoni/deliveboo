@@ -51,6 +51,10 @@
   width: 370px;
 }
 
+.card-food-user {
+  min-height: 95px;
+}
+
 .bottone-edit-elimina {
   background-color: white;
   border-radius: 100%;
@@ -65,12 +69,6 @@
 // bottone restore food
 .bottone-generale {
   @include edit-delete;
-}
-
-// card lista piatti descrizione
-.card-food-user {
-  height: 100px;
-  overflow-y: auto;
 }
 
 // scrollbar personalizzata
@@ -92,4 +90,12 @@
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: #555; 
+}
+
+// media query
+@media all and (min-width: 268px) and (max-width: 1150px) {
+ 
+  .card-food-user {
+    min-height: 120px;
+  }
 }

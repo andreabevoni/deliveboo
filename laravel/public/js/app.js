@@ -2361,17 +2361,38 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       baseURL: "storage/food_images/",
-      defaultImg: "img/piatto-vuoto.jpg"
+      defaultImg: "img/piatto-vuoto.jpg",
+      max: 130,
+      arrowUp: true,
+      arrowDn: false
     };
+  },
+  computed: {
+    descriptionShort: function descriptionShort() {
+      return this.description.length > this.max ? this.description.substring(0, this.max) + '...' : this.description;
+    }
   },
   mounted: function mounted() {
     console.log("Component food mounted.");
+    document.addEventListener('scroll', this.comprimi);
   },
-  methods: {},
+  methods: {
+    espandi: function espandi() {
+      if (this.max == 130) {
+        this.max = 300;
+      } else if (this.max == 300) {
+        this.max = 130;
+      }
+    },
+    comprimi: function comprimi() {
+      this.max = 130;
+    }
+  },
   props: {
     // prop foods
     namefood: String,
@@ -39141,10 +39162,14 @@ var render = function() {
     _vm._v(" "),
     _c("div", { staticClass: "d-flex justify-content-between" }, [
       _c("div", { staticClass: "col-md-8" }, [
-        _c("div", { staticClass: "card-food-user" }, [
-          _c("strong", [_vm._v("Descrizione: ")]),
-          _vm._v(_vm._s(_vm.description) + "\n            ")
-        ]),
+        _c(
+          "div",
+          { staticClass: "card-food-user", on: { click: _vm.espandi } },
+          [
+            _c("strong", [_vm._v("Descrizione: ")]),
+            _vm._v(_vm._s(_vm.descriptionShort) + "\n\n            ")
+          ]
+        ),
         _vm._v(" "),
         _c("strong", [_vm._v("Prezzo: ")]),
         _vm._v(_vm._s(_vm.price / 100) + " € "),

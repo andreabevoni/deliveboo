@@ -11391,6 +11391,10 @@ button.checkout {
   width: 370px;
 }
 
+.card-food-user {
+  min-height: 95px;
+}
+
 .bottone-edit-elimina {
   background-color: white;
   border-radius: 100%;
@@ -11423,11 +11427,6 @@ button.checkout {
   color: white;
 }
 
-.card-food-user {
-  height: 100px;
-  overflow-y: auto;
-}
-
 /* width */
 
 ::-webkit-scrollbar {
@@ -11450,6 +11449,12 @@ button.checkout {
 
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
+}
+
+@media all and (min-width: 268px) and (max-width: 1150px) {
+  .card-food-user {
+    min-height: 120px;
+  }
 }
 
 .titolo-dashboard {
