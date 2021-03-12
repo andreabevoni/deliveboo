@@ -10,7 +10,7 @@
             <span><i class="fas fa-map-marker-alt"></i> Indirizzo: {{ $user -> address }} </span>
             <span><i class="fas fa-phone"></i> Telefono: {{ $user -> phone }} </span>
             <span><i class="fas fa-at"></i> Email:  {{ $user -> email }}   </span>
-            <h6>Ordina il tuo piatto preferito a casa tua da <strong> {{ $user -> restaurant_name }} </strong> grazie alla consegna a domicilio di Deliveroo.</h6>
+            <h6>Ordina il tuo piatto preferito a casa tua da <strong> {{ $user -> restaurant_name }} </strong> grazie alla consegna a domicilio di Deliveboo.</h6>
           </div>
 
           <!-- Barra scelta categoria -->
@@ -26,17 +26,24 @@
         <div class="col-md-4 col-s-12">
           <!-- Img profilo -->
           <div class="img-user">
-            <img src="{{ asset('img/user-img/' . $user -> id . '.jpg') }}" alt="">
+            <img src="{{ asset('storage/icon/' . $user->image) }}" alt="">
+            {{-- <img src="{{ asset('img/user-img/' . $user -> id . '.jpg') }}" alt=""> --}}
           </div>
         </div>
     </div> <!-- fine row -->
 
     <!-- cibo e carrello -->
-    <food-cart
+    {{-- <food-cart
         :foods="{{$user -> food}}"
         :user_id="'{{$user -> id}}'"
         :user_name='"{{$user -> restaurant_name}}"'
-    ></food-cart>
+    ></food-cart> --}}
+
+    <food-cart2
+        :foods="{{$user -> food}}"
+        :user_id="'{{$user -> id}}'"
+        :user_name='"{{$user -> restaurant_name}}"'
+    ></food-cart2>
 
 {{-- </div> --}}
 @endsection

@@ -19,10 +19,9 @@
         <ul class="list-group list-group-flush">
           <li class="list-group-item"><strong><i class="far fa-calendar"></i> Data Ordine:</strong> {{$order -> date}}</li>
           <li class="list-group-item"><strong><i class="fas fa-coins"></i>  Totale Incassato:</strong> {{$order -> total / 100}} &#8364;</li>
-          <li class="list-group-item"><strong><i class="fas fa-pizza-slice"></i>  Piatti ordinati:</strong></li>
-          <ul>
+          <li class="list-group-item"><strong><i class="fas fa-pizza-slice"></i>  Piatti ordinati:</strong>
             @foreach ($order -> food as $food)
-              <li>
+              <span>
                 {{-- nella tabella ponte creata dal seed c'é null come quantitá standard, andrebbe fixato il factory --}}
                 @if ($food -> pivot -> quantity)
                   {{$food -> pivot -> quantity}}x
@@ -30,12 +29,15 @@
                   1x
                 @endif
 
-                {{$food -> name}}
-                (id: {{$food -> id}})
-                [user-id: {{$food -> user -> id}}]
-              </li>
+                @if ($loop->last)
+                  {{$food -> name}}
+                @else
+                  {{$food -> name}} - 
+                @endif
+
+              </span>
             @endforeach
-          </ul>
+          </li>
          </ul>
         </div>
        </div>

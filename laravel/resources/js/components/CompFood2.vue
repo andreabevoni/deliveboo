@@ -23,12 +23,11 @@
 
         <div class="d-flex justify-content-between">
             <div class="col-md-8">
-                <div class="card-food-user">
-
-                    <strong>Descrizione: </strong>{{ descriptionShort }}
-                </div>
+                <strong>Descrizione: </strong>{{ description }} <br />
                 <strong>Prezzo: </strong>{{ price / 100 }} € <br />
-                <strong>Disponibile: </strong>{{ available }}
+                <strong>Disponibile: </strong>
+                <span v-if="available">Sí</span>
+                <span v-else>No</span>
             </div>
 
             <div class="col-md-4 food-img">
@@ -45,17 +44,8 @@ export default {
     data: function() {
         return {
             baseURL: "storage/food_images/",
-            defaultImg: "img/piatto-vuoto.jpg"
+            defaultImg: "storage/img/noimg.png"
         };
-    },
-    computed: {
-        descriptionShort: function() {
-            const max = 100;
-
-            return (this.description.length > max)
-                ? this.description.substring(0, max) + '...'
-                : this.description;
-        }
     },
     mounted() {
         console.log("Component food mounted.");
