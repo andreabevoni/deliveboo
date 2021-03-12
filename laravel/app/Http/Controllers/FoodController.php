@@ -43,7 +43,6 @@ class FoodController extends Controller
             'price' => 'required|min:1',
             'description' => 'min:5',
             'visible' => 'required', 'integer',
-            'category' => 'required',
             'image' => 'file'
         ]);
 
@@ -113,7 +112,6 @@ class FoodController extends Controller
             'price' => 'required|min:1',
             'description' => 'min:5',
             'visible' => 'required',
-            'category' => 'required',
             'image' => 'file'
         ]);
 

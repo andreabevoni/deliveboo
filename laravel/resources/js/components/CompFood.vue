@@ -28,7 +28,9 @@
                     <strong>Descrizione: </strong>{{ descriptionShort }}
                 </div>
                 <strong>Prezzo: </strong>{{ price / 100 }} € <br />
-                <strong>Disponibile: </strong>{{ available }}
+                <strong>Disponibile: </strong>
+                <span v-if="available">Sí</span>
+                <span v-else>No</span>
             </div>
 
             <div class="col-md-4 food-img">
