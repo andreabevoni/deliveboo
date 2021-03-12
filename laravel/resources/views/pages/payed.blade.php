@@ -5,7 +5,7 @@
       <div class="card payed" style="width: 50rem;">
           <div class="card-body">
             <div class="logo">
-              <img src="{{asset('img/deliveboo-logo.svg')}}" alt="">
+              <img src="{{asset('img/deliveboo-logo.svg')}}" alt="" style="width: 15rem;">
             </div>
             <h2 class="card-title"><i class="fas fa-trophy"></i>  La transazione è avvenuta con successo</h2>
             <h6 class="card-subtitle mb-2 text-muted">Ti ringraziamo per aver scelto il nostro ristorante e i servizi di Deliveboo</h6>
