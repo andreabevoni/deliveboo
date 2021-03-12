@@ -1,9 +1,11 @@
 // FOOTER
 
 footer {
- background-color: #2E3333;
- color: #FFF;
- justify-content: center;
+  .container-fluid {
+
+    background-color: #2E3333;
+    color: #FFF;
+  }
 
  .footer-block {
    background-color: #434848;

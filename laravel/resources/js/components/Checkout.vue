@@ -2,30 +2,23 @@
     <div class="row">
         <!-- stampo se il carrello é vuoto -->
         <div class="col-md-12 text-center" v-if="!cart.length">
-            <h3>CARRELLO VUOTO</h3>
+          <h5 class="alert"><i class="fas fa-shopping-cart"></i>
+             Il tuo carrello è vuoto
+          </h5>
         </div>
 
         <!-- colonna con form -->
         <div class="col-md-8" v-if="cart.length">
-          <div class="subtitle">
-            <h5>Inserisci i tuoi dati per completare l'ordine</h5>
-          </div>
-            <form @submit.prevent="testApi" method="POST">
+
+            <form @submit.prevent="testApi" method="POST" class="checkout">
                 <input type="hidden" name="_token" :value="csrf" />
-                <div class="form-group">
-                    <label for="exampleInputEmail1"><strong>Indirizzo email</strong></label>
-                    <input
-                        required
-                        minlength="5"
-                        type="email"
-                        class="form-control"
-                        name="email"
-                        placeholder="Inserisci Email"
-                        v-model="email"
-                    />
+                <div class="subtitle">
+                  <h5>Inserisci i tuoi dati per completare l'ordine</h5>
                 </div>
 
-                <div class="form-group">
+              <div class="d-flex justify-content-center">
+                <div class="col-md-6">
+                  <div class="form-group">
                     <label for="exampleInputEmail1"><strong>Nome</strong></label>
                     <input
                         required
@@ -51,12 +44,27 @@
                     />
                 </div>
 
-          <div class="form-group">
+                <div class="form-group">
+                    <label for="exampleInputEmail1"><strong>Indirizzo email</strong></label>
+                    <input
+                        required
+                        minlength="5"
+                        type="email"
+                        class="form-control"
+                        name="email"
+                        placeholder="Inserisci Email"
+                        v-model="email"
+                    />
+                </div>
+              </div>
+
+          <!-- <div class="form-group">
             <label><strong>Codice CVC</strong></label>
             <input type="text" class="form-control" placeholder="Inserisci codice" v-model="cvc">
-          </div>
+          </div> -->
 
-          <button class="btn" @click="testApi"><strong>Conferma Ordine</strong></button>
+          <!-- <button class="btn" @click="testApi"><strong>Conferma Ordine</strong></button> -->
+              <div class="col-md-6">
                 <div class="form-group">
                     <label><strong>Numero carta di credito</strong></label>
                     <input
@@ -71,10 +79,10 @@
                     />
                 </div>
 
-          <button class="btn mail" @click="testMail">
+          <!-- <button class="btn mail" @click="testMail">
             <i class="fas fa-envelope"></i>
             Ricevi Mail di conferma
-          </button>
+          </button> -->
                 <div class="form-group">
                     <label><strong>Codice CVC</strong></label>
                     <input
@@ -114,10 +122,16 @@
                         v-model="phone_number"
                     />
                 </div>
+              </div>
+              </div>
+              <div class="row justify-content-center">
+                <div class="col-md-6">
+                  <button type="submit" class="btn submit">
+                      Conferma Ordine
+                  </button>
+                </div>
+              </div>
 
-                <button type="submit" class="btn">
-                    <strong>Conferma Ordine</strong>
-                </button>
             </form>
         </div>
 
@@ -125,7 +139,8 @@
         <div class="col-md-4" v-if="cart.length">
             ​
             <h4>
-                RIEPILOGO CARRELLO
+                <i class="fas fa-cart-arrow-down"></i>
+                  RIEPILOGO CARRELLO
             </h4>
             <div class="cart-test d-flex flex-column">
                 <div class="item-test" v-for="(item, i) in cart" :key="i">

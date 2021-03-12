@@ -10958,10 +10958,13 @@ a.text-dark:focus {
   color: #00ccbc;
 }
 
-footer {
+footer .container-fluid,
+footer .container-sm,
+footer .container-md,
+footer .container-lg,
+footer .container-xl {
   background-color: #2E3333;
   color: #FFF;
-  justify-content: center;
 }
 
 footer .footer-block {
@@ -11368,6 +11371,10 @@ button.checkout {
   color: white;
 }
 
+.card-food-user {
+  min-height: 120px;
+}
+
 .titolo-dashboard {
   background-color: #00ccbc;
   color: white;
@@ -11486,6 +11493,7 @@ button.checkout {
   min-height: 200px;
   margin: 10px;
   border-radius: 3px;
+  text-align: left;
 }
 
 .user:hover {
@@ -11513,6 +11521,7 @@ button.checkout {
 
 .altezza {
   min-height: 80vh;
+  padding-bottom: 40px;
 }
 
 .hero {
@@ -11524,6 +11533,33 @@ button.checkout {
 .main-headline h3 {
   font-weight: 600;
   padding-bottom: 20px;
+}
+
+.card-tipo {
+  text-align: left;
+}
+
+@media all and (min-width: 268px) and (max-width: 950px) {
+  .user {
+    width: 200px;
+  }
+
+  .user .image {
+    min-height: 100px;
+  }
+
+  h4,
+  .h4 {
+    font-size: 1rem;
+  }
+
+  body {
+    font-size: 0.8rem;
+  }
+
+  .user .testo-user {
+    min-height: 140px;
+  }
 }
 
 .checkout-head {
@@ -11545,6 +11581,10 @@ button.checkout {
   text-decoration: none;
 }
 
+.checkout-head button:hover {
+  color: #00ccbc;
+}
+
 .title {
   padding-left: 20px;
 }
@@ -11553,23 +11593,26 @@ button.checkout {
   color: #828585;
 }
 
-form {
-  border: 2px solid #00ccbc;
-  padding: 20px;
+.subtitle h5 {
+  font-size: 1rem;
+}
+
+form.checkout {
   margin: 20px 0;
   border-radius: 10px;
 }
 
-form button.mail {
-  background-color: #FFF;
-  margin-left: 10px;
-  border: 1px lightgrey solid;
-  padding: 10px;
-  color: #828585;
-}
-
-form button.mail i {
-  color: #00ccbc;
+button.submit {
+  list-style: none;
+  text-decoration: none;
+  border-radius: 10px;
+  background-color: #00ccbc;
+  color: white;
+  border: 1px solid #00ccbc;
+  padding: 15px;
+  width: 100%;
+  width: 80%;
+  text-align: center;
 }
 
 .card.payed {

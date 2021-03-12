@@ -23,7 +23,10 @@
 
         <div class="d-flex justify-content-between">
             <div class="col-md-8">
-                <strong>Descrizione: </strong>{{ description }} <br />
+                <div class="card-food-user">
+
+                    <strong>Descrizione: </strong>{{ descriptionShort }}
+                </div>
                 <strong>Prezzo: </strong>{{ price / 100 }} € <br />
                 <strong>Disponibile: </strong>{{ available }}
             </div>
@@ -42,8 +45,17 @@ export default {
     data: function() {
         return {
             baseURL: "storage/food_images/",
-            defaultImg: "storage/img/noimg.png"
+            defaultImg: "img/piatto-vuoto.jpg"
         };
+    },
+    computed: {
+        descriptionShort: function() {
+            const max = 100;
+
+            return (this.description.length > max)
+                ? this.description.substring(0, max) + '...'
+                : this.description;
+        }
     },
     mounted() {
         console.log("Component food mounted.");
