@@ -22,19 +22,12 @@
           <li class="list-group-item"><strong><i class="fas fa-pizza-slice"></i>  Piatti ordinati:</strong>
             @foreach ($order -> food as $food)
               <span>
-                {{-- nella tabella ponte creata dal seed c'é null come quantitá standard, andrebbe fixato il factory --}}
-                @if ($food -> pivot -> quantity)
-                  {{$food -> pivot -> quantity}}x
-                @else
-                  1x
-                @endif
-
+                {{$food -> pivot -> quantity}}x
                 @if ($loop->last)
                   {{$food -> name}}
                 @else
-                  {{$food -> name}} - 
+                  {{$food -> name}} -
                 @endif
-
               </span>
             @endforeach
           </li>
