@@ -2,27 +2,41 @@
     <div class="row">
         <!-- stampo se il carrello é vuoto -->
         <div class="col-md-12 text-center" v-if="!cart.length">
-          <h5 class="alert"><i class="fas fa-shopping-cart"></i>
-             Il tuo carrello è vuoto
-          </h5>
+            <h3>CARRELLO VUOTO</h3>
         </div>
 
         <!-- colonna con form -->
         <div class="col-md-8" v-if="cart.length">
+          <div class="subtitle">
+            <h5>Inserisci i tuoi dati per completare l'ordine</h5>
+          </div>
 
-            <form @submit.prevent="testApi" method="POST" class="checkout">
+          <form @submit.prevent="testApi" method="POST">
+            <div class="row">
+
+              <!-- lato sinistro del form -->
+              <div class="col-md-6">
                 <input type="hidden" name="_token" :value="csrf" />
-                <div class="subtitle">
-                  <h5>Inserisci i tuoi dati per completare l'ordine</h5>
+                <div class="form-group">
+                    <label for="exampleInputEmail1"><strong>Indirizzo email</strong></label>
+                    <input
+                        required
+                        minlength="5"
+                        maxlength="100"
+                        type="email"
+                        class="form-control"
+                        name="email"
+                        placeholder="Inserisci Email"
+                        v-model="email"
+                    />
                 </div>
 
-              <div class="d-flex justify-content-center">
-                <div class="col-md-6">
-                  <div class="form-group">
+                <div class="form-group">
                     <label for="exampleInputEmail1"><strong>Nome</strong></label>
                     <input
                         required
                         minlength="2"
+                        maxlength="60"
                         type="text"
                         class="form-control"
                         name="name"
@@ -36,6 +50,7 @@
                     <input
                         required
                         minlength="2"
+                        maxlength="60"
                         type="text"
                         class="form-control"
                         name="lastname"
@@ -45,26 +60,34 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="exampleInputEmail1"><strong>Indirizzo email</strong></label>
+                    <label for="exampleInputEmail1"><strong>Numero di telefono</strong></label>
                     <input
                         required
-                        minlength="5"
-                        type="email"
+                        maxlength="30"
+                        type="text"
                         class="form-control"
-                        name="email"
-                        placeholder="Inserisci Email"
-                        v-model="email"
+                        name="phone_number"
+                        placeholder="Inserisci numero di telefono"
+                        v-model="phone_number"
                     />
                 </div>
               </div>
 
-          <!-- <div class="form-group">
-            <label><strong>Codice CVC</strong></label>
-            <input type="text" class="form-control" placeholder="Inserisci codice" v-model="cvc">
-          </div> -->
-
-          <!-- <button class="btn" @click="testApi"><strong>Conferma Ordine</strong></button> -->
               <div class="col-md-6">
+                <!-- lato destro del form -->
+                <div class="form-group">
+                    <label for="exampleInputEmail1"><strong>Indirizzo di consegna</strong></label>
+                    <input
+                        required
+                        maxlength="100"
+                        type="text"
+                        class="form-control"
+                        name="address"
+                        placeholder="Inserisci Indirizzo"
+                        v-model="address"
+                    />
+                </div>
+
                 <div class="form-group">
                     <label><strong>Numero carta di credito</strong></label>
                     <input
@@ -79,10 +102,6 @@
                     />
                 </div>
 
-          <!-- <button class="btn mail" @click="testMail">
-            <i class="fas fa-envelope"></i>
-            Ricevi Mail di conferma
-          </button> -->
                 <div class="form-group">
                     <label><strong>Codice CVC</strong></label>
                     <input
@@ -96,52 +115,21 @@
                     />
                 </div>
 
-                <!-- <button class="btn btn-primary" @click="testApi">Conferma Ordine</button> -->
-                <div class="form-group">
-                    <label for="exampleInputEmail1"><strong>Indirizzo di consegna</strong></label>
-                    <input
-                        required
-                        type="text"
-                        class="form-control"
-                        name="address"
-                        placeholder="Inserisci Indirizzo"
-                        v-model="address"
-                    />
-                </div>
-
-                <!-- <button class="btn btn-warning" @click="testMail"> -->
-                <!-- </button> -->
-                <div class="form-group">
-                    <label for="exampleInputEmail1"><strong>Numero di telefono</strong></label>
-                    <input
-                        required
-                        type="text"
-                        class="form-control"
-                        name="phone_number"
-                        placeholder="Inserisci numero di telefono"
-                        v-model="phone_number"
-                    />
-                </div>
-              </div>
-              </div>
-              <div class="row justify-content-center">
-                <div class="col-md-6">
-                  <button type="submit" class="btn submit">
-                      Conferma Ordine
-                  </button>
-                </div>
+                <button type="submit" class="btn">
+                    <strong>Conferma Ordine</strong>
+                </button>
               </div>
 
-            </form>
+            </div>
+          </form>
+
         </div>
 
         <!-- colonna con carrello -->
         <div class="col-md-4" v-if="cart.length">
             ​
-            <h4>
-                <i class="fas fa-cart-arrow-down"></i>
-                  RIEPILOGO CARRELLO
-            </h4>
+            <h4>RIEPILOGO CARRELLO</h4>
+
             <div class="cart-test d-flex flex-column">
                 <div class="item-test" v-for="(item, i) in cart" :key="i">
                     <!-- stampo quantitá -->
@@ -157,8 +145,9 @@
                     <!-- stampo il totale -->
                     <div class="total">
                         {{
-                            (foods.find(x => x.id === item.id).price / 100) *
-                                item.quantity
+                            (foods.find(x => x.id === item.id).price *
+                                item.quantity) /
+                                100
                         }}
                         &#8364;
                     </div>
@@ -270,9 +259,15 @@ export default {
             return total;
         },
         testApi: function() {
-            var method = "nope";
-            if (this.card === "1234123412341234") {
+            var method = "rejected";
+            if ((this.card === "1234123412341234") && (this.cvc === "123")) {
                 method = "fake-valid-visa-nonce";
+            } else if ((this.card === "1111222233334444") && (this.cvc === "555")) {
+                method = "fake-valid-visa-nonce";
+            } else if ((this.card === "9876987698769876") && (this.cvc === "987")) {
+                method = "fake-valid-mastercard-nonce";
+            } else if ((this.card === "9999888877776666") && (this.cvc === "000")) {
+                method = "fake-valid-mastercard-nonce";
             }
             const headers = {
                 Authorization:

@@ -1,8 +1,15 @@
+.alert {
+  color: $grey-color;
+}
+
 .checkout-head {
   padding: 20px 0;
   button {
     @include cta-white;
     color: $logo-color;
+    &:hover {
+    color: $logo-color;
+    }
   }
 }
 
@@ -12,22 +19,19 @@
 
 .subtitle {
   color: $grey-color;
+  h5 {
+    font-size: 1rem;
+  }
 }
 
-form {
-  border: 2px solid $logo-color;
-  padding: 20px;
+form.checkout {
+  // padding: 10px;
   margin: 20px 0;
   border-radius: 10px;
+}
 
-  button.mail {
-      background-color: #FFF;
-      margin-left: 10px;
-      border: 1px lightgrey solid;
-      padding: 10px;
-      color: $grey-color;
-      i {
-        color: $logo-color;
-      }
-  }
+button.submit {
+  @include cta-primary;
+  width: 80%;
+  text-align: center;
 }

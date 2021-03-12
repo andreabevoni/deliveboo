@@ -42,7 +42,7 @@
                                 class="col-md-4 col-form-label text-md-right">{{ __('Prezzo') }}</label>
 
                             <div class="col-md-6">
-                                <input required min="1" id="price" type="number" value="{{ $food->price }}"
+                                <input required min="1" id="price" type="number" value="{{ $food->price / 100 }}"
                                     class="form-control @error('price') is-invalid @enderror" name="price"
                                     value="{{ old('price') }}" required autocomplete="price" autofocus>
 
@@ -72,7 +72,7 @@
                             </div>
                         </div>
 
-            
+
 
                         <div class="form-group row">
                             <label for="category"

@@ -64,7 +64,7 @@
                         {{-- <div class=""> --}}
 
                             <h2 class="px-3 card-title">Le tue Informazioni</h2>
-                        
+
 
                             <ul class="list-group list-group-flush">
                                 <li class="my-2 card list-group-item">
