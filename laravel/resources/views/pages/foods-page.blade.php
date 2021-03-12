@@ -61,10 +61,15 @@
                     @foreach ($foods as $food)
                         <div class="col-sm-12 col-lg-6">
 
-                            <comp-food :namefood='"{{ $food->name }}"' :price="{{ $food->price }}"
+                            {{-- <comp-food :namefood='"{{ $food->name }}"' :price="{{ $food->price }}"
                                 :description="'{{ $food->description }}'" :id="{{ $food->id }}"
                                 :available="{{ $food->visible }}" :image="'{{ $food->image }}'">
-                            </comp-food>
+                            </comp-food> --}}
+
+                            <comp-food2 :namefood='"{{ $food->name }}"' :price="{{ $food->price }}"
+                                :description="'{{ $food->description }}'" :id="{{ $food->id }}"
+                                :available="{{ $food->visible }}" :image="'{{ $food->image }}'">
+                            </comp-food2>
 
                         </div>
                     @endforeach
