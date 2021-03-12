@@ -1,8 +1,15 @@
+.alert {
+  color: $grey-color;
+}
+
 .checkout-head {
   padding: 20px 0;
   button {
     @include cta-white;
     color: $logo-color;
+    &:hover {
+    color: $logo-color;
+    }
   }
 }
 

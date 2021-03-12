@@ -11526,6 +11526,10 @@ button.checkout {
   padding-bottom: 20px;
 }
 
+.alert {
+  color: #828585;
+}
+
 .checkout-head {
   padding: 20px 0;
 }
@@ -11543,6 +11547,10 @@ button.checkout {
 .checkout-head button a {
   color: #00ccbc;
   text-decoration: none;
+}
+
+.checkout-head button:hover {
+  color: #00ccbc;
 }
 
 .title {

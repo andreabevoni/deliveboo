@@ -2194,6 +2194,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     foods: Array,
@@ -38708,9 +38710,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "row" }, [
     !_vm.cart.length
-      ? _c("div", { staticClass: "col-md-12 text-center" }, [
-          _c("h3", [_vm._v("CARRELLO VUOTO")])
-        ])
+      ? _c("div", { staticClass: "col-md-12 text-center" }, [_vm._m(0)])
       : _vm._e(),
     _vm._v(" "),
     _vm.cart.length
@@ -38733,12 +38733,12 @@ var render = function() {
                 domProps: { value: _vm.csrf }
               }),
               _vm._v(" "),
-              _vm._m(0),
+              _vm._m(1),
               _vm._v(" "),
               _c("div", { staticClass: "d-flex justify-content-center" }, [
                 _c("div", { staticClass: "col-md-6" }, [
                   _c("div", { staticClass: "form-group" }, [
-                    _vm._m(1),
+                    _vm._m(2),
                     _vm._v(" "),
                     _c("input", {
                       directives: [
@@ -38770,7 +38770,7 @@ var render = function() {
                   ]),
                   _vm._v(" "),
                   _c("div", { staticClass: "form-group" }, [
-                    _vm._m(2),
+                    _vm._m(3),
                     _vm._v(" "),
                     _c("input", {
                       directives: [
@@ -38802,7 +38802,7 @@ var render = function() {
                   ]),
                   _vm._v(" "),
                   _c("div", { staticClass: "form-group" }, [
-                    _vm._m(3),
+                    _vm._m(4),
                     _vm._v(" "),
                     _c("input", {
                       directives: [
@@ -38836,7 +38836,7 @@ var render = function() {
                 _vm._v(" "),
                 _c("div", { staticClass: "col-md-6" }, [
                   _c("div", { staticClass: "form-group" }, [
-                    _vm._m(4),
+                    _vm._m(5),
                     _vm._v(" "),
                     _c("input", {
                       directives: [
@@ -38869,7 +38869,7 @@ var render = function() {
                   ]),
                   _vm._v(" "),
                   _c("div", { staticClass: "form-group" }, [
-                    _vm._m(5),
+                    _vm._m(6),
                     _vm._v(" "),
                     _c("input", {
                       directives: [
@@ -38901,7 +38901,7 @@ var render = function() {
                   ]),
                   _vm._v(" "),
                   _c("div", { staticClass: "form-group" }, [
-                    _vm._m(6),
+                    _vm._m(7),
                     _vm._v(" "),
                     _c("input", {
                       directives: [
@@ -38932,7 +38932,7 @@ var render = function() {
                   ]),
                   _vm._v(" "),
                   _c("div", { staticClass: "form-group" }, [
-                    _vm._m(7),
+                    _vm._m(8),
                     _vm._v(" "),
                     _c("input", {
                       directives: [
@@ -38964,7 +38964,7 @@ var render = function() {
                 ])
               ]),
               _vm._v(" "),
-              _vm._m(8)
+              _vm._m(9)
             ]
           )
         ])
@@ -38973,7 +38973,7 @@ var render = function() {
     _vm.cart.length
       ? _c("div", { staticClass: "col-md-4" }, [
           _vm._v("\n        ​\n        "),
-          _vm._m(9),
+          _vm._m(10),
           _vm._v(" "),
           _c(
             "div",
@@ -39048,10 +39048,19 @@ var render = function() {
         ])
       : _vm._e(),
     _vm._v(" "),
-    _vm._m(10)
+    _vm._m(11)
   ])
 }
 var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("h5", { staticClass: "alert" }, [
+      _c("i", { staticClass: "fas fa-shopping-cart" }),
+      _vm._v("\n         Il tuo carrello è vuoto\n      ")
+    ])
+  },
   function() {
     var _vm = this
     var _h = _vm.$createElement

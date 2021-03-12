@@ -2,7 +2,9 @@
     <div class="row">
         <!-- stampo se il carrello é vuoto -->
         <div class="col-md-12 text-center" v-if="!cart.length">
-            <h3>CARRELLO VUOTO</h3>
+          <h5 class="alert"><i class="fas fa-shopping-cart"></i>
+             Il tuo carrello è vuoto
+          </h5>
         </div>
 
         <!-- colonna con form -->
