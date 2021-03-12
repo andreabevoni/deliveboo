@@ -2368,12 +2368,6 @@ __webpack_require__.r(__webpack_exports__);
       defaultImg: "img/piatto-vuoto.jpg"
     };
   },
-  computed: {
-    descriptionShort: function descriptionShort() {
-      var max = 100;
-      return this.description.length > max ? this.description.substring(0, max) + '...' : this.description;
-    }
-  },
   mounted: function mounted() {
     console.log("Component food mounted.");
   },
@@ -39112,10 +39106,12 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "cartella my-3 py-4" }, [
-    _c("div", { staticClass: "d-flex justify-content-around" }, [
-      _c("h4", {}, [_vm._v(_vm._s(_vm.namefood))]),
+    _c("div", { staticClass: "d-flex justify-content-around px-3" }, [
+      _c("h4", { staticClass: "nome-card-food" }, [
+        _vm._v(_vm._s(_vm.namefood))
+      ]),
       _vm._v(" "),
-      _c("div", [
+      _c("div", { staticClass: "text-nowrap" }, [
         _c(
           "a",
           {
@@ -39147,7 +39143,7 @@ var render = function() {
       _c("div", { staticClass: "col-md-8" }, [
         _c("div", { staticClass: "card-food-user" }, [
           _c("strong", [_vm._v("Descrizione: ")]),
-          _vm._v(_vm._s(_vm.descriptionShort) + "\n            ")
+          _vm._v(_vm._s(_vm.description) + "\n            ")
         ]),
         _vm._v(" "),
         _c("strong", [_vm._v("Prezzo: ")]),

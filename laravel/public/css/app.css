@@ -11375,13 +11375,20 @@ button.checkout {
 
 .food-img {
   width: 150px;
-  max-height: 100px;
+  max-height: 150px;
   text-align: end;
 }
 
 .food-img img {
   max-width: 100%;
   max-height: 100%;
+}
+
+.nome-card-food {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 370px;
 }
 
 .bottone-edit-elimina {
@@ -11417,7 +11424,32 @@ button.checkout {
 }
 
 .card-food-user {
-  min-height: 120px;
+  height: 100px;
+  overflow-y: auto;
+}
+
+/* width */
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+/* Handle on hover */
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }
 
 .titolo-dashboard {
