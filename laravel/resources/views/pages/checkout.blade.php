@@ -16,10 +16,15 @@
     </div>
 
     <!-- riga con form per pagamento e carrello -->
-    <checkout
+    {{-- <checkout
       :foods="{{$user -> food}}"
       :user_id="'{{$user -> id}}'"
-    ></checkout>
+    ></checkout> --}}
+
+    <checkout2
+      :foods="{{$user -> food}}"
+      :user_id="'{{$user -> id}}'"
+    ></checkout2>
 
 </div>
 @endsection
