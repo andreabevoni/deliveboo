@@ -49,6 +49,7 @@
     min-height: 200px;
     margin: 10px;
     border-radius: 3px;
+    text-align: left;
 
     &:hover {
         box-shadow: 1px 1px 1px rgb(223, 223, 223);
@@ -76,6 +77,7 @@
 
 .altezza {
     min-height: 80vh;
+    padding-bottom: 40px;
 }
 
 
@@ -91,5 +93,34 @@
     h1,h3 {
         font-weight: 600;
         padding-bottom: 20px;
+    }
+}
+
+
+.card-tipo {
+    text-align: left;
+}
+
+// media query
+@media all and (min-width: 268px) and (max-width: 950px) {
+    .user {
+        width: 200px;
+    }
+
+    .user .image {
+        min-height: 100px;
+
+    }
+
+    h4, .h4 {
+        font-size: 1rem;
+    }
+
+    body {
+        font-size: 0.8rem;
+    }
+
+    .user .testo-user {
+        min-height: 140px;
     }
 }

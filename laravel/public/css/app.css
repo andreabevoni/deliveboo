@@ -10958,10 +10958,13 @@ a.text-dark:focus {
   color: #00ccbc;
 }
 
-footer {
+footer .container-fluid,
+footer .container-sm,
+footer .container-md,
+footer .container-lg,
+footer .container-xl {
   background-color: #2E3333;
   color: #FFF;
-  justify-content: center;
 }
 
 footer .footer-block {
@@ -11303,6 +11306,81 @@ button.checkout {
   box-shadow: 3px 3px 6px -3px #b1b1b1;
 }
 
+.food-item.hide {
+  background-color: rgba(130, 133, 133, 0.6);
+  color: #828585;
+}
+
+.food-item.hide img {
+  opacity: 0.5;
+}
+
+.food-item.show:hover {
+  cursor: pointer;
+}
+
+.food-item.hide:hover {
+  cursor: not-allowed;
+}
+
+.cart-test {
+  width: 100%;
+  background-color: #FFF;
+}
+
+.food-img {
+  width: 150px;
+  max-height: 100px;
+  text-align: end;
+}
+
+.food-img img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.bottone-edit-elimina {
+  background-color: white;
+  border-radius: 100%;
+  margin-left: 10px;
+  box-shadow: 2px 2px 5px 2px #d8d8d8;
+}
+
+.bottone-edit-elimina:hover {
+  box-shadow: 0px 0px 0px 0px #d8d8d8;
+  background-color: #e9e9e9;
+}
+
+.bottone-generale {
+  list-style: none;
+  text-decoration: none;
+  border-radius: 10px;
+  background-color: #00ccbc;
+  color: white;
+  border: 1px solid #00ccbc;
+  padding: 5px 10px;
+  margin: 5px;
+  display: inline-block;
+}
+
+.bottone-generale:hover {
+  background-color: #858585;
+  border: 1px solid #858585;
+  list-style: none;
+  text-decoration: none;
+  color: white;
+}
+
+.card-food-user {
+  min-height: 120px;
+}
+
+.titolo-dashboard {
+  background-color: #00ccbc;
+  color: white;
+  height: 200px;
+}
+
 .dashboard a.button,
 .dashboard input.button {
   display: inline-block;
@@ -11372,7 +11450,7 @@ button.checkout {
   background-image: url("/img/sfondo-home.png");
   background-size: cover;
   background-position: bottom;
-  height: 300px;
+  height: 330px;
   padding-top: 35px;
 }
 
@@ -11415,6 +11493,7 @@ button.checkout {
   min-height: 200px;
   margin: 10px;
   border-radius: 3px;
+  text-align: left;
 }
 
 .user:hover {
@@ -11442,6 +11521,45 @@ button.checkout {
 
 .altezza {
   min-height: 80vh;
+  padding-bottom: 40px;
+}
+
+.hero {
+  background-size: cover;
+  background-position: left;
+}
+
+.main-headline h1,
+.main-headline h3 {
+  font-weight: 600;
+  padding-bottom: 20px;
+}
+
+.card-tipo {
+  text-align: left;
+}
+
+@media all and (min-width: 268px) and (max-width: 950px) {
+  .user {
+    width: 200px;
+  }
+
+  .user .image {
+    min-height: 100px;
+  }
+
+  h4,
+  .h4 {
+    font-size: 1rem;
+  }
+
+  body {
+    font-size: 0.8rem;
+  }
+
+  .user .testo-user {
+    min-height: 140px;
+  }
 }
 
 .checkout-head {

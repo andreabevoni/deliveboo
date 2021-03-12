@@ -74,7 +74,10 @@
                                     <strong>Indirizzo: </strong> {{ Auth::user()->address }}
                                 </li>
                                 <li class="my-2 card list-group-item">
-                                    <strong>P. Iva: </strong> {{ Auth::user()->p_iva }}
+                                    <strong>Telefono: </strong> {{ Auth::user()->phone }}
+                                </li>
+                                <li class="my-2 card list-group-item">
+                                    <strong>Partita IVA: </strong> {{ Auth::user()->p_iva }}
                                 </li>
                                 {{-- <ul class="my-2 card list-group list-group-flush"> --}}
                                 <li class="my-2 card list-group-item">

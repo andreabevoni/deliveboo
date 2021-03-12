@@ -3,7 +3,7 @@
         <div class="row justify-content-center mx-5">
             <div class="col-sm-12 d-md-flex altezza">
 
-                <div class="d-flex flex-sm-wrap flex-md-column align-items-start align-self-start mt-5 bg-white cartella">
+                <div class="text-left d-sm-flex flex-sm-wrap flex-md-column align-items-start align-self-start mt-5 cartella">
 
                     <!-- stampo a schermo le tipologie per permettere all'utente di fare le ricerche -->
                     <label class="check" v-for="typology in typologies">
@@ -17,12 +17,12 @@
                 </div>
 
                 <!-- stampo i ristoranti appartenenti alla categoria selezionata dall'utente -->
-                <div class="col-sm-10 d-flex flex-wrap align-items-start m-5">
+                <div class="col-sm-12 col-md-10 d-flex flex-wrap align-items-start mt-5 mx-auto">
 
                     <div
                         v-for="restaurant in restaurants"
                         :key="restaurant.id"
-                        class="user text-left"
+                        class="user"
                     >
 
                         <a :href="'/show/' + restaurant.id">
