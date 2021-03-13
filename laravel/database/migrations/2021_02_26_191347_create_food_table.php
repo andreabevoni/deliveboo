@@ -18,7 +18,6 @@ class CreateFoodTable extends Migration
             $table->string('name', 50);
             $table->smallInteger('price')->unsigned();
             $table->text('description')->nullable();
-            // $table->string('category', 50);
             $table->string('image')->nullable();
             $table->boolean('visible');
             $table->bigInteger('user_id')->unsigned();
