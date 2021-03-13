@@ -3,7 +3,7 @@
 
     <div class="row justify-content-sm-center justify-content-center py-4">
       <div class="footer-block col-4 col-sm-4 col-md-4 col-lg-2 p-4">
-        <h4>Scopri Deliveroo</h4>
+        <h4>Scopri Deliveboo</h4>
         <ul>
           <li><a href="#">Lorem ipsum</a></li>
           <li><a href="#">Lorem ipsum</a></li>
@@ -33,7 +33,7 @@
       </div>
 
       <div class="footer-block col-4 col-sm-4 col-md-4 col-lg-2 p-4">
-        <h4>Porta Deliveroo con te</h4>
+        <h4>Porta Deliveboo con te</h4>
         <div class="img-app text-center py-1">
           <a href="#">
             <img src="{{ asset('img/google-play.png') }}" alt="" width="120px">
@@ -73,7 +73,7 @@
 
       </div>
       <div class="col-4 col-sm-4 text-right">
-        <span><h6>© 2021 Deliveroo</h6></span>
+        <span><h6>© 2021 Deliveboo</h6></span>
       </div>
     </div>
   </div>
