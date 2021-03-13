@@ -13,5 +13,13 @@
   padding: 20px 0 20px 10px;
   button {
     @include cta-primary;
+    &:hover {
+      color: #FFF;
+    }
+  }
+  .form-group {
+    label {
+      font-weight: bold;
+    }
   }
 }

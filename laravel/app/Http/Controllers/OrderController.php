@@ -185,7 +185,7 @@ class OrderController extends Controller
 
 
 
-            return view('pages.chart-months')->with('chartTotal', json_encode($chartTotal))->with('months', json_encode($months))->with('chartOrder', json_encode($chartOrders))->with('year', json_encode($year));
+            return view('pages.charts')->with('chartTotal', json_encode($chartTotal))->with('months', json_encode($months))->with('chartOrder', json_encode($chartOrders))->with('year', json_encode($year));
         } else {
             return redirect()->route('home');
         }

@@ -2361,23 +2361,38 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       baseURL: "storage/food_images/",
-      defaultImg: "img/piatto-vuoto.jpg"
+      defaultImg: "img/piatto-vuoto.jpg",
+      max: 120,
+      arrowUp: true,
+      arrowDn: false
     };
   },
   computed: {
     descriptionShort: function descriptionShort() {
-      var max = 100;
-      return this.description.length > max ? this.description.substring(0, max) + '...' : this.description;
+      return this.description.length > this.max ? this.description.substring(0, this.max) + '...' : this.description;
     }
   },
   mounted: function mounted() {
     console.log("Component food mounted.");
+    document.addEventListener('scroll', this.comprimi);
   },
-  methods: {},
+  methods: {
+    espandi: function espandi() {
+      if (this.max == 120) {
+        this.max = 300;
+      } else if (this.max == 300) {
+        this.max = 120;
+      }
+    },
+    comprimi: function comprimi() {
+      this.max = 120;
+    }
+  },
   props: {
     // prop foods
     namefood: String,
@@ -2460,6 +2475,34 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -2795,6 +2838,112 @@ __webpack_require__.r(__webpack_exports__);
 
       return total / 100;
     }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Order.vue?vue&type=script&lang=js&":
+/*!****************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Order.vue?vue&type=script&lang=js& ***!
+  \****************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: {
+    orders: Array,
+    years: Array
+  },
+  data: function data() {
+    return {
+      'pages': Math.ceil(this.orders.length / 10),
+      'currentPage': 1,
+      'currentYear': this.years[0],
+      'pageOrders': []
+    };
+  },
+  methods: {
+    filter: function filter(n) {
+      this.pageOrders = [];
+
+      for (var i = n * 10 - 10; i < n * 10; i++) {
+        if (i < this.orders.length) {
+          this.pageOrders.push(this.orders[i]);
+        }
+
+        ;
+      }
+
+      ;
+    }
+  },
+  mounted: function mounted() {
+    this.filter(1);
   }
 });
 
@@ -7347,17 +7496,17 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
- * jQuery JavaScript Library v3.5.1
+ * jQuery JavaScript Library v3.6.0
  * https://jquery.com/
  *
  * Includes Sizzle.js
  * https://sizzlejs.com/
  *
- * Copyright JS Foundation and other contributors
+ * Copyright OpenJS Foundation and other contributors
  * Released under the MIT license
  * https://jquery.org/license
  *
- * Date: 2020-05-04T22:49Z
+ * Date: 2021-03-02T17:08Z
  */
 ( function( global, factory ) {
 
@@ -7424,12 +7573,16 @@ var support = {};
 
 var isFunction = function isFunction( obj ) {
 
-      // Support: Chrome <=57, Firefox <=52
-      // In some browsers, typeof returns "function" for HTML <object> elements
-      // (i.e., `typeof document.createElement( "object" ) === "function"`).
-      // We don't want to classify *any* DOM node as a function.
-      return typeof obj === "function" && typeof obj.nodeType !== "number";
-  };
+		// Support: Chrome <=57, Firefox <=52
+		// In some browsers, typeof returns "function" for HTML <object> elements
+		// (i.e., `typeof document.createElement( "object" ) === "function"`).
+		// We don't want to classify *any* DOM node as a function.
+		// Support: QtWeb <=3.8.5, WebKit <=534.34, wkhtmltopdf tool <=0.12.5
+		// Plus for old WebKit, typeof returns "function" for HTML collections
+		// (e.g., `typeof document.getElementsByTagName("div") === "function"`). (gh-4756)
+		return typeof obj === "function" && typeof obj.nodeType !== "number" &&
+			typeof obj.item !== "function";
+	};
 
 
 var isWindow = function isWindow( obj ) {
@@ -7495,7 +7648,7 @@ function toType( obj ) {
 
 
 var
-	version = "3.5.1",
+	version = "3.6.0",
 
 	// Define a local copy of jQuery
 	jQuery = function( selector, context ) {
@@ -7749,7 +7902,7 @@ jQuery.extend( {
 			if ( isArrayLike( Object( arr ) ) ) {
 				jQuery.merge( ret,
 					typeof arr === "string" ?
-					[ arr ] : arr
+						[ arr ] : arr
 				);
 			} else {
 				push.call( ret, arr );
@@ -7844,9 +7997,9 @@ if ( typeof Symbol === "function" ) {
 
 // Populate the class2type map
 jQuery.each( "Boolean Number String Function Array Date RegExp Object Error Symbol".split( " " ),
-function( _i, name ) {
-	class2type[ "[object " + name + "]" ] = name.toLowerCase();
-} );
+	function( _i, name ) {
+		class2type[ "[object " + name + "]" ] = name.toLowerCase();
+	} );
 
 function isArrayLike( obj ) {
 
@@ -7866,14 +8019,14 @@ function isArrayLike( obj ) {
 }
 var Sizzle =
 /*!
- * Sizzle CSS Selector Engine v2.3.5
+ * Sizzle CSS Selector Engine v2.3.6
  * https://sizzlejs.com/
  *
  * Copyright JS Foundation and other contributors
  * Released under the MIT license
  * https://js.foundation/
  *
- * Date: 2020-03-14
+ * Date: 2021-02-16
  */
 ( function( window ) {
 var i,
@@ -8456,8 +8609,8 @@ support = Sizzle.support = {};
  * @returns {Boolean} True iff elem is a non-HTML XML node
  */
 isXML = Sizzle.isXML = function( elem ) {
-	var namespace = elem.namespaceURI,
-		docElem = ( elem.ownerDocument || elem ).documentElement;
+	var namespace = elem && elem.namespaceURI,
+		docElem = elem && ( elem.ownerDocument || elem ).documentElement;
 
 	// Support: IE <=8
 	// Assume HTML when documentElement doesn't yet exist, such as inside loading iframes
@@ -10372,9 +10525,9 @@ var rneedsContext = jQuery.expr.match.needsContext;
 
 function nodeName( elem, name ) {
 
-  return elem.nodeName && elem.nodeName.toLowerCase() === name.toLowerCase();
+	return elem.nodeName && elem.nodeName.toLowerCase() === name.toLowerCase();
 
-};
+}
 var rsingleTag = ( /^<([a-z][^\/\0>:\x20\t\r\n\f]*)[\x20\t\r\n\f]*\/?>(?:<\/\1>|)$/i );
 
 
@@ -11345,8 +11498,8 @@ jQuery.extend( {
 			resolveContexts = Array( i ),
 			resolveValues = slice.call( arguments ),
 
-			// the master Deferred
-			master = jQuery.Deferred(),
+			// the primary Deferred
+			primary = jQuery.Deferred(),
 
 			// subordinate callback factory
 			updateFunc = function( i ) {
@@ -11354,30 +11507,30 @@ jQuery.extend( {
 					resolveContexts[ i ] = this;
 					resolveValues[ i ] = arguments.length > 1 ? slice.call( arguments ) : value;
 					if ( !( --remaining ) ) {
-						master.resolveWith( resolveContexts, resolveValues );
+						primary.resolveWith( resolveContexts, resolveValues );
 					}
 				};
 			};
 
 		// Single- and empty arguments are adopted like Promise.resolve
 		if ( remaining <= 1 ) {
-			adoptValue( singleValue, master.done( updateFunc( i ) ).resolve, master.reject,
+			adoptValue( singleValue, primary.done( updateFunc( i ) ).resolve, primary.reject,
 				!remaining );
 
 			// Use .then() to unwrap secondary thenables (cf. gh-3000)
-			if ( master.state() === "pending" ||
+			if ( primary.state() === "pending" ||
 				isFunction( resolveValues[ i ] && resolveValues[ i ].then ) ) {
 
-				return master.then();
+				return primary.then();
 			}
 		}
 
 		// Multiple arguments are aggregated like Promise.all array elements
 		while ( i-- ) {
-			adoptValue( resolveValues[ i ], updateFunc( i ), master.reject );
+			adoptValue( resolveValues[ i ], updateFunc( i ), primary.reject );
 		}
 
-		return master.promise();
+		return primary.promise();
 	}
 } );
 
@@ -11528,8 +11681,8 @@ var access = function( elems, fn, key, value, chainable, emptyGet, raw ) {
 			for ( ; i < len; i++ ) {
 				fn(
 					elems[ i ], key, raw ?
-					value :
-					value.call( elems[ i ], i, fn( elems[ i ], key ) )
+						value :
+						value.call( elems[ i ], i, fn( elems[ i ], key ) )
 				);
 			}
 		}
@@ -12437,10 +12590,7 @@ function buildFragment( elems, context, scripts, selection, ignored ) {
 }
 
 
-var
-	rkeyEvent = /^key/,
-	rmouseEvent = /^(?:mouse|pointer|contextmenu|drag|drop)|click/,
-	rtypenamespace = /^([^.]*)(?:\.(.+)|)/;
+var rtypenamespace = /^([^.]*)(?:\.(.+)|)/;
 
 function returnTrue() {
 	return true;
@@ -12735,8 +12885,8 @@ jQuery.event = {
 			event = jQuery.event.fix( nativeEvent ),
 
 			handlers = (
-					dataPriv.get( this, "events" ) || Object.create( null )
-				)[ event.type ] || [],
+				dataPriv.get( this, "events" ) || Object.create( null )
+			)[ event.type ] || [],
 			special = jQuery.event.special[ event.type ] || {};
 
 		// Use the fix-ed jQuery.Event rather than the (read-only) native event
@@ -12860,12 +13010,12 @@ jQuery.event = {
 			get: isFunction( hook ) ?
 				function() {
 					if ( this.originalEvent ) {
-							return hook( this.originalEvent );
+						return hook( this.originalEvent );
 					}
 				} :
 				function() {
 					if ( this.originalEvent ) {
-							return this.originalEvent[ name ];
+						return this.originalEvent[ name ];
 					}
 				},
 
@@ -13004,7 +13154,13 @@ function leverageNative( el, type, expectSync ) {
 						// Cancel the outer synthetic event
 						event.stopImmediatePropagation();
 						event.preventDefault();
-						return result.value;
+
+						// Support: Chrome 86+
+						// In Chrome, if an element having a focusout handler is blurred by
+						// clicking outside of it, it invokes the handler synchronously. If
+						// that handler calls `.remove()` on the element, the data is cleared,
+						// leaving `result` undefined. We need to guard against this.
+						return result && result.value;
 					}
 
 				// If this is an inner synthetic event for an event with a bubbling surrogate
@@ -13169,34 +13325,7 @@ jQuery.each( {
 	targetTouches: true,
 	toElement: true,
 	touches: true,
-
-	which: function( event ) {
-		var button = event.button;
-
-		// Add which for key events
-		if ( event.which == null && rkeyEvent.test( event.type ) ) {
-			return event.charCode != null ? event.charCode : event.keyCode;
-		}
-
-		// Add which for click: 1 === left; 2 === middle; 3 === right
-		if ( !event.which && button !== undefined && rmouseEvent.test( event.type ) ) {
-			if ( button & 1 ) {
-				return 1;
-			}
-
-			if ( button & 2 ) {
-				return 3;
-			}
-
-			if ( button & 4 ) {
-				return 2;
-			}
-
-			return 0;
-		}
-
-		return event.which;
-	}
+	which: true
 }, jQuery.event.addProp );
 
 jQuery.each( { focus: "focusin", blur: "focusout" }, function( type, delegateType ) {
@@ -13219,6 +13348,12 @@ jQuery.each( { focus: "focusin", blur: "focusout" }, function( type, delegateTyp
 			leverageNative( this, type );
 
 			// Return non-false to allow normal event-path propagation
+			return true;
+		},
+
+		// Suppress native focus or blur as it's already being fired
+		// in leverageNative.
+		_default: function() {
 			return true;
 		},
 
@@ -13889,6 +14024,10 @@ var rboxStyle = new RegExp( cssExpand.join( "|" ), "i" );
 		// set in CSS while `offset*` properties report correct values.
 		// Behavior in IE 9 is more subtle than in newer versions & it passes
 		// some versions of this test; make sure not to make it pass there!
+		//
+		// Support: Firefox 70+
+		// Only Firefox includes border widths
+		// in computed dimensions. (gh-4529)
 		reliableTrDimensions: function() {
 			var table, tr, trChild, trStyle;
 			if ( reliableTrDimensionsVal == null ) {
@@ -13896,9 +14035,22 @@ var rboxStyle = new RegExp( cssExpand.join( "|" ), "i" );
 				tr = document.createElement( "tr" );
 				trChild = document.createElement( "div" );
 
-				table.style.cssText = "position:absolute;left:-11111px";
+				table.style.cssText = "position:absolute;left:-11111px;border-collapse:separate";
+				tr.style.cssText = "border:1px solid";
+
+				// Support: Chrome 86+
+				// Height set through cssText does not get applied.
+				// Computed height then comes back as 0.
 				tr.style.height = "1px";
 				trChild.style.height = "9px";
+
+				// Support: Android 8 Chrome 86+
+				// In our bodyBackground.html iframe,
+				// display for all div elements is set to "inline",
+				// which causes a problem only in Android 8 Chrome 86.
+				// Ensuring the div is display: block
+				// gets around this issue.
+				trChild.style.display = "block";
 
 				documentElement
 					.appendChild( table )
@@ -13906,7 +14058,9 @@ var rboxStyle = new RegExp( cssExpand.join( "|" ), "i" );
 					.appendChild( trChild );
 
 				trStyle = window.getComputedStyle( tr );
-				reliableTrDimensionsVal = parseInt( trStyle.height ) > 3;
+				reliableTrDimensionsVal = ( parseInt( trStyle.height, 10 ) +
+					parseInt( trStyle.borderTopWidth, 10 ) +
+					parseInt( trStyle.borderBottomWidth, 10 ) ) === tr.offsetHeight;
 
 				documentElement.removeChild( table );
 			}
@@ -14370,10 +14524,10 @@ jQuery.each( [ "height", "width" ], function( _i, dimension ) {
 					// Running getBoundingClientRect on a disconnected node
 					// in IE throws an error.
 					( !elem.getClientRects().length || !elem.getBoundingClientRect().width ) ?
-						swap( elem, cssShow, function() {
-							return getWidthOrHeight( elem, dimension, extra );
-						} ) :
-						getWidthOrHeight( elem, dimension, extra );
+					swap( elem, cssShow, function() {
+						return getWidthOrHeight( elem, dimension, extra );
+					} ) :
+					getWidthOrHeight( elem, dimension, extra );
 			}
 		},
 
@@ -14432,7 +14586,7 @@ jQuery.cssHooks.marginLeft = addGetHookIf( support.reliableMarginLeft,
 					swap( elem, { marginLeft: 0 }, function() {
 						return elem.getBoundingClientRect().left;
 					} )
-				) + "px";
+			) + "px";
 		}
 	}
 );
@@ -14571,7 +14725,7 @@ Tween.propHooks = {
 			if ( jQuery.fx.step[ tween.prop ] ) {
 				jQuery.fx.step[ tween.prop ]( tween );
 			} else if ( tween.elem.nodeType === 1 && (
-					jQuery.cssHooks[ tween.prop ] ||
+				jQuery.cssHooks[ tween.prop ] ||
 					tween.elem.style[ finalPropName( tween.prop ) ] != null ) ) {
 				jQuery.style( tween.elem, tween.prop, tween.now + tween.unit );
 			} else {
@@ -14816,7 +14970,7 @@ function defaultPrefilter( elem, props, opts ) {
 
 			anim.done( function() {
 
-			/* eslint-enable no-loop-func */
+				/* eslint-enable no-loop-func */
 
 				// The final step of a "hide" animation is actually hiding the element
 				if ( !hidden ) {
@@ -14936,7 +15090,7 @@ function Animation( elem, properties, options ) {
 			tweens: [],
 			createTween: function( prop, end ) {
 				var tween = jQuery.Tween( elem, animation.opts, prop, end,
-						animation.opts.specialEasing[ prop ] || animation.opts.easing );
+					animation.opts.specialEasing[ prop ] || animation.opts.easing );
 				animation.tweens.push( tween );
 				return tween;
 			},
@@ -15109,7 +15263,8 @@ jQuery.fn.extend( {
 					anim.stop( true );
 				}
 			};
-			doAnimation.finish = doAnimation;
+
+		doAnimation.finish = doAnimation;
 
 		return empty || optall.queue === false ?
 			this.each( doAnimation ) :
@@ -15749,8 +15904,8 @@ jQuery.fn.extend( {
 				if ( this.setAttribute ) {
 					this.setAttribute( "class",
 						className || value === false ?
-						"" :
-						dataPriv.get( this, "__className__" ) || ""
+							"" :
+							dataPriv.get( this, "__className__" ) || ""
 					);
 				}
 			}
@@ -15765,7 +15920,7 @@ jQuery.fn.extend( {
 		while ( ( elem = this[ i++ ] ) ) {
 			if ( elem.nodeType === 1 &&
 				( " " + stripAndCollapse( getClass( elem ) ) + " " ).indexOf( className ) > -1 ) {
-					return true;
+				return true;
 			}
 		}
 
@@ -16055,9 +16210,7 @@ jQuery.extend( jQuery.event, {
 				special.bindType || type;
 
 			// jQuery handler
-			handle = (
-					dataPriv.get( cur, "events" ) || Object.create( null )
-				)[ event.type ] &&
+			handle = ( dataPriv.get( cur, "events" ) || Object.create( null ) )[ event.type ] &&
 				dataPriv.get( cur, "handle" );
 			if ( handle ) {
 				handle.apply( cur, data );
@@ -16204,7 +16357,7 @@ var rquery = ( /\?/ );
 
 // Cross-browser xml parsing
 jQuery.parseXML = function( data ) {
-	var xml;
+	var xml, parserErrorElem;
 	if ( !data || typeof data !== "string" ) {
 		return null;
 	}
@@ -16213,12 +16366,17 @@ jQuery.parseXML = function( data ) {
 	// IE throws on parseFromString with invalid input.
 	try {
 		xml = ( new window.DOMParser() ).parseFromString( data, "text/xml" );
-	} catch ( e ) {
-		xml = undefined;
-	}
+	} catch ( e ) {}
 
-	if ( !xml || xml.getElementsByTagName( "parsererror" ).length ) {
-		jQuery.error( "Invalid XML: " + data );
+	parserErrorElem = xml && xml.getElementsByTagName( "parsererror" )[ 0 ];
+	if ( !xml || parserErrorElem ) {
+		jQuery.error( "Invalid XML: " + (
+			parserErrorElem ?
+				jQuery.map( parserErrorElem.childNodes, function( el ) {
+					return el.textContent;
+				} ).join( "\n" ) :
+				data
+		) );
 	}
 	return xml;
 };
@@ -16319,16 +16477,14 @@ jQuery.fn.extend( {
 			// Can add propHook for "elements" to filter or add form elements
 			var elements = jQuery.prop( this, "elements" );
 			return elements ? jQuery.makeArray( elements ) : this;
-		} )
-		.filter( function() {
+		} ).filter( function() {
 			var type = this.type;
 
 			// Use .is( ":disabled" ) so that fieldset[disabled] works
 			return this.name && !jQuery( this ).is( ":disabled" ) &&
 				rsubmittable.test( this.nodeName ) && !rsubmitterTypes.test( type ) &&
 				( this.checked || !rcheckableType.test( type ) );
-		} )
-		.map( function( _i, elem ) {
+		} ).map( function( _i, elem ) {
 			var val = jQuery( this ).val();
 
 			if ( val == null ) {
@@ -16381,7 +16537,8 @@ var
 
 	// Anchor tag for parsing the document origin
 	originAnchor = document.createElement( "a" );
-	originAnchor.href = location.href;
+
+originAnchor.href = location.href;
 
 // Base "constructor" for jQuery.ajaxPrefilter and jQuery.ajaxTransport
 function addToPrefiltersOrTransports( structure ) {
@@ -16762,8 +16919,8 @@ jQuery.extend( {
 			// Context for global events is callbackContext if it is a DOM node or jQuery collection
 			globalEventContext = s.context &&
 				( callbackContext.nodeType || callbackContext.jquery ) ?
-					jQuery( callbackContext ) :
-					jQuery.event,
+				jQuery( callbackContext ) :
+				jQuery.event,
 
 			// Deferreds
 			deferred = jQuery.Deferred(),
@@ -17075,8 +17232,10 @@ jQuery.extend( {
 				response = ajaxHandleResponses( s, jqXHR, responses );
 			}
 
-			// Use a noop converter for missing script
-			if ( !isSuccess && jQuery.inArray( "script", s.dataTypes ) > -1 ) {
+			// Use a noop converter for missing script but not if jsonp
+			if ( !isSuccess &&
+				jQuery.inArray( "script", s.dataTypes ) > -1 &&
+				jQuery.inArray( "json", s.dataTypes ) < 0 ) {
 				s.converters[ "text script" ] = function() {};
 			}
 
@@ -17814,12 +17973,6 @@ jQuery.offset = {
 			options.using.call( elem, props );
 
 		} else {
-			if ( typeof props.top === "number" ) {
-				props.top += "px";
-			}
-			if ( typeof props.left === "number" ) {
-				props.left += "px";
-			}
 			curElem.css( props );
 		}
 	}
@@ -17988,8 +18141,11 @@ jQuery.each( [ "top", "left" ], function( _i, prop ) {
 
 // Create innerHeight, innerWidth, height, width, outerHeight and outerWidth methods
 jQuery.each( { Height: "height", Width: "width" }, function( name, type ) {
-	jQuery.each( { padding: "inner" + name, content: type, "": "outer" + name },
-		function( defaultExtra, funcName ) {
+	jQuery.each( {
+		padding: "inner" + name,
+		content: type,
+		"": "outer" + name
+	}, function( defaultExtra, funcName ) {
 
 		// Margin is only for outerHeight, outerWidth
 		jQuery.fn[ funcName ] = function( margin, value ) {
@@ -18074,7 +18230,8 @@ jQuery.fn.extend( {
 	}
 } );
 
-jQuery.each( ( "blur focus focusin focusout resize scroll click dblclick " +
+jQuery.each(
+	( "blur focus focusin focusout resize scroll click dblclick " +
 	"mousedown mouseup mousemove mouseover mouseout mouseenter mouseleave " +
 	"change select submit keydown keypress keyup contextmenu" ).split( " " ),
 	function( _i, name ) {
@@ -18085,7 +18242,8 @@ jQuery.each( ( "blur focus focusin focusout resize scroll click dblclick " +
 				this.on( name, null, data, fn ) :
 				this.trigger( name );
 		};
-	} );
+	}
+);
 
 
 
@@ -39075,17 +39233,19 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "cartella my-3 py-4" }, [
-    _c("div", { staticClass: "d-flex justify-content-around" }, [
-      _c("h4", {}, [_vm._v(_vm._s(_vm.namefood))]),
+    _c("div", { staticClass: "d-flex justify-content-around px-3" }, [
+      _c("h4", { staticClass: "nome-card-food" }, [
+        _vm._v(_vm._s(_vm.namefood))
+      ]),
       _vm._v(" "),
-      _c("div", [
+      _c("div", { staticClass: "text-nowrap" }, [
         _c(
           "a",
           {
             staticClass: "btn bottone-edit-elimina",
             attrs: { href: "/food/" + _vm.id + "/edit" }
           },
-          [_c("img", { attrs: { src: "/img/edit.png", alt: "" } })]
+          [_c("i", { staticClass: "fas fa-pen-square" })]
         ),
         _vm._v(" "),
         _c(
@@ -39108,10 +39268,14 @@ var render = function() {
     _vm._v(" "),
     _c("div", { staticClass: "d-flex justify-content-between" }, [
       _c("div", { staticClass: "col-md-8" }, [
-        _c("div", { staticClass: "card-food-user" }, [
-          _c("strong", [_vm._v("Descrizione: ")]),
-          _vm._v(_vm._s(_vm.descriptionShort) + "\n            ")
-        ]),
+        _c(
+          "div",
+          { staticClass: "card-food-user", on: { click: _vm.espandi } },
+          [
+            _c("strong", [_vm._v("Descrizione: ")]),
+            _vm._v(_vm._s(_vm.descriptionShort) + "\n\n            ")
+          ]
+        ),
         _vm._v(" "),
         _c("strong", [_vm._v("Prezzo: ")]),
         _vm._v(_vm._s(_vm.price / 100) + " € "),
@@ -39207,7 +39371,7 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "container-fluid" }, [
-    _c("div", { staticClass: "row" }, [
+    _c("div", { staticClass: "row px-3 py-4" }, [
       _c("div", { staticClass: "col-md-8" }, [
         _c("div", { staticClass: "menu" }, [
           _vm._m(0),
@@ -39222,10 +39386,10 @@ var render = function() {
             "div",
             {
               staticClass:
-                "d-flex flex-wrap justify-content-around border border-danger"
+                "d-flex flex-wrap justify-content-center justify-content-md-start"
             },
             _vm._l(_vm.foods, function(food) {
-              return _c("div", { key: food.id, staticClass: "mx-5 my-2" }, [
+              return _c("div", { key: food.id, staticClass: "mx-3 my-2" }, [
                 food.visible
                   ? _c(
                       "div",
@@ -39239,19 +39403,31 @@ var render = function() {
                         on: { click: _vm.resetQuantity }
                       },
                       [
-                        _c("img", {
-                          staticClass: "card-img-top",
-                          attrs: {
-                            src: "/img/food-img/1.jpg",
-                            alt: "immagine piatto"
-                          }
-                        }),
+                        food.image
+                          ? _c("img", {
+                              staticClass: "card-img-top",
+                              attrs: {
+                                src: "/storage/food_images/" + food.image,
+                                alt: "immagine piatto"
+                              }
+                            })
+                          : _c("img", {
+                              staticClass: "card-img-top",
+                              attrs: {
+                                src: "/img/piatto-vuoto-show.jpg",
+                                alt: "immagine piatto"
+                              }
+                            }),
                         _vm._v(" "),
                         _c("h4", [_vm._v(_vm._s(food.name))]),
                         _vm._v(" "),
-                        _c("div", [_vm._v(_vm._s(food.description))]),
+                        _c("div", { staticClass: "descrizione" }, [
+                          _vm._v(_vm._s(food.description))
+                        ]),
                         _vm._v(" "),
-                        _c("h6", [_vm._v(_vm._s(food.price / 100) + " €")])
+                        _c("h6", [
+                          _vm._v("Prezzo: " + _vm._s(food.price / 100) + " €")
+                        ])
                       ]
                     )
                   : _c(
@@ -39261,21 +39437,33 @@ var render = function() {
                         staticStyle: { width: "18rem" }
                       },
                       [
-                        _c("img", {
-                          staticClass: "card-img-top",
-                          attrs: {
-                            src: "/img/food-img/2.jpg",
-                            alt: "immagine piatto"
-                          }
-                        }),
+                        food.image
+                          ? _c("img", {
+                              staticClass: "card-img-top",
+                              attrs: {
+                                src: "/storage/food_images/" + food.image,
+                                alt: "immagine piatto"
+                              }
+                            })
+                          : _c("img", {
+                              staticClass: "card-img-top",
+                              attrs: {
+                                src: "/img/piatto-vuoto-show.jpg",
+                                alt: "immagine piatto"
+                              }
+                            }),
                         _vm._v(" "),
                         _vm._m(1, true),
                         _vm._v(" "),
                         _c("h4", [_vm._v(_vm._s(food.name))]),
                         _vm._v(" "),
-                        _c("div", [_vm._v(_vm._s(food.description))]),
+                        _c("div", { staticClass: "descrizione" }, [
+                          _vm._v(_vm._s(food.description))
+                        ]),
                         _vm._v(" "),
-                        _c("h6", [_vm._v(_vm._s(food.price / 100) + " €")])
+                        _c("h6", [
+                          _vm._v("Prezzo: " + _vm._s(food.price / 100) + " €")
+                        ])
                       ]
                     ),
                 _vm._v(" "),
@@ -39289,13 +39477,23 @@ var render = function() {
                     _c("div", { staticClass: "modal-dialog" }, [
                       _c("div", { staticClass: "modal-content" }, [
                         _c("div", { staticClass: "modal-body" }, [
-                          _c("img", {
-                            staticClass: "card-img-top",
-                            attrs: {
-                              src: "/img/food-img/1.jpg",
-                              alt: "immagine piatto"
-                            }
-                          }),
+                          _c("div", { staticClass: "img-popup" }, [
+                            food.image
+                              ? _c("img", {
+                                  staticClass: "card-img-top",
+                                  attrs: {
+                                    src: "/storage/food_images/" + food.image,
+                                    alt: "immagine piatto"
+                                  }
+                                })
+                              : _c("img", {
+                                  staticClass: "card-img-top",
+                                  attrs: {
+                                    src: "/img/piatto-vuoto-show.jpg",
+                                    alt: "immagine piatto"
+                                  }
+                                })
+                          ]),
                           _vm._v(" "),
                           _c("div", { staticClass: "food-item" }, [
                             _c("h4", [_vm._v(_vm._s(food.name))]),
@@ -39304,7 +39502,7 @@ var render = function() {
                             _vm._v(" "),
                             _c("h6", [
                               _vm._v(
-                                "\n                                            " +
+                                "\n                                            Prezzo: " +
                                   _vm._s(food.price / 100) +
                                   " €\n                                        "
                               )
@@ -39375,7 +39573,7 @@ var render = function() {
         ])
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "col-md-4" }, [
+      _c("div", { staticClass: "col-md-4 pt-4" }, [
         _vm.cart.length
           ? _c(
               "div",
@@ -39383,41 +39581,48 @@ var render = function() {
               [
                 _vm._l(_vm.cart, function(item, i) {
                   return _c("div", { key: i, staticClass: "item-test" }, [
-                    _c("div", { staticClass: "quantity" }, [
-                      _c("i", {
-                        staticClass: "fas fa-minus-circle",
-                        on: {
-                          click: function($event) {
-                            return _vm.minusOneCart(i)
-                          }
-                        }
-                      }),
-                      _vm._v(
-                        "\n                      " +
-                          _vm._s(item.quantity) +
-                          "\n                      "
-                      ),
-                      _c("i", {
-                        staticClass: "fas fa-plus-circle",
-                        on: {
-                          click: function($event) {
-                            return _vm.plusOneCart(i)
-                          }
-                        }
-                      })
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "name" }, [
-                      _vm._v(
-                        "\n                      " +
-                          _vm._s(
-                            _vm.foods.find(function(x) {
-                              return x.id === item.id
-                            }).name
-                          ) +
-                          "\n                  "
-                      )
-                    ]),
+                    _c(
+                      "div",
+                      {
+                        staticClass:
+                          "quantity d-flex flex-no-wrap align-items-baseline"
+                      },
+                      [
+                        _c("div", [
+                          _c("i", {
+                            staticClass: "fas fa-minus-circle",
+                            on: {
+                              click: function($event) {
+                                return _vm.minusOneCart(i)
+                              }
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("span", [_vm._v(_vm._s(item.quantity))]),
+                          _vm._v(" "),
+                          _c("i", {
+                            staticClass: "fas fa-plus-circle",
+                            on: {
+                              click: function($event) {
+                                return _vm.plusOneCart(i)
+                              }
+                            }
+                          })
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "name" }, [
+                          _vm._v(
+                            "\n                          " +
+                              _vm._s(
+                                _vm.foods.find(function(x) {
+                                  return x.id === item.id
+                                }).name
+                              ) +
+                              "\n                      "
+                          )
+                        ])
+                      ]
+                    ),
                     _vm._v(" "),
                     _c("div", { staticClass: "total" }, [
                       _vm._v(
@@ -39437,7 +39642,10 @@ var render = function() {
                 _vm._v(" "),
                 _c(
                   "div",
-                  { staticClass: "d-flex justify-content-between px-2" },
+                  {
+                    staticClass:
+                      "d-flex justify-content-between px-4 pt-2 border-top"
+                  },
                   [
                     _vm._m(2),
                     _vm._v(" "),
@@ -39448,7 +39656,7 @@ var render = function() {
                 _c(
                   "a",
                   {
-                    staticClass: "text-center",
+                    staticClass: "text-center py-2",
                     attrs: { href: "/checkout/" + _vm.user_id }
                   },
                   [
@@ -39460,11 +39668,11 @@ var render = function() {
               ],
               2
             )
-          : _c("div", { staticClass: "cart-test sticky-top cart-headline" }, [
-              _c("button", [_vm._v("Vai alla cassa")]),
-              _vm._v(" "),
-              _vm._m(3)
-            ])
+          : _c(
+              "div",
+              { staticClass: "cart-test sticky-top cart-headline py-4" },
+              [_c("button", [_vm._v("Vai alla cassa")]), _vm._v(" "), _vm._m(3)]
+            )
       ]),
       _vm._v(" "),
       _c(
@@ -39607,6 +39815,223 @@ render._withStripped = true
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Order.vue?vue&type=template&id=8a00ae1a&":
+/*!********************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Order.vue?vue&type=template&id=8a00ae1a& ***!
+  \********************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    [
+      _c("div", { staticClass: "d-flex justify-content-between" }, [
+        _c("div", {}, [
+          _c(
+            "select",
+            {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.currentPage,
+                  expression: "currentPage"
+                }
+              ],
+              on: {
+                change: [
+                  function($event) {
+                    var $$selectedVal = Array.prototype.filter
+                      .call($event.target.options, function(o) {
+                        return o.selected
+                      })
+                      .map(function(o) {
+                        var val = "_value" in o ? o._value : o.value
+                        return val
+                      })
+                    _vm.currentPage = $event.target.multiple
+                      ? $$selectedVal
+                      : $$selectedVal[0]
+                  },
+                  function($event) {
+                    return _vm.filter(_vm.currentPage)
+                  }
+                ]
+              }
+            },
+            _vm._l(_vm.pages, function(n) {
+              return _c("option", [
+                _vm._v("\n              " + _vm._s(n) + "\n            ")
+              ])
+            }),
+            0
+          ),
+          _vm._v(" "),
+          _c("span", [_vm._v("Cambia Pagina")])
+        ]),
+        _vm._v(" "),
+        _c("div", {}, [
+          _c("span", [
+            _c(
+              "a",
+              {
+                staticClass: "text-decoration-none",
+                attrs: { href: "/chart/" + _vm.currentYear }
+              },
+              [
+                _vm._v(
+                  "\n                  Vai alle statistiche per l'anno:\n              "
+                )
+              ]
+            )
+          ]),
+          _vm._v(" "),
+          _c(
+            "select",
+            {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.currentYear,
+                  expression: "currentYear"
+                }
+              ],
+              on: {
+                change: [
+                  function($event) {
+                    var $$selectedVal = Array.prototype.filter
+                      .call($event.target.options, function(o) {
+                        return o.selected
+                      })
+                      .map(function(o) {
+                        var val = "_value" in o ? o._value : o.value
+                        return val
+                      })
+                    _vm.currentYear = $event.target.multiple
+                      ? $$selectedVal
+                      : $$selectedVal[0]
+                  },
+                  function($event) {}
+                ]
+              }
+            },
+            _vm._l(_vm.years, function(year) {
+              return _c("option", [
+                _vm._v("\n              " + _vm._s(year) + "\n            ")
+              ])
+            }),
+            0
+          )
+        ])
+      ]),
+      _vm._v(" "),
+      _vm._l(_vm.pageOrders, function(order) {
+        return _c("div", { staticClass: "card order" }, [
+          _c("div", { staticClass: "card-body" }, [
+            _c("h5", { staticClass: "card-title" }, [
+              _c("i", { staticClass: "far fa-sticky-note" }),
+              _vm._v("  Ordine n° " + _vm._s(order.id))
+            ]),
+            _vm._v(" "),
+            _c("ul", { staticClass: "list-group list-group-flush" }, [
+              _c("li", { staticClass: "list-group-item" }, [
+                _vm._m(0, true),
+                _vm._v(" " + _vm._s(order.date))
+              ]),
+              _vm._v(" "),
+              _c("li", { staticClass: "list-group-item" }, [
+                _vm._m(1, true),
+                _vm._v(" " + _vm._s(order.total / 100) + " €")
+              ]),
+              _vm._v(" "),
+              _c(
+                "li",
+                { staticClass: "list-group-item" },
+                [
+                  _vm._m(2, true),
+                  _vm._v(" "),
+                  _vm._l(order.food, function(food, i) {
+                    return _c("span", { key: food.id }, [
+                      _c("span", [
+                        _vm._v(
+                          "\n              " +
+                            _vm._s(food.pivot.quantity) +
+                            "x\n            "
+                        )
+                      ]),
+                      _vm._v(" "),
+                      i == order.food.length - 1
+                        ? _c("span", [
+                            _vm._v(
+                              "\n              " +
+                                _vm._s(food.name) +
+                                "\n            "
+                            )
+                          ])
+                        : _c("span", [
+                            _vm._v(
+                              "\n              " +
+                                _vm._s(food.name) +
+                                " -\n            "
+                            )
+                          ])
+                    ])
+                  })
+                ],
+                2
+              )
+            ])
+          ])
+        ])
+      })
+    ],
+    2
+  )
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("strong", [
+      _c("i", { staticClass: "far fa-calendar" }),
+      _vm._v(" Data Ordine:")
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("strong", [
+      _c("i", { staticClass: "fas fa-coins" }),
+      _vm._v("  Totale Incassato:")
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("strong", [
+      _c("i", { staticClass: "fas fa-pizza-slice" }),
+      _vm._v("  Piatti ordinati:")
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/search.vue?vue&type=template&id=4d55b89a&":
 /*!*********************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/search.vue?vue&type=template&id=4d55b89a& ***!
@@ -39622,13 +40047,13 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "row justify-content-center mx-5" }, [
+  return _c("div", { staticClass: "row justify-content-center mx-sm-5" }, [
     _c("div", { staticClass: "col-sm-12 d-md-flex altezza" }, [
       _c(
         "div",
         {
           staticClass:
-            "text-left d-sm-flex flex-sm-wrap flex-md-column align-items-start align-self-start mt-5 cartella"
+            "text-left d-sm-flex flex-sm-wrap flex-md-column align-items-start align-self-start mt-md-5 cartella"
         },
         _vm._l(_vm.typologies, function(typology) {
           return _c("label", { staticClass: "check" }, [
@@ -39686,7 +40111,7 @@ var render = function() {
         "div",
         {
           staticClass:
-            "col-sm-12 col-md-10 d-flex flex-wrap align-items-start mt-5 mx-auto"
+            "col-sm-12 col-md-10 d-flex flex-wrap align-items-start mt-md-5 mx-auto"
         },
         _vm._l(_vm.restaurants, function(restaurant) {
           return _c("div", { key: restaurant.id, staticClass: "user" }, [
@@ -39694,19 +40119,19 @@ var render = function() {
               _c("div", { staticClass: "image" }, [
                 restaurant.image == null
                   ? _c("img", {
-                      staticClass: "img-fluid max-width: 100%",
+                      staticClass: "img-fluid",
                       attrs: { src: "/img/risto-img/nulla.png", alt: "" }
                     })
                   : restaurant.image.length < 16
                   ? _c("img", {
-                      staticClass: "img-fluid max-width: 100%",
+                      staticClass: "img-fluid",
                       attrs: {
                         src: "/img/risto-img/" + restaurant.image,
                         alt: ""
                       }
                     })
                   : _c("img", {
-                      staticClass: "img-fluid max-width: 100%",
+                      staticClass: "img-fluid",
                       attrs: {
                         src: "/storage/icon/" + restaurant.image,
                         alt: ""
@@ -51928,6 +52353,7 @@ var map = {
 	"./components/CompFood.vue": "./resources/js/components/CompFood.vue",
 	"./components/CompOrder.vue": "./resources/js/components/CompOrder.vue",
 	"./components/FoodCart.vue": "./resources/js/components/FoodCart.vue",
+	"./components/Order.vue": "./resources/js/components/Order.vue",
 	"./components/search.vue": "./resources/js/components/search.vue"
 };
 
@@ -52303,6 +52729,75 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/Order.vue":
+/*!*******************************************!*\
+  !*** ./resources/js/components/Order.vue ***!
+  \*******************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Order_vue_vue_type_template_id_8a00ae1a___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Order.vue?vue&type=template&id=8a00ae1a& */ "./resources/js/components/Order.vue?vue&type=template&id=8a00ae1a&");
+/* harmony import */ var _Order_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Order.vue?vue&type=script&lang=js& */ "./resources/js/components/Order.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _Order_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _Order_vue_vue_type_template_id_8a00ae1a___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _Order_vue_vue_type_template_id_8a00ae1a___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/Order.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/Order.vue?vue&type=script&lang=js&":
+/*!********************************************************************!*\
+  !*** ./resources/js/components/Order.vue?vue&type=script&lang=js& ***!
+  \********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Order_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./Order.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Order.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Order_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/Order.vue?vue&type=template&id=8a00ae1a&":
+/*!**************************************************************************!*\
+  !*** ./resources/js/components/Order.vue?vue&type=template&id=8a00ae1a& ***!
+  \**************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Order_vue_vue_type_template_id_8a00ae1a___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./Order.vue?vue&type=template&id=8a00ae1a& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Order.vue?vue&type=template&id=8a00ae1a&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Order_vue_vue_type_template_id_8a00ae1a___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Order_vue_vue_type_template_id_8a00ae1a___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
 /***/ "./resources/js/components/search.vue":
 /*!********************************************!*\
   !*** ./resources/js/components/search.vue ***!
@@ -52379,7 +52874,7 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-// removed by extract-text-webpack-plugin
+throw new Error("Module build failed (from ./node_modules/css-loader/index.js):\nModuleBuildError: Module build failed (from ./node_modules/sass-loader/dist/cjs.js):\nSassError: unmatched \"}\".\n    ╷\n195 │   }\r\n    │   ^\n    ╵\n  C:\\Laravel\\deliveboo\\laravel\\resources\\sass\\app.scss 195:3  root stylesheet\n    at C:\\Laravel\\deliveboo\\laravel\\node_modules\\webpack\\lib\\NormalModule.js:316:20\n    at C:\\Laravel\\deliveboo\\laravel\\node_modules\\loader-runner\\lib\\LoaderRunner.js:367:11\n    at C:\\Laravel\\deliveboo\\laravel\\node_modules\\loader-runner\\lib\\LoaderRunner.js:233:18\n    at context.callback (C:\\Laravel\\deliveboo\\laravel\\node_modules\\loader-runner\\lib\\LoaderRunner.js:111:13)\n    at C:\\Laravel\\deliveboo\\laravel\\node_modules\\sass-loader\\dist\\index.js:73:7\n    at Function.call$2 (C:\\Laravel\\deliveboo\\laravel\\node_modules\\sass\\sass.dart.js:91729:16)\n    at _render_closure1.call$2 (C:\\Laravel\\deliveboo\\laravel\\node_modules\\sass\\sass.dart.js:80373:12)\n    at _RootZone.runBinary$3$3 (C:\\Laravel\\deliveboo\\laravel\\node_modules\\sass\\sass.dart.js:27269:18)\n    at _FutureListener.handleError$1 (C:\\Laravel\\deliveboo\\laravel\\node_modules\\sass\\sass.dart.js:25797:19)\n    at _Future__propagateToListeners_handleError.call$0 (C:\\Laravel\\deliveboo\\laravel\\node_modules\\sass\\sass.dart.js:26094:49)\n    at Object._Future__propagateToListeners (C:\\Laravel\\deliveboo\\laravel\\node_modules\\sass\\sass.dart.js:4543:77)\n    at _Future._completeError$2 (C:\\Laravel\\deliveboo\\laravel\\node_modules\\sass\\sass.dart.js:25927:9)\n    at _AsyncAwaitCompleter.completeError$2 (C:\\Laravel\\deliveboo\\laravel\\node_modules\\sass\\sass.dart.js:25270:12)\n    at Object._asyncRethrow (C:\\Laravel\\deliveboo\\laravel\\node_modules\\sass\\sass.dart.js:4292:17)\n    at C:\\Laravel\\deliveboo\\laravel\\node_modules\\sass\\sass.dart.js:13233:20\n    at _wrapJsFunctionForAsync_closure.$protected (C:\\Laravel\\deliveboo\\laravel\\node_modules\\sass\\sass.dart.js:4317:15)\n    at _wrapJsFunctionForAsync_closure.call$2 (C:\\Laravel\\deliveboo\\laravel\\node_modules\\sass\\sass.dart.js:25291:12)\n    at _awaitOnObject_closure0.call$2 (C:\\Laravel\\deliveboo\\laravel\\node_modules\\sass\\sass.dart.js:25283:25)\n    at _RootZone.runBinary$3$3 (C:\\Laravel\\deliveboo\\laravel\\node_modules\\sass\\sass.dart.js:27269:18)\n    at _FutureListener.handleError$1 (C:\\Laravel\\deliveboo\\laravel\\node_modules\\sass\\sass.dart.js:25797:19)\n    at _Future__propagateToListeners_handleError.call$0 (C:\\Laravel\\deliveboo\\laravel\\node_modules\\sass\\sass.dart.js:26094:49)\n    at Object._Future__propagateToListeners (C:\\Laravel\\deliveboo\\laravel\\node_modules\\sass\\sass.dart.js:4543:77)\n    at _Future._completeError$2 (C:\\Laravel\\deliveboo\\laravel\\node_modules\\sass\\sass.dart.js:25927:9)\n    at _Future__asyncCompleteError_closure.call$0 (C:\\Laravel\\deliveboo\\laravel\\node_modules\\sass\\sass.dart.js:26016:18)\n    at Object._microtaskLoop (C:\\Laravel\\deliveboo\\laravel\\node_modules\\sass\\sass.dart.js:4594:24)\n    at StaticClosure._startMicrotaskLoop (C:\\Laravel\\deliveboo\\laravel\\node_modules\\sass\\sass.dart.js:4600:11)\n    at _AsyncRun__scheduleImmediateJsOverride_internalCallback.call$0 (C:\\Laravel\\deliveboo\\laravel\\node_modules\\sass\\sass.dart.js:25181:21)\n    at invokeClosure (C:\\Laravel\\deliveboo\\laravel\\node_modules\\sass\\sass.dart.js:1401:26)\n    at Immediate.<anonymous> (C:\\Laravel\\deliveboo\\laravel\\node_modules\\sass\\sass.dart.js:1422:18)\n    at processImmediate (internal/timers.js:461:21)");
 
 /***/ }),
 
@@ -52390,8 +52885,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Boolean\Esercizi\deliveboo\laravel\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Boolean\Esercizi\deliveboo\laravel\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! D:\Progetto finale Deliveboo\deliveboo\laravel\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! D:\Progetto finale Deliveboo\deliveboo\laravel\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
