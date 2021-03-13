@@ -5,12 +5,12 @@
     <div class="container">
 
         <div class="row">
-            <div class="col-6">
+            <div class="col-xs-12 col-md-6 mb-3">
                 <canvas id="myChart" width="200px" height="200px"></canvas>
             </div>
 
 
-            <div class="col-6">
+            <div class="col-xs-12 col-md-6">
                 <canvas id="myChart2" width="200px" height="200px"></canvas>
 
             </div>
@@ -63,6 +63,18 @@
                     }]
                 },
                 options: {
+                    legend: {
+                        onClick: null,
+                        labels: {
+                            boxSize: 0,
+                            boxWidth: 0,
+                        }
+                    },
+                    tooltips: {
+                        custom: function(tooltipModel) {
+                            tooltipModel.opacity = 0;
+                        }
+                    },
                     parsing: {
                         xAxisKey: 'year',
                         yAxisKey: 'month'
@@ -112,6 +124,18 @@
                     }]
                 },
                 options: {
+                    legend: {
+                        onClick: null,
+                        labels: {
+                            boxSize: 0,
+                            boxWidth: 0,
+                        }
+                    },
+                    tooltips: {
+                        custom: function(tooltipModel) {
+                            tooltipModel.opacity = 0;
+                        }
+                    },
                     parsing: {
                         xAxisKey: 'year',
                         yAxisKey: 'month'
@@ -128,7 +152,10 @@
             });
 
         </script>
-
+        <div class="d-flex justify-content-center">
+            <a href="{{ route('orders.index') }}" class=" btn btn-secondary mt-3 mb-3">Ritorna agli
+                ordini</a>
+        </div>
 
     </div>
 
