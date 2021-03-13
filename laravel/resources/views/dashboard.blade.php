@@ -7,7 +7,7 @@
 
             <div class="pt-5 pl-5">
 
-                <h1 class="display-5">
+                <h1>
                     Benvenuto {{ Auth::user()->restaurant_name }}
                 </h1>
                 <h4>
@@ -28,14 +28,16 @@
 
                         <h2 class="px-3 card-title">La tua Immagine</h2>
                         <div class="card p-4">
+                            <div class="card-img">
 
-                            @if (Auth::user()->image)
-                                <img class="img-fluid" src="{{ asset('storage/icon/' . Auth::user()->image) }}" alt=""
-                                    height="400px" width="400px">
-                            @else
-                                <img class="img-fluid" src="{{ asset('/img/noimg.png') }}" alt=""
-                                    height="400px" width="400px">
-                            @endif
+                                @if (Auth::user()->image)
+                                    <img class="img-fluid" src="{{ asset('storage/icon/' . Auth::user()->image) }}" alt=""
+                                        height="400px" width="400px">
+                                @else
+                                    <img class="img-fluid" src="{{ asset('/img/noimg.png') }}" alt=""
+                                        height="400px" width="400px">
+                                @endif
+                            </div>
 
                             <form action="{{ route('upload-avatar') }}" method="POST" enctype="multipart/form-data">
                                 @csrf
