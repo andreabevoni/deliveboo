@@ -10989,6 +10989,7 @@ footer .social {
 footer .social a {
   color: #FFF;
   padding: 10px;
+  text-decoration: none;
 }
 
 .login-form {

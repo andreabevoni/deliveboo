@@ -49,7 +49,7 @@ export default {
         return {
             baseURL: "storage/food_images/",
             defaultImg: "img/piatto-vuoto.jpg",
-            max: 130,
+            max: 120,
             arrowUp: true,
             arrowDn: false
         };
@@ -69,14 +69,14 @@ export default {
 
     methods: {
         espandi() {
-            if (this.max == 130) {
+            if (this.max == 120) {
                 this.max = 300;
             } else if (this.max == 300) {
-                this.max = 130;
+                this.max = 120;
             }
         },
         comprimi() {
-            this.max = 130;
+            this.max = 120;
         }
     },
 

@@ -2367,7 +2367,7 @@ __webpack_require__.r(__webpack_exports__);
     return {
       baseURL: "storage/food_images/",
       defaultImg: "img/piatto-vuoto.jpg",
-      max: 130,
+      max: 120,
       arrowUp: true,
       arrowDn: false
     };
@@ -2383,14 +2383,14 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     espandi: function espandi() {
-      if (this.max == 130) {
+      if (this.max == 120) {
         this.max = 300;
       } else if (this.max == 300) {
-        this.max = 130;
+        this.max = 120;
       }
     },
     comprimi: function comprimi() {
-      this.max = 130;
+      this.max = 120;
     }
   },
   props: {
