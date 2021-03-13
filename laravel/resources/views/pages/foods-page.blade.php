@@ -7,7 +7,7 @@
         @if (Auth::user()->food->isEmpty())
 
             <div class="row py-5">
-                <div class="cartella col-md-4 mx-auto">
+                <div class="cartella col-md-8 col-lg-6 col-xl-4 mx-auto">
 
                     <img src="{{asset('/img/piatto-vuoto.jpg')}}" width="100%" alt="">
 
