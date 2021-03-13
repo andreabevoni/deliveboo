@@ -1,18 +1,35 @@
 <template>
   <div>
 
-    <!-- cambio pagina ordini -->
-    <select v-model="currentPage" @change="filter(currentPage)">
-        <option v-for="n in pages">
-            {{n}}
-        </option>
-    </select>
+    <div class="d-flex justify-content-between">
+        <!-- cambio pagina ordini -->
+        <div class="">
+            <select v-model="currentPage" @change="filter(currentPage)">
+              <option v-for="n in pages">
+                {{n}}
+              </option>
+            </select>
+            <span>Cambia Pagina</span>
+        </div>
+
+        <!-- link alle statistiche -->
+        <div class="">
+            <span>
+                <a :href="'/chart/' + currentYear" class="text-decoration-none">
+                    Vai alle statistiche per l'anno:
+                </a>
+            </span>
+            <select v-model="currentYear" @change="">
+              <option v-for="year in years">
+                {{year}}
+              </option>
+            </select>
+        </div>
+
+    </div>
 
     <!-- ordini -->
-    <div
-        v-for="order in pageOrders"
-        class="card order"
-    >
+    <div v-for="order in pageOrders" class="card order">
 
       <div class="card-body">
         <h5 class="card-title"> <i class="far fa-sticky-note"></i>  Ordine n° {{order.id}}</h5>
@@ -47,11 +64,13 @@
 export default {
     props: {
         orders: Array,
+        years: Array,
     },
     data() {
         return {
           'pages' : Math.ceil(this.orders.length / 10),
           'currentPage' : 1,
+          'currentYear' : this.years[0],
           'pageOrders' : [],
         };
     },

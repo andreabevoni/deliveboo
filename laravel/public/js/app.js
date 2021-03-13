@@ -2854,14 +2854,33 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
-    orders: Array
+    orders: Array,
+    years: Array
   },
   data: function data() {
     return {
       'pages': Math.ceil(this.orders.length / 10),
       'currentPage': 1,
+      'currentYear': this.years[0],
       'pageOrders': []
     };
   },
@@ -39712,43 +39731,106 @@ var render = function() {
   return _c(
     "div",
     [
-      _c(
-        "select",
-        {
-          directives: [
+      _c("div", { staticClass: "d-flex justify-content-between" }, [
+        _c("div", {}, [
+          _c(
+            "select",
             {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.currentPage,
-              expression: "currentPage"
-            }
-          ],
-          on: {
-            change: [
-              function($event) {
-                var $$selectedVal = Array.prototype.filter
-                  .call($event.target.options, function(o) {
-                    return o.selected
-                  })
-                  .map(function(o) {
-                    var val = "_value" in o ? o._value : o.value
-                    return val
-                  })
-                _vm.currentPage = $event.target.multiple
-                  ? $$selectedVal
-                  : $$selectedVal[0]
-              },
-              function($event) {
-                return _vm.filter(_vm.currentPage)
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.currentPage,
+                  expression: "currentPage"
+                }
+              ],
+              on: {
+                change: [
+                  function($event) {
+                    var $$selectedVal = Array.prototype.filter
+                      .call($event.target.options, function(o) {
+                        return o.selected
+                      })
+                      .map(function(o) {
+                        var val = "_value" in o ? o._value : o.value
+                        return val
+                      })
+                    _vm.currentPage = $event.target.multiple
+                      ? $$selectedVal
+                      : $$selectedVal[0]
+                  },
+                  function($event) {
+                    return _vm.filter(_vm.currentPage)
+                  }
+                ]
               }
-            ]
-          }
-        },
-        _vm._l(_vm.pages, function(n) {
-          return _c("option", [_vm._v("\n          " + _vm._s(n) + "\n      ")])
-        }),
-        0
-      ),
+            },
+            _vm._l(_vm.pages, function(n) {
+              return _c("option", [
+                _vm._v("\n              " + _vm._s(n) + "\n            ")
+              ])
+            }),
+            0
+          ),
+          _vm._v(" "),
+          _c("span", [_vm._v("Cambia Pagina")])
+        ]),
+        _vm._v(" "),
+        _c("div", {}, [
+          _c("span", [
+            _c(
+              "a",
+              {
+                staticClass: "text-decoration-none",
+                attrs: { href: "/chart/" + _vm.currentYear }
+              },
+              [
+                _vm._v(
+                  "\n                  Vai alle statistiche per l'anno:\n              "
+                )
+              ]
+            )
+          ]),
+          _vm._v(" "),
+          _c(
+            "select",
+            {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.currentYear,
+                  expression: "currentYear"
+                }
+              ],
+              on: {
+                change: [
+                  function($event) {
+                    var $$selectedVal = Array.prototype.filter
+                      .call($event.target.options, function(o) {
+                        return o.selected
+                      })
+                      .map(function(o) {
+                        var val = "_value" in o ? o._value : o.value
+                        return val
+                      })
+                    _vm.currentYear = $event.target.multiple
+                      ? $$selectedVal
+                      : $$selectedVal[0]
+                  },
+                  function($event) {}
+                ]
+              }
+            },
+            _vm._l(_vm.years, function(year) {
+              return _c("option", [
+                _vm._v("\n              " + _vm._s(year) + "\n            ")
+              ])
+            }),
+            0
+          )
+        ])
+      ]),
       _vm._v(" "),
       _vm._l(_vm.pageOrders, function(order) {
         return _c("div", { staticClass: "card order" }, [

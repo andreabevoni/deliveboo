@@ -37,15 +37,20 @@ class OrderController extends Controller
             }
 
             // recupero tutti gli ordini effettuati con le loro informazioni
-            // $orders = Order::with('food')
-            //                ->find($ids)
-            //                ->sortKeysDesc();
-
             $orders = Order::with('food')
                                 ->orderByDesc('id')
                                 ->find($ids);
 
-            return view('pages.orders2', compact('userAuth', 'orders'));
+            // creo un array contenente gli anni in cui il ristorante ha ricevuto ordini
+            $years = Order::orderByDesc('date')
+                           ->find($ids)
+                           ->groupBy([function ($d) {
+                              return Carbon::parse($d->date)->format('Y');
+                            }])
+                           ->toArray();
+            $years = array_keys($years);
+
+            return view('pages.orders2', compact('userAuth', 'orders', 'years'));
         } else {
             return redirect()->route('home');
         }

@@ -12,7 +12,9 @@
   </div>
 
   {{-- stampo tutti gli ordini ricevuti dal ristoratore --}}
-  <order :orders="{{$orders}}"></order>
+  <order :orders="{{$orders}}"
+         :years="{{json_encode($years)}}"
+  ></order>
 
 </div>
 @endsection
