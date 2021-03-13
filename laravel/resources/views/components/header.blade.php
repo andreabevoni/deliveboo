@@ -1,5 +1,5 @@
 <header>
-    <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+    <nav class="navbar navbar-expand-sm navbar-light bg-white shadow-sm">
       <div class="container">
 
         {{-- Left menu --}}
