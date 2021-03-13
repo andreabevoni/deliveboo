@@ -10945,12 +10945,14 @@ a.text-dark:focus {
 }
 
 .logo-header img {
-  width: 120px;
+  width: 8rem;
 }
 
 .menu-nav button {
   background-color: #FFF;
   margin-left: 10px;
+  margin-bottom: 5px;
+  padding: 0 5px;
   border: 1px lightgrey solid;
 }
 
@@ -10965,6 +10967,14 @@ footer .container-lg,
 footer .container-xl {
   background-color: #2E3333;
   color: #FFF;
+}
+
+footer .container-fluid a,
+footer .container-sm a,
+footer .container-md a,
+footer .container-lg a,
+footer .container-xl a {
+  text-decoration: none;
 }
 
 footer .footer-block {
@@ -11028,8 +11038,17 @@ footer .social a {
 
 .hero-login img {
   width: 100%;
-  height: 100%;
-  z-index: 100;
+}
+
+button.reset {
+  list-style: none;
+  text-decoration: none;
+  border-radius: 10px;
+  background-color: #00ccbc;
+  color: white;
+  border: 1px solid #00ccbc;
+  padding: 15px;
+  width: 100%;
 }
 
 .headline {
@@ -11056,6 +11075,14 @@ footer .social a {
   border: 1px solid #00ccbc;
   padding: 15px;
   width: 100%;
+}
+
+.form-registration button:hover {
+  color: #FFF;
+}
+
+.form-registration .form-group label {
+  font-weight: bold;
 }
 
 .info {
@@ -11264,6 +11291,27 @@ button.checkout {
 
 .info h4 {
   color: #828585;
+}
+
+button.btn-order {
+  list-style: none;
+  text-decoration: none;
+  border-radius: 10px;
+  background-color: white;
+  padding: 10px;
+  border-color: #00ccbc;
+  color: #828585;
+  margin: 20px 0;
+  padding: 10px 20px;
+}
+
+button.btn-order a {
+  color: #00ccbc;
+  text-decoration: none;
+}
+
+button.btn-order i {
+  color: #00ccbc;
 }
 
 .card.order {

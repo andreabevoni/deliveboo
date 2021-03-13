@@ -8,8 +8,15 @@
     <h1>{{$userAuth -> restaurant_name}}</h1>
     {{-- [id {{$userAuth -> id}}] --}}
 
+
+
     <h4><i class="fas fa-cart-arrow-down"></i>  Lista ordini ricevuti</h4>
   </div>
+
+  <button type="button" name="button" class="btn-order">
+    <i class="fas fa-chart-bar"></i>
+    Visualizza statistiche ordini
+  </button>
 
   {{-- stampo tutti gli ordini ricevuti dal ristoratore --}}
   @foreach ($orders as $order)
@@ -32,7 +39,7 @@
                 @if ($loop->last)
                   {{$food -> name}}
                 @else
-                  {{$food -> name}} - 
+                  {{$food -> name}} -
                 @endif
 
               </span>
