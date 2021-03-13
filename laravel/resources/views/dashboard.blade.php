@@ -100,7 +100,7 @@
                         <a href="{{ route('food.index') }}">
 
                             <div class="card lista piatti">
-                                <h2>I tuoi cibi</h2>
+                                <h2>I tuoi piatti</h2>
                             </div>
 
                         </a>
