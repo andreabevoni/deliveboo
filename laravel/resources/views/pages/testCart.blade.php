@@ -28,7 +28,7 @@
         <!-- Sezione di destra -->
         <div class="col-md-4 col-s-12">
           <!-- Img profilo -->
-          <div class="img-user p-4">
+          <div class="text-sm-center text-md-right img-user p-4">
             {{-- <img src="{{ asset('storage/icon/' . $user->image) }}" alt=""> --}}
             {{-- <img src="{{ asset('img/user-img/' . $user -> id . '.jpg') }}" alt=""> --}}
             @if ($user->image)
