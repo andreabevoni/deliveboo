@@ -38,10 +38,19 @@ class OrderController extends Controller
 
             // recupero tutti gli ordini effettuati con le loro informazioni
             $orders = Order::with('food')
-                ->find($ids)
-                ->sortKeysDesc();
-            // dd($orders);
-            return view('pages.orders', compact('userAuth', 'orders'));
+                                ->orderByDesc('id')
+                                ->find($ids);
+
+            // creo un array contenente gli anni in cui il ristorante ha ricevuto ordini
+            $years = Order::orderByDesc('date')
+                           ->find($ids)
+                           ->groupBy([function ($d) {
+                              return Carbon::parse($d->date)->format('Y');
+                            }])
+                           ->toArray();
+            $years = array_keys($years);
+
+            return view('pages.orders2', compact('userAuth', 'orders', 'years'));
         } else {
             return redirect()->route('home');
         }
@@ -105,7 +114,7 @@ class OrderController extends Controller
                 $ids[] = $order->id;
             }
 
-            //================================== 
+            //==================================
 
 
             $orders = Order::with('food')
@@ -147,7 +156,7 @@ class OrderController extends Controller
             //creo array ordini vuoto
             $order = [];
 
-            //per ogni ordine faccio la count di ogni mese passando il valore dell array month 
+            //per ogni ordine faccio la count di ogni mese passando il valore dell array month
             foreach ($months as $key => $value) {
                 // dd($months);
                 $order[] =
@@ -210,7 +219,7 @@ class OrderController extends Controller
             //creo array ordini vuoto
             $order = [];
 
-            //per ogni ordine faccio la count di ogni mese passando il valore dell array month 
+            //per ogni ordine faccio la count di ogni mese passando il valore dell array month
             foreach ($uniqueYear as $key => $value) {
                 // dd($months);
                 $order[] =
