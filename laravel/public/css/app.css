@@ -10999,6 +10999,7 @@ footer .social {
 footer .social a {
   color: #FFF;
   padding: 10px;
+  text-decoration: none;
 }
 
 .login-form {
@@ -11086,7 +11087,6 @@ button.reset {
 }
 
 .info {
-  border-bottom: 1px solid lightgrey;
   padding: 20px;
 }
 
@@ -11100,21 +11100,21 @@ button.reset {
   padding-top: 20px;
 }
 
-.img-user img {
-  width: 100%;
-  padding-top: 20px;
+.img-user {
+  margin: 0px auto;
 }
 
-.container-fluid,
-.container-sm,
-.container-md,
-.container-lg,
-.container-xl {
-  background-color: #F4F5F5;
+.img-user img {
+  width: 400px;
+  height: 280px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 5px;
+  box-shadow: 1px 1px 7px 5px #c7c7c7;
 }
 
 .menu {
-  padding: 20px;
+  padding-top: 15px;
 }
 
 .menu p {
@@ -11124,12 +11124,24 @@ button.reset {
 .food-item {
   background-color: #FFF;
   padding: 10px;
-  text-align: center;
   margin: 10px 0;
+}
+
+.food-item img {
+  height: 180px;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 .food-item h4 {
   font-weight: bolder;
+  padding-top: 13px;
+}
+
+.food-item .descrizione {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  height: 100px;
 }
 
 .food-item h6 {
@@ -11226,7 +11238,8 @@ button.reset {
 
 .cart-test {
   background-color: #FFF;
-  padding: 10px 0;
+  box-shadow: -3px 3px 6px -3px #b1b1b1;
+  padding: 10px;
   width: 100%;
 }
 
@@ -11240,14 +11253,37 @@ button.reset {
 
 .cart-test .quantity {
   font-size: 1rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.cart-test .quantity span {
+  display: inline-block;
+  width: 20px;
 }
 
 .cart-test .quantity i {
-  padding: 10px;
+  padding: 8px;
+  font-size: 0.9rem;
+}
+
+.cart-test .quantity i:hover {
+  color: gray;
+}
+
+.name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 179px;
+  padding: 0 10px;
+  text-align: left;
 }
 
 .total {
-  padding-right: 20px;
+  padding-right: 8px;
+  white-space: nowrap;
 }
 
 .pop-up-cart {
@@ -11287,6 +11323,11 @@ button.checkout {
   width: 100%;
   width: 90%;
   margin-top: 10px;
+}
+
+.img-popup {
+  width: 300px;
+  margin: auto;
 }
 
 .info h4 {
@@ -11378,13 +11419,24 @@ button.btn-order i {
 
 .food-img {
   width: 150px;
-  max-height: 100px;
+  max-height: 150px;
   text-align: end;
 }
 
 .food-img img {
   max-width: 100%;
   max-height: 100%;
+}
+
+.nome-card-food {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 370px;
+}
+
+.card-food-user {
+  min-height: 95px;
 }
 
 .bottone-edit-elimina {
@@ -11419,8 +11471,34 @@ button.btn-order i {
   color: white;
 }
 
-.card-food-user {
-  min-height: 120px;
+/* width */
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+/* Handle on hover */
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+@media all and (min-width: 268px) and (max-width: 1150px) {
+  .card-food-user {
+    min-height: 120px;
+  }
 }
 
 .titolo-dashboard {
@@ -11454,6 +11532,13 @@ button.btn-order i {
 
 .dashboard a:hover {
   text-decoration: none;
+}
+
+.dashboard .card-img img {
+  width: 490px;
+  height: 350px;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 .dashboard img {
@@ -11491,6 +11576,12 @@ button.btn-order i {
 
 .dashboard .ordini {
   background-image: url("/img/lista-ordini.jpg");
+}
+
+@media all and (min-width: 268px) and (max-width: 770px) {
+  .titolo-dashboard h1 {
+    font-size: 30px;
+  }
 }
 
 .sfondo {
@@ -11555,12 +11646,16 @@ button.btn-order i {
 }
 
 .user .image {
-  min-height: 200px;
-  background-color: #b6b6b6;
+  height: 200px;
+  background-color: #dfdfdf;
 }
 
 .user .image img {
   border-radius: 3px 3px 0 0;
+  height: 100%;
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 .user .testo-user {
@@ -11607,6 +11702,17 @@ button.btn-order i {
 
   .user .testo-user {
     min-height: 140px;
+  }
+}
+
+@media all and (min-width: 268px) and (max-width: 770px) {
+  .user {
+    width: 200px;
+    margin: 10px auto;
+  }
+
+  .main-headline h1 {
+    font-size: 30px;
   }
 }
 

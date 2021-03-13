@@ -1,14 +1,14 @@
 <template>
     <div class="cartella my-3 py-4">
-        <div class="d-flex justify-content-around">
-            <h4 class="">{{ namefood }}</h4>
+        <div class="d-flex justify-content-around px-3">
+            <h4 class="nome-card-food">{{ namefood }}</h4>
 
-            <div>
+            <div class="text-nowrap">
                 <a
                     :href="'/food/' + id + '/edit'"
                     class="btn bottone-edit-elimina"
                 >
-                    <img :src="'/img/edit.png'" alt="" />
+                    <i class="fas fa-pen-square"></i>
                 </a>
                 <a
                     :href="'/food/softdelete/' + id"
@@ -23,9 +23,10 @@
 
         <div class="d-flex justify-content-between">
             <div class="col-md-8">
-                <div class="card-food-user">
+                <div @click="espandi" class="card-food-user">
 
                     <strong>Descrizione: </strong>{{ descriptionShort }}
+
                 </div>
                 <strong>Prezzo: </strong>{{ price / 100 }} € <br />
                 <strong>Disponibile: </strong>
@@ -47,23 +48,37 @@ export default {
     data: function() {
         return {
             baseURL: "storage/food_images/",
-            defaultImg: "img/piatto-vuoto.jpg"
+            defaultImg: "img/piatto-vuoto.jpg",
+            max: 120,
+            arrowUp: true,
+            arrowDn: false
         };
     },
     computed: {
         descriptionShort: function() {
-            const max = 100;
 
-            return (this.description.length > max)
-                ? this.description.substring(0, max) + '...'
+            return (this.description.length > this.max)
+                ? this.description.substring(0, this.max) + '...'
                 : this.description;
         }
     },
     mounted() {
         console.log("Component food mounted.");
+        document.addEventListener('scroll', this.comprimi)
     },
 
-    methods: {},
+    methods: {
+        espandi() {
+            if (this.max == 120) {
+                this.max = 300;
+            } else if (this.max == 300) {
+                this.max = 120;
+            }
+        },
+        comprimi() {
+            this.max = 120;
+        }
+    },
 
     props: {
         // prop foods
