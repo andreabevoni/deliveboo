@@ -3,9 +3,9 @@
         <!-- stampo ordini e link alle statistiche se il ristorante ne ha ricevuti -->
         <div v-if="orders.length">
 
-            <div class="d-flex justify-content-between mb-3">
+            <div class="d-flex justify-content-around mb-3 flex-wrap">
                 <!-- cambio pagina ordini -->
-                <div class="">
+                <div class="mb-3">
                     <select
                         class="btn btn-primary"
                         v-model="currentPage"
@@ -19,7 +19,7 @@
                 </div>
 
                 <!-- link alle statistiche -->
-                <div class="">
+                <div class="mb-3">
                     <!-- <span>Vai alle statistiche dell'anno</span> -->
                     <select
                         class="btn btn-secondary"
@@ -72,7 +72,7 @@
                 <img class="img-fluid" src="/img/no-orders.jpg" alt="no image">
             </div>
             <h2 class="text-center py-5">
-                Non hai ricevuto nessun ordine
+                Non hai ricevuto alcun ordine
             </h2>
         </div>
 

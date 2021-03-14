@@ -11598,6 +11598,10 @@ button.btn-order i {
   padding-top: 35px;
 }
 
+.nome-search {
+  width: 100px;
+}
+
 .check {
   margin: 10px;
   cursor: pointer;
