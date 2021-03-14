@@ -2933,17 +2933,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     orders: Array,
@@ -39859,8 +39848,237 @@ render._withStripped = true
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
-var render = function () {}
-var staticRenderFns = []
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", {}, [
+    _vm.orders.length
+      ? _c(
+          "div",
+          [
+            _c(
+              "div",
+              { staticClass: "d-flex justify-content-around mb-3 flex-wrap" },
+              [
+                _c("div", { staticClass: "mb-3" }, [
+                  _c(
+                    "select",
+                    {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.currentPage,
+                          expression: "currentPage"
+                        }
+                      ],
+                      staticClass: "btn btn-primary",
+                      on: {
+                        change: [
+                          function($event) {
+                            var $$selectedVal = Array.prototype.filter
+                              .call($event.target.options, function(o) {
+                                return o.selected
+                              })
+                              .map(function(o) {
+                                var val = "_value" in o ? o._value : o.value
+                                return val
+                              })
+                            _vm.currentPage = $event.target.multiple
+                              ? $$selectedVal
+                              : $$selectedVal[0]
+                          },
+                          function($event) {
+                            return _vm.filter(_vm.currentPage)
+                          }
+                        ]
+                      }
+                    },
+                    [
+                      _c("option", { attrs: { disabled: "", value: "" } }, [
+                        _vm._v("Visualizza altri ordini")
+                      ]),
+                      _vm._v(" "),
+                      _vm._l(_vm.pages, function(n) {
+                        return _c("option", [
+                          _vm._v(
+                            "\n                      " +
+                              _vm._s(n) +
+                              "\n                    "
+                          )
+                        ])
+                      })
+                    ],
+                    2
+                  )
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "mb-3" }, [
+                  _c(
+                    "select",
+                    {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.currentYear,
+                          expression: "currentYear"
+                        }
+                      ],
+                      staticClass: "btn btn-secondary",
+                      on: {
+                        change: [
+                          function($event) {
+                            var $$selectedVal = Array.prototype.filter
+                              .call($event.target.options, function(o) {
+                                return o.selected
+                              })
+                              .map(function(o) {
+                                var val = "_value" in o ? o._value : o.value
+                                return val
+                              })
+                            _vm.currentYear = $event.target.multiple
+                              ? $$selectedVal
+                              : $$selectedVal[0]
+                          },
+                          _vm.charts
+                        ]
+                      }
+                    },
+                    [
+                      _c("option", { attrs: { disabled: "", value: "" } }, [
+                        _vm._v("Visualizza statistiche per anno")
+                      ]),
+                      _vm._v(" "),
+                      _vm._l(_vm.years, function(year) {
+                        return _c("option", [
+                          _vm._v(
+                            "\n                        " +
+                              _vm._s(year) +
+                              "\n                    "
+                          )
+                        ])
+                      })
+                    ],
+                    2
+                  )
+                ])
+              ]
+            ),
+            _vm._v(" "),
+            _vm._l(_vm.pageOrders, function(order) {
+              return _c("div", { staticClass: "card order" }, [
+                _c("div", { staticClass: "card-body" }, [
+                  _c("h5", { staticClass: "card-title" }, [
+                    _c("i", { staticClass: "far fa-sticky-note" }),
+                    _vm._v("  Ordine n° " + _vm._s(order.id))
+                  ]),
+                  _vm._v(" "),
+                  _c("ul", { staticClass: "list-group list-group-flush" }, [
+                    _c("li", { staticClass: "list-group-item" }, [
+                      _vm._m(0, true),
+                      _vm._v(" " + _vm._s(order.date))
+                    ]),
+                    _vm._v(" "),
+                    _c("li", { staticClass: "list-group-item" }, [
+                      _vm._m(1, true),
+                      _vm._v(" " + _vm._s(order.total / 100) + " €")
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "li",
+                      { staticClass: "list-group-item" },
+                      [
+                        _vm._m(2, true),
+                        _vm._v(" "),
+                        _vm._l(order.food, function(food, i) {
+                          return _c("span", { key: food.id }, [
+                            _c("span", [
+                              _vm._v(
+                                "\n                    " +
+                                  _vm._s(food.pivot.quantity) +
+                                  "x\n                  "
+                              )
+                            ]),
+                            _vm._v(" "),
+                            i == order.food.length - 1
+                              ? _c("span", [
+                                  _vm._v(
+                                    "\n                    " +
+                                      _vm._s(food.name) +
+                                      "\n                  "
+                                  )
+                                ])
+                              : _c("span", [
+                                  _vm._v(
+                                    "\n                    " +
+                                      _vm._s(food.name) +
+                                      " -\n                  "
+                                  )
+                                ])
+                          ])
+                        })
+                      ],
+                      2
+                    )
+                  ])
+                ])
+              ])
+            })
+          ],
+          2
+        )
+      : _c("div", { staticClass: "col-sm-12" }, [
+          _vm._m(3),
+          _vm._v(" "),
+          _c("h2", { staticClass: "text-center py-5" }, [
+            _vm._v("\n            Non hai ricevuto alcun ordine\n        ")
+          ])
+        ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("strong", [
+      _c("i", { staticClass: "far fa-calendar" }),
+      _vm._v(" Data Ordine:")
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("strong", [
+      _c("i", { staticClass: "fas fa-coins" }),
+      _vm._v("  Totale Incassato:")
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("strong", [
+      _c("i", { staticClass: "fas fa-pizza-slice" }),
+      _vm._v("  Piatti ordinati:")
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-sm-10 col-md-6 mx-auto" }, [
+      _c("img", {
+        staticClass: "img-fluid",
+        attrs: { src: "/img/no-orders.jpg", alt: "no image" }
+      })
+    ])
+  }
+]
+render._withStripped = true
 
 
 
@@ -39935,7 +40153,9 @@ var render = function() {
               }
             }),
             _vm._v(" "),
-            _c("span", [_vm._v(_vm._s(typology.name))])
+            _c("span", { staticClass: "nome-search" }, [
+              _vm._v(_vm._s(typology.name))
+            ])
           ])
         }),
         0
@@ -52719,8 +52939,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Laravel\deliveboo\laravel\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Laravel\deliveboo\laravel\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! D:\Progetto finale Deliveboo\deliveboo\laravel\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! D:\Progetto finale Deliveboo\deliveboo\laravel\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
