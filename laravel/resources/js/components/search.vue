@@ -12,7 +12,7 @@
                             v-model="filters"
                             @change="searchRestaurants()"
                       >
-                      <span>{{ typology.name }}</span>
+                      <span class="nome-search">{{ typology.name }}</span>
                     </label>
                 </div>
 

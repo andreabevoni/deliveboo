@@ -101,7 +101,7 @@
                     <div class="col-sm-6">
                         <a href="{{ route('food.index') }}">
 
-                            <div class="card lista piatti">
+                            <div class="mb-4 card lista piatti">
                                 <h2>I tuoi piatti</h2>
                             </div>
 
@@ -111,7 +111,7 @@
                     <div class="col-sm-6">
                         <a href="{{ route('orders.index') }}">
 
-                            <div class="card lista ordini">
+                            <div class="mb-4 card lista ordini">
                                 <h2>Ordini ricevuti</h2>
                             </div>
 
