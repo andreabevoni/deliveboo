@@ -1,10 +1,14 @@
 // FOOTER
 
 footer {
+
   .container-fluid {
 
     background-color: #2E3333;
     color: #FFF;
+    a {
+    text-decoration: none;
+    }
   }
 
  .footer-block {
