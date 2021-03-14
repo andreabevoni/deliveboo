@@ -39,11 +39,10 @@
 
 
                         <div class="form-group row">
-                            <label for="price"
-                                class="col-md-4 col-form-label text-md-right">{{ __('Prezzo') }}</label>
+                            <label for="price" class="col-md-4 col-form-label text-md-right">{{ __('Prezzo') }}</label>
 
                             <div class="col-md-6">
-                                <input required min="1" id="price" type="number"
+                                <input required min="1" id="price" type="number" step="0.01"
                                     class="form-control @error('price') is-invalid @enderror" name="price"
                                     value="{{ old('price') }}" required autocomplete="price" autofocus>
 
@@ -78,14 +77,14 @@
                             <div class="col-md-6 input-group">
 
                                 <select required name="category" class="custom-select" id="inputGroupSelect01"> --}}
-                                    @foreach ($foods as $food)
+                        @foreach ($foods as $food)
 
-                                        {{-- <option value="{{ $food->category }}">
+                            {{-- <option value="{{ $food->category }}">
                                             {{ $food->category }}
                                         </option> --}}
-                                    @endforeach
+                        @endforeach
 
-                                {{-- </select>
+                        {{-- </select>
                             </div>
 
                         </div> --}}
@@ -106,8 +105,7 @@
 
 
                         <div class="form-group row">
-                            <label for="visible"
-                                class="col-md-4 col-form-label text-md-right">{{ __('Disponibile') }}
+                            <label for="visible" class="col-md-4 col-form-label text-md-right">{{ __('Disponibile') }}
                             </label>
                             <div class="form-check form-check-inline mx-3">
                                 <input class="form-check-input" type="radio" name="visible" id="inlineRadio1" value="1">
@@ -138,8 +136,8 @@
 
                 <div class="col-sm-12 col-lg-4 text-center">
 
-                    <img class="img-thumbnail rounded mx-auto" src="{{asset('img/piatto-vuoto.jpg')}}" id="preview" width="300px"
-                        height="200px">
+                    <img class="img-thumbnail rounded mx-auto" src="{{ asset('img/piatto-vuoto.jpg') }}" id="preview"
+                        width="300px" height="200px">
 
                 </div>
 
