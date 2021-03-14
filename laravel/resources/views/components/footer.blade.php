@@ -2,7 +2,7 @@
   <div class="container-fluid">
 
     <div class="row justify-content-sm-center justify-content-center py-4">
-      <div class="footer-block col-4 col-sm-4 col-md-4 col-lg-2 p-4">
+      <div class="footer-block col-8 col-sm-4 col-md-4 col-lg-2 p-4">
         <h4>Scopri Deliveboo</h4>
         <ul>
           <li><a href="#" class="text-decoration-none">Investitori</a></li>
@@ -16,7 +16,7 @@
         </ul>
       </div>
 
-      <div class="footer-block col-4 col-sm-4 col-md-4 col-lg-2 p-4">
+      <div class="footer-block col-8 col-sm-4 col-md-4 col-lg-2 p-4">
         <h4>Note legali</h4>
         <ul>
           <li><a href="#" class="text-decoration-none">Termini &#38; Condizioni</a></li>
@@ -25,7 +25,7 @@
         </ul>
       </div>
 
-      <div class="footer-block col-4 col-sm-4 col-md-4 col-lg-2 p-4">
+      <div class="footer-block col-8 col-sm-4 col-md-4 col-lg-2 p-4">
         <h4>Aiuto</h4>
         <ul>
           <li><a href="#" class="text-decoration-none">Contatti</a></li>
@@ -35,7 +35,7 @@
         </ul>
       </div>
 
-      <div class="footer-block col-4 col-sm-4 col-md-4 col-lg-2 p-4">
+      <div class="footer-block col-8 col-sm-4 col-md-4 col-lg-2 p-4">
         <h4>Porta Deliveboo con te</h4>
         <div class="img-app text-center py-1">
           <a href="#">
@@ -52,7 +52,7 @@
     </div>
 
     <div class="row justify-content-around pb-4">
-      <div class="col-3 col-sm-3 social">
+      <div class="col-6 col-sm-4 text-center social">
         <span>
           <a href="#" class="text-decoration-none">
             <i class="fab fa-facebook"></i>
@@ -72,7 +72,7 @@
         </span>
 
       </div>
-      <div class="col-3 col-sm-3 text-right">
+      <div class="col-6 col-sm-4 text-center">
         <span><h6>© 2021 Deliveroo</h6></span>
       </div>
     </div>
