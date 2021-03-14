@@ -1,5 +1,15 @@
 <template>
-  <div>
+    <div>
+        <div class="d-flex justify-content-between">
+            <!-- cambio pagina ordini -->
+            <div class="">
+                <select v-model="currentPage" @change="filter(currentPage)">
+                    <option v-for="n in pages">
+                        {{ n }}
+                    </option>
+                </select>
+                <span>Cambia Pagina</span>
+            </div>
 
     <!-- stampo ordini e link alle statistiche se il ristorante ne ha ricevuti -->
     <div v-if="orders.length">
@@ -84,7 +94,7 @@
 export default {
     props: {
         orders: Array,
-        years: Array,
+        years: Array
     },
     data() {
         return {
@@ -95,9 +105,9 @@ export default {
         };
     },
     methods: {
-        filter: function (n) {
+        filter: function(n) {
             this.pageOrders = [];
-            for (var i = (n * 10 - 10); i < (n * 10); i++) {
+            for (var i = n * 10 - 10; i < n * 10; i++) {
                 if (i < this.orders.length) {
                     this.pageOrders.push(this.orders[i]);
                 };
