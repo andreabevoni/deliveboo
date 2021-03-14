@@ -8,16 +8,16 @@
         </div>
 
         <!-- colonna con form -->
-        <div class="col-md-8" v-if="cart.length">
+        <div class="py-2 col-md-8" v-if="cart.length">
 
             <form @submit.prevent="testApi" method="POST" class="checkout">
                 <input type="hidden" name="_token" :value="csrf" />
-                <div class="subtitle">
+                <div class="subtitle m-3">
                   <h5>Inserisci i tuoi dati per completare l'ordine</h5>
                 </div>
 
-              <div class="d-flex justify-content-center">
-                <div class="col-md-6">
+              <div class="row d-flex justify-content-center">
+                <div class="col-sm-12 col-md-6">
                   <div class="form-group">
                     <label for="exampleInputEmail1"><strong>Nome</strong></label>
                     <input
@@ -67,7 +67,7 @@
           </div> -->
 
           <!-- <button class="btn" @click="testApi"><strong>Conferma Ordine</strong></button> -->
-              <div class="col-md-6">
+              <div class="col-sm-12 col-md-6">
                 <div class="form-group">
                     <label><strong>Numero carta di credito</strong></label>
                     <input
@@ -130,8 +130,8 @@
               </div>
               </div>
               <div class="row justify-content-center">
-                <div class="col-md-6">
-                  <button type="submit" class="btn submit">
+                <div class="col-8 col-md-6">
+                  <button type="submit" class="mt-4 submit">
                       Conferma Ordine
                   </button>
                 </div>
@@ -141,23 +141,26 @@
         </div>
 
         <!-- colonna con carrello -->
-        <div class="col-md-4" v-if="cart.length">
+        <div class="col-md-4 mb-5" v-if="cart.length">
             ​
-            <h4>
+            <h4 class="mb-3">
                 <i class="fas fa-cart-arrow-down"></i>
                   RIEPILOGO CARRELLO
             </h4>
             <div class="cart-test d-flex flex-column">
                 <div class="item-test" v-for="(item, i) in cart" :key="i">
                     <!-- stampo quantitá -->
-                    <div class="quantity">
+                    <div class="quantity d-flex flex-no-wrap align-items-baseline">
+                        <div>
+
                         <i class="fas fa-minus-circle" @click="minusOne(i)"></i>
                         {{ item.quantity }}
                         <i class="fas fa-plus-circle" @click="plusOne(i)"></i>
-                    </div>
+                        </div>
                     <!-- stampo il nome -->
                     <div class="name">
                         {{ foods.find(x => x.id === item.id).name }}
+                    </div>
                     </div>
                     <!-- stampo il totale -->
                     <div class="total">
