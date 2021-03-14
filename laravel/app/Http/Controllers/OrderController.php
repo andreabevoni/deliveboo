@@ -107,9 +107,6 @@ class OrderController extends Controller
                 ->select('orders.id')
                 ->groupBy('orders.id')
                 ->get();
-            // ->toArray();
-
-            // dd($userOrders);
 
             $months_labels = [];
             for ($i = 0; $i >= -12; $i--) {
@@ -123,7 +120,7 @@ class OrderController extends Controller
                 $ids[] = $order->id;
             }
 
-
+            //query per ordini dell utente raggruppati per anno e mese
             $orders = Order::orderBy('date', 'ASC')->find($ids)->groupBy([function ($d) {
                 return Carbon::parse($d->date)->format('Y');
             }, function ($d) {
@@ -177,13 +174,12 @@ class OrderController extends Controller
                     $chartTotal[$key] += $order['total'] / 100;
                 }
             }
-            $chartTotal = array_values($chartTotal);
-            // dd($chartOrders, $chartTotal);
 
+
+            $chartTotal = array_values($chartTotal);
             $chartOrders = array_values($chartOrders);
 
-
-
+            // dd($chartTotal);
 
             return view('pages.charts')->with('chartTotal', json_encode($chartTotal))->with('months', json_encode($months))->with('chartOrder', json_encode($chartOrders))->with('year', json_encode($year));
         } else {
