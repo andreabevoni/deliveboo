@@ -4,7 +4,7 @@
 
     <div class="container">
 
-        <div class="row">
+        <div class="row mt-5">
             <div class="col-xs-12 col-md-6 mb-3">
                 <canvas id="myChart" width="200px" height="200px"></canvas>
             </div>
@@ -66,9 +66,11 @@
                     legend: {
                         onClick: null,
                         labels: {
+                            fontSize: 18,
                             boxSize: 0,
                             boxWidth: 0,
-                        }
+
+                        },
                     },
 
                     parsing: {
@@ -135,6 +137,8 @@
                     legend: {
                         onClick: null,
                         labels: {
+                            fontSize: 18,
+
                             boxSize: 0,
                             boxWidth: 0,
                         }
@@ -157,7 +161,7 @@
 
         </script>
         <div class="d-flex justify-content-center">
-            <a href="{{ route('orders.index') }}" class=" btn btn-secondary mt-3 mb-3">Ritorna agli
+            <a href="{{ route('orders.index') }}" class=" btn btn-outline-info mt-3 mb-3">&#171;Ritorna agli
                 ordini</a>
         </div>
 
