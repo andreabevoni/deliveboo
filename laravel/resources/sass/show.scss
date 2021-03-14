@@ -1,15 +1,9 @@
+
 // PAGINA SHOW
-
-.sfondo-info {
-  background-color: rgb(255, 255, 255);
-  // border-bottom: 1px solid rgb(219, 219, 219);
-  box-shadow: 1px 1px 7px 1px rgb(218, 218, 218);
-
-}
 
 // Info
 .info {
-  // border-bottom: 1px solid lightgrey;
+  border-bottom: 1px solid lightgrey;
   padding: 20px;
   i {
     color: $logo-color;
@@ -22,24 +16,21 @@
 
 // Img ristorante
 .img-user {
-  margin: 0px auto;
   img {
-    width: 400px;
-    height: 280px;
-    object-fit: cover;
-    border-radius: 5px;
-    box-shadow: 1px 1px 7px 5px rgb(199, 199, 199);
+    width: 100%;
+    padding-top: 20px;
   }
 }
 
 // Sezione Menu
 
-// .container-fluid {
-//   background-color: $grey-bg;
-// }
+.container-fluid {
+  background-color: $grey-bg;
+  padding-top: 20px;
+}
 
 .menu {
-  padding-top: 15px;
+  padding: 20px;
 
   p {
     color: $grey-color;
@@ -50,24 +41,11 @@
   .food-item {
     background-color: #FFF;
     padding: 10px;
-    // text-align: center;
+    text-align: center;
     margin: 10px 0;
-
-    img {
-      height: 180px;
-      object-fit: cover;
-    }
 
     h4 {
       font-weight: bolder;
-      padding-top: 13px;
-    }
-
-    .descrizione {
-      overflow: hidden;
-      text-overflow: ellipsis;
-      // white-space: nowrap;
-      height: 100px;
     }
 
     h6 {
@@ -154,8 +132,7 @@
    // Pieno
   .cart-test {
     background-color: #FFF;
-    box-shadow: -3px 3px 6px -3px rgb(177, 177, 177);
-    padding: 10px;
+    padding: 10px 0;
     width: 100%;
 
     .item-test {
@@ -170,35 +147,15 @@
 
     .quantity {
       font-size: 1rem;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      span {
-        display: inline-block;
-        width: 20px;
-      }
+
       i {
-        padding: 8px;
-        font-size: 0.9rem;
-          &:hover {
-            color: gray;
-          }
+        padding: 10px;
         }
       }
     }
 
-    .name {
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-      width: 179px;
-      padding: 0 10px;
-      text-align: left;
-    }
-
     .total {
-      padding-right: 8px;
-      white-space: nowrap;
+      padding-right: 20px;
     }
 
 
@@ -226,10 +183,4 @@
      @include cta-primary;
      width: 90%;
      margin-top: 10px;
-   }
-
-   .img-popup {
-
-     width: 300px;
-     margin: auto;
    }

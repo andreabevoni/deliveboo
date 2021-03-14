@@ -144,7 +144,6 @@ class FoodController extends Controller
                     'price' => $request->price * 100,
                     'description' => $request->description,
                     'visible' => $request->visible,
-                    'category' => $request->category,
                     'image' => $destFile,
                 ]
             );
@@ -156,7 +155,6 @@ class FoodController extends Controller
                     'price' => $request->price * 100,
                     'description' => $request->description,
                     'visible' => $request->visible,
-                    'category' => $request->category,
 
                 ]
             );
