@@ -21,8 +21,7 @@
             var year = <?php echo $year; ?>;        var order = <?php echo $chartTotal; ?>;        var roundedOrders = order.map(el => {
                 return parseFloat(el.toFixed(2))
             });
-            var months = <?php echo $months; ?>;
-            var myChart = new Chart(ctx, {
+            var months = <?php echo $months; ?>;        var myChart = new Chart(ctx, {
                 type: 'bar',
                 data: {
                     labels: months,
