@@ -18,13 +18,17 @@
 
         <script type="application/javascript">
             var ctx = document.getElementById('myChart');
-            var year = <?php echo $year; ?>;        var order = <?php echo $chartTotal; ?>;        var months = <?php echo $months; ?>;        var myChart = new Chart(ctx, {
+            var year = <?php echo $year; ?>;        var order = <?php echo $chartTotal; ?>;        var roundedOrders = order.map(el => {
+                return parseFloat(el.toFixed(2))
+            });
+            var months = <?php echo $months; ?>;
+            var myChart = new Chart(ctx, {
                 type: 'bar',
                 data: {
                     labels: months,
                     datasets: [{
                         label: 'Incasso anno' + ' ' + year,
-                        data: order,
+                        data: roundedOrders,
 
                         backgroundColor: [
                             'rgba(255, 99, 132, 0.5)',
@@ -87,9 +91,7 @@
 
         <script>
             var ctx = document.getElementById('myChart2');
-            var year = <?php echo $year; ?>;        var order = <?php echo $chartOrder; ?>;        console.log(order);
-            var months = <?php echo $months; ?>;        console.log(months);
-            var myChart = new Chart(ctx, {
+            var year = <?php echo $year; ?>;        var order = <?php echo $chartOrder; ?>;        var months = <?php echo $months; ?>;        var myChart = new Chart(ctx, {
                 type: 'bar',
                 data: {
                     labels: months,
