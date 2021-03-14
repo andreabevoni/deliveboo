@@ -2933,7 +2933,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     orders: Array,
@@ -39844,7 +39843,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
+  return _c("div", {}, [
     _vm.orders.length
       ? _c(
           "div",
@@ -39892,9 +39891,9 @@ var render = function() {
                     _vm._l(_vm.pages, function(n) {
                       return _c("option", [
                         _vm._v(
-                          "\n                    " +
+                          "\n                      " +
                             _vm._s(n) +
-                            "\n                  "
+                            "\n                    "
                         )
                       ])
                     })
@@ -39943,9 +39942,9 @@ var render = function() {
                     _vm._l(_vm.years, function(year) {
                       return _c("option", [
                         _vm._v(
-                          "\n                      " +
+                          "\n                        " +
                             _vm._s(year) +
-                            "\n                  "
+                            "\n                    "
                         )
                       ])
                     })
@@ -39984,25 +39983,25 @@ var render = function() {
                           return _c("span", { key: food.id }, [
                             _c("span", [
                               _vm._v(
-                                "\n                  " +
+                                "\n                    " +
                                   _vm._s(food.pivot.quantity) +
-                                  "x\n                "
+                                  "x\n                  "
                               )
                             ]),
                             _vm._v(" "),
                             i == order.food.length - 1
                               ? _c("span", [
                                   _vm._v(
-                                    "\n                  " +
+                                    "\n                    " +
                                       _vm._s(food.name) +
-                                      "\n                "
+                                      "\n                  "
                                   )
                                 ])
                               : _c("span", [
                                   _vm._v(
-                                    "\n                  " +
+                                    "\n                    " +
                                       _vm._s(food.name) +
-                                      " -\n                "
+                                      " -\n                  "
                                   )
                                 ])
                           ])
@@ -40021,7 +40020,7 @@ var render = function() {
           _vm._m(3),
           _vm._v(" "),
           _c("h2", { staticClass: "text-center py-5" }, [
-            _vm._v("\n          Non hai ricevuto nessun ordine\n      ")
+            _vm._v("\n            Non hai ricevuto nessun ordine\n        ")
           ])
         ])
   ])
