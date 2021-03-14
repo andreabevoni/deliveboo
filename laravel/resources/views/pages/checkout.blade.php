@@ -4,7 +4,7 @@
 <div class="container">
 
     <!-- riga con le info del ristorante -->
-    <div class="checkout-head row d-flex align-items-center">
+    <div class="mx-2 pt-4 checkout-head row d-flex align-items-center">
 
       <a href="{{route('user-show', $user -> id)}}" class="text-center">
         <button class="btn">&#171; Torna al ristorante</button>

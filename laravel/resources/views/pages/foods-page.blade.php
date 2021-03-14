@@ -7,7 +7,7 @@
         @if (Auth::user()->food->isEmpty())
 
             <div class="row py-5">
-                <div class="cartella col-md-8 col-lg-6 col-xl-4 mx-auto">
+                <div class="cartella col-10 col-sm-8 col-lg-6 col-xl-4 mx-auto">
 
                     <img src="{{asset('/img/piatto-vuoto.jpg')}}" width="100%" alt="">
 
@@ -36,9 +36,10 @@
             <div class="row piatti">
 
                 <div class="col-sm-12 d-flex justify-content-around pt-5">
+                    
                     <h2>Elenco del cibo</h2>
 
-                    <div>
+                    <div class="text-nowrap">
 
                         <a class="" href="{{ route('food.create') }}">
 
