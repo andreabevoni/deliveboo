@@ -11086,6 +11086,11 @@ button.reset {
   font-weight: bold;
 }
 
+.sfondo-info {
+  background-color: white;
+  box-shadow: 1px 1px 7px 1px #dadada;
+}
+
 .info {
   padding: 20px;
 }

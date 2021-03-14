@@ -51,7 +51,7 @@ class OrderController extends Controller
                 ->toArray();
             $years = array_keys($years);
 
-            return view('pages.orders2', compact('userAuth', 'orders', 'years'));
+            return view('pages.orders', compact('userAuth', 'orders', 'years'));
         } else {
             return redirect()->route('home');
         }
