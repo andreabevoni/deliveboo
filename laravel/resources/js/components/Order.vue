@@ -1,93 +1,82 @@
 <template>
-    <div>
-        <div class="d-flex justify-content-between">
-            <!-- cambio pagina ordini -->
-            <div class="">
-                <select v-model="currentPage" @change="filter(currentPage)">
-                    <option v-for="n in pages">
-                        {{ n }}
-                    </option>
-                </select>
-                <span>Cambia Pagina</span>
+    <div class="">
+        <!-- stampo ordini e link alle statistiche se il ristorante ne ha ricevuti -->
+        <div v-if="orders.length">
+
+            <div class="d-flex justify-content-between mb-3">
+                <!-- cambio pagina ordini -->
+                <div class="">
+                    <select
+                        class="btn btn-primary"
+                        v-model="currentPage"
+                        @change="filter(currentPage)"
+                    >
+                        <option disabled value="">Visualizza altri ordini</option>
+                        <option v-for="n in pages">
+                          {{n}}
+                        </option>
+                    </select>
+                </div>
+
+                <!-- link alle statistiche -->
+                <div class="">
+                    <!-- <span>Vai alle statistiche dell'anno</span> -->
+                    <select
+                        class="btn btn-secondary"
+                        v-model="currentYear"
+                        @change="charts"
+                    >
+                        <option disabled value="">Visualizza statistiche per anno</option>
+                        <option v-for="year in years">
+                            {{ year }}
+                        </option>
+                    </select>
+                </div>
+
             </div>
 
-    <!-- stampo ordini e link alle statistiche se il ristorante ne ha ricevuti -->
-    <div v-if="orders.length">
+            <!-- ordini -->
+            <div v-for="order in pageOrders" class="card order">
 
-        <div class="d-flex justify-content-between mb-3">
-            <!-- cambio pagina ordini -->
-            <div class="">
-                <select
-                    class="btn btn-primary"
-                    v-model="currentPage"
-                    @change="filter(currentPage)"
-                >
-                    <option disabled value="">Visualizza altri ordini</option>
-                    <option v-for="n in pages">
-                      {{n}}
-                    </option>
-                </select>
-            </div>
+              <div class="card-body">
+                <h5 class="card-title"> <i class="far fa-sticky-note"></i>  Ordine n° {{order.id}}</h5>
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item"><strong><i class="far fa-calendar"></i> Data Ordine:</strong> {{order.date}}</li>
+                  <li class="list-group-item"><strong><i class="fas fa-coins"></i>  Totale Incassato:</strong> {{order.total / 100}} &#8364;</li>
+                  <li class="list-group-item"><strong><i class="fas fa-pizza-slice"></i>  Piatti ordinati:</strong>
+                    <span v-for="(food, i) in order.food" :key="food.id">
+                      <span>
+                        {{food.pivot.quantity}}x
+                      </span>
 
-            <!-- link alle statistiche -->
-            <div class="">
-                <!-- <span>Vai alle statistiche dell'anno</span> -->
-                <select
-                    class="btn btn-secondary"
-                    v-model="currentYear"
-                    @change="charts"
-                >
-                    <option disabled value="">Visualizza statistiche per anno</option>
-                    <option v-for="year in years">
-                        {{ year }}
-                    </option>
-                </select>
+                      <span v-if="i == order.food.length - 1">
+                        {{food.name}}
+                      </span>
+
+                      <span v-else>
+                        {{food.name}} -
+                      </span>
+
+                    </span>
+                  </li>
+                </ul>
+              </div>
+
             </div>
 
         </div>
 
-        <!-- ordini -->
-        <div v-for="order in pageOrders" class="card order">
-
-          <div class="card-body">
-            <h5 class="card-title"> <i class="far fa-sticky-note"></i>  Ordine n° {{order.id}}</h5>
-            <ul class="list-group list-group-flush">
-              <li class="list-group-item"><strong><i class="far fa-calendar"></i> Data Ordine:</strong> {{order.date}}</li>
-              <li class="list-group-item"><strong><i class="fas fa-coins"></i>  Totale Incassato:</strong> {{order.total / 100}} &#8364;</li>
-              <li class="list-group-item"><strong><i class="fas fa-pizza-slice"></i>  Piatti ordinati:</strong>
-                <span v-for="(food, i) in order.food" :key="food.id">
-                  <span>
-                    {{food.pivot.quantity}}x
-                  </span>
-
-                  <span v-if="i == order.food.length - 1">
-                    {{food.name}}
-                  </span>
-
-                  <span v-else>
-                    {{food.name}} -
-                  </span>
-
-                </span>
-              </li>
-            </ul>
-          </div>
-
+        <!-- stampo una immagine se il ristorante é nuovo e non ha ancora ricevuto ordini -->
+        <div v-else class="col-sm-12">
+            <div class="col-sm-10 col-md-6 mx-auto">
+                <img class="img-fluid" src="/img/no-orders.jpg" alt="no image">
+            </div>
+            <h2 class="text-center py-5">
+                Non hai ricevuto nessun ordine
+            </h2>
         </div>
 
     </div>
-
-    <!-- stampo una immagine se il ristorante é nuovo e non ha ancora ricevuto ordini -->
-    <div v-else class="col-sm-12">
-        <div class="col-sm-10 col-md-6 mx-auto">
-            <img class="img-fluid" src="/img/no-orders.jpg" alt="no image">
-        </div>
-        <h2 class="text-center py-5">
-            Non hai ricevuto nessun ordine
-        </h2>
-    </div>
-
-  </div>
 </template>
 
 <script>
