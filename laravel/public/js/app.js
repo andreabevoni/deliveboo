@@ -2914,6 +2914,36 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     orders: Array,
@@ -2922,8 +2952,8 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       'pages': Math.ceil(this.orders.length / 10),
-      'currentPage': 1,
-      'currentYear': this.years[0],
+      'currentPage': '',
+      'currentYear': '',
       'pageOrders': []
     };
   },
@@ -2940,6 +2970,9 @@ __webpack_require__.r(__webpack_exports__);
       }
 
       ;
+    },
+    charts: function charts() {
+      window.location.href = "http://localhost:8000/chart/" + this.currentYear;
     }
   },
   mounted: function mounted() {
@@ -39826,207 +39859,8 @@ render._withStripped = true
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    [
-      _c("div", { staticClass: "d-flex justify-content-between" }, [
-        _c("div", {}, [
-          _c(
-            "select",
-            {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.currentPage,
-                  expression: "currentPage"
-                }
-              ],
-              on: {
-                change: [
-                  function($event) {
-                    var $$selectedVal = Array.prototype.filter
-                      .call($event.target.options, function(o) {
-                        return o.selected
-                      })
-                      .map(function(o) {
-                        var val = "_value" in o ? o._value : o.value
-                        return val
-                      })
-                    _vm.currentPage = $event.target.multiple
-                      ? $$selectedVal
-                      : $$selectedVal[0]
-                  },
-                  function($event) {
-                    return _vm.filter(_vm.currentPage)
-                  }
-                ]
-              }
-            },
-            _vm._l(_vm.pages, function(n) {
-              return _c("option", [
-                _vm._v("\n              " + _vm._s(n) + "\n            ")
-              ])
-            }),
-            0
-          ),
-          _vm._v(" "),
-          _c("span", [_vm._v("Cambia Pagina")])
-        ]),
-        _vm._v(" "),
-        _c("div", {}, [
-          _c("span", [
-            _c(
-              "a",
-              {
-                staticClass: "text-decoration-none",
-                attrs: { href: "/chart/" + _vm.currentYear }
-              },
-              [
-                _vm._v(
-                  "\n                  Vai alle statistiche per l'anno:\n              "
-                )
-              ]
-            )
-          ]),
-          _vm._v(" "),
-          _c(
-            "select",
-            {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.currentYear,
-                  expression: "currentYear"
-                }
-              ],
-              on: {
-                change: [
-                  function($event) {
-                    var $$selectedVal = Array.prototype.filter
-                      .call($event.target.options, function(o) {
-                        return o.selected
-                      })
-                      .map(function(o) {
-                        var val = "_value" in o ? o._value : o.value
-                        return val
-                      })
-                    _vm.currentYear = $event.target.multiple
-                      ? $$selectedVal
-                      : $$selectedVal[0]
-                  },
-                  function($event) {}
-                ]
-              }
-            },
-            _vm._l(_vm.years, function(year) {
-              return _c("option", [
-                _vm._v("\n              " + _vm._s(year) + "\n            ")
-              ])
-            }),
-            0
-          )
-        ])
-      ]),
-      _vm._v(" "),
-      _vm._l(_vm.pageOrders, function(order) {
-        return _c("div", { staticClass: "card order" }, [
-          _c("div", { staticClass: "card-body" }, [
-            _c("h5", { staticClass: "card-title" }, [
-              _c("i", { staticClass: "far fa-sticky-note" }),
-              _vm._v("  Ordine n° " + _vm._s(order.id))
-            ]),
-            _vm._v(" "),
-            _c("ul", { staticClass: "list-group list-group-flush" }, [
-              _c("li", { staticClass: "list-group-item" }, [
-                _vm._m(0, true),
-                _vm._v(" " + _vm._s(order.date))
-              ]),
-              _vm._v(" "),
-              _c("li", { staticClass: "list-group-item" }, [
-                _vm._m(1, true),
-                _vm._v(" " + _vm._s(order.total / 100) + " €")
-              ]),
-              _vm._v(" "),
-              _c(
-                "li",
-                { staticClass: "list-group-item" },
-                [
-                  _vm._m(2, true),
-                  _vm._v(" "),
-                  _vm._l(order.food, function(food, i) {
-                    return _c("span", { key: food.id }, [
-                      _c("span", [
-                        _vm._v(
-                          "\n              " +
-                            _vm._s(food.pivot.quantity) +
-                            "x\n            "
-                        )
-                      ]),
-                      _vm._v(" "),
-                      i == order.food.length - 1
-                        ? _c("span", [
-                            _vm._v(
-                              "\n              " +
-                                _vm._s(food.name) +
-                                "\n            "
-                            )
-                          ])
-                        : _c("span", [
-                            _vm._v(
-                              "\n              " +
-                                _vm._s(food.name) +
-                                " -\n            "
-                            )
-                          ])
-                    ])
-                  })
-                ],
-                2
-              )
-            ])
-          ])
-        ])
-      })
-    ],
-    2
-  )
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("strong", [
-      _c("i", { staticClass: "far fa-calendar" }),
-      _vm._v(" Data Ordine:")
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("strong", [
-      _c("i", { staticClass: "fas fa-coins" }),
-      _vm._v("  Totale Incassato:")
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("strong", [
-      _c("i", { staticClass: "fas fa-pizza-slice" }),
-      _vm._v("  Piatti ordinati:")
-    ])
-  }
-]
-render._withStripped = true
+var render = function () {}
+var staticRenderFns = []
 
 
 
@@ -52874,7 +52708,7 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-throw new Error("Module build failed (from ./node_modules/css-loader/index.js):\nModuleBuildError: Module build failed (from ./node_modules/sass-loader/dist/cjs.js):\nSassError: unmatched \"}\".\n    ╷\n195 │   }\r\n    │   ^\n    ╵\n  C:\\Laravel\\deliveboo\\laravel\\resources\\sass\\app.scss 195:3  root stylesheet\n    at C:\\Laravel\\deliveboo\\laravel\\node_modules\\webpack\\lib\\NormalModule.js:316:20\n    at C:\\Laravel\\deliveboo\\laravel\\node_modules\\loader-runner\\lib\\LoaderRunner.js:367:11\n    at C:\\Laravel\\deliveboo\\laravel\\node_modules\\loader-runner\\lib\\LoaderRunner.js:233:18\n    at context.callback (C:\\Laravel\\deliveboo\\laravel\\node_modules\\loader-runner\\lib\\LoaderRunner.js:111:13)\n    at C:\\Laravel\\deliveboo\\laravel\\node_modules\\sass-loader\\dist\\index.js:73:7\n    at Function.call$2 (C:\\Laravel\\deliveboo\\laravel\\node_modules\\sass\\sass.dart.js:91729:16)\n    at _render_closure1.call$2 (C:\\Laravel\\deliveboo\\laravel\\node_modules\\sass\\sass.dart.js:80373:12)\n    at _RootZone.runBinary$3$3 (C:\\Laravel\\deliveboo\\laravel\\node_modules\\sass\\sass.dart.js:27269:18)\n    at _FutureListener.handleError$1 (C:\\Laravel\\deliveboo\\laravel\\node_modules\\sass\\sass.dart.js:25797:19)\n    at _Future__propagateToListeners_handleError.call$0 (C:\\Laravel\\deliveboo\\laravel\\node_modules\\sass\\sass.dart.js:26094:49)\n    at Object._Future__propagateToListeners (C:\\Laravel\\deliveboo\\laravel\\node_modules\\sass\\sass.dart.js:4543:77)\n    at _Future._completeError$2 (C:\\Laravel\\deliveboo\\laravel\\node_modules\\sass\\sass.dart.js:25927:9)\n    at _AsyncAwaitCompleter.completeError$2 (C:\\Laravel\\deliveboo\\laravel\\node_modules\\sass\\sass.dart.js:25270:12)\n    at Object._asyncRethrow (C:\\Laravel\\deliveboo\\laravel\\node_modules\\sass\\sass.dart.js:4292:17)\n    at C:\\Laravel\\deliveboo\\laravel\\node_modules\\sass\\sass.dart.js:13233:20\n    at _wrapJsFunctionForAsync_closure.$protected (C:\\Laravel\\deliveboo\\laravel\\node_modules\\sass\\sass.dart.js:4317:15)\n    at _wrapJsFunctionForAsync_closure.call$2 (C:\\Laravel\\deliveboo\\laravel\\node_modules\\sass\\sass.dart.js:25291:12)\n    at _awaitOnObject_closure0.call$2 (C:\\Laravel\\deliveboo\\laravel\\node_modules\\sass\\sass.dart.js:25283:25)\n    at _RootZone.runBinary$3$3 (C:\\Laravel\\deliveboo\\laravel\\node_modules\\sass\\sass.dart.js:27269:18)\n    at _FutureListener.handleError$1 (C:\\Laravel\\deliveboo\\laravel\\node_modules\\sass\\sass.dart.js:25797:19)\n    at _Future__propagateToListeners_handleError.call$0 (C:\\Laravel\\deliveboo\\laravel\\node_modules\\sass\\sass.dart.js:26094:49)\n    at Object._Future__propagateToListeners (C:\\Laravel\\deliveboo\\laravel\\node_modules\\sass\\sass.dart.js:4543:77)\n    at _Future._completeError$2 (C:\\Laravel\\deliveboo\\laravel\\node_modules\\sass\\sass.dart.js:25927:9)\n    at _Future__asyncCompleteError_closure.call$0 (C:\\Laravel\\deliveboo\\laravel\\node_modules\\sass\\sass.dart.js:26016:18)\n    at Object._microtaskLoop (C:\\Laravel\\deliveboo\\laravel\\node_modules\\sass\\sass.dart.js:4594:24)\n    at StaticClosure._startMicrotaskLoop (C:\\Laravel\\deliveboo\\laravel\\node_modules\\sass\\sass.dart.js:4600:11)\n    at _AsyncRun__scheduleImmediateJsOverride_internalCallback.call$0 (C:\\Laravel\\deliveboo\\laravel\\node_modules\\sass\\sass.dart.js:25181:21)\n    at invokeClosure (C:\\Laravel\\deliveboo\\laravel\\node_modules\\sass\\sass.dart.js:1401:26)\n    at Immediate.<anonymous> (C:\\Laravel\\deliveboo\\laravel\\node_modules\\sass\\sass.dart.js:1422:18)\n    at processImmediate (internal/timers.js:461:21)");
+// removed by extract-text-webpack-plugin
 
 /***/ }),
 
@@ -52885,8 +52719,8 @@ throw new Error("Module build failed (from ./node_modules/css-loader/index.js):\
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! D:\Progetto finale Deliveboo\deliveboo\laravel\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! D:\Progetto finale Deliveboo\deliveboo\laravel\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Laravel\deliveboo\laravel\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Laravel\deliveboo\laravel\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

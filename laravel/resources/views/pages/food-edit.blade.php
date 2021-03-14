@@ -38,11 +38,11 @@
 
 
                         <div class="form-group row">
-                            <label for="price"
-                                class="col-md-4 col-form-label text-md-right">{{ __('Prezzo') }}</label>
+                            <label for="price" class="col-md-4 col-form-label text-md-right">{{ __('Prezzo') }}</label>
 
                             <div class="col-md-6">
-                                <input required min="1" id="price" type="number" value="{{ $food->price / 100 }}"
+                                <input required min="1" id="price" type="number" step="0.01"
+                                    value="{{ $food->price / 100 }}"
                                     class="form-control @error('price') is-invalid @enderror" name="price"
                                     value="{{ old('price') }}" required autocomplete="price" autofocus>
 
@@ -94,8 +94,7 @@
 
 
                         <div class="form-group row">
-                            <label for="image"
-                                class="col-md-4 col-form-label text-md-right">{{ __('Immagine') }}</label>
+                            <label for="image" class="col-md-4 col-form-label text-md-right">{{ __('Immagine') }}</label>
 
                             <div class="col-md-6 d-flex">
                                 <input id="image" type="file" value="{{ $food->image }}" class="form-control"
@@ -115,18 +114,15 @@
 
 
                         <div class="form-group row">
-                            <label for="visible"
-                                class="col-md-4 col-form-label text-md-right">{{ __('Disponibile') }}
+                            <label for="visible" class="col-md-4 col-form-label text-md-right">{{ __('Disponibile') }}
                             </label>
 
                             <div class="form-check form-check-inline mx-3">
-                                <input class="form-check-input" type="radio" name="visible" id="inlineRadio1" value='1'
-                                    @if ($food->visible == 1) checked @endif>
+                                <input class="form-check-input" type="radio" name="visible" id="inlineRadio1" value='1' @if ($food->visible == 1) checked @endif>
                                 <label class="form-check-label" for="visible">Sì</label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="visible" id="inlineRadio2" value="0"
-                                    @if ($food->visible == 0) checked @endif>
+                                <input class="form-check-input" type="radio" name="visible" id="inlineRadio2" value="0" @if ($food->visible == 0) checked @endif>
                                 <label class="form-check-label" for="visible">No</label>
                             </div>
                             @if ($errors->any())
@@ -153,9 +149,8 @@
                             <div class="card-header">Preview Immagine</div>
                             <div class="card-content text-center"> --}}
 
-                                <img class="img-thumbnail rounded mx-auto" src="#" id="preview" width="300px"
-                                    height="200px">
-                            {{-- </div>
+                    <img class="img-thumbnail rounded mx-auto" src="#" id="preview" width="300px" height="200px">
+                    {{-- </div>
                         </div>
                     </div> --}}
                 </div>
