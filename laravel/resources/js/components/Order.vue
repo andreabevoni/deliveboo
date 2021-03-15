@@ -2,7 +2,9 @@
     <div class="">
         <!-- stampo ordini e link alle statistiche se il ristorante ne ha ricevuti -->
         <div v-if="orders.length">
-            <div class="d-flex justify-content-between align-items-end mb-3 flex-wrap">
+            <div
+                class="d-flex justify-content-between align-items-end mb-3 flex-wrap"
+            >
                 <!-- cambio pagina ordini -->
                 <div class="mt-2 mb-3 aling-left">
                     <select
@@ -58,6 +60,22 @@
                                 Incassato:</strong
                             >
                             {{ order.total / 100 }} &#8364;
+                        </li>
+                        <li class="list-group-item">
+                            <strong
+                                ><i class="far fa-user"></i> Dati
+                                acquirente:</strong
+                            >
+                            {{ order.name }}, {{ order.phone_number }},
+                            {{ order.email }}
+                        </li>
+                        <li class="list-group-item">
+                            <strong
+                                ><i class="fas fa-map-marker-alt"></i> Indirizzo
+                                di consegna:</strong
+                            >
+
+                            {{ order.address }}
                         </li>
                         <li class="list-group-item">
                             <strong
