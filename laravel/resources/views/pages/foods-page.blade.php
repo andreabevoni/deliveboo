@@ -36,8 +36,8 @@
             <div class="row piatti">
 
                 <div class="col-sm-12 d-flex justify-content-around pt-5">
-                    
-                    <h2>Elenco del cibo</h2>
+
+                    <h2>Elenco dei piatti</h2>
 
                     <div class="text-nowrap">
 
