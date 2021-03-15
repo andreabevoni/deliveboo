@@ -2170,6 +2170,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     foods: Array,
@@ -2933,6 +2936,25 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     orders: Array,
@@ -2940,10 +2962,10 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      'pages': Math.ceil(this.orders.length / 10),
-      'currentPage': '',
-      'currentYear': '',
-      'pageOrders': []
+      pages: Math.ceil(this.orders.length / 10),
+      currentPage: "",
+      currentYear: "",
+      pageOrders: []
     };
   },
   methods: {
@@ -2954,11 +2976,7 @@ __webpack_require__.r(__webpack_exports__);
         if (i < this.orders.length) {
           this.pageOrders.push(this.orders[i]);
         }
-
-        ;
       }
-
-      ;
     },
     charts: function charts() {
       window.location.href = "http://localhost:8000/chart/" + this.currentYear;
@@ -38726,7 +38744,7 @@ var render = function() {
       : _vm._e(),
     _vm._v(" "),
     _vm.cart.length
-      ? _c("div", { staticClass: "col-md-8" }, [
+      ? _c("div", { staticClass: "py-2 col-md-8" }, [
           _c(
             "form",
             {
@@ -38747,8 +38765,8 @@ var render = function() {
               _vm._v(" "),
               _vm._m(1),
               _vm._v(" "),
-              _c("div", { staticClass: "d-flex justify-content-center" }, [
-                _c("div", { staticClass: "col-md-6" }, [
+              _c("div", { staticClass: "row d-flex justify-content-center" }, [
+                _c("div", { staticClass: "col-sm-12 col-md-6" }, [
                   _c("div", { staticClass: "form-group" }, [
                     _vm._m(2),
                     _vm._v(" "),
@@ -38849,7 +38867,7 @@ var render = function() {
                   ])
                 ]),
                 _vm._v(" "),
-                _c("div", { staticClass: "col-md-6" }, [
+                _c("div", { staticClass: "col-sm-12 col-md-6" }, [
                   _c("div", { staticClass: "form-group" }, [
                     _vm._m(5),
                     _vm._v(" "),
@@ -38988,7 +39006,7 @@ var render = function() {
       : _vm._e(),
     _vm._v(" "),
     _vm.cart.length
-      ? _c("div", { staticClass: "col-md-4" }, [
+      ? _c("div", { staticClass: "col-md-4 mb-5" }, [
           _vm._v("\n        ​\n        "),
           _vm._m(10),
           _vm._v(" "),
@@ -38998,41 +39016,50 @@ var render = function() {
             [
               _vm._l(_vm.cart, function(item, i) {
                 return _c("div", { key: i, staticClass: "item-test" }, [
-                  _c("div", { staticClass: "quantity" }, [
-                    _c("i", {
-                      staticClass: "fas fa-minus-circle",
-                      on: {
-                        click: function($event) {
-                          return _vm.minusOne(i)
-                        }
-                      }
-                    }),
-                    _vm._v(
-                      "\n                    " +
-                        _vm._s(item.quantity) +
-                        "\n                    "
-                    ),
-                    _c("i", {
-                      staticClass: "fas fa-plus-circle",
-                      on: {
-                        click: function($event) {
-                          return _vm.plusOne(i)
-                        }
-                      }
-                    })
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "name" }, [
-                    _vm._v(
-                      "\n                    " +
-                        _vm._s(
-                          _vm.foods.find(function(x) {
-                            return x.id === item.id
-                          }).name
-                        ) +
-                        "\n                "
-                    )
-                  ]),
+                  _c(
+                    "div",
+                    {
+                      staticClass:
+                        "quantity d-flex flex-no-wrap align-items-baseline"
+                    },
+                    [
+                      _c("div", [
+                        _c("i", {
+                          staticClass: "fas fa-minus-circle",
+                          on: {
+                            click: function($event) {
+                              return _vm.minusOne(i)
+                            }
+                          }
+                        }),
+                        _vm._v(
+                          "\n                    " +
+                            _vm._s(item.quantity) +
+                            "\n                    "
+                        ),
+                        _c("i", {
+                          staticClass: "fas fa-plus-circle",
+                          on: {
+                            click: function($event) {
+                              return _vm.plusOne(i)
+                            }
+                          }
+                        })
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "name" }, [
+                        _vm._v(
+                          "\n                    " +
+                            _vm._s(
+                              _vm.foods.find(function(x) {
+                                return x.id === item.id
+                              }).name
+                            ) +
+                            "\n                "
+                        )
+                      ])
+                    ]
+                  ),
                   _vm._v(" "),
                   _c("div", { staticClass: "total" }, [
                     _vm._v(
@@ -39082,7 +39109,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "subtitle" }, [
+    return _c("div", { staticClass: "subtitle m-3" }, [
       _c("h5", [_vm._v("Inserisci i tuoi dati per completare l'ordine")])
     ])
   },
@@ -39143,10 +39170,12 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "row justify-content-center" }, [
-      _c("div", { staticClass: "col-md-6" }, [
-        _c("button", { staticClass: "btn submit", attrs: { type: "submit" } }, [
-          _vm._v("\n                  Conferma Ordine\n              ")
-        ])
+      _c("div", { staticClass: "col-8 col-md-6" }, [
+        _c(
+          "button",
+          { staticClass: "mt-4 submit", attrs: { type: "submit" } },
+          [_vm._v("\n                  Conferma Ordine\n              ")]
+        )
       ])
     ])
   },
@@ -39154,7 +39183,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("h4", [
+    return _c("h4", { staticClass: "mb-3" }, [
       _c("i", { staticClass: "fas fa-cart-arrow-down" }),
       _vm._v("\n              RIEPILOGO CARRELLO\n        ")
     ])
@@ -39850,9 +39879,9 @@ var render = function() {
           [
             _c(
               "div",
-              { staticClass: "d-flex justify-content-around mb-3 flex-wrap" },
+              { staticClass: "d-flex justify-content-between mb-3 flex-wrap" },
               [
-                _c("div", { staticClass: "mb-3" }, [
+                _c("div", { staticClass: "mt-2 mb-3 aling-left" }, [
                   _c(
                     "select",
                     {
@@ -39864,7 +39893,7 @@ var render = function() {
                           expression: "currentPage"
                         }
                       ],
-                      staticClass: "btn btn-primary",
+                      staticClass: "btn btn-outline-info",
                       on: {
                         change: [
                           function($event) {
@@ -39894,7 +39923,7 @@ var render = function() {
                       _vm._l(_vm.pages, function(n) {
                         return _c("option", [
                           _vm._v(
-                            "\n                      " +
+                            "\n                        " +
                               _vm._s(n) +
                               "\n                    "
                           )
@@ -39917,7 +39946,7 @@ var render = function() {
                           expression: "currentYear"
                         }
                       ],
-                      staticClass: "btn btn-secondary",
+                      staticClass: "btn btn-info",
                       on: {
                         change: [
                           function($event) {
@@ -39963,18 +39992,30 @@ var render = function() {
                 _c("div", { staticClass: "card-body" }, [
                   _c("h5", { staticClass: "card-title" }, [
                     _c("i", { staticClass: "far fa-sticky-note" }),
-                    _vm._v("  Ordine n° " + _vm._s(order.id))
+                    _vm._v(
+                      " Ordine n°\n                    " +
+                        _vm._s(order.id) +
+                        "\n                "
+                    )
                   ]),
                   _vm._v(" "),
                   _c("ul", { staticClass: "list-group list-group-flush" }, [
                     _c("li", { staticClass: "list-group-item" }, [
                       _vm._m(0, true),
-                      _vm._v(" " + _vm._s(order.date))
+                      _vm._v(
+                        "\n                        " +
+                          _vm._s(order.date) +
+                          "\n                    "
+                      )
                     ]),
                     _vm._v(" "),
                     _c("li", { staticClass: "list-group-item" }, [
                       _vm._m(1, true),
-                      _vm._v(" " + _vm._s(order.total / 100) + " €")
+                      _vm._v(
+                        "\n                        " +
+                          _vm._s(order.total / 100) +
+                          " €\n                    "
+                      )
                     ]),
                     _vm._v(" "),
                     _c(
@@ -39986,27 +40027,19 @@ var render = function() {
                         _vm._l(order.food, function(food, i) {
                           return _c("span", { key: food.id }, [
                             _c("span", [
-                              _vm._v(
-                                "\n                    " +
-                                  _vm._s(food.pivot.quantity) +
-                                  "x\n                  "
-                              )
+                              _vm._v(" " + _vm._s(food.pivot.quantity) + "x ")
                             ]),
                             _vm._v(" "),
                             i == order.food.length - 1
                               ? _c("span", [
                                   _vm._v(
-                                    "\n                    " +
+                                    "\n                                " +
                                       _vm._s(food.name) +
-                                      "\n                  "
+                                      "\n                            "
                                   )
                                 ])
                               : _c("span", [
-                                  _vm._v(
-                                    "\n                    " +
-                                      _vm._s(food.name) +
-                                      " -\n                  "
-                                  )
+                                  _vm._v(" " + _vm._s(food.name) + " - ")
                                 ])
                           ])
                         })
@@ -40036,7 +40069,7 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("strong", [
       _c("i", { staticClass: "far fa-calendar" }),
-      _vm._v(" Data Ordine:")
+      _vm._v(" Data\n                            Ordine:")
     ])
   },
   function() {
@@ -40045,7 +40078,7 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("strong", [
       _c("i", { staticClass: "fas fa-coins" }),
-      _vm._v("  Totale Incassato:")
+      _vm._v(" Totale\n                            Incassato:")
     ])
   },
   function() {
@@ -40054,7 +40087,7 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("strong", [
       _c("i", { staticClass: "fas fa-pizza-slice" }),
-      _vm._v("  Piatti ordinati:")
+      _vm._v(" Piatti\n                            ordinati:")
     ])
   },
   function() {
@@ -52930,8 +52963,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! D:\Progetto finale Deliveboo\deliveboo\laravel\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! D:\Progetto finale Deliveboo\deliveboo\laravel\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Boolean\Esercizi\deliveboo\laravel\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Boolean\Esercizi\deliveboo\laravel\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
