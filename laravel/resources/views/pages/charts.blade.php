@@ -161,7 +161,7 @@
 
         </script>
         <div class="d-flex justify-content-center">
-            <a href="{{ route('orders.index') }}" class=" btn btn-outline-info mt-3 mb-3">&#171;Ritorna agli
+            <a href="{{ route('orders.index') }}" class=" btn btn-outline-info mt-3 mb-3">&#171; Ritorna agli
                 ordini</a>
         </div>
 

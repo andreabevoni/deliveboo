@@ -3,9 +3,14 @@
 
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-8">
+            <div class="pt-4 col-md-8">
+                <div class="mx-2 pt-4 checkout-head row d-flex align-items-center">
 
-                <h2 class="mx-5 mt-5 mb-3">{{ __('Ripristina Piatto') }}</h2>
+                    <a href="{{route('food.index')}}" class="text-center">
+                        <button class="btn">&#171; Torna ai tuoi piatti</button>
+                    </a>
+                    <h2 class="px-3">{{ __('Ripristina Piatto') }}</h2>
+                </div>
                 <div class="cartella mb-5 p-5">
 
                     <form method="POST" action="{{ route('restore-food') }}">

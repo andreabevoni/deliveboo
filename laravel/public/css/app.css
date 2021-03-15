@@ -10960,6 +10960,10 @@ a.text-dark:focus {
   color: #00ccbc;
 }
 
+.navbar-nav .dropdown-menu {
+  position: absolute;
+}
+
 footer .container-fluid,
 footer .container-sm,
 footer .container-md,
