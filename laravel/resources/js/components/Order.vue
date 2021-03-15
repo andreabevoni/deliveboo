@@ -2,7 +2,7 @@
     <div class="">
         <!-- stampo ordini e link alle statistiche se il ristorante ne ha ricevuti -->
         <div v-if="orders.length">
-            <div class="d-flex justify-content-between mb-3 flex-wrap">
+            <div class="d-flex justify-content-between align-items-end mb-3 flex-wrap">
                 <!-- cambio pagina ordini -->
                 <div class="mt-2 mb-3 aling-left">
                     <select
