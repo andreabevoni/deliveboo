@@ -17,11 +17,5 @@ La piattaforma mette a disposizione anche un'area riservata ai ristoratori che d
 
 <br>
 
-![Alt text](/../<branch screenshots>/screenshot/home.png?raw=true "Optional Title");
-![Alt text](/../<branch screenshots>/screenshot/menu.png?raw=true "Optional Title")
-![Alt text](/../<branch screenshots>/screenshot/popup.png?raw=true "Optional Title")
-![Alt text](/../<branch screenshots>/screenshot/checkout.png?raw=true "Optional Title")
-![Alt text](/../<branch screenshots>/screenshot/payed.png?raw=true "Optional Title")
-![Alt text](/../<branch screenshots>/screenshot/dashCibi.png?raw=true "Optional Title")
-![Alt text](/../<branch screenshots>/screenshot/ordini.png?raw=true "Optional Title")
-![Alt text](/../<branch screenshots>/screenshot/charts.png?raw=true "Optional Title")
+![Alt text](/../<screenshots>/screenshot/home.png?raw=true "Optional Title")
+
