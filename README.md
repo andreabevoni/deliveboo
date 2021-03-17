@@ -17,16 +17,25 @@ La piattaforma mette a disposizione anche un'area riservata ai ristoratori che d
 
 <br>
   Home page 
-  ![alt text](/laravel/screenshots/home.png "Home page");
+  ![alt text](/laravel/screenshots/home.png "Home page")
   
   Menu Ristorante
-  ![alt text](/laravel/screenshots/menu.png "menu");
+  ![alt text](/laravel/screenshots/menu.png "menu")
   
    Aggiungi al carrello
-  ![alt text](/laravel/screenshots/popup.png "menu");
+  ![alt text](/laravel/screenshots/popup.png "menu")
   
   Dashboard Ristoratore
-  ![alt text](/laravel/screenshots/dashboard.png "menu");
+  ![alt text](/laravel/screenshots/dashboard.png "menu")
+  
+   Dashboard Piatti 
+  ![alt text](/laravel/screenshots/dashCibi.png "menu")
+  
+   Dashboard Ordini
+  ![alt text](/laravel/screenshots/ordini.png "menu")
+  
+   Statistiche ordini
+  ![alt text](/laravel/screenshots/charts.png "menu")
   
   
  
