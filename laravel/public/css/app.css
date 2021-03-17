@@ -10973,6 +10973,15 @@ footer .container-xl {
   color: #FFF;
 }
 
+footer .container-fluid h4,
+footer .container-sm h4,
+footer .container-md h4,
+footer .container-lg h4,
+footer .container-xl h4 {
+  text-align: center;
+  padding-top: 10px;
+}
+
 footer .container-fluid a,
 footer .container-sm a,
 footer .container-md a,
@@ -10983,16 +10992,38 @@ footer .container-xl a {
 
 footer .footer-block {
   background-color: #434848;
+  text-align: center;
   margin: 10px 20px;
+}
+
+footer .footer-block h5 {
+  font-size: 1rem;
 }
 
 footer .footer-block a {
   color: #FFF;
 }
 
+footer .footer-block i {
+  border-radius: 10px;
+}
+
 footer .footer-block img {
   padding: 5px 0;
   width: 100px;
+}
+
+footer .footer-block .icon i {
+  color: #00ccbc;
+  border: 1px solid #00ccbc;
+  border-radius: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+footer .footer-block .contact a > img {
+  width: 30px;
+  padding-right: 10px;
 }
 
 footer .social {
@@ -11646,11 +11677,13 @@ button.btn-order i {
   margin: 10px;
   border-radius: 3px;
   text-align: left;
+  transition: 0.2s ease-in-out;
 }
 
 .user:hover {
   box-shadow: 1px 1px 1px #dfdfdf;
   transform: scale(0.95);
+  transition: 0.2s ease-in-out;
 }
 
 .user a {
