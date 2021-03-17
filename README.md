@@ -16,8 +16,14 @@ La piattaforma mette a disposizione anche un'area riservata ai ristoratori che d
 </h4>  
 
 <br>
-  Home page 
-  ![alt text](/laravel/screenshots/home.png "Home page")
+
+  <div align="center">
+     Home page 
+  ![alt text](/laravel/screenshots/home.png "Home page");
+       
+ </div>
+
+
   
   Menu Ristorante
   ![alt text](/laravel/screenshots/menu.png "menu")
