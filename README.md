@@ -17,7 +17,7 @@ La piattaforma mette a disposizione anche un'area riservata ai ristoratori che d
 
 <br>
 
-![Alt text](/../<branch screenshots>/screenshot/home.png?raw=true "Optional Title")
+![Alt text](/../<branch screenshots>/screenshot/home.png?raw=true "Optional Title");
 ![Alt text](/../<branch screenshots>/screenshot/menu.png?raw=true "Optional Title")
 ![Alt text](/../<branch screenshots>/screenshot/popup.png?raw=true "Optional Title")
 ![Alt text](/../<branch screenshots>/screenshot/checkout.png?raw=true "Optional Title")
