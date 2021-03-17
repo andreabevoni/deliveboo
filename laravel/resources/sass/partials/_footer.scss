@@ -3,6 +3,10 @@
 footer {
 
   .container-fluid {
+    h4 {
+      text-align: center;
+      padding-top: 10px;
+    }
 
     background-color: #2E3333;
     color: #FFF;
@@ -13,14 +17,40 @@ footer {
 
  .footer-block {
    background-color: #434848;
-  //  text-align: center;
+   text-align: center;
    margin: 10px 20px;
+   h5 {
+     font-size: 1rem;
+   }
+
    a {
      color: #FFF;
    }
+    i{
+      border-radius: 10px;
+    }
    img {
      padding: 5px 0;
      width: 100px;
+   }
+
+   .icon {
+
+     i {
+       color: $logo-color;
+       border: 1px solid $logo-color;
+       border-radius: 100%;
+       padding: 10px;
+       margin-bottom: 10px;
+     }
+
+   }
+
+   .contact {
+     a > img {
+       width: 30px;
+       padding-right: 10px;
+     }
    }
  }
 
