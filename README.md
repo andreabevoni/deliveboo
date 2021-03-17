@@ -15,7 +15,18 @@ La piattaforma mette a disposizione anche un'area riservata ai ristoratori che d
   
 </h4>  
 
-<br>onload
-
+<br>
+  Home page 
   ![alt text](/laravel/screenshots/home.png "Home page");
-
+  
+  Menu Ristorante
+  ![alt text](/laravel/screenshots/menu.png "menu");
+  
+   Aggiungi al carrello
+  ![alt text](/laravel/screenshots/popup.png "menu");
+  
+  Dashboard Ristoratore
+  ![alt text](/laravel/screenshots/dashboard.png "menu");
+  
+  
+ 
