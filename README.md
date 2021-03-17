@@ -15,7 +15,7 @@ La piattaforma mette a disposizione anche un'area riservata ai ristoratori che d
   
 </h4>  
 
-<br>
+<br>onload
 
-  ![alt text](./laravel/screenshot/home.png "On Mount")
+  ![alt text](/laravel/screenshots/home.png "Home page");
 
