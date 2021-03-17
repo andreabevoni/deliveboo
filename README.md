@@ -14,3 +14,14 @@ La piattaforma mette a disposizione anche un'area riservata ai ristoratori che d
   Completa la sezione la possibilità di prendere visione delle statistiche inerenti agli ordini selezionando l'anno di preferenza; una volta scelto l'anno si aprirà   una pagina con i grafici delle statistiche inerenti all' incasso annuale, per mese e al numero totale di ordini ricevuti al mese e all'anno.
   
 </h4>  
+
+<br>
+
+![Alt text](/../<branch screenshots>/screenshot/home.png?raw=true "Optional Title")
+![Alt text](/../<branch screenshots>/screenshot/menu.png?raw=true "Optional Title")
+![Alt text](/../<branch screenshots>/screenshot/popup.png?raw=true "Optional Title")
+![Alt text](/../<branch screenshots>/screenshot/checkout.png?raw=true "Optional Title")
+![Alt text](/../<branch screenshots>/screenshot/payed.png?raw=true "Optional Title")
+![Alt text](/../<branch screenshots>/screenshot/dashCibi.png?raw=true "Optional Title")
+![Alt text](/../<branch screenshots>/screenshot/ordini.png?raw=true "Optional Title")
+![Alt text](/../<branch screenshots>/screenshot/charts.png?raw=true "Optional Title")
