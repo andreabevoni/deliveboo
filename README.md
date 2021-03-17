@@ -17,5 +17,5 @@ La piattaforma mette a disposizione anche un'area riservata ai ristoratori che d
 
 <br>
 
-![Alt text](/../<screenshots>/screenshot/home.png?raw=true "Optional Title")
+  ![alt text](./laravel/screenshot/home.png "On Mount")
 
