@@ -62,8 +62,8 @@
                                 <textarea required id="description" minlength="5" type="text"
                                     value="{{ $food->description }}"
                                     class="form-control @error('description') is-invalid @enderror" name="description"
-                                    value="{{ old('description') }}" required autocomplete="description" autofocus>
-                                    </textarea>
+                                    value="{{ old('description') }}" required autocomplete="description" autofocus>{{ $food->description }}
+                                            </textarea>
 
                                 @error('description')
                                     <span class="invalid-feedback" role="alert">
