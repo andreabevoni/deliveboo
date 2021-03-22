@@ -1,52 +1,85 @@
 <footer>
   <div class="container-fluid">
-
+      <h4>Powered by</h4>
     <div class="row justify-content-sm-center justify-content-center py-4">
-      <div class="footer-block col-8 col-sm-4 col-md-4 col-lg-2 p-4">
-        <h4>Scopri Deliveboo</h4>
-        <ul>
-          <li><a href="#" class="text-decoration-none">Investitori</a></li>
-          <li><a href="#" class="text-decoration-none">Chi siamo</a></li>
-          <li><a href="#" class="text-decoration-none">Pressroom</a></li>
-          <li><a href="#" class="text-decoration-none">Il nostro blog</a></li>
-          <li><a href="#" class="text-decoration-none">Programmazione</a></li>
-          <li><a href="#" class="text-decoration-none">Design</a></li>
-          <li><a href="#" class="text-decoration-none">Lavora con noi</a></li>
-          <li><a href="#" class="text-decoration-none">Diventa nostro partner</a></li>
-        </ul>
-      </div>
 
       <div class="footer-block col-8 col-sm-4 col-md-4 col-lg-2 p-4">
-        <h4>Note legali</h4>
-        <ul>
-          <li><a href="#" class="text-decoration-none">Termini &#38; Condizioni</a></li>
-          <li><a href="#" class="text-decoration-none">Informativa sulla privacy</a></li>
-          <li><a href="#" class="text-decoration-none">Cookies</a></li>
-        </ul>
-      </div>
-
-      <div class="footer-block col-8 col-sm-4 col-md-4 col-lg-2 p-4">
-        <h4>Aiuto</h4>
-        <ul>
-          <li><a href="#" class="text-decoration-none">Contatti</a></li>
-          <li><a href="#" class="text-decoration-none">FAQ</a></li>
-          <li><a href="#" class="text-decoration-none">Tipi di cucina</a></li>
-          <li><a href="#" class="text-decoration-none">Mappa del sito</a></li>
-        </ul>
-      </div>
-
-      <div class="footer-block col-8 col-sm-4 col-md-4 col-lg-2 p-4">
-        <h4>Porta Deliveboo con te</h4>
-        <div class="img-app text-center py-1">
-          <a href="#">
-            <img src="{{ asset('img/google-play.png') }}" alt="" width="120px">
+        <div class="icon">
+          <i class="fas fa-code"></i>
+        </div>
+        <h5>
+          <strong>
+          Andrea Bevoni
+          </strong>
+        </h5>
+        <div class="contact">
+          <a href="https://github.com/andreabevoni" target="_blank">
+            <img src="{{ asset('/img/github.png') }}" alt="logo Github">
+          </a>
+          <a href="https://www.linkedin.com/in/andrea-bevoni-5b280120/" target="_blank">
+            <img src="{{ asset('/img/linkedin.png') }}" alt="logo LinkedIn">
           </a>
         </div>
-        <div class="img-app text-center">
-          <a href="#">
-            <img src="{{ asset('img/app-apple.png') }}" alt="" width="120px">
+      </div>
+
+      <div class="footer-block col-8 col-sm-4 col-md-4 col-lg-2 p-4">
+        <div class="icon">
+          <i class="fas fa-code"></i>
+        </div>
+        <h5>
+          <strong>
+          Salvatore Borgia
+          </strong>
+        </h5>
+        <div class="contact">
+          <a href="https://github.com/sa-borgia3" target="_blank">
+            <img src="{{ asset('/img/github.png') }}" alt="logo Github">
+          </a>
+          <a href="https://www.linkedin.com/in/salvatore-borgia-ab85ab147/" target="_blank">
+            <img src="{{ asset('/img/linkedin.png') }}" alt="logo LinkedIn">
           </a>
         </div>
+
+      </div>
+
+      <div class="footer-block col-8 col-sm-4 col-md-4 col-lg-2 p-4">
+        <div class="icon">
+          <i class="fas fa-code"></i>
+        </div>
+        <h5>
+          <strong>
+          Caterina Danizio
+          </strong>
+        </h5>
+        <div class="contact">
+          <a href="https://github.com/CaterinaDanizio" target="_blank">
+            <img src="{{ asset('/img/github.png') }}" alt="logo Github">
+          </a>
+          <a href="https://www.linkedin.com/in/caterinadanizio/" target="_blank">
+            <img src="{{ asset('/img/linkedin.png') }}" alt="logo LinkedIn">
+          </a>
+        </div>
+
+      </div>
+
+      <div class="footer-block col-8 col-sm-4 col-md-4 col-lg-2 p-4">
+        <div class="icon">
+          <i class="fas fa-code"></i>
+        </div>
+        <h5>
+          <strong>
+          Davide Zingali
+          </strong>
+        </h5>
+        <div class="contact">
+          <a href="https://github.com/Davide-Zingali" target="_blank">
+            <img src="{{ asset('/img/github.png') }}" alt="logo Github">
+          </a>
+          <a href="https://www.linkedin.com/in/davide-zingali-b2bb1318b/" target="_blank">
+            <img src="{{ asset('/img/linkedin.png') }}" alt="logo LinkedIn">
+          </a>
+        </div>
+
       </div>
 
     </div>
@@ -73,7 +106,7 @@
 
       </div>
       <div class="col-6 col-sm-4 text-center">
-        <span><h6>© 2021 Deliveroo</h6></span>
+        <span><h6>© 2021 Deliveboo</h6></span>
       </div>
     </div>
   </div>
